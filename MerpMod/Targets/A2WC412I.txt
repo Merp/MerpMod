@@ -1,0 +1,25 @@
+SECTIONS
+{
+	REVLIM_START 0x0002F714 : AT (0x0002F714)
+	{
+		*(RevLimit)
+	}
+	ROMHOLE_START 0x000E1400 : AT (0x000E1400)
+	{
+		*(RomHole_Identifier)
+		*(RomHole_Misc)
+		*(RomHole_SpeedDensityTables)
+		*(RomHole_RevLimTables)
+		*(RomHole_CelFlashTables)
+		*(RomHole_POLFHackTables)
+		*(RomHole_BoostHackTables)
+		*(RomHole_TimingHackTables)
+		*(RomHole_Code)
+		*(RomHole_Functions)
+		*(RomHole_RomHoleEndMarker)
+	}
+	RAMHOLE_START 0xFFFF72A0 : AT (0xFFFF72A0)
+	{
+		*(RamHole)
+	}
+}

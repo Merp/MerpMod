@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<idatohew>
+  <defines>
+
+    <category name="NonSpecific Rom Info and Routines">
+        <define name="dCalId">
+            <ida name="ECU_CALIBRATION" />
+        </define>
+        <define name="dEcuId">
+            <ida name="ECU_ID" />
+        </define>
+        <define name="dRomHoleStart">
+            <ida name="ROMHOLE_START" />
+        </define>
+        <define name="pRamHoleStart">
+            <ida name="RAMHOLE_START" />
+        </define>
+        <define name="pRamHoleEnd">
+            <ida name="RAMHOLE_END" />
+        </define>
+        <define name="sPull2DFloat">
+            <ida name="SBR_PULL2D_FLOAT" />
+        </define>
+        <define name="sPull3DFloat">
+            <ida name="SBR_PULL3D_FLOAT" />
+        </define>
+    </category>
+
+    <category name="Switch Hacks">
+        <define name="pSiDrive">
+            <ida name="pSiDriveMode"/>
+        </define>
+        <define name="pTGVLeftVoltage" type="unsigned short*">
+            <ida name="E_SSM_Tumble_Valve_Pos_L"/>
+        </define>
+        <define name="pTGVRightVoltage" type="unsigned short*">
+            <ida name="E_SSM_Tumble_Valve_Pos_R"/>
+        </define>
+        <define name="sShortToFloat">
+            <ida name="SBR_SHORT_TO_FLOAT"/>
+        </define>
+    </category>
+
+    <category name="Rev Limit Hack">
+        <define name="hRevLimDelete">
+            <ida name="hRevLimitDelete"/>
+            <ida name="HOOK_REVLIM_DELETE" priority="2" />
+        </define>
+        <define name="sRevLimStart">
+            <ida name="SBR_REVLIM_START" />
+        </define>
+        <define name="sRevLimEnd">
+            <ida name="REVLIM_END" />
+        </define>
+        <define name="pFlagsRevLim" type="unsigned char*">
+            <ida name="pFlagsRevLimit" />
+            <ida name="REVLIM_FUELCUT_FLAGS" priority="2" />
+        </define>
+        <define name="RevLimBitMask">
+            <ida name="RevLimitBitMask"/>
+            <ida name="REVLIM_FUELCUT_BITMASK" priority="2" />
+        </define>
+    </category>
+
+    <category name="Speed Density Hack">
+        <define name="hMafCalc">
+            <ida name="HOOK_MAFCALC" />
+        </define>
+        <define name="sMafCalc">
+            <ida name="SBR_MAFCALC" />
+        </define>
+    </category>
+
+    <category name="Injector Hack">
+        <define name="dInjectorScaling" type="float*">
+            <ida name="INJECTOR_FLOW_SCALING" />
+        </define>
+        <define name="hInjectorScaling">
+            <ida name="HOOK_INJECTOR_SCALING" />
+        </define>
+    </category>
+
+    <category name="Cel Hacks">
+        <define name="sCelTrigger">
+            <ida name="SBR_CEL_TRIGGER" />
+        </define>
+        <define name="hCelSignal">
+            <ida name="HOOK_CEL_TRIGGER" />
+            <ida name="hCelTrigger" priority="2" />
+        </define>
+        <define name="hCelTriggerShort">
+        </define>
+        <define name="pCelSignalOem" type="unsigned char*">
+            <ida name="CEL_TRIGGER_BYTE" />
+        </define>
+    </category>
+
+    <category name="Boost Hacks">
+        <define name="hPullTargetBoost">
+            <ida name="HOOKPULL_TARGET_BOOST" />
+        </define>
+        <define name="hTableTargetBoost">
+            <ida name="HOOKTABLE_TARGET_BOOST" />
+        </define>
+        <define name="tTargetBoost">
+            <ida name="TABLE_TARGET_BOOST" />
+            <ida name="TABLE_TARGET_BOOST_" priority="2"/>
+        </define>
+        <define name="hTableTargetBoostAlt">
+            <ida name="HOOKTABLE_TARGET_BOOST_ALT" />
+        </define>
+        <define name="tTargetBoostAlt">
+            <ida name="TABLE_TARGET_BOOST_ALTERNATE" />
+        </define>
+        <define name="tTargetBoostKcaAlt">
+            <ida name="Table_Target_Boost_KCA_Alternate_Mode" />
+        </define>
+        <define name="hTableTargetBoostKcaAlt">
+            <ida name="HOOKTABLE_Table_Target_Boost_KCA_Alternate_Mode" />
+        </define>
+        <define name="tTargetBoostKcaBLo">
+            <ida name="Table_Target_Boost_KCA_Additive_B_Low" />
+        </define>
+        <define name="hTableTargetBoostKcaBLo">
+            <ida name="HOOKTABLE_Table_Target_Boost_KCA_Additive_B_Low" />
+        </define>
+        <define name="tTargetBoostKcaBHi">
+            <ida name="Table_Target_Boost_KCA_Additive_B_High" />
+        </define>
+        <define name="hTableTargetBoostKcaBHi">
+            <ida name="HOOKTABLE_Table_Targe_Boost_KCA_Additive_B_High" />
+        </define>
+    </category>
+
+    <category name="WGDC Hacks">
+        <define name="hPullWgdc">
+            <ida name="HOOKPULL_WGDC" />
+        </define>
+        <define name="hWgdc">
+            <ida name="HOOK_WGDC" />
+        </define>
+        <define name="sWgdc">
+            <ida name="SBR_WGDC_HOOKED" />
+        </define>
+        <define name="sJsrWgdcInitial">
+            <ida name="HOOKJSR_WGDC_INITIAL" />
+        </define>
+        <define name="hTableWgdcInitial">
+            <ida name="HOOKTABLE_WGDC_INITIAL" />
+        </define>
+        <define name="tWgdcInitial">
+            <ida name="TABLE_INITIAL_WASTEGATE_DUTY" />
+            <ida name="TABLE_INITIAL_WASTEGATE_DUTY_" priority="2" />
+        </define>
+        <define name="tTableWgdcInitialAlt">
+            <ida name="HOOKTABLE_WGDC_INITIAL_ALT" />
+        </define>
+        <define name="tWgdcInitialAlt">
+            <ida name="TABLE_INITIAL_WASTEGATE_DUTY_ALT" />
+        </define>
+        <define name="hJsrWgdcMax">
+            <ida name="HOOKJSR_WGDC_MAX" />
+        </define>
+        <define name="hTableWgdcMax">
+            <ida name="HOOKTABLE_WGDC_MAX" />
+        </define>
+        <define name="tWgdcMax">
+            <ida name="TABLE_MAX_WASTEGATE_DUTY" />
+            <ida name="TABLE_MAX_WASTEGATE_DUTY_" priority="2"/>
+        </define>
+        <define name="tWgdcMaxAlt">
+            <ida name="TABLE_MAX_WASTEGATE_DUTY_ALT" />
+        </define>
+        <define name="tWgdcInitialKcaAlt">
+            <ida name="Table_Initial_Wastegate_Duty_KCA_Alternate_Mode" />
+        </define>
+        <define name="hTableWgdcInitialKcaAlt">
+            <ida name="HOOKTABLE_Initial_Wastegate_Duty_KCA_Alternate_Mode" />
+        </define>
+        <define name="tWgdcInitialKcaBLo">
+            <ida name="Table_Initial_Wastegate_Duty_KCA_Additive_B_Low" />
+        </define>
+        <define name="hTableWgdcInitialKcaBLo">
+            <ida name="HOOKTABLE_Initial_Wastegate_Duty_KCA_Additive_B_Low" />
+        </define>
+        <define name="tWgdcInitialKcaBHi">
+            <ida name="Table_Initial_Wastegate_Duty_KCA_Additive_B_High" />
+        </define>
+        <define name="hTableWgdcInitialKcaBHi">
+            <ida name="HOOKTABLE_Table_Initial_Wastegate_Duty_KCA_Additive_B_High" />
+        </define>
+        <define name="tWgdcMaxKcaAlt">
+            <ida name="Table_Max_Wastegate_Duty_KCA_Alternate_Mode" />
+        </define>
+        <define name="hTableWgdcMaxKcaAlt">
+            <ida name="HOOKTABLE_Max_Wastegate_Duty_KCA_Alternate_Mode" />
+        </define>
+        <define name="tWgdcMaxKcaBLo">
+            <ida name="Table_Max_Wastegate_Duty_KCA_Additive_B_Low" />
+        </define>
+        <define name="hTableWgdcMaxKcaBLo">
+            <ida name="HOOKTABLE_Max_Wastegate_Duty_KCA_Additive_B_Low" />
+        </define>
+        <define name="tWgdcMaxKcaBHi">
+            <ida name="Table_Max_Wastegate_Duty_KCA_Additive_B_High" />
+        </define>
+        <define name="hTableWgdcMaxKcaBHi">
+            <ida name="HOOKTABLE_Table_Max_Wastegate_Duty_KCA_Additive_B_High" />
+        </define>
+    </category>
+
+    <category name="Primary Open Loop Fueling Hacks">
+        <define name="pPolf4Byte">
+            <ida name="E_Primary_Open_Loop_Map_Enrichment_4byteExt_E84"/>
+        </define>
+        <define name="hPull3DPolf"/>
+        <define name="tPolf">
+            <ida name="TABLE_PRIMARY_OPEN_LOOP_FUELING" />
+        </define>
+        <define name="tPolfSwitched">
+            <ida name="TABLE_PRIMARY_OPEN_LOOP_FUELING_ALT" />
+        </define>
+        <define name="hTablePolf">
+            <ida name="HOOKTABLE_POLF" />
+        </define>
+        <define name="hTablePolfAlt">
+            <ida name="HOOKTABLE_POLF_ALT"/>
+        </define>
+        <define name="hJsrPolf">
+            <ida name="HOOKJSR_POLF" />
+        </define>
+        <define name="hPolf">
+            <ida name="HOOK_POLF" />
+        </define>
+        <define name="sPolf">
+            <ida name="SBR_POLF_HOOKED" />
+        </define>
+        <define name="pPolfEnrich">
+            <ida name="E_PRIMARY_OPEN_LOOP_MAP_ENRICHMENT_4BYTEEXT_E84" />
+        </define>
+        <define name="tPolfKcaAlt">
+            <ida name="Table_Primary_Open_Loop_Fueling_KCA_Alternate_Mode" />
+        </define>
+        <define name="hTablePolfKcaAlt">
+            <ida name="HOOKTABLE_Table_Primary_Open_Loop_Fueling_KCA_Alternate_Mode" />
+        </define>
+        <define name="tPolfKcaBLo">
+            <ida name="Table_Primary_Open_Loop_Fueling_KCA_Additive_B_Low" />
+        </define>
+        <define name="hTablePolfKcaBLo">
+            <ida name="HOOKTABLE_Table_Primary_Open_Loop_Fueling_KCA_Additive_B_Low" />
+        </define>
+        <define name="tPolfKcaBHi">
+            <ida name="Table_Primary_Open_Loop_Fueling_KCA_Additive_B_High" />
+        </define>
+        <define name="hTablePolfKcaBHi">
+            <ida name="HOOKTABLE_Table_Primary_Open_Loop_Fueling_KCA_Additive_B_High" />
+        </define>
+    </category>
+
+    <category name="Timing Hacks">
+        <define name="hBaseTiming">
+            <ida name="HOOK_BASE_TIMING_SBR" />
+        </define>
+        <define name="hTableBaseTiming">
+            <ida name="HOOKTABLE_BASE_TIMING" />
+        </define>
+        <define name="tBaseTiming">
+            <ida name="TABLE_BASE_TIMING" />
+        </define>
+        <define name="pBaseTiming">
+            <ida name="E_IGNITION_BASE_TIMINGEXT_E53" />
+        </define>
+        <define name="sBaseTiming">
+            <ida name="SBR_BASE_TIMING_HOOKED" />
+        </define>
+        <define name="hPull3DTiming">
+            <ida name="HOOKPULL_BASE_TIMING" />
+        </define>
+        <define name="tBaseTimingPCruise">
+            <ida name="Table_Base_Timing_Primary_Cruise" />
+        </define>
+        <define name="hTableBaseTimingPCruise">
+            <ida name="HOOKTABLE_Table_Base_Timing_Primary_Cruise" />
+        </define>
+        <define name="tBaseTimingPNonCruise">
+            <ida name="Table_Base_Timing_Primary_NonCruise" />
+        </define>
+        <define name="hTableBaseTimingPNonCruise">
+            <ida name="HOOKTABLE_Table_Base_Timing_Primary_NonCruise" />
+        </define>
+        <define name="tBaseTimingRCruiseAvcs">
+            <ida name="Table_Base_Timing_Reference_Cruise_AVCS_related" />
+        </define>
+        <define name="hTableBaseTimingRCruiseAvcs">
+            <ida name="HOOKTABLE_Table_Base_Timing_Reference_Cruise_AVCS_related" />
+        </define>
+        <define name="tBaseTimingRNonCruiseAvcs">
+            <ida name="Table_Base_Timing_Reference_NonCruise_AVCS_related" />
+        </define>
+        <define name="hTableBaseTimingRNonCruiseAvcs">
+            <ida name="HOOKTABLE_Table_Base_Timing_Reference_NonCruise_AVCS_related" />
+        </define>
+        <define name="hSubKca">
+            <ida name="HOOK_SUBTRACTIVE_KCA" />
+        </define>
+        <define name="pKcaIam">
+            <ida name="E_KNOCK_CORRECTION_ADVANCE_IAM_ONLYEXT_E40" />
+        </define>
+    </category>
+
+    <category name="Spark Cut">
+        <define name="sSparkCutOcrStart">
+            <ida name="SPARK_CUT_OCR_START" />
+        </define>
+        <define name="sSparkCutOcrEnd">
+            <ida name="SPARK_CUT_OCR_END" />
+        </define>
+        <define name="sSparkCutGrStart">
+            <ida name="SPARK_CUT_GR_START" />
+        </define>
+        <define name="sSparkCutGrEnd">
+            <ida name="SPARK_CUT_GR_END" />
+        </define>
+    </category>
+
+    <category name="Flags-Signals">
+        <define name="pResumeFlags" type="unsigned char*">
+            <ida name="CRUISE_RESUME_FLAGS" />
+            <ida name="CRUISE_FLAGS" priority="2" />
+            <ida name="pCruiseFlags" priority="3" />
+        </define>
+        <define name="ResumeBitMask" type="unsigned char">
+            <ida name="CRUISE_RESUME_BITMASK" />
+        </define>
+        <define name="pCoastFlags" type="unsigned char*">
+            <ida name="CRUISE_COAST_FLAGS" />
+            <ida name="CRUISE_FLAGS" priority="2"/>
+            <ida name="pCruiseFlags" priority="3" />
+        </define>
+        <define name="CoastBitMask" type="unsigned char">
+            <ida name="CRUISE_COAST_BITMASK" />
+        </define>
+        <define name="pBrakeFlags" type="unsigned char*">
+            <ida name="BRAKE_FLAGS" />
+            <ida name="CRUISE_FLAGS" priority="2"/>
+            <ida name="pCruiseFlags" priority="3" />
+        </define>
+        <define name="BrakeBitMask" type="unsigned char">
+            <ida name="BRAKE_BITMASK" />
+        </define>
+        <define name="pClutchFlags" type="unsigned char*">
+            <ida name="CLUTCH_FLAGS" />
+        </define>
+        <define name="ClutchBitMask" type="unsigned char">
+            <ida name="CLUTCH_BITMASK" type="bitmask"/>
+        </define>
+    </category>
+
+    <category name="NonSpecific Engine params">
+        <define name="pFbkc1" type="unsigned char*">
+            <ida name="E_FEEDBACK_KNOCK_CORRECTION_1BYTEEXTEXT_E94" />
+        </define>
+        <define name="pFbkc4" type="float*">
+            <ida name="E_FEEDBACK_KNOCK_CORRECTION_4BYTEEXT_E39" />
+        </define>
+        <define name="pIam1" type="unsigned char*">
+            <ida name="E_IAM_1byteExtExt_E96" />
+        </define>
+        <define name="pIam4" type="float*">
+            <ida name="E_IAM_4byteExt_E31" />
+        </define>
+        <define name="pEngineSpeed" type="float*">
+            <ida name="E_ENGINE_SPEED" />
+        </define>
+        <define name="pVehicleSpeed" type="float*">
+            <ida name="E_VEHICLE_SPEED" />
+        </define>
+        <define name="pCoolantTemp" type="float*">
+            <ida name="E_COOLANT_TEMP" />
+        </define>
+        <define name="pAtmoPress" type="float*">
+            <ida name="E_ATMOSPHERIC_PRESSURE" />
+        </define>
+        <define name="pManifoldAbsolutePressure" type="float*">
+            <ida name="E_MANIFOLD_RELATIVE_SEA_LEVEL_PRESSURE_4BYTEEXT_E52" />
+            <ida name="E_BOOST_PRESSURE_ACTUAL" priority="2" />
+        </define>
+        <define name="pIntakeAirTemp" type="float*">
+            <ida name="E_IAT_DIRECT" />
+        </define>
+        <define name="pMassAirFlow" type="float*">
+            <ida name="E_MAF_GS_DIRECT" />
+        </define>
+        <define name="pMafSensorVoltage" type="short*">
+            <ida name="E_MAF_VOLTS_DIRECT" />
+        </define>
+        <define name="pEngineLoad" type="float*">
+            <ida name="E_ENGINE_LOAD_4BYTEEXT_E32" />
+        </define>
+        <define name="pReqTorque" type="float*">
+            <ida name="E_REQUESTED_TORQUEEXT_E56" />
+        </define>
+        <define name="pThrottlePlate" type="float*">
+            <ida name="E_THROTTLE_PLATE_OPENING_ANGLE_4BYTEEXT_E38" />
+        </define>
+        <define name="pWgdc4" type="float*">
+            <ida name="E_SSM_PRIMARY_WGDC" />
+        </define>
+        <define name="pCurrentGear" type="unsigned char*">
+            <ida name="E_GEAR_CALCULATEDEXT_E59" />
+        </define>
+        <define name="pAf1Res" type="float*">
+            <ida name="E_AF_SENSOR_1_RES" />
+            <ida name="E_SSM_AF_SENSOR_1_RES" priority="2"/>
+            <ida name="E_AF_SENSOR_1_RESISTANCE" priority="3"/>
+        </define>
+        <define name="pDeltaMap" type="float*"/>
+    </category>
+
+
+    <category name="OBD Experimental stuff">
+        <define name="pObdVinDirect" type="unsigned char*" />
+    </category>
+
+    <category name="New Definitions">
+        <define name="dLoadSmoothingA"/>
+        <define name="dLoadSmoothingB"/>
+        <define name="dLoadSmoothingAlt"/>
+        <define name="dLoadSmoothingFinal"/>
+    </category>
+    
+    <category name="Memory Reset">
+        <define name="sMemoryReset">
+            <ida name="SBR_MEMORY_RESET" />
+        </define>
+        <define name="hMemoryReset">
+            <ida name="HOOK_MEMORY_RESET" />
+        </define>
+        <define name="pMemoryResetLimit">
+            <ida name="MEMORY_RESET_LIMIT" />
+        </define>
+        <define name="hMemoryResetLimit">
+            <ida name="HOOK_MEMORY_RESET_LIMIT" />
+        </define>
+    </category>
+  
+  </defines>
+  <sections>
+    <section name="REVLIM_START">
+        <alias name="sRevLimStart" />
+      <subsection name="RevLimit" />
+    </section>
+    <section name="SPARK_CUT_OCR_START">
+      <subsection name="SparkCutOCRhook" />
+    </section>
+    <section name="SPARK_CUT_GR_START">
+      <subsection name="SparkCutGRhook" />
+    </section>
+    <section name="ROMHOLE_START">
+        <alias name="dRomHoleStart" />
+      <subsection name="RomHole_Identifier" />
+      <subsection name="RomHole_Misc" />
+      <subsection name="RomHole_SpeedDensityTables" />
+      <subsection name="RomHole_RevLimTables" />
+      <subsection name="RomHole_CelFlashTables" />
+      <subsection name="RomHole_POLFHackTables" />
+      <subsection name="RomHole_BoostHackTables" />
+      <subsection name="RomHole_TimingHackTables" />
+      <subsection name="RomHole_MapSwitchTables" />
+      <subsection name="RomHole_Vin" />
+      <subsection name="RomHole_Code" />
+      <subsection name="RomHole_Functions" />
+      <subsection name="RomHole_RomHoleEndMarker" />
+    </section>
+    <section name="RAMHOLE_START">
+        <alias name="pRamHoleStart" />
+      <subsection name="RamHole" />
+    </section>
+  </sections>
+</idatohew>
