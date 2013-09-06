@@ -43,6 +43,10 @@ MerpMod/.*
 *.orig
 *.tws
 *.hwp
+*.BKP
+*.BKS
+*.BKW
+*.ARF
 
 # Compiled source #
 ###################
