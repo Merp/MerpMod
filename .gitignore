@@ -21,12 +21,12 @@ MerpMod/Switch_Release/
 MerpMod/TestRom/Gratis_Debug/
 MerpMod/TestRom/Flash_Debug/
 MerpMod/TestRom/Switch_Debug/
-
 MerpMod/.*
 
 # Custom #
 ##########
 *.patch
+!Release/*/*.patch
 *.map
 *.bin
 *.gld
