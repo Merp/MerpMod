@@ -4,7 +4,7 @@ MerpMod is a patch designed for Subaru ecu roms. The goal of this project is to 
 
 You may find more information at the RomRaider 32bit Speed Density forum: http://www.romraider.com/forum/viewforum.php?f=37
 
-These Mods are applied or removed using the SharpTune application.
+These Mods are applied or removed using the SharpTune application from http://github.com/Merp/SharpTune
 
 Mods require custom definition files to edit and log. Please see the definition info below.
 
@@ -15,7 +15,6 @@ The default tables included in the mods ARE NOT BASE MAPS, you will need to FIND
 # How to compile
 
 This code can be compiled using a variety of different methods and toolchains. This will outline the method that I have used.
---
 
 Download and install latest GNUSH toolchain and Renesas HEW IDE from http://www.kpitgnutools.com/
 
@@ -25,9 +24,7 @@ Open HEW and create a new workspace. Set the workspace to your local repo's PARE
 
 Select the appropriate CPU series (Subaru: SH2e) and CPU Type (512kb rom = SH7055f, 1024kb rom = SH7058F). Click Finish.
 
-Right click the bold project name in the upper left tree-view, select 'Add Files' and add all files in the 'Source' directory.
-
-TODO: list other files to add (target configs, linker script, idatohew, etc.)
+Right click the bold project name in the upper left tree-view, select 'Add Files' and add all .c and .h files.
 
 #Target ROM Selection
 
@@ -37,6 +34,10 @@ Add a placeholder for the following, substituting your CALID.
 Placeholder     Directory
 TARGETROM       CALID
 TESTROMDIR      $(PROJDIR)\TestRom
+
+#IDAtoHEW
+
+SharpTune allows users to import .map files, and converts these to .h header files for use in HEW. This conversion is defined by idatohew.xml.
 
 #Build Phases
 
@@ -85,13 +86,21 @@ Linker script is set up under Category:Other. Under User Defined options, enter 
 MerpMod uses SharpTune (http://github.com/Merp/SharpTune) to apply compiled patches to ROM images. Obtain the latest version SharpTune.exe and place it in the TestRom and Targets directories.
 
 ##Build Configurations
-TODO: detail how the build configurations are set up and interact with SharpTune to determine the appropriate mod config header to include.
 
-Gratis (stable):
+Build configuration is passed to SharpTune and back, which determines the config header file used (to select features/options) and determine the appropriate output directories/filenames. e.g. Build config "Flash_Testing" will use Flash.h to select the features by preprocessor options, and after building produces patch files named <CALID>.MerpMod.Flash.Testing.<version>.patch that are saved in the Flash_Testing folder. Also, only "*_Testing" or "*_Release" configs produce definition files, so using "*_Debug" allows you to debug the code in HEW without generating a million useless definitions. More details on these later.
+
+Configurations:
+
+Gratis (Deprecated, succeeded by Flash):
 Speed Density
+Launch Control
+Flat Foot Shift
 
 Flash (stable):
-Gratis + CEL Flashing
+Speed Density
+Launch Control
+Flat Foot Shift
+CEL Flashing (2-stage FBKC, ECT, and more)
 
 Switch: (alpha/untested)
 Flash + Advanced Launch Control + 3x2 Map Switching/Blending
