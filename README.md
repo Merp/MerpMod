@@ -35,9 +35,11 @@ Placeholder     Directory
 TARGETROM       CALID
 TESTROMDIR      $(PROJDIR)\TestRom
 
-#IDAtoHEW
+#EcuMapTools
 
 SharpTune allows users to import .map files, and converts these to .h header files for use in HEW. This conversion is defined by idatohew.xml.
+
+Entries in the header are persistent (as long as they are defined in idatohew.xml) but are always overridden by entries in the map file! As such, Erroneous entries in the header file must be removed directly from the header file unless overridden by an entry in the map file.
 
 #Build Phases
 
