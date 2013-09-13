@@ -24,7 +24,9 @@ float (*ShortToFloatHooked)(unsigned short input, float grad, float offs) __attr
 float Pull3DRamHook(float* table, float xLookup, float yLookup)
 {
 	//Check if r4 is ram or not??
-	if((void*)table > (void*)&(pRamVariables->MasterInitFlag))
+	//WARNING: cannot use LOOKUP TABLES in this region (pRamVariables)!!!
+	//Lookup tables must be static or this needs to change.
+	if(((void*)table > (void*)&(pRamVariables->MasterInitFlag)) && ((void*)table < (void*)&(pRamVariables->RamHoleEndMarker)))
 	{
 		return *table;
 	}
