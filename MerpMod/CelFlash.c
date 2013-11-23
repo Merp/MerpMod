@@ -103,13 +103,13 @@ void CelFlash()
 //KNOCK LIGHT CODE w/ IAM RECALL
 ////////////////////////////////
 
-	if(*pFBKC <= FBKCLoThreshold && *pEngineLoad > FBKCLoadThreshold)
-	{
-		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
-	}
-	else if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold)
+	if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold)
 	{
 		CelFlashStart(FBKCHiFlashes,FBKCHiFlashSpeed,0,0);
+	}
+	else if(*pFBKC <= FBKCLoThreshold && *pEngineLoad > FBKCLoadThreshold)
+	{
+		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
 	}
 #if !defined(NOAF1RES)
 	else if(*pAf1Res < EGTResistanceThreshold && *pEngineLoad > EGTCelLoadThreshold)
