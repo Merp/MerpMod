@@ -1,0 +1,945 @@
+[HIMDBVersion]
+2.0
+[DATABASE_VERSION]
+"2.8" 
+[PROJECT_DETAILS]
+"MerpMod" "C:\Users\Merrill\Dev\MerpMod\MerpMod" "C:\Users\Merrill\Dev\MerpMod\MerpMod\MerpMod.hwp" "SuperH RISC engine" "KPIT GNUSH [ELF]" "C Application" "SH-4" "SH7750" 
+[INFORMATION]
+"No project information available" 
+[TOOL_CHAIN]
+"KPIT GNUSH [ELF] Toolchain" "v13.01" 
+[CONFIGURATIONS]
+"Flash_Debug" "C:\Users\merrill\Dev\MerpMod\MerpMod\Flash_Debug" 
+"Flash_Testing" "C:\Users\merrill\Dev\MerpMod\MerpMod\Flash_Testing" 
+"Gratis_Debug" "C:\Users\merrill\Dev\MerpMod\MerpMod\Gratis_Debug" 
+"Gratis_Release" "C:\Users\merrill\Dev\MerpMod\MerpMod\Gratis_Release" 
+"Gratis_Testing" "C:\Users\merrill\Dev\MerpMod\MerpMod\Gratis_Testing" 
+"Switch_Debug" "C:\Users\merrill\Dev\MerpMod\MerpMod\Switch_Debug" 
+"Switch_Testing" "C:\Users\merrill\Dev\MerpMod\MerpMod\Switch_Testing" 
+[BUILD_PHASES]
+"GNU Assembler" 1 
+"GNU Compiler" 1 
+"GNU Library Generator" 1 
+"GNU Linker" 1 
+"Target Selection" 0 
+"Update Test Rom" 0 
+[TOOL_ENVIRONMENT]
+[EXTENSIONS]
+"Absolute file" "ABS" 
+"Archive File" "A" 
+"Assembly include file" "INC" 
+"Assembly list file" "LIS" 
+"Assembly source file" "S" 
+"Assembly source file" "SRC" 
+"Binary file" "BIN" 
+"C header file" "H" 
+"C list file" "LST" 
+"C source file" "C" 
+"C++ header file" "HPP" 
+"C++ list file" "LPP" 
+"C++ source file" "CC" 
+"C++ source file" "CP" 
+"C++ source file" "CPP" 
+"CPU information file" "CPU" 
+"Calling information file" "CAL" 
+"Debug information file" "DBG" 
+"Expanded assembly source file" "EXP" 
+"Hex file" "HEX" 
+"Library file" "LIB" 
+"Library information file" "LBP" 
+"Linkage map file" "MAP" 
+"Object file" "OBJ" 
+"Optimize map file" "bls" 
+"Preprocess Assembly file" "ASM" 
+"Preprocessed C source file" "P" 
+"Preprocessed C++ source file" "PP" 
+"Profile file" "PRO" 
+"Relocatable file" "REL" 
+"Rts information file" "RTS" 
+"S-Record file" "MOT" 
+"Stack information file" "SNI" 
+"TD include object file" "RTI" 
+[FILE_GROUPS]
+"Absolute file" "BIN" "NONE" "" 
+"Archive File" "BIN" "NONE" "" 
+"Assembly include file" "TEXT" "EDITOR" "" 
+"Assembly list file" "TEXT" "EDITOR" "" 
+"Assembly source file" "TEXT" "EDITOR" "" 
+"Binary file" "BIN" "NONE" "" 
+"C header file" "TEXT" "EDITOR" "" 
+"C list file" "TEXT" "EDITOR" "" 
+"C source file" "TEXT" "EDITOR" "" 
+"C++ header file" "TEXT" "EDITOR" "" 
+"C++ list file" "TEXT" "EDITOR" "" 
+"C++ source file" "TEXT" "EDITOR" "" 
+"CPU information file" "BIN" "NONE" "" 
+"Calling information file" "BIN" "NONE" "" 
+"Debug information file" "BIN" "NONE" "" 
+"Expanded assembly source file" "TEXT" "EDITOR" "" 
+"Hex file" "TEXT" "EDITOR" "" 
+"Library file" "BIN" "NONE" "" 
+"Library information file" "TEXT" "EDITOR" "" 
+"Linkage map file" "TEXT" "EDITOR" "" 
+"Object file" "BIN" "NONE" "" 
+"Optimize map file" "BIN" "NONE" "" 
+"Preprocess Assembly file" "TEXT" "EDITOR" "" 
+"Preprocessed C source file" "TEXT" "EDITOR" "" 
+"Preprocessed C++ source file" "TEXT" "EDITOR" "" 
+"Profile file" "BIN" "NONE" "" 
+"Relocatable file" "BIN" "NONE" "" 
+"Rts information file" "BIN" "NONE" "" 
+"S-Record file" "TEXT" "EDITOR" "" 
+"Stack information file" "BIN" "NONE" "" 
+"TD include object file" "BIN" "NONE" "" 
+[ASSOCIATED_APPLICATIONS]
+[TOOLCHAIN_PHASE]
+"GNU Assembler" 
+"GNU Compiler" 
+"GNU Library Generator" 
+"GNU Linker" 
+[UTILITY_PHASE]
+[CUSTOM_PHASES]
+"Target Selection" "TargetSelection.bat" "$(PROJDIR)\TARGETS" 0 0 0 
+"Update Test Rom" "Update.bat" "$(PROJDIR)\TestRom" 0 0 0 
+[CUSTOM_PHASE_INPUT_GROUP]
+[CUSTOM_PHASE_OUTPUT_SYNTAX]
+[ENVIRONMENT_Target Selection]
+"BUILDCONFIG" "$(CONFIGNAME)" 
+"TARGETROM" "$(TARGETROM)" 
+[ENVIRONMENT_Update Test Rom]
+"BUILDCONFIG" "$(CONFIGNAME)" 
+"MMTEMPDIR" "$(TEMPDIR)" 
+"TARGETROM" "$(TARGETROM)" 
+"WORKSPDIR" "$(WORKSPDIR)" 
+[BUILD_ORDER]
+"Target Selection" 1 
+"GNU Library Generator" 1 
+"GNU Compiler" 1 
+"GNU Assembler" 1 
+"GNU Linker" 1 
+"Update Test Rom" 1 
+[BUILD_PHASE_DETAILS]
+"GNU Assembler" "Assembly source file" 1 
+"GNU Compiler" "C source file|C++ source file|Preprocess Assembly file" 1 
+"GNU Library Generator" "" 0 
+"GNU Linker" "Object file|Library file|Relocatable file" 0 
+[BUILD_FILE_ORDER_Assembly source file]
+"GNU Assembler" 1 
+[BUILD_FILE_ORDER_C source file]
+"GNU Compiler" 1 
+[BUILD_FILE_ORDER_C++ source file]
+"GNU Compiler" 1 
+[BUILD_FILE_ORDER_Preprocess Assembly file]
+"GNU Compiler" 1 
+[SCRAP]
+"Project Generator Setup File" "$(PROJDIR)\EcuHacks2.pgs" 
+[MAPPINGS]
+"Assembly source file" "GNU Assembler" "GNU Compiler" 
+"Object file" "GNU Linker" "GNU Assembler" 
+"Object file" "GNU Linker" "GNU Compiler" 
+[PROJECT_FILES]
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Enums.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Externs.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Flash.h" "User" "C header file|Build Configurations" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Gratis.h" "User" "C header file|Build Configurations" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\IDATranslation.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\LinkerScript.txt" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RamVariables.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "User" "Assembly source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Switch.h" "User" "C header file|Build Configurations" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UG002T.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UG002T.map" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UG002T.txt" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UG002TConfig.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UJ000J.h" "User" "C header file|ECU Specific Headers|USDM|STI|2007_A2UJ000J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UJ000J.map" "User" "C header file|ECU Specific Headers|USDM|STI|2007_A2UJ000J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UJ000J.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2007_A2UJ000J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2UJ000JConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2007_A2UJ000J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC012E.h" "User" "C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC012E.map" "User" "C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC012E.txt" "User" "C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC012EConfig.h" "User" "C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC412I.h" "User" "C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC412I.map" "User" "C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC412I.txt" "User" "C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC412IConfig.h" "User" "C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC501L.h" "User" "C header file|ECU Specific Headers|USDM|Baja Turbo|A2WC501L_USDM_2005_BAJATURBO_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC501L.map" "User" "C header file|ECU Specific Headers|USDM|Baja Turbo|A2WC501L_USDM_2005_BAJATURBO_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC501L.txt" "User" "C header file|ECU Specific Headers|USDM|Baja Turbo|A2WC501L_USDM_2005_BAJATURBO_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC501LConfig.h" "User" "C header file|ECU Specific Headers|USDM|Baja Turbo|A2WC501L_USDM_2005_BAJATURBO_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC510S.h" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC510S.map" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC510S.txt" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC510SConfig.h" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522N.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522N.map" "User" "C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522N.txt" "User" "C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522NConfig.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522S.h" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC522S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522S.map" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC522S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522S.txt" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC522S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2WC522SConfig.h" "User" "C header file|ECU Specific Headers|USDM|OBXT|A2WC522S_USDM_2005_OBXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJ710J.h" "User" "C header file|ECU Specific Headers|USDM|STI|2004_A2ZJ710J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJ710J.map" "User" "C header file|ECU Specific Headers|USDM|STI|2004_A2ZJ710J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJ710J.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2004_A2ZJ710J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJ710JConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2004_A2ZJ710J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJB11J.h" "User" "C header file|ECU Specific Headers|USDM|STI|2005 A2ZJB11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJB11J.map" "User" "C header file|ECU Specific Headers|USDM|STI|2005 A2ZJB11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJB11JConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2005 A2ZJB11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJD02G.h" "User" "C header file|ECU Specific Headers|ADM|A2ZJD02G_ADM_2004_LibertyGT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJD02GConfig.h" "User" "C header file|ECU Specific Headers|ADM|A2ZJD02G_ADM_2004_LibertyGT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJE11J.h" "User" "C header file|ECU Specific Headers|USDM|STI|2006_A2ZJE11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJE11J.map" "User" "C header file|ECU Specific Headers|USDM|STI|2006_A2ZJE11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJE11J.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2006_A2ZJE11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A2ZJE11JConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2006_A2ZJE11J_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH100F.h" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DH100F EDM 2006 FXT MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH100F.map" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DH100F EDM 2006 FXT MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH100F.txt" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DH100F EDM 2006 FXT MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH100FConfig.h" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DH100F EDM 2006 FXT MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200U.h" "User" "C header file|ECU Specific Headers|SADM|WRX|2006_A8DH200U" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200U.map" "User" "C header file|ECU Specific Headers|SADM|WRX|2006_A8DH200U" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200U.txt" "User" "C header file|ECU Specific Headers|SADM|WRX|2006_A8DH200U" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200UConfig.h" "User" "C header file|ECU Specific Headers|SADM|WRX|2006_A8DH200U" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200V.h" "User" "C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200V.map" "User" "C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200V.txt" "User" "C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200VConfig.h" "User" "C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Y.h" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DH200Y_EDM_2006_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Y.map" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DH200Y_EDM_2006_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Y.txt" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DH200Y_EDM_2006_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200YConfig.h" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DH200Y_EDM_2006_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Z.h" "User" "C header file|ECU Specific Headers|EDM|STi|A8DH200Z_EDM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Z.map" "User" "C header file|ECU Specific Headers|EDM|STi|A8DH200Z_EDM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200Z.txt" "User" "C header file|ECU Specific Headers|EDM|STi|A8DH200Z_EDM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH200ZConfig.h" "User" "C header file|ECU Specific Headers|EDM|STi|A8DH200Z_EDM_2006_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH202X.h" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DH202X_USDM_2006_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH202X.map" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DH202X_USDM_2006_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH202X.txt" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DH202X_USDM_2006_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DH202XConfig.h" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DH202X_USDM_2006_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100P.h" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DK100P EDM 2007 FXT AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100P.map" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DK100P EDM 2007 FXT AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100P.txt" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DK100P EDM 2007 FXT AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100PConfig.h" "User" "C header file|ECU Specific Headers|EDM|FXT|A8DK100P EDM 2007 FXT AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Y.h" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DK100Y_EDM_2007_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Y.map" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DK100Y_EDM_2007_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Y.txt" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DK100Y_EDM_2007_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100YConfig.h" "User" "C header file|ECU Specific Headers|EDM|WRX|A8DK100Y_EDM_2007_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Z.h" "User" "C header file|ECU Specific Headers|EDM|STi|A8DK100Z_EDM_2007_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Z.map" "User" "C header file|ECU Specific Headers|EDM|STi|A8DK100Z_EDM_2007_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100Z.txt" "User" "C header file|ECU Specific Headers|EDM|STi|A8DK100Z_EDM_2007_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK100ZConfig.h" "User" "C header file|ECU Specific Headers|EDM|STi|A8DK100Z_EDM_2007_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK101X.h" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DK101X_USDM_2007_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK101X.map" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DK101X_USDM_2007_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK101X.txt" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DK101X_USDM_2007_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\A8DK101XConfig.h" "User" "C header file|ECU Specific Headers|USDM|WRX|A8DK101X_USDM_2007_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5F301C.h" "User" "C header file|ECU Specific Headers|EDM|LGT|AE5F301C_EDM_2010_LGT_AT " 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5F301C.map" "User" "C header file|ECU Specific Headers|EDM|LGT|AE5F301C_EDM_2010_LGT_AT " 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5F301C.txt" "User" "C header file|ECU Specific Headers|EDM|LGT|AE5F301C_EDM_2010_LGT_AT " 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5F301CConfig.h" "User" "C header file|ECU Specific Headers|EDM|LGT|AE5F301C_EDM_2010_LGT_AT " 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5IB00V.h" "User" "C header file|ECU Specific Headers|USDM|STI|2011_AE5IB00V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5IB00V.map" "User" "C header file|ECU Specific Headers|USDM|STI|2011_AE5IB00V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5IB00V.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2011_AE5IB00V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5IB00VConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2011_AE5IB00V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5K700V.h" "User" "C header file|ECU Specific Headers|USDM|STI|2012_AE5K700V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5K700V.map" "User" "C header file|ECU Specific Headers|USDM|STI|2012_AE5K700V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5K700V.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2012_AE5K700V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AE5K700VConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2012_AE5K700V_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E400U.h" "User" "C header file|ECU Specific Headers|EDM|WRX|AZ1E400U_EDM_2008_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E400U.map" "User" "C header file|ECU Specific Headers|EDM|WRX|AZ1E400U_EDM_2008_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E400U.txt" "User" "C header file|ECU Specific Headers|EDM|WRX|AZ1E400U_EDM_2008_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E400UConfig.h" "User" "C header file|ECU Specific Headers|EDM|WRX|AZ1E400U_EDM_2008_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E401A.h" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1E401A_USDM_2008_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E401A.map" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1E401A_USDM_2008_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E401A.txt" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1E401A_USDM_2008_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1E401AConfig.h" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1E401A_USDM_2008_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101M.h" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101M_EDM_2009_10_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101M.map" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101M_EDM_2009_10_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101M.txt" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101M_EDM_2009_10_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101MConfig.h" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101M_EDM_2009_10_FXT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101N.h" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101N.map" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101N.txt" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G101NConfig.h" "User" "C header file|ECU Specific Headers|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202G.h" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202G.txt" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202GConfig.h" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202I.h" "User" "C header file|ECU Specific Headers|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202I.map" "User" "C header file|ECU Specific Headers|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202I.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G202IConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G301F.h" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G301F.map" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G301F.txt" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G301FConfig.h" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G401V.h" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1G401V_USDM_2009_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G401V.map" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1G401V_USDM_2009_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G401V.txt" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1G401V_USDM_2009_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G401VConfig.h" "User" "C header file|ECU Specific Headers|USDM|WRX|AZ1G401V_USDM_2009_WRX_MT" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G500F.h" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G500F.map" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G500F.txt" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G500FConfig.h" "User" "C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G701I.h" "User" "C header file|ECU Specific Headers|USDM|STI|2010_AZ1G701I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G701I.map" "User" "C header file|ECU Specific Headers|USDM|STI|2010_AZ1G701I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G701I.txt" "User" "C header file|ECU Specific Headers|USDM|STI|2010_AZ1G701I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G701IConfig.h" "User" "C header file|ECU Specific Headers|USDM|STI|2010_AZ1G701I_USDM_STI" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G900C.h" "User" "C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G900C.map" "User" "C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G900C.txt" "User" "C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1G900CConfig.h" "User" "C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1J500G.h" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1J500G_EDM_2011_STi" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1J500G.map" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1J500G_EDM_2011_STi" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1J500G.txt" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1J500G_EDM_2011_STi" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\AZ1J500GConfig.h" "User" "C header file|ECU Specific Headers|EDM|STi|AZ1J500G_EDM_2011_STi" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\idatohew.xml" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TARGETS\templateConfig.h" "User" "C header file|ECU Specific Headers" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TargetConfig.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TargetHeader.h" "User" "C header file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "User" "C source file|Tests" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "User" "C source file" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\compiledate.h" "User" "C header file" 2 
+[FOLDER]
+"Assembly source file" "Assembly source file" 
+"C header file" "C header file" 
+"C header file|Build Configurations" "" 
+"C header file|ECU Specific Headers" "" 
+"C header file|ECU Specific Headers|ADM" "" 
+"C header file|ECU Specific Headers|ADM|A2ZJD02G_ADM_2004_LibertyGT" "" 
+"C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" "" 
+"C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" "" 
+"C header file|ECU Specific Headers|EDM" "" 
+"C header file|ECU Specific Headers|EDM|FXT" "" 
+"C header file|ECU Specific Headers|EDM|FXT|A8DH100F EDM 2006 FXT MT" "" 
+"C header file|ECU Specific Headers|EDM|FXT|A8DK100P EDM 2007 FXT AT" "" 
+"C header file|ECU Specific Headers|EDM|FXT|AZ1G101M_EDM_2009_10_FXT" "" 
+"C header file|ECU Specific Headers|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" "" 
+"C header file|ECU Specific Headers|EDM|LGT" "" 
+"C header file|ECU Specific Headers|EDM|LGT|AE5F301C_EDM_2010_LGT_AT " "" 
+"C header file|ECU Specific Headers|EDM|STi" "" 
+"C header file|ECU Specific Headers|EDM|STi|A8DH200Z_EDM_2006_STI" "" 
+"C header file|ECU Specific Headers|EDM|STi|A8DK100Z_EDM_2007_STI" "" 
+"C header file|ECU Specific Headers|EDM|STi|AZ1G202G_EDM_2008_STI" "" 
+"C header file|ECU Specific Headers|EDM|STi|AZ1J500G_EDM_2011_STi" "" 
+"C header file|ECU Specific Headers|EDM|WRX" "" 
+"C header file|ECU Specific Headers|EDM|WRX|A8DH200Y_EDM_2006_WRX" "" 
+"C header file|ECU Specific Headers|EDM|WRX|A8DK100Y_EDM_2007_WRX" "" 
+"C header file|ECU Specific Headers|EDM|WRX|AZ1E400U_EDM_2008_WRX" "" 
+"C header file|ECU Specific Headers|JDM" "" 
+"C header file|ECU Specific Headers|JDM|FSTI" "" 
+"C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" "" 
+"C header file|ECU Specific Headers|JDM|STI" "" 
+"C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" "" 
+"C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" "" 
+"C header file|ECU Specific Headers|SADM" "" 
+"C header file|ECU Specific Headers|SADM|WRX" "" 
+"C header file|ECU Specific Headers|SADM|WRX|2006_A8DH200U" "" 
+"C header file|ECU Specific Headers|USDM" "" 
+"C header file|ECU Specific Headers|USDM|Baja Turbo" "" 
+"C header file|ECU Specific Headers|USDM|Baja Turbo|A2WC501L_USDM_2005_BAJATURBO_MT" "" 
+"C header file|ECU Specific Headers|USDM|FXT" "" 
+"C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" "" 
+"C header file|ECU Specific Headers|USDM|LGT" "" 
+"C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" "" 
+"C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" "" 
+"C header file|ECU Specific Headers|USDM|OBXT" "" 
+"C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" "" 
+"C header file|ECU Specific Headers|USDM|OBXT|A2WC522S_USDM_2005_OBXT" "" 
+"C header file|ECU Specific Headers|USDM|STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2004_A2ZJ710J_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2005 A2ZJB11J_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2006_A2ZJE11J_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2007_A2UJ000J_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2008_2009_AZ1G202I_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2010_AZ1G701I_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2011_AE5IB00V_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|STI|2012_AE5K700V_USDM_STI" "" 
+"C header file|ECU Specific Headers|USDM|WRX" "" 
+"C header file|ECU Specific Headers|USDM|WRX|A8DH202X_USDM_2006_WRX_MT" "" 
+"C header file|ECU Specific Headers|USDM|WRX|A8DK101X_USDM_2007_WRX_MT" "" 
+"C header file|ECU Specific Headers|USDM|WRX|AZ1E401A_USDM_2008_WRX_MT" "" 
+"C header file|ECU Specific Headers|USDM|WRX|AZ1G401V_USDM_2009_WRX_MT" "" 
+"C source file" "C source file" 
+"C source file|Data & Tables" "" 
+"C source file|Tests" "" 
+"C++ source file" "C++ source file" 
+"Linkage map file" "Linkage map file" 
+"Preprocess Assembly file" "Preprocess Assembly file" 
+[GENERAL_DATA_PROJECT]
+"FDT_AutoConnect" "0" 
+"FDT_BaseDevice" "" 
+"FDT_BaudRate" "" 
+"FDT_BlockLockConnect" "1" 
+"FDT_BlockLockDisconnect" "1" 
+"FDT_BootMode" "FALSE" 
+"FDT_CKM" "0" 
+"FDT_CKP" "0" 
+"FDT_ClockMode" "0" 
+"FDT_ClockSync" "00000000" 
+"FDT_Comments" "" 
+"FDT_ConnectionResetSuppression" "FFFFFFFF" 
+"FDT_Device" "" 
+"FDT_DoReadbackVerification" "" 
+"FDT_DoSecurityProtection" "" 
+"FDT_DoSecurityProtectionLevel" "" 
+"FDT_Frequency" "0.0000" 
+"FDT_Interface" "" 
+"FDT_InternalClock" "FALSE" 
+"FDT_KernelPath" "" 
+"FDT_KernelResident" "FALSE" 
+"FDT_McuId" "0" 
+"FDT_MessageLevel" "0" 
+"FDT_PinOutputs" "00000000" 
+"FDT_PinSettings" "00000000" 
+"FDT_Port" "" 
+"FDT_Protection" "0" 
+"FDT_Protocol" "" 
+"FDT_ReinterrogateGenericDevice" "" 
+"FDT_ResetOnDisconnect" "" 
+"FDT_ResetPinOutputs" "00000000" 
+"FDT_ResetPinSettings" "00000000" 
+"FDT_SerNumConfigString" "" 
+"FDT_SerNumDllFunction" "" 
+"FDT_SerNumDllLocation" "" 
+"FDT_SerNumEnabled" "FALSE" 
+"FDT_SerNumMemArea" "" 
+"FDT_UPMPinSettings" "00000000" 
+"FDT_UseDefaultBaudRate" "FALSE" 
+"FDT_UseInternalKernel" "TRUE" 
+"FDT_UserPinOutputs" "00000000" 
+"FDT_UserPinSettings" "00000000" 
+"MAKEGEN_GENERATE_MAKEFILE_FOR" "0" 
+"MAKEGEN_MAKEFILE_FORMAT" "1" 
+"MAKEGEN_MAKEFILE_RELATIVITY" "1" 
+"MAKEGEN_SCAN_DEPENDENCIES_WHILST_BUILDING_MAKEFILE" "1" 
+"MAKEGEN_USE_STATIC_SUBCOMMAND_FILES" "0" 
+"USE_CUSTOM_LINKAGE_ORDER" "0" 
+[ON_DEMAND_COMPONENTS_LOADED]
+[SYNC_SESSION_NAMES]
+[SESSIONS]
+"DefaultSession" "C:\Users\merrill\Dev\MerpMod\MerpMod\DefaultSession.hsf" 0 
+[GENERAL_DATA_SESSION_DefaultSession]
+[OPTIONS_Flash_Debug_GNU Assembler]
+"Assembly source file" "06031e23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "06031e23307eec10" 3 
+[OPTIONS_Flash_Debug_GNU Compiler]
+"C source file" "0c9afd23307eec10" 2 
+"C++ source file" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "0c9afd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "0c9afd23307eec10" 2 
+"Preprocess Assembly file" "0c9afd23307eec10" 2 
+[OPTIONS_Flash_Debug_GNU Library Generator]
+"Single Shot" "0c9afd23307eec10" 1 
+[OPTIONS_Flash_Debug_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Flash_Debug_Target Selection]
+"Single Shot" "0c9afd23307eec10" 0 
+[OPTIONS_Flash_Debug_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Flash_Debug]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Flash_Debug_Target Selection]
+[DEPENDENCIES_Flash_Debug_Update Test Rom]
+[OUTPUT_FILES_Flash_Debug_Target Selection]
+[OUTPUT_FILES_Flash_Debug_Update Test Rom]
+[EXCLUDED_FILES_Flash_Debug]
+[LINKAGE_ORDER_Flash_Debug]
+[GENERAL_DATA_CONFIGURATION_Flash_Debug]
+[OPTIONS_Flash_Testing_GNU Assembler]
+"Assembly source file" "08c9cd23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "08c9cd23307eec10" 3 
+[OPTIONS_Flash_Testing_GNU Compiler]
+"C source file" "0e51bd23307eec10" 2 
+"C++ source file" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "0e51bd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "0e51bd23307eec10" 2 
+"Preprocess Assembly file" "0e51bd23307eec10" 2 
+[OPTIONS_Flash_Testing_GNU Library Generator]
+"Single Shot" "0e51bd23307eec10" 1 
+[OPTIONS_Flash_Testing_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Flash_Testing_Target Selection]
+"Single Shot" "0e51bd23307eec10" 0 
+[OPTIONS_Flash_Testing_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Flash_Testing]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Flash_Testing_Target Selection]
+[DEPENDENCIES_Flash_Testing_Update Test Rom]
+[OUTPUT_FILES_Flash_Testing_Target Selection]
+[OUTPUT_FILES_Flash_Testing_Update Test Rom]
+[EXCLUDED_FILES_Flash_Testing]
+[LINKAGE_ORDER_Flash_Testing]
+[GENERAL_DATA_CONFIGURATION_Flash_Testing]
+[OPTIONS_Gratis_Debug_GNU Assembler]
+"Assembly source file" "0e51bd23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "0e51bd23307eec10" 3 
+[OPTIONS_Gratis_Debug_GNU Compiler]
+"C source file" "04f89d23307eec10" 2 
+"C++ source file" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "04f89d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "04f89d23307eec10" 2 
+"Preprocess Assembly file" "04f89d23307eec10" 2 
+[OPTIONS_Gratis_Debug_GNU Library Generator]
+"Single Shot" "04f89d23307eec10" 1 
+[OPTIONS_Gratis_Debug_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Gratis_Debug_Target Selection]
+"Single Shot" "04f89d23307eec10" 0 
+[OPTIONS_Gratis_Debug_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Gratis_Debug]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Gratis_Debug_Target Selection]
+[DEPENDENCIES_Gratis_Debug_Update Test Rom]
+[OUTPUT_FILES_Gratis_Debug_Target Selection]
+[OUTPUT_FILES_Gratis_Debug_Update Test Rom]
+[EXCLUDED_FILES_Gratis_Debug]
+[LINKAGE_ORDER_Gratis_Debug]
+[GENERAL_DATA_CONFIGURATION_Gratis_Debug]
+[OPTIONS_Gratis_Release_GNU Assembler]
+"Assembly source file" "0232ed23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "0232ed23307eec10" 3 
+[OPTIONS_Gratis_Release_GNU Compiler]
+"C source file" "08c9cd23307eec10" 2 
+"C++ source file" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "08c9cd23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "08c9cd23307eec10" 2 
+"Preprocess Assembly file" "08c9cd23307eec10" 2 
+[OPTIONS_Gratis_Release_GNU Library Generator]
+"Single Shot" "08c9cd23307eec10" 1 
+[OPTIONS_Gratis_Release_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Gratis_Release_Target Selection]
+"Single Shot" "08c9cd23307eec10" 0 
+[OPTIONS_Gratis_Release_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Gratis_Release]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Gratis_Release_Target Selection]
+[DEPENDENCIES_Gratis_Release_Update Test Rom]
+[OUTPUT_FILES_Gratis_Release_Target Selection]
+[OUTPUT_FILES_Gratis_Release_Update Test Rom]
+[EXCLUDED_FILES_Gratis_Release]
+[LINKAGE_ORDER_Gratis_Release]
+[GENERAL_DATA_CONFIGURATION_Gratis_Release]
+[OPTIONS_Gratis_Testing_GNU Assembler]
+"Assembly source file" "007b2e23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "007b2e23307eec10" 3 
+[OPTIONS_Gratis_Testing_GNU Compiler]
+"C source file" "06031e23307eec10" 2 
+"C++ source file" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "06031e23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "06031e23307eec10" 2 
+"Preprocess Assembly file" "06031e23307eec10" 2 
+[OPTIONS_Gratis_Testing_GNU Library Generator]
+"Single Shot" "06031e23307eec10" 1 
+[OPTIONS_Gratis_Testing_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Gratis_Testing_Target Selection]
+"Single Shot" "06031e23307eec10" 0 
+[OPTIONS_Gratis_Testing_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Gratis_Testing]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Gratis_Testing_Target Selection]
+[DEPENDENCIES_Gratis_Testing_Update Test Rom]
+[OUTPUT_FILES_Gratis_Testing_Target Selection]
+[OUTPUT_FILES_Gratis_Testing_Update Test Rom]
+[EXCLUDED_FILES_Gratis_Testing]
+[LINKAGE_ORDER_Gratis_Testing]
+[GENERAL_DATA_CONFIGURATION_Gratis_Testing]
+[OPTIONS_Switch_Debug_GNU Assembler]
+"Assembly source file" "00286d23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "00286d23307eec10" 3 
+[OPTIONS_Switch_Debug_GNU Compiler]
+"C source file" "06bf4d23307eec10" 2 
+"C++ source file" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "06bf4d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "06bf4d23307eec10" 2 
+"Preprocess Assembly file" "06bf4d23307eec10" 2 
+[OPTIONS_Switch_Debug_GNU Library Generator]
+"Single Shot" "06bf4d23307eec10" 1 
+[OPTIONS_Switch_Debug_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Switch_Debug_Target Selection]
+"Single Shot" "06bf4d23307eec10" 0 
+[OPTIONS_Switch_Debug_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Switch_Debug]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Switch_Debug_Target Selection]
+[DEPENDENCIES_Switch_Debug_Update Test Rom]
+[OUTPUT_FILES_Switch_Debug_Target Selection]
+[OUTPUT_FILES_Switch_Debug_Update Test Rom]
+[EXCLUDED_FILES_Switch_Debug]
+[LINKAGE_ORDER_Switch_Debug]
+[GENERAL_DATA_CONFIGURATION_Switch_Debug]
+[OPTIONS_Switch_Testing_GNU Assembler]
+"Assembly source file" "0a808d23307eec10" 3 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ResetHandler.s" "0a808d23307eec10" 3 
+[OPTIONS_Switch_Testing_GNU Compiler]
+"C source file" "00286d23307eec10" 2 
+"C++ source file" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlash.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\CelFlashTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Debug.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Definition.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\EcuHacks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHackTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\FuelHacks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Functions.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\GenericTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Identifier.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Initializer.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\MapSwitchTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\Metadata.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgMode.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\ProgModeTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\PullRamHooks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiter.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\RevLimiterTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SparkHacks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensity.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SpeedDensityTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\SwitchChecks.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TableHackTests.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TestUtilities.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHackTables.c" "00286d23307eec10" 2 
+"C:\Users\merrill\Dev\MerpMod\MerpMod\TimingHacks.c" "00286d23307eec10" 2 
+"Preprocess Assembly file" "00286d23307eec10" 2 
+[OPTIONS_Switch_Testing_GNU Library Generator]
+"Single Shot" "00286d23307eec10" 1 
+[OPTIONS_Switch_Testing_GNU Linker]
+"Single Shot" "00a6a76ece80fc10" 4 
+[OPTIONS_Switch_Testing_Target Selection]
+"Single Shot" "00286d23307eec10" 0 
+[OPTIONS_Switch_Testing_Update Test Rom]
+"Single Shot" "0abbf66ece80fc10" 0 
+[OPTIONS_Switch_Testing]
+"" 0 
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
+" 4 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+" 1 
+[DEPENDENCIES_Switch_Testing_Target Selection]
+[DEPENDENCIES_Switch_Testing_Update Test Rom]
+[OUTPUT_FILES_Switch_Testing_Target Selection]
+[OUTPUT_FILES_Switch_Testing_Update Test Rom]
+[EXCLUDED_FILES_Switch_Testing]
+[LINKAGE_ORDER_Switch_Testing]
+[GENERAL_DATA_CONFIGURATION_Switch_Testing]
+[GENERAL_DATA_CONFIGURATION_SESSION_Flash_Debug_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Flash_Debug_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Flash_Testing_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Flash_Testing_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Gratis_Debug_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Gratis_Debug_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Gratis_Release_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Gratis_Release_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Gratis_Testing_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Gratis_Testing_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Switch_Debug_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Switch_Debug_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Switch_Testing_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Switch_Testing_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[EXT_DEBUGGER_INFO]
+0 "" "" "" "" 
+[END]

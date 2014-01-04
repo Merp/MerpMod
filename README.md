@@ -20,19 +20,14 @@ Download and install latest GNUSH toolchain and Renesas HEW IDE from http://www.
 
 Clone this repository locally.
 
-Open HEW and create a new workspace. Set the workspace to your local repo's PARENT folder and name the project/workspace the name of your repo's folder. Select the appropriate CPU (SuperH RISC engine) and toolchain (KPIT GNUSH [ELF]) and click OK. 
-
-Select the appropriate CPU series (Subaru: SH2e) and CPU Type (512kb rom = SH7055f, 1024kb rom = SH7058F). Click Finish.
-
-Right click the bold project name in the upper left tree-view, select 'Add Files' and add all .c and .h files.
 
 #Target ROM Selection
 
-To select your target ROM, you must create a placeholder (similar to an environment variable) for the ROM's CALID. TO do this, go to Setup->Customize->Placeholders
+To select your target ROM, you must set the target rom placeholder (similar to an environment variable) for the ROM's CALID. TO do this, go to Setup->Customize->Placeholders
 
-Add a placeholder for the following, substituting your CALID.
+The following placeholders should be set by default.
 Placeholder     Directory
-TARGETROM       CALID
+TARGETROM       <YOUR ROM'S CALID>
 TESTROMDIR      $(PROJDIR)\TestRom
 
 #EcuMapTools
