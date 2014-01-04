@@ -51,6 +51,7 @@ MerpMod/.*
 *.dll
 *.o
 *.s
+!ResetHandler.s
 *.x
 *.mot
 *.gas
