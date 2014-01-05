@@ -20,6 +20,11 @@ Download and install latest GNUSH toolchain and Renesas HEW IDE from http://www.
 
 Clone this repository locally.
 
+MerpMod depends on SharpTune and SubaruDefs to compile patches. 
+
+Clone https://github.com/Merp/SubaruDefs
+
+Clone https://github.com/Merp/SharpTune or download SharpTune.exe. Copy SharpTune.exe to the MerpMod base directory and run it. Select the previously cloned SubaruDefs repository as the definition repo from Menu->Settings->Definition Repo Location. Close SharpTune.
 
 #Target ROM Selection
 
@@ -33,6 +38,8 @@ TESTROMDIR      $(PROJDIR)\TestRom
 #EcuMapTools
 
 SharpTune allows users to import .map files, and converts these to .h header files for use in HEW. This conversion is defined by idatohew.xml.
+
+Map files are imported from /SubaruDisassembly/Maps where / is the folder containing your cloned MerpMod repository.
 
 Entries in the header are persistent (as long as they are defined in idatohew.xml) but are always overridden by entries in the map file! As such, Erroneous entries in the header file must be removed directly from the header file unless overridden by an entry in the map file.
 
@@ -77,10 +84,6 @@ Sections should be organized as follows:
 
 Linker script is set up under Category:Other. Under User Defined options, enter the following:
 -e _ResetHandler -T "$(PROJDIR)\LinkerScript.txt"
-
-#Supporting applications
-
-MerpMod uses SharpTune (http://github.com/Merp/SharpTune) to apply compiled patches to ROM images. Obtain the latest version SharpTune.exe and place it in the TestRom and Targets directories.
 
 ##Build Configurations
 
