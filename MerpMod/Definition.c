@@ -192,7 +192,7 @@ DEFINERAMVAR("VERamFlag",VERamFlag,1,"E");
 DEFNEW1D("Rev Limit (Redline)",DefaultRedLineCut);
 DEFNEW1D("Flat Foot Shift Mode",DefaultFlatFootShiftMode);
 DEFNEW1D("Flat Foot Shift Delta (Automatic Limit)",DefaultFlatFootShiftAutoDelta);
-DEFNEW1D("Flat Foot Shift Delta (Static Limit",DefaultFlatFootShiftStaticDelta);	
+DEFNEW1D("Flat Foot Shift Delta (Static Limit)",DefaultFlatFootShiftStaticDelta);	
 DEFNEW1D("Flat Foot Shift Minimum Speed Threshold",DefaultFlatFootShiftSpeedThreshold);
 DEFNEW1D("Flat Foot Shift Minimum RPM Threshold",DefaultFlatFootShiftRpmThreshold);
 DEFNEW1D("LC Maximum Speed Threshold",DefaultLaunchControlSpeedMax);
