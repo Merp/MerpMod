@@ -1,5 +1,5 @@
 
-SharpTune.exe ecumaptool idatohew.xml "%TARGETROM%.map" "%TARGETROM%.h" "%TARGETROM%.txt" %TARGETROM% %BUILDCONFIG%
+..\..\SharpTune.exe ecumaptool idatohew.xml "..\..\..\SubaruDisassembly\Maps\%TARGETROM%.map" "%TARGETROM%.h" "%TARGETROM%.txt" %TARGETROM% %BUILDCONFIG%
 Del ..\TargetHeader.h
 Copy "%TARGETROM%.h" ..\TargetHeader.h
 
