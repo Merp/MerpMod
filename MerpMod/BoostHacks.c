@@ -28,23 +28,53 @@ EcuHacksMain();
 
 	//Calculated gear is a BYTE!
 	float cgear = (char)*pCurrentGear;
+	float PGWGComp;
+	float WGDCInitial;
+	float WGDCMax;
 
 	#if PGWG_RAMTUNING
 		if(pRamVariables->PGWGRamFlag = 0x01)
 		{
-			pRamVariables->PGWGComp = Pull3DHooked(&PGWGRamTable, cgear, *pEngineSpeed);
+			PGWGComp = Pull3DHooked(&PGWGRamTable, cgear, *pEngineSpeed);
 		}
 		else
 		{
 	#endif
-	pRamVariables->PGWGComp	= BlendAndSwitch(PGWGTableGroup, cgear, *pEngineSpeed);
+	
+	#if SWITCH_HACKS
+		PGWGComp = BlendAndSwitch(PGWGTableGroup, cgear, *pEngineSpeed);
+	#else
+		PGWGComp = Pull3DHooked(PGWGTable1i, cgear, *pEngineSpeed);
+	#endif
 
 	#if PGWG_RAMTUNING
 		}
 	#endif
 
-	pRamVariables->WGDCMax = BlendAndSwitch(WGDCMaxTableGroup, *pReqTorque, *pEngineSpeed);
-	pRamVariables->WGDCInitial = BlendAndSwitch(WGDCInitialTableGroup, *pReqTorque, *pEngineSpeed);
+
+	#if WGDC_RAMTUNING
+		if(pRamVariables->WGDCInitialRamFlag = 0x01)
+		{
+			WGDCInitial = Pull3DHooked(&WGDCInitialRamTable, *pReqTorque, *pEngineSpeed);
+			WGDCMax = Pull3DHooked(&WGDCMaxRamTable, *pReqTorque, *pEngineSpeed);
+		}
+		else
+		{
+	#endif
+	
+	#if SWITCH_HACKS
+		WGDCInitial = BlendAndSwitch(WGDCInitialTableGroup, *pReqTorque, *pEngineSpeed);
+		WGDCMax = BlendAndSwitch(WGDCMaxTableGroup, *pReqTorque, *pEngineSpeed);
+	#else
+		WGDCInitial = Pull3DHooked(WGDCInitialTable1i, *pReqTorque, *pEngineSpeed);
+		WGDCMax = Pull3DHooked(WGDCMaxTable1i, *pReqTorque, *pEngineSpeed);
+	#endif
+	
+	#if WGDC_RAMTUNING
+		}
+	#endif
+	
+	pRamVariables->PGWGComp = PGWGComp;
 	
 	#if WGDC_LOCK
 	//Apply locks
@@ -53,7 +83,16 @@ EcuHacksMain();
 		pRamVariables->WGDCInitial = 100.0;
 		pRamVariables->WGDCMax = 100.0;
 	}
+	else{
 	#endif
+	
+	pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
+	pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+	
+	#if WGDC_LOCK
+	}
+	#endif
+	
 #endif
 
 	//Finish Pulling WGDC
@@ -69,23 +108,51 @@ void TargetBoostHack()
 {
 		//Calculated gear is a BYTE!
 	float cgear = (char)*pCurrentGear;
+	float PGTBComp;
+	float TargetBoost;
 
 	#if PGWG_RAMTUNING
 		if(pRamVariables->PGWGRamFlag = 0x01)
 		{
-			pRamVariables->PGTBComp = Pull3DHooked(&PGTBRamTable, cgear, *pEngineSpeed);
+			PGTBComp = Pull3DHooked(&PGTBRamTable, cgear, *pEngineSpeed);
 		}
 		else
 		{
 	#endif
 		
-		pRamVariables->PGTBComp = BlendAndSwitch(PGTBTableGroup, cgear, *pEngineSpeed);
+	#if SWITCH_HACKS
+		PGTBComp = BlendAndSwitch(PGTBTableGroup, cgear, *pEngineSpeed);
+	#else
+		PGTBComp = Pull3DHooked(PGTBTable1i, cgear, *pEngineSpeed);
+	#endif
 		
 	#if PGTB_RAMTUNING
 		}
 	#endif
+	
+	
+	#if TARGET_BOOST_RAMTUNING
+		if(pRamVariables->TargetBoostRamFlag = 0x01)
+		{
+			TargetBoost = Pull3DHooked(&TargetBoostRamTable, *pReqTorque, *pEngineSpeed);
+		}
+		else
+		{
+	#endif
 
-		pRamVariables->TargetBoost = BlendAndSwitch(TargetBoostTableGroup, *pReqTorque, *pEngineSpeed);
+	#if SWITCH_HACKS
+		TargetBoost = BlendAndSwitch(TargetBoostTableGroup, *pReqTorque, *pEngineSpeed);
+	#else
+		TargetBoost = Pull3DHooked(TargetBoostTable1i, *pReqTorque, *pEngineSpeed);
+	#endif
+	
+	#if TARGET_BOOST_RAMTUNING
+		}
+	#endif
+	
+	pRamVariables->PGTBComp = PGTBComp;
+	pRamVariables->TargetBoost = TargetBoost * PGTBComp;
+	
 }
 #endif
 #endif
