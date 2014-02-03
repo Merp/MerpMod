@@ -187,7 +187,7 @@ modinfo	:	ModInfo OpDelim
 		op: OpReplace4Bytes,
 		address: hRevLimDelete,
 		oldval: sRevLimStart,
-		newval: sRevLimEnd,
+		newval: (int)EcuHacksMainRPM,
 		name: STR(Rev Limit Subroutine Hook)
 	};
 #endif

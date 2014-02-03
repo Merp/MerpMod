@@ -52,7 +52,7 @@ Validating hacks prior to ROM patching:
 
 #include "EcuHacks.h"
 
-void EcuHacksMain() //Constant Hz main routine
+void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 {	
 #if PROG_MODE
 	ProgModeListener();
@@ -67,7 +67,9 @@ void EcuHacksMain() //Constant Hz main routine
 #endif	
 }
 
-void EcuHacksMainRPM() //RPM based Hz main routine
+void (*RevLimDeleteHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sRevLimEnd;
+
+void EcuHacksMainRPM() //RPM based Hz main routine, hooked into rev limiter
 {
 #if REVLIM_HACKS
 	RevLimCode();
@@ -76,4 +78,7 @@ void EcuHacksMainRPM() //RPM based Hz main routine
 #if SWITCH_HACKS
 	InputUpdate();
 #endif
+
+RevLimDeleteHooked();
+
 }

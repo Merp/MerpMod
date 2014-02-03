@@ -18,9 +18,7 @@
 
 float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)
 {	
-	pRamVariables->MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);
-
-EcuHacksMainRPM();		
+	pRamVariables->MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);	
 
 #if VE_RAMTUNING
 	if(pRamVariables->VERamFlag == 0x01)

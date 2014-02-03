@@ -81,6 +81,7 @@ void MapSwitchThresholdCheck(float input) ROMCODE;
 extern float (*Pull3DHooked)(ThreeDTable* table, float xLookup, float yLookup);
 extern float (*Pull2DHooked)(TwoDTable* table, float xLookup);
 extern float (*ShortToFloatHooked)(unsigned short input, float grad, float offs);
+extern void (*RevLimDeleteHooked) ();
 
 #define MafVoltageToInternalUnits 13107.20005368709
 
