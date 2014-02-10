@@ -81,6 +81,7 @@ void MapSwitchThresholdCheck(float input) ROMCODE;
 extern float (*Pull3DHooked)(ThreeDTable* table, float xLookup, float yLookup);
 extern float (*Pull2DHooked)(TwoDTable* table, float xLookup);
 extern float (*ShortToFloatHooked)(unsigned short input, float grad, float offs);
+extern void (*RevLimDeleteHooked) ();
 
 #define MafVoltageToInternalUnits 13107.20005368709
 
@@ -172,6 +173,14 @@ extern ThreeDTable LCTimingRetardTable;
 extern float RPMLockWGDC;
 extern float ThrottleLockWGDC;
 
+#if SHIFTLIGHT_HACKS
+//ShiftLight
+extern TwoDTable ShiftLight;
+extern unsigned char ShiftLightFlashes;
+extern unsigned char ShiftLightFlashSpeed;
+//extern unsigned char DefaultShiftLightMode;
+#endif
+
 extern float GearRatios[];
 
 extern float FFSMinimumThrottle;
@@ -206,7 +215,7 @@ extern char* LCSparkEventsCutFrom;
 extern unsigned char DefaultLCSparkEventsToCut;
 extern unsigned char DefaultLCSparkEventsCutFrom;
 
-//CEL flahs defaults
+//CEL flash defaults
 extern unsigned char FBKCLoFlashes;
 extern unsigned char FBKCLoFlashSpeed;
 extern unsigned char FBKCHiFlashes;
