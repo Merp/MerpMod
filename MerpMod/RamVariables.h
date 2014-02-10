@@ -117,6 +117,13 @@ typedef struct
 	//unsigned char CruiseSpeedCounter;			
 	//unsigned char CruiseFlashCounter;
 
+	#if SHIFTLIGHT_HACKS
+	unsigned char ShiftLightFlashSpeed;
+	unsigned char ShiftLightFlashes;
+	float ShiftLightRPM;
+	unsigned char  	ShiftLightMode;
+	#endif
+
 #endif
 
 #if PROG_MODE
