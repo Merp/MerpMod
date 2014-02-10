@@ -138,6 +138,11 @@ pRamVariables->MasterInitFlag = 0xB4;//TODO Absract this
 
 }
 
+//#if SHIFTLIGHT_HACKS
+//	pRamVariables->ShiftLightMode = DefaultShiftLightMode;
+//#endif
+
+
 #if VIN_HACKS
 
 void VinCheck()
