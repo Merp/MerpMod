@@ -280,6 +280,13 @@ DEFNEW1D("FBKC Severe Knock Threshold",FBKCHiThreshold);
 DEFNEW1D("FBKC Severe Knock Flash Speed",FBKCHiFlashSpeed);	
 DEFNEW1D("FBKC Severe Knock Flash Count",FBKCHiFlashes);
 DEFNEW1D("FBKC Load Threshold",FBKCLoadThreshold);
+
+#if SHIFTLIGHT_HACKS
+DEFNEW1D("Shift Light RPMs",ShiftLight);
+DEFNEW1D("Shift Light Flash Count",ShiftLightFlashes);
+DEFNEW1D("Shift Light Flash Speed",ShiftLightFlashSpeed);
+//DEFNEW1D("Shift Light Mode",DefaultDisabled);
+#endif
 	
 #ifdef pAf1Res
 DEFNEW1D("EGT AF1 Resistance Threshold",EGTResistanceThreshold);
