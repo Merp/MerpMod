@@ -35,6 +35,11 @@ float FBKCHiThreshold CELFLASHDATA = -2.1f;
 float FBKCLoadThreshold CELFLASHDATA = 1.5f;
 float EGTCelLoadThreshold CELFLASHDATA = 1.5f;
 float EGTResistanceThreshold CELFLASHDATA = 25.0f;
+unsigned char DefaultShiftLightMode CELFLASHDATA = 1;
+float ShiftLight[6] CELFLASHDATA = 
+{2000,2500,3000,3500,6400,6400};
+float ShiftLightFlashes CELFLASHDATA = 0x01;
+float ShiftLightFlashSpeed CELFLASHDATA = 0x08;
 
 //TwoDTable LeanBoostThreshold CELFLASHDATA = //MAP axis, LAMBDA data
 //unsigned char LeanBoostInputMode CELFLASHDATA = LeanBoostInputModeOEM; //TODO EXTERN
