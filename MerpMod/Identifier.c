@@ -27,10 +27,8 @@ unsigned char ModIdentifier[] __attribute__ ((section ("RomHole_Identifier"),ali
 #if SHIFTLIGHT_HACKS
 	
 	unsigned char ModDisclaimer[] __attribute__ ((section ("RomHole_Misc"),aligned(4))) = "COPYRIGHT 2012,2013,2014 Merrill A. Myers III, merrillamyersiii@gmail.com, Scott T. Anderson, kerchakone@yahoo.com. UNAUTHORIZED DISTRIBUTION STRICTLY PROHIBITED. OFFROAD USE ONLY. NO WARRANTY. THIS SOFTWARE IS LICENSED TO YOU “AS IS,” AND WITHOUT ANY WARRANTY OF ANY KIND, WHETHER ORAL, WRITTEN, EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.";
-	
-	#else if
 
-	#ifdef SMALLROM
+	#elif defined (SMALLROM)
 	unsigned char ModDisclaimer[] __attribute__ ((section ("RomHole_Misc"),aligned(4))) = "COPYRIGHT 2012,2013 MERRILL A MYERS III DISTRIBUTION PROHIBITED OFFROAD USE ONLY NO WARRANTY";
 
 	#else
