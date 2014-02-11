@@ -120,8 +120,10 @@ typedef struct
 	#if SHIFTLIGHT_HACKS
 	unsigned char ShiftLightFlashSpeed;
 	unsigned char ShiftLightFlashes;
+	unsigned char ShiftLightunused;
+	unsigned char ShiftLightMode;
+
 	float ShiftLightRPM;
-	unsigned char  	ShiftLightMode;
 	#endif
 
 #endif
