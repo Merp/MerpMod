@@ -81,10 +81,6 @@ void InputUpdate()
 	
 	switch(BlendRatioInput)
 	{
-		default:
-			pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
-			break;
-		
 		case InputModeTGVLeft:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVLeftScaled;
 			break;
@@ -92,14 +88,14 @@ void InputUpdate()
 		case InputModeTGVRight:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVRightScaled;
 			break;
-		
+
+		default:
+			pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
+			break;				
 	}
 	
 	switch(MapSwitchInput)
 	{
-		default:
-		pRamVariables->MapSwitch = DefaultMapSwitch;
-		break;
 		
 		#ifdef pSiDrive
 		case InputModeSiDrive:
@@ -132,7 +128,10 @@ void InputUpdate()
 		case InputModeTGVRight:
 			MapSwitchThresholdCheck(pRamVariables->TGVRightVolts);
 			break;
-			
+
+		default:
+		pRamVariables->MapSwitch = DefaultMapSwitch;
+		break;			
 	}
 }
 
