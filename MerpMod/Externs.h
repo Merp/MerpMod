@@ -1,4 +1,4 @@
-/*
+ /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
 	
     This program is free software: you can redistribute it and/or modify
@@ -120,30 +120,44 @@ extern float DefaultLCFuelEnrichMultiplier;
 extern TableGroup PGWGTableGroup;
 extern ThreeDTable PGWGTable1i;
 extern ThreeDTable PGWGTable2i;
-extern ThreeDTable PGTBTable1i;
-extern ThreeDTable PGTBTable2i;
-extern ThreeDTable PGWGTable1s;
-extern ThreeDTable PGWGTable2s;
-
-extern TableGroup PGTBTableGroup;
 extern ThreeDTable PGTBTable1s;
 extern ThreeDTable PGTBTable2s;
 extern ThreeDTable PGWGTable1ss;
 extern ThreeDTable PGWGTable2ss;
+
+extern TableGroup PGTBTableGroup;
+extern ThreeDTable PGTBTable1i;
+extern ThreeDTable PGTBTable2i;
+extern ThreeDTable PGWGTable1s;
+extern ThreeDTable PGWGTable2s;
 extern ThreeDTable PGTBTable1ss;
 extern ThreeDTable PGTBTable2ss;
 
 extern TableGroup TargetBoostTableGroup;
-extern ThreeDTable TargetBoostTable1;
-extern ThreeDTable TargetBoostTable2;
+extern ThreeDTable TargetBoostTable1i;
+extern ThreeDTable TargetBoostTable2i;
+extern ThreeDTable TargetBoostTable1s;
+extern ThreeDTable TargetBoostTable2s;
+extern ThreeDTable TargetBoostTable1ss;
+extern ThreeDTable TargetBoostTable2ss;
 
 extern TableGroup WGDCInitialTableGroup;
-extern ThreeDTable WGDCInitialTable1;
-extern ThreeDTable WGDCInitialTable2;
+extern ThreeDTable WGDCInitialTable1i;
+extern ThreeDTable WGDCInitialTable2i;
+extern ThreeDTable WGDCInitialTable1s;
+extern ThreeDTable WGDCInitialTable2s;
+extern ThreeDTable WGDCInitialTable1ss;
+extern ThreeDTable WGDCInitialTable2ss;
+
 
 extern TableGroup WGDCMaxTableGroup;
-extern ThreeDTable WGDCMaxTable1;
-extern ThreeDTable WGDCMaxTable2;
+extern ThreeDTable WGDCMaxTable1i;
+extern ThreeDTable WGDCMaxTable2i;
+extern ThreeDTable WGDCMaxTable1s;
+extern ThreeDTable WGDCMaxTable2s;
+extern ThreeDTable WGDCMaxTable1ss;
+extern ThreeDTable WGDCMaxTable2ss;
+
 
 extern ThreeDTable PGWGRamTable;
 extern ThreeDTable WGDCInitialRamTable;
@@ -175,13 +189,18 @@ extern float ThrottleLockWGDC;
 
 #if SHIFTLIGHT_HACKS
 //ShiftLight
-extern TwoDTable ShiftLight;
+extern float ShiftLight[];
 extern unsigned char ShiftLightFlashes;
 extern unsigned char ShiftLightFlashSpeed;
 //extern unsigned char DefaultShiftLightMode;
 #endif
 
-extern float GearRatios[];
+#if SIX_SPD
+extern float GearRatios[6];
+#endif
+#if FIVE_SPD
+extern float GearRatios[5];
+#endif
 
 extern float FFSMinimumThrottle;
 extern float LCMinimumThrottle;
@@ -215,7 +234,7 @@ extern char* LCSparkEventsCutFrom;
 extern unsigned char DefaultLCSparkEventsToCut;
 extern unsigned char DefaultLCSparkEventsCutFrom;
 
-//CEL flash defaults
+//CEL flahs defaults
 extern unsigned char FBKCLoFlashes;
 extern unsigned char FBKCLoFlashSpeed;
 extern unsigned char FBKCHiFlashes;
