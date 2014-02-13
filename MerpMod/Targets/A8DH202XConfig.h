@@ -1,10 +1,11 @@
-
 //////////////////////////////
 //		OPTIONS
 //////////////////////////////
 
 #define AUTO_TRANS 0
 #define SD_DMAP		0
+#define SIX_SPD 0
+#define FIVE_SPD 1
 
 #define ECU_IDENTIFIER_CHARS (10)
 #define ECU_CALIBRATION_CHARS (8)
