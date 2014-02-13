@@ -74,8 +74,7 @@ EcuHacksMain();
 		}
 	#endif
 	
-	pRamVariables->PGWGComp = PGWGComp;
-	
+	pRamVariables->PGWGComp = PGWGComp;	
 	pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
 	pRamVariables->WGDCMax = WGDCMax * PGWGComp;
 	
