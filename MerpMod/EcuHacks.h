@@ -107,14 +107,14 @@ SHORT TERM:
 #else
 #define CelInfo		
 #define CelLabel 	
-#if SHIFTLIGHT_HACKS
-#define ShiftInfo		Per Gear Shift Light
-#define ShiftLabel
-#else
-#define ShiftInfo
-#define ShiftLabel
-#endif
 #endif 
+//#if SHIFTLIGHT_HACKS
+//#define ShiftInfo 	Per Gear Shift Light
+//#define ShiftLabel
+//#else
+//#define ShiftInfo 
+//#define ShiftLabel
+//#endif
 #if BOOST_HACKS 
 #define BoostInfo	Per Gear WGDC & Target Boost__
 #define BoostLabel	.PGBW		
