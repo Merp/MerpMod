@@ -198,7 +198,14 @@ DEFNEW1D("Flat Foot Shift Minimum RPM Threshold",DefaultFlatFootShiftRpmThreshol
 DEFNEW1D("LC Maximum Speed Threshold",DefaultLaunchControlSpeedMax);
 DEFNEW1D("LC Minimum Throttle Threshold",LCMinimumThrottle);
 DEFNEW1D("FFS Minimum Throttle Threshold",FFSMinimumThrottle);
+
+#if SIX_SPD
 DEFNEW1D("FFS Gear Ratios",GearRatios);
+#endif
+#if FIVE_SPD
+DEFNEW1D("FFS Gear Ratios",GearRatios);
+#endif
+
 DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);	
 	
 	//PARAMS
@@ -339,16 +346,44 @@ DEFNEW3D("Per Gear Target Boost Table 2",PGTBTable2i);
 #endif
 
 DEFINERAMVAR("MM Max WGDC Per Gear",WGDCMax,4,"E");
-DEFNEW3D("Max Wastegate Duty Multiplier Table 1",WGDCMaxTable1);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 2",WGDCMaxTable2);
+#if SWITCH_HACKS
+DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Intelligent",WGDCMaxTable1i);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Intelligent",WGDCMaxTable2i);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Sport",WGDCMaxTable1s);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Sport",WGDCMaxTable2s);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Sport Sharp",WGDCMaxTable1ss);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Sport Sharp",WGDCMaxTable2ss);
+#else
+DEFNEW3D("Max Wastegate Duty Multiplier Table 1",WGDCMaxTable1i);
+DEFNEW3D("Max Wastegate Duty Multiplier Table 2",WGDCMaxTable2i);
+#endif
+
 DEFINERAMVAR("MM Initial WGDC Per Gear",WGDCInitial,4,"E");	
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 1",WGDCInitialTable1);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 2",WGDCInitialTable2);
-	
+#if SWITCH_HACKS
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Intelligent",WGDCInitialTable1i);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Intelligent",WGDCInitialTable2i);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Sport",WGDCInitialTable1s);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Sport",WGDCInitialTable2s);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Sport Sharp",WGDCInitialTable1ss);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Sport Sharp",WGDCInitialTable2ss);
+#else
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 1",WGDCInitialTable1i);
+DEFNEW3D("Initial Wastegate Duty Multiplier Table 2",WGDCInitialTable2i);
+#endif
+
 DEFINERAMVAR("MM Target Boost Output",TargetBoost,4,"E");
-DEFNEW3D("Target Boost Multiplier Table 1",TargetBoostTable1);
-DEFNEW3D("Target Boost Multiplier Table 2",TargetBoostTable2);
-	
+#if SWITCH_HACKS
+DEFNEW3D("Target Boost Multiplier Table 1 Intelligent",TargetBoostTable1i);
+DEFNEW3D("Target Boost Multiplier Table 2 Intelligent",TargetBoostTable2i);
+DEFNEW3D("Target Boost Multiplier Table 1 Sport",TargetBoostTable1s);
+DEFNEW3D("Target Boost Multiplier Table 2 Sport",TargetBoostTable2s);
+DEFNEW3D("Target Boost Multiplier Table 1 Sport Sharp",TargetBoostTable1ss);
+DEFNEW3D("Target Boost Multiplier Table 2 Sport Sharp",TargetBoostTable2ss);
+#else
+DEFNEW3D("Target Boost Multiplier Table 1",TargetBoostTable1i);
+DEFNEW3D("Target Boost Multiplier Table 2",TargetBoostTable2i);
+#endif
+
 	#if WGDC_LOCK
 DEFNEW1D("WGDC Lock Maximum RPM",RPMWGDCLock);
 DEFNEW1D("WGDC Lock Minimum Throttle",ThrottleLockWGDC);
