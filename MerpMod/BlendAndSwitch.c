@@ -56,15 +56,15 @@ float SwitchSelect(TableSubSet tss, float xLookup, float yLookup)
 		switch(pRamVariables->MapSwitch)
 		{
 			case MapSwitch3:
-			OutputValue = Pull3DHooked(tss.TableSS, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tabless, xLookup, yLookup);
 			break;
 			
 			case MapSwitch2:
-			OutputValue = Pull3DHooked(tss.TableS, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tables, xLookup, yLookup);
 			break;
 			
 			default:
-			OutputValue = Pull3DHooked(tss.TableI, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tablei, xLookup, yLookup);
 			break;
 		}
 	return OutputValue;
@@ -81,6 +81,10 @@ void InputUpdate()
 	
 	switch(BlendRatioInput)
 	{
+		case InputModeUndefined:
+			pRamVariables->MapBlendRatio = 0.0;
+		break;
+		
 		case InputModeTGVLeft:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVLeftScaled;
 			break;
@@ -95,7 +99,11 @@ void InputUpdate()
 	}
 	
 	switch(MapSwitchInput)
-	{		
+	{
+		case InputModeUndefined:
+			pRamVariables->MapSwitch = MapSwitch1;
+		break;
+		
 		#ifdef pSiDrive
 		case InputModeSiDrive:
 		{

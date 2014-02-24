@@ -198,14 +198,7 @@ DEFNEW1D("Flat Foot Shift Minimum RPM Threshold",DefaultFlatFootShiftRpmThreshol
 DEFNEW1D("LC Maximum Speed Threshold",DefaultLaunchControlSpeedMax);
 DEFNEW1D("LC Minimum Throttle Threshold",LCMinimumThrottle);
 DEFNEW1D("FFS Minimum Throttle Threshold",FFSMinimumThrottle);
-
-#if SIX_SPD
 DEFNEW1D("FFS Gear Ratios",GearRatios);
-#endif
-#if FIVE_SPD
-DEFNEW1D("FFS Gear Ratios",GearRatios);
-#endif
-
 DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);	
 	
 	//PARAMS
@@ -287,13 +280,6 @@ DEFNEW1D("FBKC Severe Knock Threshold",FBKCHiThreshold);
 DEFNEW1D("FBKC Severe Knock Flash Speed",FBKCHiFlashSpeed);	
 DEFNEW1D("FBKC Severe Knock Flash Count",FBKCHiFlashes);
 DEFNEW1D("FBKC Load Threshold",FBKCLoadThreshold);
-
-#if SHIFTLIGHT_HACKS
-DEFNEW1D("Shift Light RPMs",ShiftLight);
-DEFNEW1D("Shift Light Flash Count",ShiftLightFlashes);
-DEFNEW1D("Shift Light Flash Speed",ShiftLightFlashSpeed);
-//DEFNEW1D("Shift Light Mode",DefaultDisabled);
-#endif
 	
 #ifdef pAf1Res
 DEFNEW1D("EGT AF1 Resistance Threshold",EGTResistanceThreshold);
@@ -358,7 +344,7 @@ DEFNEW3D("Max Wastegate Duty Multiplier Table 1",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Multiplier Table 2",WGDCMaxTable2i);
 #endif
 
-DEFINERAMVAR("MM Initial WGDC Per Gear",WGDCInitial,4,"E");	
+DEFINERAMVAR("MM Initial WGDC Per Gear",WGDCInitial,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Intelligent",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Intelligent",WGDCInitialTable2i);
@@ -370,7 +356,7 @@ DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Sport Sharp",WGDCInitialTabl
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 1",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 2",WGDCInitialTable2i);
 #endif
-
+	
 DEFINERAMVAR("MM Target Boost Output",TargetBoost,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Target Boost Multiplier Table 1 Intelligent",TargetBoostTable1i);

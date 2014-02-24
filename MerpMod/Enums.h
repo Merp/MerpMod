@@ -42,13 +42,6 @@ enum ValetModes
 	ValetModeEnabled = 1
 };
 
-//enum ShiftLightModeValues
-//{
-//ShiftLightModeUndefined = 0,
-//ShiftLightModeDisabled = 1,
-//ShiftLightModeEnabled = 2,
-//};
-
 enum MafModeValues
 {
 	MafModeUndefined = 0,
@@ -127,9 +120,9 @@ typedef struct
 
 typedef struct
 {
-	ThreeDTable* TableI;
-	ThreeDTable* TableS;
-	ThreeDTable* TableSS;
+	ThreeDTable* Tablei;
+	ThreeDTable* Tables;
+	ThreeDTable* Tabless;
 } TableSubSet;
 
 typedef struct{

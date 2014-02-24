@@ -17,6 +17,10 @@
 /////////////////
 //Constants
 /////////////////
+#if BOOST_HACKS
+float RPMLockWGDC BOOSTDATA = 3000.0f;
+float ThrottleLockWGDC BOOSTDATA = 85.0f;
+
 #if SWITCH_HACKS
 TableGroup PGWGTableGroup BOOSTDATA = {
 	{&PGWGTable1i,
@@ -62,7 +66,7 @@ TableGroup TargetBoostTableGroup BOOSTDATA = {
 	&TargetBoostTable2s,
 	&TargetBoostTable2ss}
 };
-#endif
+#endif 
 
 ///////////////
 //PGWG TABLE 1 i
@@ -999,7 +1003,7 @@ ThreeDTable WGDCMaxRamTable __attribute__ ((section ("RomHole_SpeedDensityTables
 	.rowHeaderArray = &(pRamVariables->WGDCMaxRamRows),
 	.tableCells = &(pRamVariables->WGDCMaxRamData),
 	.tableType = UInt16Table3D,
-	.multiplier = 1.0f,
+	.multiplier = 0.000061037f,
 	.offset = 0 };				//! /32767  (0- range, 16bit precision)
 #endif
 
@@ -1219,4 +1223,6 @@ ThreeDTable TargetBoostTable2ss __attribute__ ((section ("RomHole_SpeedDensityTa
 	.tableType = UInt16Table3D,
 	.multiplier = 0.000061037f,	
 	.offset = 0 };				//! /32767  (0-? range, 16bit precision)
+#endif
+	
 #endif
