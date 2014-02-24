@@ -33,7 +33,7 @@ float DefaultLaunchControlSpeedMax REVLIMDATA = 5.0f;
 float DefaultLaunchControlCut REVLIMDATA = 4000.0f;
 float DefaultLaunchControlHyst REVLIMDATA = 50.0f;
 float GearRatios[6] REVLIMDATA = 
-{3.454,1.947,1.366,0.972,0.738,0.838};
+{3.636,2.375,1.761,1.346,0.971,0.756};
 float LCMinimumThrottle REVLIMDATA =  60.0f;
 float FFSMinimumThrottle REVLIMDATA = 83.0f;
 
