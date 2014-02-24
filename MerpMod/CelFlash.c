@@ -111,7 +111,6 @@ void CelFlash()
 	{
 		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
 	}
-
 #if !defined(NOAF1RES)
 	else if(*pAf1Res < EGTResistanceThreshold && *pEngineLoad > EGTCelLoadThreshold)
 	{
@@ -141,23 +140,7 @@ void CelFlash()
 	pRamVariables->CelSignalLast = pRamVariables->CelSignal;
 	//*pCruiseSignalLast = *pCruiseSignal;
 
-	#if SHIFTLIGHT_HACKS
-	{	
-		float ShiftLightgear = (unsigned char)*pCurrentGear;
-		float ShiftLightRPM; //PUT THIS AT THE TOP??
-		if(ShiftLightgear > 0) //if(*pCurrentGear > 0 && Mode enabled)
-			//Put MODE trigger here
-		{
-			ShiftLightRPM = (ShiftLight, ShiftLightgear);
-		}
-			if (*pEngineSpeed >= ShiftLightRPM)
-		{	
-			CelFlashStart(ShiftLightFlashes,ShiftLightFlashSpeed,0,0);		
-		}
-	}
-	#endif
 }
-
 
 //TODO put this somewhere else and PROTOTYPE
 /*
