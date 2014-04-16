@@ -121,15 +121,17 @@ void CelFlash()
 	{
 		CelFlashStart(ECTFlashes,ECTFlashSpeed,64,0);
 	}
+	else if(IAM < IAMFlashThreshold)
+	{
+		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
+	}
+	
 	// Call triggers if signal changes!
 	if(pRamVariables->CelSignal != pRamVariables->CelSignalLast)
 	{
 		CelTrigger();
 	}
-	if(IAM < IAMFlashThreshold)
-	{
-		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
-	}
+	
 	
 	//if(*pCruiseSignal != *pCruiseSignalLast)
 	//{
