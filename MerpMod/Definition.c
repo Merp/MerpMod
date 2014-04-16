@@ -299,6 +299,10 @@ DEFNEW1D("FBKC Severe Knock Threshold",FBKCHiThreshold);
 DEFNEW1D("FBKC Severe Knock Flash Speed",FBKCHiFlashSpeed);	
 DEFNEW1D("FBKC Severe Knock Flash Count",FBKCHiFlashes);
 DEFNEW1D("FBKC Load Threshold",FBKCLoadThreshold);
+DEFNEW1D("IAM Flash Threshold",IAMFlashThreshold);
+DEFNEW1D("IAM Flash Count",IAMFlashes);
+DEFNEW1D("IAM Flash Speed",IAMFlashSpeed);
+
 	
 #ifdef pAf1Res
 DEFNEW1D("EGT AF1 Resistance Threshold",EGTResistanceThreshold);
