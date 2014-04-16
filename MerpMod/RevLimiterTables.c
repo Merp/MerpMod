@@ -32,8 +32,12 @@ float DefaultFlatFootShiftRpmThreshold REVLIMDATA = 4500.0f;
 float DefaultLaunchControlSpeedMax REVLIMDATA = 5.0f;
 float DefaultLaunchControlCut REVLIMDATA = 4000.0f;
 float DefaultLaunchControlHyst REVLIMDATA = 50.0f;
+
+#ifdef pCurrentGear
 float GearRatios[6] REVLIMDATA = 
 {3.636,2.375,1.761,1.346,0.971,0.756};
+#endif
+
 float LCMinimumThrottle REVLIMDATA =  60.0f;
 float FFSMinimumThrottle REVLIMDATA = 83.0f;
 

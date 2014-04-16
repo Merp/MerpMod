@@ -49,10 +49,12 @@ void RevLimReset()
 				//Disable FFS if clutch is out or brake is pressed
 				pRamVariables->FFSEngaged = 0;
 				pRamVariables->LCEngaged = 0;
+				#ifdef pCurrentGear
 				if(*pCurrentGear > 0)
 				{
 					pRamVariables->FFSGear = *pCurrentGear;
 				}
+				#endif
 }
 
 void RevLimCode()
@@ -109,6 +111,7 @@ void RevLimCode()
 	
 		if (pRamVariables->FFSEngaged == 1)
 		{
+			#ifdef pCurrentGear
 			if (pRamVariables->FlatFootShiftMode == 2)
 			{
 				float cut =  pRamVariables->FFSRPM;
@@ -120,10 +123,15 @@ void RevLimCode()
 			}
 			else
 			{
+			#endif
+			
 				float cut = pRamVariables->RedLineCut - Abs(pRamVariables->FlatFootShiftStaticDelta);
 				pRamVariables->RevLimCut = cut;
 				pRamVariables->RevLimResume = cut - Abs(pRamVariables->FlatFootShiftHyst);
+			
+			#ifdef pCurrentGear
 			}
+			#endif
 			pRamVariables->FFSEngaged = 2;
 		}
 		
