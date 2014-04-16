@@ -51,6 +51,16 @@ typedef struct
 {
 	long op;
 	long address;
+	char id[4];
+	long buf;
+	long bit;
+	char name[];
+} ParamBitDef;
+
+typedef struct
+{
+	long op;
+	long address;
 	char name[];
 } AxisDef;
 
@@ -66,6 +76,7 @@ enum DefOps
 	OpY = 0x43210006,
 	OpStaticY = 0x43210007,
 	OpRAM = 0x43210008,
+	OpRAMBit = 0x4321010,
 	OpEnd = 0x00090009,
 };
 
@@ -105,18 +116,19 @@ typedef struct {
 #define DEFIDA3D(NAME,ADDR)	const TableDef ADDR##_3DDef DEFDATA =	{op: OpTable3d , address: (int)ADDR , name: NAME }
 
 #define DEFINERAM(NAME,ADDR,LENGTH,EID)	const ParamDef ADDR##_ParamDef DEFDATA =	{op: OpRAM , address: (int)ADDR , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }
+#define DEFINERAMBIT(NAME,ADDR,BIT,EID)	const ParamBitDef ADDR##_ParamBitDef DEFDATA =	{op: OpRAMBit , address: (int)ADDR , id: EID , buf: OpEnd , bit: BIT , name: NAME }
 #define DEFINERAMVAR(NAME,ADDR,LENGTH,EID)	const ParamDef ADDR##_ParamDef DEFDATA =	{op: OpRAM , address: (int)&pRamVariables->ADDR , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }//TRY TO FIX THIS??
 //TODO: in sharptune, if no match is found, create a new one to read out RAWDATA!
 
 
 #if PROG_MODE
-DEFINERAMVAR("MM Prog Mode Entry",ProgModeEntry,1,"E");
-DEFINERAMVAR("MM Prog Mode Wait",ProgModeWait,1,"E");
-DEFINERAMVAR("MM Prog Mode Timer",ProgModeTimer,1,"E");
-DEFINERAMVAR("MM Prog Mode Enable",ProgModeEnable,1,"E");
-DEFINERAMVAR("MM Prog Mode Current Mode",ProgModeCurrentMode,1,"E");
-DEFINERAMVAR("MM Prog Mode Selected Value Flash",ProgModeValueFlashes,1,"E");
-DEFINERAMVAR("MM Prog Mode Value",ProgModeValue,4,"E");
+DEFINERAMVAR("MerpMod Prog Mode Entry",ProgModeEntry,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Wait",ProgModeWait,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Timer",ProgModeTimer,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Enable",ProgModeEnable,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,1,"E");
+DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,4,"E");
 #endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);
@@ -127,27 +139,30 @@ DEFIDA1D("Engine Load Smoothing Factor B",dLoadSmoothingB);
 #ifdef dLoadSmoothingAlt
 	DEFIDA1D("Engine Load Smoothing Factor Alternate",dLoadSmoothingAlt);
 #endif
+#ifdef dLoadSmoothingAlt2
+	DEFIDA1D("Engine Load Smoothing Factor Alternate B",dLoadSmoothingAlt2);
+#endif
 DEFIDA1D("Engine Load Smoothing Factor Final",dLoadSmoothingFinal);
 
 //Switches/flags
 #ifdef pClutchFlags
-DEFINERAM("MM Clutch Flags",pClutchFlags,1,"E");
+DEFINERAMBIT("MerpMod Clutch Switch",pClutchFlags, ClutchBitMask,"E");
 #endif
-DEFINERAM("MM Brake Flags",pBrakeFlags,1,"E");
+DEFINERAMBIT("MerpMod Brake Switch",pBrakeFlags, BrakeBitMask,"E");
 #ifdef pResumeFlags
-	DEFINERAM("MM Cruise Resume Flags",pResumeFlags,1,"E");
+	DEFINERAMBIT("MerpMod Cruise Resume Switch",pResumeFlags, ResumeBitMask,"E");
 #endif
 #ifdef pCoastFlags
-	DEFINERAM("MM Cruise Coast Flags",pCoastFlags,1,"E");
+	DEFINERAMBIT("MerpMod Cruise Coast Switch",pCoastFlags, CoastBitMask,"E");
 #endif
-#ifdef pFlagsRevLimit
-	DEFINERAM("MM Rev Limit Fuel Cut Flags",pFlagsRevLim,1,"E");
+#ifdef pFlagsRevLim
+	DEFINERAMBIT("MerpMod Rev Limit Fuel Cut Switch",pFlagsRevLim, RevLimBitMask,"E");
 #endif
 
 //VIN stuff	
 #if VIN_HACKS && VIN_TEST_LOG
-DEFINERAMVAR("MM Vehicle Identifier",VehicleIdent,14,"E");
-DEFINERAMVAR("MM Auth Pass/Fail",VinAuth,1,"E");
+DEFINERAMVAR("MerpMod Vehicle Identifier",VehicleIdent,14,"E");
+DEFINERAMVAR("MerpMod Auth Pass/Fail",VinAuth,1,"E");
 #endif
 
 #if SPARK_CUT
@@ -156,13 +171,13 @@ DEFINERAMVAR("LC Spark Events Cut From",SparkEventsX,1,"E");
 #endif
 
 #if SD_HACKS
-DEFINERAMVAR("MM SD Mode Switch",MafMode,1,"E");
-DEFINERAMVAR("MM SD Volumetric Efficiency Direct",VolumetricEfficiency,4,"E");
-DEFINERAMVAR("MM SD Airflow SD VE",MafFromSpeedDensity,4,"E");
-DEFINERAMVAR("MM SD Airflow Maf Sensor Direct",MafFromSensor,4,"E");
-DEFINERAMVAR("MM SD Atmospheric Compensation Direct",AtmosphericCompensation,4,"E");
-DEFINERAMVAR("MM SD MAF Blending Ratio Direct",SDMafBlendRatio,4,"E");
-DEFINERAMVAR("MM SD Airflow Blending Direct",SDMafFromBlend,4,"E");
+DEFINERAMVAR("MerpMod SD Mode Switch",MafMode,1,"E");
+DEFINERAMVAR("MerpMod SD Volumetric Efficiency",VolumetricEfficiency,4,"E");
+DEFINERAMVAR("MerpMod SD Airflow Final Output",MafFromSpeedDensity,4,"E");
+DEFINERAMVAR("MerpMod SD Airflow Maf Sensor",MafFromSensor,4,"E");
+DEFINERAMVAR("MerpMod SD Atmospheric Compensation",AtmosphericCompensation,4,"E");
+DEFINERAMVAR("MerpMod SD Blending Ratio",SDMafBlendRatio,4,"E");
+DEFINERAMVAR("MerpMod SD Airflow Blending",SDMafFromBlend,4,"E");
 DEFNEW3D("Volumetric Efficiency Table 1",VolumetricEfficiencyTable1);
 
 #if SWITCH_HACKS
@@ -171,8 +186,8 @@ DEFNEW3D("Volumetric Efficiency Table 2",VolumetricEfficiencyTable2);
 
 #if SD_DMAP
 DEFINE3D("Delta MAP Compensation",SDDeltaMapTable);
-DEFINERAM("MM Delta MAP",pDeltaMap,4,"E");
-DEFINERAMVAR("MM Delta MAP Compensation Direct",DeltaMapCompensation,4,"E");
+DEFINERAM("MerpMod Delta MAP",pDeltaMap,4,"E");
+DEFINERAMVAR("MerpMod Delta MAP Compensation Direct",DeltaMapCompensation,4,"E");
 #endif
 
 DEFNEW3D("Atmospheric Pressure Compensation",AtmosphericCompensationTable);
@@ -190,33 +205,37 @@ DEFINERAMVAR("VERamFlag",VERamFlag,1,"E");
 
 #if REVLIM_HACKS
 DEFNEW1D("Rev Limit (Redline)",DefaultRedLineCut);
+#ifdef pCurrentGear
 DEFNEW1D("Flat Foot Shift Mode",DefaultFlatFootShiftMode);
 DEFNEW1D("Flat Foot Shift Delta (Automatic Limit)",DefaultFlatFootShiftAutoDelta);
+#endif
 DEFNEW1D("Flat Foot Shift Delta (Static Limit)",DefaultFlatFootShiftStaticDelta);	
 DEFNEW1D("Flat Foot Shift Minimum Speed Threshold",DefaultFlatFootShiftSpeedThreshold);
 DEFNEW1D("Flat Foot Shift Minimum RPM Threshold",DefaultFlatFootShiftRpmThreshold);
 DEFNEW1D("LC Maximum Speed Threshold",DefaultLaunchControlSpeedMax);
 DEFNEW1D("LC Minimum Throttle Threshold",LCMinimumThrottle);
 DEFNEW1D("FFS Minimum Throttle Threshold",FFSMinimumThrottle);
+#ifdef pCurrentGear
 DEFNEW1D("FFS Gear Ratios",GearRatios);
+#endif
 DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);	
 	
 	//PARAMS
-DEFINERAMVAR("MM FFS Mode",FlatFootShiftMode,1,"E");
-DEFINERAMVAR("MM LC Engaged Signal",LCEngaged,1,"E");
-DEFINERAMVAR("MM FFS Engaged Signal",FFSEngaged,1,"E");
-DEFINERAMVAR("MM FFS Gear Monitor",FFSGear,1,"E");
-DEFINERAMVAR("MM RevLimit Active Cut RPM",RevLimCut,4,"E");
-DEFINERAMVAR("MM RevLimit Active Resume RPM",RevLimResume,4,"E");
-DEFINERAMVAR("MM RedLine Cut RPM",RedLineCut,4,"E");
-DEFINERAMVAR("MM RedLine Hysteresis",RedLineHyst,4,"E");
-DEFINERAMVAR("MM Launch Control RPM",LaunchControlCut,4,"E");
-DEFINERAMVAR("MM Launch Control Hysteresis",LaunchControlHyst,4,"E");
-DEFINERAMVAR("MM FFS Delta (Auto)",FlatFootShiftAutoDelta,4,"E");
-DEFINERAMVAR("MM FFS Delta (Static)",FlatFootShiftStaticDelta,4,"E");
-DEFINERAMVAR("MM FFS Engagement RPM",FFSRPM,4,"E");
-DEFINERAMVAR("MM FFS Speed Threshold",FlatFootShiftSpeedThreshold,4,"E");
-DEFINERAMVAR("MM LC Speed Threshold",LaunchControlSpeedMax,4,"E");
+DEFINERAMVAR("MerpMod FFS Mode",FlatFootShiftMode,1,"E");//TODO add to def base
+DEFINERAMVAR("MerpMod LC Engaged Signal",LCEngaged,1,"E");
+DEFINERAMVAR("MerpMod FFS Engaged Signal",FFSEngaged,1,"E");
+DEFINERAMVAR("MerpMod FFS Gear Monitor",FFSGear,1,"E");
+DEFINERAMVAR("MerpMod RevLimit Active Cut RPM",RevLimCut,4,"E");
+DEFINERAMVAR("MerpMod RevLimit Active Resume RPM",RevLimResume,4,"E");
+DEFINERAMVAR("MerpMod RedLine Cut RPM",RedLineCut,4,"E");
+DEFINERAMVAR("MerpMod RedLine Hysteresis",RedLineHyst,4,"E");
+DEFINERAMVAR("MerpMod Launch Control RPM",LaunchControlCut,4,"E");
+DEFINERAMVAR("MerpMod Launch Control Hysteresis",LaunchControlHyst,4,"E");
+DEFINERAMVAR("MerpMod FFS Delta (Auto)",FlatFootShiftAutoDelta,4,"E");
+DEFINERAMVAR("MerpMod FFS Delta (Static)",FlatFootShiftStaticDelta,4,"E");
+DEFINERAMVAR("MerpMod FFS Engagement RPM",FFSRPM,4,"E");
+DEFINERAMVAR("MerpMod FFS Speed Threshold",FlatFootShiftSpeedThreshold,4,"E");
+DEFINERAMVAR("MerpMod LC Speed Threshold",LaunchControlSpeedMax,4,"E");
 #endif
 
 #if LC_ADJUST
@@ -224,29 +243,29 @@ DEFNEW1D("Launch Control Adjustment Step",LCAdjustStep);
 #endif
 
 #if SWITCH_HACKS
-DEFINERAMVAR("MM Master Init Flag",MasterInitFlag,1,"E");
+DEFINERAMVAR("MerpMod Master Init Flag",MasterInitFlag,1,"E");
 	
-DEFINERAMVAR("MM TGV Volts Left",TGVLeftVolts,4,"E");
-DEFINERAMVAR("MM TGV Volts Right",TGVRightVolts,4,"E");
+DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,4,"E");
+DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,4,"E");
 
 DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
 DEFNEW1D("Map Switch Input Mode",MapSwitchInput);
 DEFNEW1D("Map Blending Input Mode",BlendRatioInput);
-DEFINERAMVAR("MM Map Blending Ratio Direct",MapBlendRatio,4,"E");
-DEFINERAMVAR("MM TGV Left Scaled",TGVLeftScaled,4,"E");	
-DEFINERAMVAR("MM TGV Right Scaled",TGVRightScaled,4,"E");
+DEFINERAMVAR("MerpMod Map Blending Ratio Direct",MapBlendRatio,4,"E");
+DEFINERAMVAR("MerpMod TGV Left Scaled",TGVLeftScaled,4,"E");	
+DEFINERAMVAR("MerpMod TGV Right Scaled",TGVRightScaled,4,"E");
 
 DEFNEW1D("Default Map Blending Ratio",DefaultMapBlendRatio);
 DEFNEW1D("Default Map Switch",DefaultMapSwitch);
 #endif
 
 #if POLF_HACKS
-DEFINERAMVAR("MM LC Fueling Lock Enrichment",LCFuelLock,4,"E");
-DEFINERAMVAR("MM LC Fueling Mode",LCFuelMode,4,"E");
-DEFINERAMVAR("MM LC Fueling Enrichment",LCFuelEnrich,4,"E");
-DEFINERAMVAR("MM LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,4,"E");	
-DEFINERAMVAR("MM Primary Open Loop Fueling Output",PolfOutput,4,"E");	
+DEFINERAMVAR("MerpMod LC Fueling Lock Enrichment",LCFuelLock,4,"E");
+DEFINERAMVAR("MerpMod LC Fueling Mode",LCFuelMode,4,"E");
+DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,4,"E");
+DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,4,"E");	
+DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,4,"E");	
 	
 	//TODO add ENABLE SWITCHES
 #if SWITCH_HACKS
@@ -297,16 +316,16 @@ DEFNEW1D("ECT Flash Temperature Threshold",ECTFlashThreshold);
 DEFNEW1D("IAM Recall Flash Speed",IAMFlashSpeed);
 #endif
 
-DEFINERAMVAR("MM CEL Signal",CelSignal,1,"E");
-DEFINERAM("MM CEL Signal OEM",pCelSignalOem,1,"E");
-DEFINERAMVAR("MM CEL Flash Counter",CelFlashCounter,1,"E");
-DEFINERAMVAR("MM CEL Speed Counter",CelFlashSpeedCounter,1,"E");
+DEFINERAMVAR("MerpMod CEL Signal",CelSignal,1,"E");
+DEFINERAM("MerpMod CEL Signal OEM",pCelSignalOem,1,"E");
+DEFINERAMVAR("MerpMod CEL Flash Counter",CelFlashCounter,1,"E");
+DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,1,"E");
 	
 #endif
 
 
 #if BOOST_HACKS
-DEFINERAMVAR("MM PGWG Compensation",PGWGComp,4,"E");
+DEFINERAMVAR("MerpMod PGWG Compensation",PGWGComp,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Wastegate Table 1 Intelligent",PGWGTable1i);
 DEFNEW3D("Per Gear Wastegate Table 2 Intelligent",PGWGTable2i);
@@ -318,7 +337,7 @@ DEFNEW3D("Per Gear Wastegate Table 2 Sport Sharp",PGWGTable2ss);
 DEFNEW3D("Per Gear Wastegate Table 1",PGWGTable1i);
 DEFNEW3D("Per Gear Wastegate Table 2",PGWGTable2i);
 #endif
-DEFINERAMVAR("MM PGTB Compensation",PGTBComp,4,"E");
+DEFINERAMVAR("MerpMod PGTB Compensation",PGTBComp,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Target Boost Table 1 Intelligent",PGTBTable1i);
 DEFNEW3D("Per Gear Target Boost Table 2 Intelligent",PGTBTable2i);
@@ -331,14 +350,14 @@ DEFNEW3D("Per Gear Target Boost Table 1",PGTBTable1i);
 DEFNEW3D("Per Gear Target Boost Table 2",PGTBTable2i);
 #endif
 
-DEFINERAMVAR("MM Max WGDC Per Gear",WGDCMax,4,"E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear",WGDCMax,4,"E");
 DEFNEW3D("Max Wastegate Duty Multiplier Table 1",WGDCMaxTable1);
 DEFNEW3D("Max Wastegate Duty Multiplier Table 2",WGDCMaxTable2);
-DEFINERAMVAR("MM Initial WGDC Per Gear",WGDCInitial,4,"E");	
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 1",WGDCInitialTable1);
 DEFNEW3D("Initial Wastegate Duty Multiplier Table 2",WGDCInitialTable2);
 	
-DEFINERAMVAR("MM Target Boost Output",TargetBoost,4,"E");
+DEFINERAMVAR("MerpMod Initial WGDC Per Gear",WGDCInitial,4,"E");
+DEFINERAMVAR("MerpMod Target Boost Output",TargetBoost,4,"E");
 DEFNEW3D("Target Boost Multiplier Table 1",TargetBoostTable1);
 DEFNEW3D("Target Boost Multiplier Table 2",TargetBoostTable2);
 	
@@ -349,11 +368,11 @@ DEFNEW1D("WGDC Lock Minimum Throttle",ThrottleLockWGDC);
 #endif
 
 #if TIMING_HACKS
-DEFINERAMVAR("MM LC Timing Mode",LCTimingMode,1,"E");
-DEFINERAMVAR("MM LC Timing Lock Value",LCTimingLock,4,"E");
-DEFINERAMVAR("MM LC Timing Retard",LCTimingRetard,4,"E");
-DEFINERAMVAR("MM LC Timing Retard Multiplier",LCTimingRetardMultiplier,4,"E");
-DEFINERAMVAR("MM Base Timing Final Output",TimingHackOutput,4,"E");
+DEFINERAMVAR("MerpMod LC Timing Mode",LCTimingMode,1,"E");
+DEFINERAMVAR("MerpMod LC Timing Lock Value",LCTimingLock,4,"E");
+DEFINERAMVAR("MerpMod LC Timing Retard",LCTimingRetard,4,"E");
+DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,4,"E");
+DEFINERAMVAR("MerpMod Base Timing Final Output",TimingHackOutput,4,"E");
 	
 DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
 DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	
