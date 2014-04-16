@@ -88,7 +88,7 @@ Assert(0,"error in ram hole!");
 #endif
 
 #if POLF_HACKS
-	PolfHack();
+	POLFHack();
 #endif
 
 #if TIMING_HACKS

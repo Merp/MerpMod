@@ -22,7 +22,9 @@ float (*WGDCHooked)() __attribute__ ((section ("RomHole_Functions"))) = (float(*
 void WGDCHack()
 {
 
+#if WGDC_MAIN_HOOK
 EcuHacksMain();
+#endif
 
 #if BOOST_HACKS	
 

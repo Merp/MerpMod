@@ -56,6 +56,16 @@ SHORT TERM:
 #define WGDC_HOOK_DEFINED 1
 #endif
 
+#if defined hPolf && defined sPolf
+#define POLF_HOOK_DEFINED 1
+#endif
+
+#if defined hWgdc && defined sWgdc
+#define WGDC_MAIN_HOOK 1
+#elif defined hPolf && defined sPolf
+#define POLF_MAIN_HOOK 1
+#endif
+
 #if LC_ADJ_HACKS && defined pResumeFlags && defined pCoastFlags
 #define LC_ADJUST 1
 #endif

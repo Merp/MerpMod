@@ -14,41 +14,48 @@
 
 #include "EcuHacks.h"
 
-#if POLF_HACKS
+#if POLF_HOOK_DEFINED
 	void (*PolfHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sPolf;
 
-void PolfHack()
+void POLFHack()
 {		
+
+#if POLF_MAIN_HOOK
+EcuHacksMain();
+#endif
+
+#if POLF_HACKS
 	float OutputValue;
 
-#if POLF_RAM_TUNING
-	if(pRamVariables->POLFRamFlag = 0x01)
-	{
-		OutputValue = Pull3DHooked(&FuelRamTable, *pEngineLoad, *pEngineSpeed);
-	}
-	else
-	{
-#endif
+	#if POLF_RAM_TUNING
+		if(pRamVariables->POLFRamFlag = 0x01)
+		{
+			OutputValue = Pull3DHooked(&FuelRamTable, *pEngineLoad, *pEngineSpeed);
+		}
+		else
+		{
+	#endif
 	
-	OutputValue	= BlendAndSwitch(FuelTableGroup, *pEngineLoad, *pEngineSpeed);
+		OutputValue	= BlendAndSwitch(FuelTableGroup, *pEngineLoad, *pEngineSpeed);
 		
-#if POLF_RAM_TUNING
-	}
+	#if POLF_RAM_TUNING
+		}
+	#endif
+		pRamVariables->LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables->LCFuelEnrichMultiplier;
+	
+		if(pRamVariables->LCFuelMode == LCFuelModeCompensated)
+		{
+			OutputValue += pRamVariables->LCFuelEnrich;
+		}
+		//Now run existing code!
+	
+		pRamVariables->PolfTarget = OutputValue;
+	
+		if(pRamVariables->PolfHackEnabled == 0)
+			pRamVariables->PolfOutput = pRamVariables->PolfTarget;
+		else
+			pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
 #endif
-	pRamVariables->LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables->LCFuelEnrichMultiplier;
-	
-	if(pRamVariables->LCFuelMode == LCFuelModeCompensated)
-	{
-		OutputValue += pRamVariables->LCFuelEnrich;
-	}
-	//Now run existing code!
-	
-	pRamVariables->PolfTarget = OutputValue;
-	
-	if(pRamVariables->PolfHackEnabled == 0)
-		pRamVariables->PolfOutput = pRamVariables->PolfTarget;
-	else
-		pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
 		
 	PolfHooked();
 }

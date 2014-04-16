@@ -18,7 +18,6 @@
 //		HACK CONFIGURATION	//
 //////////////////////////////
 							//
-#define WGDC_MAIN_HOOK 1	//
 #define MEMORY_HACKS 1		//
 #define VIN_HACKS 0			//
 #define VIN_TEST_LOG 0		//

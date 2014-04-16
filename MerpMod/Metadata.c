@@ -263,7 +263,16 @@ const MetaReplace WGDCHook METADATA =
 		address: hWgdc,
 		oldval: sWgdc,
 		newval: (int)WGDCHack,
-		name: STR(WGDC Subroutine Hook)
+		name: STR(Main Subroutine Hook WGDC)
+	};
+#elif POLF_MAIN_HOOK
+const MetaReplace POLFHook METADATA = 
+	{
+		op: OpReplace4Bytes,
+		address: hPolf,
+		oldval: sPolf,
+		newval: (int)POLFHack,
+		name: STR(Main Subroutine Hook POLF)
 	};
 #endif
 
@@ -511,7 +520,7 @@ const MetaReplace WGDCHook METADATA =
 		op: OpReplace4Bytes,
 		address: hPolf,
 		oldval: sPolf,
-		newval: (int)PolfHack,
+		newval: (int)POLFHack,
 		name: STR(POLF Subroutine Hook)
 	};
 	const MetaReplace POLFHookPull METADATA =
