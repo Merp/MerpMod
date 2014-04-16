@@ -69,16 +69,16 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 
 void (*RevLimDeleteHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sRevLimEnd;
 
-void EcuHacksMainRPM() //RPM based Hz main routine, hooked into rev limiter
-{
 #if REVLIM_HACKS
-	RevLimCode();
+	void RevLimHook() //RPM based Hz main routine, hooked into rev limiter
+	{
+		RevLimCode();
+
+		#if SWITCH_HACKS
+			InputUpdate();
+		#endif
+
+		RevLimDeleteHooked();
+
+	}
 #endif
-
-#if SWITCH_HACKS
-	InputUpdate();
-#endif
-
-RevLimDeleteHooked();
-
-}

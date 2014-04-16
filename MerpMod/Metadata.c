@@ -181,16 +181,14 @@ modinfo	:	ModInfo OpDelim
 //					//
 //////////////////////
 
-#if SD_HACKS && REVLIM_HACKS //Only works when SD is enabled (Revlim is called from SD)
 	const MetaReplace RevLimitDelete METADATA = 
 	{
 		op: OpReplace4Bytes,
 		address: hRevLimDelete,
 		oldval: sRevLimStart,
-		newval: (int)EcuHacksMainRPM,
+		newval: (int)RevLimHook,
 		name: STR(Rev Limit Subroutine Hook)
 	};
-#endif
 
 #endif
 

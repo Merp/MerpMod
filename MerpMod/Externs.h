@@ -31,7 +31,7 @@ void ResetRamVariables() ROMCODE;
 void InitRamVariables() ROMCODE;
 
 void EcuHacksMain() ROMCODE;
-void EcuHacksMainRPM() ROMCODE;
+void RevLimHook() ROMCODE;
 
 float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)  ROMCODE;
 float CallSpeedDensityHook()  ROMCODE;
