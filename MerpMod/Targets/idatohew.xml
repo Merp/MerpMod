@@ -427,6 +427,7 @@
         <define name="dLoadSmoothingA"/>
         <define name="dLoadSmoothingB"/>
         <define name="dLoadSmoothingAlt"/>
+		<define name="dLoadSmoothingAlt2"/>
         <define name="dLoadSmoothingFinal"/>
     </category>
     
