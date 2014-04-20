@@ -245,6 +245,14 @@ typedef struct
 	short WGDCMaxRamData[60];
 #endif
 
+#if PORT_LOGGER
+	unsigned char testchar1;
+	unsigned char testchar2;
+	unsigned char testchar3;
+	unsigned char testchar4;
+	unsigned short PortParameters[20];
+	
+#endif
 long	RamHoleSpace;
 char	RamHoleEndMarker;
 	

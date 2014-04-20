@@ -77,6 +77,7 @@ enum DefOps
 	OpStaticY = 0x43210007,
 	OpRAM = 0x43210008,
 	OpRAMBit = 0x43210010,
+	OpRAMAllBits = 0x43210011,
 	OpEnd = 0x00090009,
 };
 
@@ -118,8 +119,24 @@ typedef struct {
 #define DEFINERAM(NAME,ADDR,LENGTH,EID)	const ParamDef ADDR##_ParamDef DEFDATA =	{op: OpRAM , address: (int)ADDR , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }
 #define DEFINERAMBIT(NAME,ADDR,BIT,EID)	const ParamBitDef ADDR##_ParamBitDef DEFDATA =	{op: OpRAMBit , address: (int)ADDR , id: EID , buf: OpEnd , bit: BIT , name: NAME }
 #define DEFINERAMVAR(NAME,ADDR,LENGTH,EID)	const ParamDef ADDR##_ParamDef DEFDATA =	{op: OpRAM , address: (int)&pRamVariables->ADDR , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }//TRY TO FIX THIS??
+#define DEFINERAMVARARRAY(NAME,ADDR,INDEX,LENGTH,EID)	const ParamDef ADDR##INDEX##_ParamDef DEFDATA =	{op: OpRAM , address: (int)&pRamVariables->ADDR[INDEX] , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }//TRY TO FIX THIS??
+#define DEFINERAMVARARRAYALLBITS(NAME,ADDR,INDEX,LENGTH,EID)	const ParamDef ADDR##INDEX##_ParamDef DEFDATA =	{op: OpRAMAllBits , address: (int)&pRamVariables->ADDR[INDEX] , id: EID , buf: OpEnd , length: 0x##LENGTH , name: NAME }//TRY TO FIX THIS??
 //TODO: in sharptune, if no match is found, create a new one to read out RAWDATA!
 
+#if PORT_LOGGER
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger A",PortParameters,0,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger B",PortParameters,1,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger C",PortParameters,2,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger D",PortParameters,3,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger E",PortParameters,4,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger F",PortParameters,5,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger G",PortParameters,6,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger H",PortParameters,7,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger J",PortParameters,8,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger K",PortParameters,9,2,"E");
+DEFINERAMVARARRAYALLBITS("MerpMod Port Logger L",PortParameters,10,2,"E");
+
+#endif
 
 #if PROG_MODE
 DEFINERAMVAR("MerpMod Prog Mode Entry",ProgModeEntry,1,"E");
@@ -145,6 +162,7 @@ DEFIDA1D("Engine Load Smoothing Factor B",dLoadSmoothingB);
 DEFIDA1D("Engine Load Smoothing Factor Final",dLoadSmoothingFinal);
 
 //Switches/flags
+// TODO UNCOMMENT THIS ONCE BITS ARE WORKING IN SHARPTUNE!!!
 #ifdef pClutchFlags
 DEFINERAMBIT("MerpMod Clutch Switch",pClutchFlags, ClutchBitMask,"E");
 #endif

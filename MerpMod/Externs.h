@@ -18,6 +18,10 @@
 //Function Prototypes
 //////////////////////////
 
+#if PORT_LOGGER
+void PortLogger() ROMCODE;
+#endif
+
 unsigned char TestBrakeSwitch()	ROMCODE;
 unsigned char TestClutchSwitch() ROMCODE;
 unsigned char TestCruiseResumeSwitch() ROMCODE;

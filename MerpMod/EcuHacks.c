@@ -65,6 +65,11 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 #if CEL_HACKS
 	CelFlash();
 #endif	
+
+#if PORT_LOGGER
+	PortLogger();
+#endif
+
 }
 
 void (*RevLimDeleteHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sRevLimEnd;
