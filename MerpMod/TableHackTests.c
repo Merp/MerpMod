@@ -73,45 +73,45 @@ void PolfHackUnitTests()
 	*pEngineLoad = 1.0;
 	*pThrottlePlate = 0;
 
-	PolfHack();
+	POLFHack();
 	Assert(pRamVariables->MapBlendRatio == DefaultBlend, "Check for init Blend");
 	Assert(pRamVariables->LCFuelLock == DefaultLCFuelLock, "Check for init LCFuelLock");
 	Assert(pRamVariables->LCFuelMode == DefaultLCFuelMode, "Check for init FuelMode");
 	
 	*pIAM = 0;
-	PolfHack();
+	POLFHack();
 	float ftff = 0;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ftff), "Check IAM Failsafe Map is used");
 	
 	*pEngineSpeed = 7000;
-	PolfHack();
+	POLFHack();
 	ftff = 0.3203125;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ftff), "Check IAM Failsafe Map is used");
 	
 	*pIAM = 1;//TODO 1byte/4byte
-	PolfHack();
+	POLFHack();
 	float ft1 = 0.3203125;	
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ft1), "Check map 1 is used");
 	
 	*pEngineSpeed = 3000;
 	*pIAM = 1;
-	PolfHack();
+	POLFHack();
 	ft1 = 0;	
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ft1), "Check map 1 is used");
 	
 	pRamVariables->MapBlendRatio = 1;
-	PolfHack();
+	POLFHack();
 	float ft2 = 0;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ft2), "Check map 2 is used");
 	
 	*pEngineSpeed = 7000;
 	pRamVariables->MapBlendRatio = 1;
-	PolfHack();
+	POLFHack();
 	ft2 = 0.3203125;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ft2), "Check map 2 is used");
 	
 	pRamVariables->MapBlendRatio = 0.5;
-	PolfHack();
+	POLFHack();
 	float ftb = 0.3203125;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, ftb), "Check Blending Value");
 	
@@ -121,7 +121,7 @@ void PolfHackUnitTests()
 	*pVehicleSpeed = 0.0f;
 	*pThrottlePlate = LCMinimumThrottle + 1;
 	RevLimCode();	//init the rev limiter stuff
-	PolfHack();
+	POLFHack();
 	float locked = 0.35;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, locked), "Check Locked Value");
 	
@@ -130,13 +130,13 @@ void PolfHackUnitTests()
 	RevLimCode();	
 	pRamVariables->LCFuelMode = LCFuelModeCompensated; //Set to compensation
 	pRamVariables->MapBlendRatio = 0;
-	PolfHack();
+	POLFHack();
 	float comp = 0.5625;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, comp), "Check Comp Value");
 	
 	
 	pRamVariables->LCFuelMode = LCFuelModeDisabled;
-	PolfHack();
+	POLFHack();
 	float mine = 0.3203125;
 	Assert(AreCloseEnough(pRamVariables->PolfOutput, mine), "Check Comp Value");
 	
