@@ -70,7 +70,7 @@ float SwitchSelect(TableSubSet tss, float xLookup, float yLookup)
 	return OutputValue;
 }
 
-void InputUpdate()
+void InputUpdate()//TODO: put on SD branch
 {
 	float grad = 0.0000762939453125;
 	float offs = 0.0f;
