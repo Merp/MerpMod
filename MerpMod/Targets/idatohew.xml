@@ -468,6 +468,7 @@
       <subsection name="RomHole_BoostHackTables" />
       <subsection name="RomHole_TimingHackTables" />
       <subsection name="RomHole_MapSwitchTables" />
+	  <subsection name="RomHole_ProgModeTables" />
 	  <subsection name="RomHole_PortLoggerTables" />
       <subsection name="RomHole_Vin" />
       <subsection name="RomHole_Code" />
