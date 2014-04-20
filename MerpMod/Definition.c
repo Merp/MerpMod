@@ -76,7 +76,7 @@ enum DefOps
 	OpY = 0x43210006,
 	OpStaticY = 0x43210007,
 	OpRAM = 0x43210008,
-	OpRAMBit = 0x4321010,
+	OpRAMBit = 0x43210010,
 	OpEnd = 0x00090009,
 };
 
