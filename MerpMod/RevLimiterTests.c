@@ -63,10 +63,10 @@ unsigned char GetFuelCutFlag()
 	return 1;
 }
 
-// Test the rev limiter hack.
-void RevLimUnitTests() __attribute__ ((section ("Misc")));
-void RevLimUnitTests()
-{
+
+void RevLimUnitTest(unsigned char flag, int brake, int clutch, float throttle, float mph, float rpm) __attribute__ ((section ("Misc")));
+void RevLimUnitTest(unsigned char flag, int brake, int clutch, float throttle, float mph, float rpm){
+	
 	ClearRam();
 	//Run initializer
 	PopulateRamVariables();
@@ -76,33 +76,35 @@ void RevLimUnitTests()
 	pRamVariables->VinAuth = 0x01;
 #endif
 
-	SetBrake(0);
-	SetClutch(0);
+	SetBrake(brake);
+	SetClutch(clutch);
+	
+	*pEngineSpeed = rpm;
+	*pVehicleSpeed = mph;
 
-	////
-	//Redline Test
-	///////////////
 	//Clear flag
-	*pFlagsRevLim = 0x00;
-	//Set just below REDLINE, should not cut
-	*pEngineSpeed = pRamVariables->RedLineCut - 1;
-	*pVehicleSpeed = 19.0f;
-	SetClutch(0);
+	*pFlagsRevLim = flag;
+	
 	RevLimCode();
+}
+
+// Test the rev limiter hack.
+void RevLimUnitTests() __attribute__ ((section ("Misc")));
+void RevLimUnitTests()
+{
+
+	//Set just below REDLINE, should not cut
+	//void RevLimUnitTest(unsigned char flag, int brake, int clutch, float throttle, float mph, float rpm) __attribute__ ((section ("Misc")));
+	RevLimUnitTest(0x00,0,0,50,19,DefaultRedLineCut-1);
 	Assert(!GetFuelCutFlag(), "RedLine: Allow fuel at RedLineCut - 1 RPM, moving, clutch not pressed !FuelCut");
 	Assert(!pRamVariables->LCEngaged, "RedLine: Allow fuel at RedLineCut - 1 RPM, moving, clutch not pressed, !LCEngaged");
 	
 	//Set above REDLINE, should cut
-	*pEngineSpeed = pRamVariables->RedLineCut + 1;
-	*pVehicleSpeed = 19.0f;
-	SetClutch(0);
-	RevLimCode();
+	RevLimUnitTest(0x00,0,0,50,18,DefaultRedLineCut+1);
 	Assert(GetFuelCutFlag() && !pRamVariables->LCEngaged, "RedLine: Cut fuel at RedLineCut + 1 RPM, moving, clutch not pressed");	
 
 	//Set back below hysteresis, should RESUME
-	*pEngineSpeed = pRamVariables->RedLineCut - pRamVariables->RedLineHyst - 1;
-	*pVehicleSpeed = 19.0f;
-	SetClutch(0);
+	*pEngineSpeed = DefaultRedLineCut - DefaultRedLineHyst - 1;
 	RevLimCode();
 	Assert(!GetFuelCutFlag() && !pRamVariables->LCEngaged, "RedLine: Resume fuel at RedLineResume - 1 RPM, moving, clutch not pressed");
 	
@@ -114,70 +116,53 @@ void RevLimUnitTests()
 	//Clutch is out
 	//RPM is between LC limit and Redline Limit
 	//Should NOT CUT
-	*pThrottlePlate = 100;
-	*pEngineSpeed = pRamVariables->LaunchControlCut + 1000;
-	*pVehicleSpeed = 0.0f;
-	RevLimCode();
+	RevLimUnitTest(0x00,0,0,100,0,DefaultLaunchControlCut + 1000);
 	//-----V this ! means it SHOULD NOT cut
 	Assert(!GetFuelCutFlag() && !pRamVariables->LCEngaged, "Normal stopped: Allow fuel at LaunchControlCut + 1000 RPM, stopped, no clutch");
 	
 
 	//TEST 2: Repeat test 1 with vehicle speed
 	//Should NOT CUT
-	*pEngineSpeed = pRamVariables->LaunchControlCut + 1000;
-	*pVehicleSpeed = 19.0f;
-	SetClutch(0);
-	RevLimCode();
+	RevLimUnitTest(0x00,0,0,100,50,DefaultLaunchControlCut + 1000);
 	Assert(!GetFuelCutFlag() && !pRamVariables->LCEngaged, "Normal moving: Allow fuel at LaunchControlCut + 1000 RPM, moving, no clutch");
 	
 	//TEST 3: Stationary car
 	//Clutch in
 	//RPM Below limits
 	//Shoudl NOT CUT
-	*pEngineSpeed = pRamVariables->LaunchControlCut - 1;
-	*pVehicleSpeed = 0.0f;
-	*pThrottlePlate = 10.0f;
-	SetClutch(1);
-	RevLimCode();
-	Assert(!GetFuelCutFlag() && !pRamVariables->LCEngaged, "Launch Control: Allow fuel at LaunchControlCut - 1 RPM, standstill, clutch pressed");
+	RevLimUnitTest(0x00,0,1,10,0,DefaultLaunchControlCut -1);
+	Assert(!GetFuelCutFlag() && !pRamVariables->LCEngaged, "Launch Control Test 3 Failed: standstill, clutch pressed");
 	
-	//TEST 4: Repeat test 3
+	//TEST 4: Stationary Car
+	//Apply full throttle, still below limit. Should engage LC mode but not cut.
+	RevLimUnitTest(0x00,0,1,100,0,DefaultLaunchControlCut -1);
+	Assert(!GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control Test 4 Failed: 0 mph, 100 thr, rpm below limit");
+	
+	//TEST 5: Repeat test 3
 	//Set above LC limit
 	//SHOULD CUT FUEL HERE!!
-	*pThrottlePlate = 100.0f;
-	*pEngineSpeed = pRamVariables->LaunchControlCut + 1;
-	*pVehicleSpeed = 0.0f;
-	SetClutch(1);
-	RevLimCode();
+	RevLimUnitTest(0x00,0,1,100,0,DefaultLaunchControlCut +1);
 	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control: Cut fuel at LaunchControlCut + 1 RPM, standstill, clutch pressed");
 	
 	//Test 5: Repeat test 4
 	//Set RPM below limit, but above resume value
 	//SHOULD NOT RESUME YET!
-	*pEngineSpeed = pRamVariables->LaunchControlCut - 1;
-	*pVehicleSpeed = 0.0f;
-	SetClutch(1);
+	*pEngineSpeed = DefaultLaunchControlCut - 1;
 	RevLimCode();
 	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
+	
+	//TODO: run test here for disable during hysteresis?
 	
 	//TEST 6: Repeat test 5
 	//Set below LC hysteresis
 	//SHOULD RESUME HERE, but LC still engaged (on LC limit)
-	*pEngineSpeed = pRamVariables->LaunchControlCut - pRamVariables->LaunchControlHyst - 1;
-	*pVehicleSpeed = 0.0f;
-	SetClutch(1);
+	*pEngineSpeed = DefaultLaunchControlCut - DefaultLaunchControlHyst - 1;
 	RevLimCode();
-	int shit = !GetFuelCutFlag();
-	shit &= pRamVariables->LCEngaged;
-	Assert(shit , "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
+	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged , "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
 	
 	//TEST7: low throttle
 	//Set throttle 
-	*pEngineSpeed = pRamVariables->RedLineCut - 200;
-	*pVehicleSpeed = 0.0f;
-	*pThrottlePlate = LCMinimumThrottle + 1;
-	SetClutch(1);
-	RevLimCode();
+	RevLimUnitTest(0x00,0,1,LCMinimumThrottle+1,0,DefaultRedLineCut -200);
 	//should cut here
 	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
 	*pThrottlePlate -= 10;
@@ -189,15 +174,11 @@ void RevLimUnitTests()
 #if LC_ADJUST
 	//Test LC adjust
 	//Setup:
-	*pEngineSpeed = pRamVariables->RedLineCut - 200;
-	*pVehicleSpeed = 0.0f;
-	*pThrottlePlate = LCMinimumThrottle + 1;
-	SetClutch(1);
-	RevLimCode();
+	RevLimUnitTest(0x00,0,1,LCMinimumThrottle+1,0,DefaultRedLineCut - 200);
 	//should cut here
 	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
 	//Adjust
-	*pEngineSpeed = pRamVariables->LaunchControlCut - pRamVariables->LaunchControlHyst + 5; //Still should cut
+	*pEngineSpeed = DefaultLaunchControlCut - DefaultLaunchControlHyst + 5; //Still should cut
 	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged, "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
 	*pResumeFlags |= ResumeBitMask;
 	//increases limit
@@ -206,7 +187,7 @@ void RevLimUnitTests()
 	//should resume as limit has increased
 	Assert(pRamVariables->LCEngaged, "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed, !LCEngaged");
 	Assert(!GetFuelCutFlag(), "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed !FuelCut");
-	*pResumeFlags = 0x00;
+	*pResumeFlags &= ~ResumeBitMask;
 	*pCoastFlags |= CoastBitMask;
 	WGDCHack();
 	RevLimCode();
@@ -221,7 +202,11 @@ void RevLimUnitTests()
 	
 	//TEST 1: Check that low throttle disables the cut
 	//Set pre-shift conditions
+	
+	#ifdef pCurrentGear
 	*pCurrentGear = 4;
+	#endif
+	
 	*pThrottlePlate = 20;
 	*pVehicleSpeed = 50.0f;
 	*pEngineSpeed = pRamVariables->LaunchControlCut - 100;
@@ -258,8 +243,6 @@ void RevLimUnitTests()
 	RevLimCode();
 	Assert(!GetFuelCutFlag(), "Flat Foot Shifting: Resume fuel at FlatFootShiftResume - 1 RPM, moving, clutch pressed");
 	*pThrottlePlate = 100;
-	
-
 	
 	// Verify the other bits in the rev limiter flag are not modified.
 	// ONLY NECESSARY FOR BITMASKING
