@@ -29,9 +29,9 @@ float TimingHack()
 	float subIam;
 	float iam;
 
-	subIam = 1 - IAM;
+	subIam = HighPass(1 - IAM, 0.0f);
 	
-	pRamVariables->MaxSubtractiveKCA = BlendAndSwitch(KnockCorrectionRetardTableGroup, *pEngineLoad, *pEngineSpeed);
+	pRamVariables->MaxSubtractiveKCA = HighPass(BlendAndSwitch(KnockCorrectionRetardTableGroup, *pEngineLoad, *pEngineSpeed),0.0f);
 	
 	pRamVariables->SubtractiveKCA = subIam *  pRamVariables->MaxSubtractiveKCA;
 	
@@ -56,11 +56,11 @@ float TimingHack()
 	}
 	else if(pRamVariables->LCTimingMode == LCTimingModeCompensated)
 	{
-		pRamVariables->LCTimingRetard = Pull3DHooked(&LCTimingRetardTable, *pVehicleSpeed, *pEngineSpeed);
+		pRamVariables->LCTimingRetard = HighPass(Pull3DHooked(&LCTimingRetardTable, *pVehicleSpeed, *pEngineSpeed),0.0f);
 	
 		pRamVariables->LCTimingRetard *= pRamVariables->LCTimingRetardMultiplier;
 		
-		OutputValue -= pRamVariables->LCTimingRetard;
+		OutputValue -= HighPass(pRamVariables->LCTimingRetard,0.0f);
 	}
 
 	pRamVariables->BaseTiming = OutputValue;

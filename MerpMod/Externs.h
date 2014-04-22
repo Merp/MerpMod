@@ -70,6 +70,8 @@ void SetClutch(int value) __attribute__ ((section ("Misc")));
 void SetBrake(int value) __attribute__ ((section ("Misc")));
 
 float Abs(float input) ROMCODE;
+float LowPass(float input, float limit) ROMCODE;
+float HighPass(float input, float limit) ROMCODE;
 
 void RevLimCode(void) ROMCODE;
 void RevLimReset(void) ROMCODE;

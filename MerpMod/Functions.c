@@ -21,3 +21,19 @@ float Abs(float input)
 	else
 		return input * -1.0f;
 }
+
+float LowPass(float input, float limit)
+{
+	if(input < limit)
+		return input;
+	else
+		return limit;
+}
+
+float HighPass(float input, float limit)
+{
+	if(input > limit)
+		return input;
+	else
+		return limit;
+}
