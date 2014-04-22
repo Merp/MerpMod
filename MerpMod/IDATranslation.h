@@ -63,6 +63,18 @@
 #define PrimaryOEMTimingTable tBaseTimingPNonCruise
 #endif
 
+#ifdef tTargetBoost
+#define OEMTargetBoostTable tTargetBoost
+#endif
+
+#ifdef tWgdcInitial
+#define OEMWGDCInitialTable tWgdcInitial
+#endif
+
+#ifdef tWgdcMax
+#define OEMWGDCMaxTable tWgdcMax
+#endif
+
 /* OLD STUFF
 #define pEngineSpeed                      ((float*)E_ENGINE_SPEED)
 #define pVehicleSpeed                    ((float*)E_VEHICLE_SPEED)

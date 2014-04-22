@@ -161,6 +161,10 @@ typedef struct
 #endif
 
 #if BOOST_HACKS	
+	unsigned char BoostHackEnabled;
+	unsigned char bhempty;
+	unsigned char bhempty1;
+	unsigned char bhempty2;
 	//Target Boost Params
 	float TargetBoost;
 		
