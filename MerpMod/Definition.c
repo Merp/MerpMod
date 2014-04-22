@@ -287,6 +287,7 @@ DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,4,"E");
 	
 	//TODO add ENABLE SWITCHES
 #if SWITCH_HACKS
+DEFNEW1D("Primary Open Loop Fuel Hack Enable",DefaultPolfHackEnabled);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Intelligent",FuelTable1i);
 DEFNEW3D("Primary Open Loop Fueling Table 2 Intelligent",FuelTable2i);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Sport",FuelTable1s);
@@ -347,6 +348,7 @@ DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,1,"E");
 
 
 #if BOOST_HACKS
+DEFNEW1D("Boost Hack Enable",DefaultBoostHackEnabled);
 DEFINERAMVAR("MerpMod PGWG Compensation",PGWGComp,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Wastegate Table 1 Intelligent",PGWGTable1i);
@@ -430,6 +432,7 @@ DEFNEW1D("Default Launch Control Timing Retard Multiplier",DefaultLCTimingRetard
 DEFNEW3D("Launch Control Timing Retard Table",LCTimingRetardTable);
 	
 #if SWITCH_HACKS
+DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);
 DEFNEW3D("Base Timing Table 1 Intelligent",TimingTable1i);
 DEFNEW3D("Base Timing Table 2 Intelligent",TimingTable2i);
 DEFNEW3D("Base Timing Table 1 Sport",TimingTable1s);

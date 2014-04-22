@@ -130,6 +130,10 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables->LCTimingRetardMultiplier = DefaultLCTimingRetardMultiplier;
 #endif
 
+#if BOOST_HACKS
+	pRamVariables->BoostHackEnabled = DefaultBoostHackEnabled;
+#endif
+
 #if SD_HACKS
 	pRamVariables->MafMode = DefaultMafMode;
 #endif
