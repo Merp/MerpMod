@@ -271,7 +271,8 @@ DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
 DEFNEW1D("Map Switch Input Mode",MapSwitchInput);
 DEFNEW1D("Map Blending Input Mode",BlendRatioInput);
-DEFINERAMVAR("MerpMod Map Blending Ratio Direct",MapBlendRatio,"float","E");
+DEFINERAMVAR("MerpMod Map Switch",MapSwitch,"uint8","E");
+DEFINERAMVAR("MerpMod Map Blending Ratio",MapBlendRatio,"float","E");
 DEFINERAMVAR("MerpMod TGV Left Scaled",TGVLeftScaled,"float","E");	
 DEFINERAMVAR("MerpMod TGV Right Scaled",TGVRightScaled,"float","E");
 
