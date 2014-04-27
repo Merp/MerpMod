@@ -65,7 +65,7 @@ float TimingHack()
 
 	pRamVariables->BaseTiming = OutputValue;
 	
-	if(pRamVariables->TimingHackEnabled == 0)
+	if(pRamVariables->TimingHackEnabled == 0x01)
 		pRamVariables->TimingHackOutput = pRamVariables->BaseTiming - Abs(pRamVariables->SubtractiveKCA);
 	else
 		pRamVariables->TimingHackOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	

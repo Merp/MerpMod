@@ -51,7 +51,7 @@ EcuHacksMain();
 	
 		pRamVariables->PolfTarget = OutputValue;
 	
-		if(pRamVariables->PolfHackEnabled == 0)
+		if(pRamVariables->PolfHackEnabled == 0x01)//TODO: ENUM
 			pRamVariables->PolfOutput = pRamVariables->PolfTarget;
 		else
 			pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	

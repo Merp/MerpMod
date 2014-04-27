@@ -78,7 +78,7 @@ EcuHacksMain();
 	
 	pRamVariables->PGWGComp = PGWGComp;
 	
-	if(pRamVariables->BoostHackEnabled == 0)
+	if(pRamVariables->BoostHackEnabled == 0x01)
 	{
 		#if WGDC_LOCK
 		//Apply locks
@@ -162,7 +162,7 @@ void TargetBoostHack()
 	
 	pRamVariables->PGTBComp = PGTBComp;
 	
-	if(pRamVariables->BoostHackEnabled == 0)
+	if(pRamVariables->BoostHackEnabled == 0x01)
 		pRamVariables->TargetBoost = TargetBoost * PGTBComp;
 	else
 		pRamVariables->TargetBoost = Pull3DHooked((void*)OEMTargetBoostTable, *pReqTorque, *pEngineSpeed);	
