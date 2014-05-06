@@ -109,6 +109,7 @@ extern ThreeDTable TemperatureCompensationTable;
 extern ThreeDTable AtmosphericCompensationTable;
 extern ThreeDTable SDBlendingTable;
 
+extern TwoDTable InjectorScalingTable;
 
 extern unsigned char DefaultPolfHackEnabled;
 extern TableGroup FuelTableGroup;

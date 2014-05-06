@@ -32,7 +32,7 @@
 #define TIMING_HACKS 1		//
 #define POLF_HACKS 1		//	
 #define PGWG_HACKS 1		//
-#define INJECTOR_HACKS 0	//
+#define INJECTOR_HACKS 1	//
 							//
 //////////////////////////////
 							
@@ -40,7 +40,7 @@
 //		RAMTUNING FLAGS		//
 //////////////////////////////
 							//
-#define RAM_PERSIST 1		//
+#define RAM_PERSIST 0		//
 #define VE_RAMTUNING 0		//
 #define POLF_RAMTUNING 0	//
 #define TIMING_RAMTUNING 0	//

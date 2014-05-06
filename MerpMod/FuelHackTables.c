@@ -14,6 +14,25 @@
 
 #include "EcuHacks.h"
 
+#if SWITCH_HACKS && INJECTOR_HACKS
+
+float INJECTOR_SCALING_ROWS[11] FUELDATA =
+{0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0};
+
+short INJECTOR_SCALING_DATA[11] FUELDATA =
+{20000,20100,20200,20300,20400,20500,20600,20700,20800,20900,21000};//TODO: document the native units here
+
+TwoDTable InjectorScalingTable  FUELDATA = {
+	.columnCount = 11,
+	.tableType = UInt16Table2D,
+	.columnHeaderArray = INJECTOR_SCALING_ROWS,
+	.tableCells = INJECTOR_SCALING_DATA,
+	.multiplier = 0.824f,	//todo unit test these
+	.offset = 0.0 };
+//! 27000/32767  (0-27000.00 range, 16bit precision)
+
+#endif
+
 #if POLF_HACKS
 
 unsigned char DefaultPolfHackEnabled FUELDATA = 0x01;

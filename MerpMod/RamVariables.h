@@ -26,14 +26,9 @@ typedef struct
 	unsigned char VehicleIdent[20];
 #endif
 
+#if INJECTOR_HACKS
 	float InjectorScaling;
-	float Mfempty;
-	float Mfempty1;
-	float Mfempty2;
-//	float Mfempty3;
-//	float Mfempty4;
-//	float Mfempty5;
-//	float Mfempty6;
+#endif
 	
 #if SPARK_CUT
 	unsigned char SparkEventsX;

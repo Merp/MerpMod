@@ -267,6 +267,9 @@ DEFINERAMVAR("MerpMod Master Init Flag",MasterInitFlag,"uint8","E");
 DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E");
 DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E");
 
+DEFNEW2D("TGV Left Input Scaling",TGVLeftScaling);
+DEFNEW2D("TGV Right Input Scaling",TGVRightScaling);
+
 DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
 DEFNEW1D("Map Switch Input Mode",MapSwitchInput);
@@ -278,6 +281,12 @@ DEFINERAMVAR("MerpMod TGV Right Scaled",TGVRightScaled,"float","E");
 
 DEFNEW1D("Default Map Blending Ratio",DefaultMapBlendRatio);
 DEFNEW1D("Default Map Switch",DefaultMapSwitch);
+
+#if INJECTOR_HACKS
+DEFNEW2D("Map Blending Injector Scaling",InjectorScalingTable);
+DEFINERAMVAR("MerpMod Injector Scaling",InjectorScaling,"float","E");
+#endif
+
 #endif
 
 #if POLF_HACKS
@@ -378,41 +387,41 @@ DEFNEW3D("Per Gear Target Boost Table 2",PGTBTable2i);
 
 DEFINERAMVAR("MerpMod Max WGDC Per Gear",WGDCMax,4,"E");
 #if SWITCH_HACKS
-DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Intelligent",WGDCMaxTable1i);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Intelligent",WGDCMaxTable2i);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Sport",WGDCMaxTable1s);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Sport",WGDCMaxTable2s);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 1 Sport Sharp",WGDCMaxTable1ss);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 2 Sport Sharp",WGDCMaxTable2ss);
+DEFNEW3D("Max Wastegate Duty Compensation Table 1 Intelligent",WGDCMaxTable1i);
+DEFNEW3D("Max Wastegate Duty Compensation Table 2 Intelligent",WGDCMaxTable2i);
+DEFNEW3D("Max Wastegate Duty Compensation Table 1 Sport",WGDCMaxTable1s);
+DEFNEW3D("Max Wastegate Duty Compensation Table 2 Sport",WGDCMaxTable2s);
+DEFNEW3D("Max Wastegate Duty Compensation Table 1 Sport Sharp",WGDCMaxTable1ss);
+DEFNEW3D("Max Wastegate Duty Compensation Table 2 Sport Sharp",WGDCMaxTable2ss);
 #else
-DEFNEW3D("Max Wastegate Duty Multiplier Table 1",WGDCMaxTable1i);
-DEFNEW3D("Max Wastegate Duty Multiplier Table 2",WGDCMaxTable2i);
+DEFNEW3D("Max Wastegate Duty Compensation Table 1",WGDCMaxTable1i);
+DEFNEW3D("Max Wastegate Duty Compensation Table 2",WGDCMaxTable2i);
 #endif
 
 DEFINERAMVAR("MerpMod Initial WGDC Per Gear",WGDCInitial,"float","E");
 #if SWITCH_HACKS
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Intelligent",WGDCInitialTable1i);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Intelligent",WGDCInitialTable2i);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Sport",WGDCInitialTable1s);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Sport",WGDCInitialTable2s);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 1 Sport Sharp",WGDCInitialTable1ss);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 2 Sport Sharp",WGDCInitialTable2ss);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 1 Intelligent",WGDCInitialTable1i);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 2 Intelligent",WGDCInitialTable2i);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 1 Sport",WGDCInitialTable1s);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 2 Sport",WGDCInitialTable2s);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 1 Sport Sharp",WGDCInitialTable1ss);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 2 Sport Sharp",WGDCInitialTable2ss);
 #else
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 1",WGDCInitialTable1i);
-DEFNEW3D("Initial Wastegate Duty Multiplier Table 2",WGDCInitialTable2i);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 1",WGDCInitialTable1i);
+DEFNEW3D("Initial Wastegate Duty Compensation Table 2",WGDCInitialTable2i);
 #endif
 
 DEFINERAMVAR("MerpMod Target Boost Output",TargetBoost,"float","E");
 #if SWITCH_HACKS
-DEFNEW3D("Target Boost Multiplier Table 1 Intelligent",TargetBoostTable1i);
-DEFNEW3D("Target Boost Multiplier Table 2 Intelligent",TargetBoostTable2i);
-DEFNEW3D("Target Boost Multiplier Table 1 Sport",TargetBoostTable1s);
-DEFNEW3D("Target Boost Multiplier Table 2 Sport",TargetBoostTable2s);
-DEFNEW3D("Target Boost Multiplier Table 1 Sport Sharp",TargetBoostTable1ss);
-DEFNEW3D("Target Boost Multiplier Table 2 Sport Sharp",TargetBoostTable2ss);
+DEFNEW3D("Target Boost Compensation Table 1 Intelligent",TargetBoostTable1i);
+DEFNEW3D("Target Boost Compensation Table 2 Intelligent",TargetBoostTable2i);
+DEFNEW3D("Target Boost Compensation Table 1 Sport",TargetBoostTable1s);
+DEFNEW3D("Target Boost Compensation Table 2 Sport",TargetBoostTable2s);
+DEFNEW3D("Target Boost Compensation Table 1 Sport Sharp",TargetBoostTable1ss);
+DEFNEW3D("Target Boost Compensation Table 2 Sport Sharp",TargetBoostTable2ss);
 #else
-DEFNEW3D("Target Boost Multiplier Table 1",TargetBoostTable1);
-DEFNEW3D("Target Boost Multiplier Table 2",TargetBoostTable2);
+DEFNEW3D("Target Boost Compensation Table 1",TargetBoostTable1);
+DEFNEW3D("Target Boost Compensation Table 2",TargetBoostTable2);
 #endif
 	
 	#if WGDC_LOCK
