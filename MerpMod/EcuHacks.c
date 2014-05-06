@@ -70,6 +70,10 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 	PortLogger();
 #endif
 
+#if RAM_HOLE_SCANNER
+	RamHoleScanner();
+#endif
+
 #if SWITCH_HACKS
 	InputUpdate();
 #endif

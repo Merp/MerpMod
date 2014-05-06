@@ -139,6 +139,13 @@ DEFINERAMVARARRAYALLBITS("MerpMod Port Logger L",PortParameters,10,"uint16","E")
 
 #endif
 
+#if RAM_HOLE_SCANNER
+DEFINERAMVAR("MerpMod Ram Hole Scanner Address",ScannedAddress,"uint16","E");
+DEFINERAMVAR("MerpMod Ram Hole Scanner Value",ScannedValue,"uint16","E");
+//DEFINERAMVAR("MerpMod Ram Hole Scanner Composite",ScannedAddress,"uint32","E");
+DEFINERAMVAR("MerpMod Ram Hole Scanner Stack Pointer",ScannedStackPointer,"uint32","E");
+#endif
+
 #if PROG_MODE
 DEFINERAMVAR("MerpMod Prog Mode Entry",ProgModeEntry,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Wait",ProgModeWait,"uint8","E");

@@ -252,6 +252,13 @@ typedef struct
 	unsigned short PortParameters[20];
 	
 #endif
+
+#if RAM_HOLE_SCANNER
+	unsigned short ScannedAddress;
+	unsigned short ScannedValue;
+	unsigned long ScannedStackPointer;
+#endif
+
 long	RamHoleSpace;
 char	RamHoleEndMarker;
 	
