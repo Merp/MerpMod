@@ -167,7 +167,11 @@ DEFIDA1D("Engine Load Smoothing Factor Final",dLoadSmoothingFinal);
 #ifdef pClutchFlags
 DEFINERAMBIT("MerpMod Clutch Switch",pClutchFlags, ClutchBitMask,"E");
 #endif
+
+#ifdef pBrakeFlags
 DEFINERAMBIT("MerpMod Brake Switch",pBrakeFlags, BrakeBitMask,"E");
+#endif
+
 #ifdef pResumeFlags
 	DEFINERAMBIT("MerpMod Cruise Resume Switch",pResumeFlags, ResumeBitMask,"E");
 #endif
