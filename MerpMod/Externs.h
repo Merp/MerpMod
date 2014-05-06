@@ -22,6 +22,10 @@
 void PortLogger() ROMCODE;
 #endif
 
+#if RAM_HOLE_SCANNER
+void RamHoleScanner() ROMCODE;
+#endif
+
 unsigned char TestBrakeSwitch()	ROMCODE;
 unsigned char TestClutchSwitch() ROMCODE;
 unsigned char TestCruiseResumeSwitch() ROMCODE;
