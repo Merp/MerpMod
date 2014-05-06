@@ -71,7 +71,7 @@ The current launch control RPM is displayed in ranges of 1000 RPM where:
 3 flashes = 3000-4000 RPM
 ...
 
-4. AM Adjust
+4. iAM Adjust
 ----------
 
 The current IAM value is displayed in increments of 0.1 where:
