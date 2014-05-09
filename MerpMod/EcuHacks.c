@@ -84,7 +84,7 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 
 #if POLF_HACKS && !POLF_MAIN_HOOK
 	POLFHack();
-#else
+#elif BOOST_HACKS && !WGDC_MAIN_HOOK
 	WGDCHack();
 #endif
 
