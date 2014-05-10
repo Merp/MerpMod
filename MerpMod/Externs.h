@@ -48,6 +48,7 @@ void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char 
 void CelFlash()	ROMCODE;
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
+void InjectorHack() ROMCODE;
 void POLFHack()  ROMCODE;
 float TimingHack()  ROMCODE;
 float Pull2DRamHook(float* table, float xLookup) ROMCODE;
