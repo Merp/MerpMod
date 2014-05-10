@@ -79,7 +79,11 @@ Assert(0,"error in ram hole!");
 #endif
 
 #if SD_HACKS
-	CallSpeedDensityHook();//This covers SD and Revlim
+	CallSpeedDensityHook();//This covers SD
+#endif
+
+#if REVLIM_HACKS
+	RevLimHook();
 #endif
 
 #if WGDC_HOOK_DEFINED
@@ -99,7 +103,9 @@ Assert(0,"error in ram hole!");
 	TimingHack();
 #endif
 
+#if MEMORY_HACKS
 	CallMemoryReset();
+#endif
 }
 
 
