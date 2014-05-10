@@ -102,6 +102,16 @@ Assert(0,"error in ram hole!");
 	CallMemoryReset();
 }
 
+
+#if ARCH_SH7055
+#define ARCH_STACK_POINTER 0xFFFF7000
+#elif ARCH_SH7058
+#define ARCH_STACK_POINTER 0xFFFF1000
+#else
+#define ARCH_STACK_POINTER 0xFFFF1000
+#endif
+unsigned long ArchStackPointer __attribute__ ((section ("RomHole_Misc"),aligned(8))) = ARCH_STACK_POINTER;
+
 void SetValues() __attribute__ ((section ("Misc")));
 void SetValues() 
 {
