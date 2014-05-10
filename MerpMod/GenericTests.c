@@ -87,6 +87,10 @@ Assert(0,"error in ram hole!");
 					//Celflash and/or wgdc/boost hacks, progmode, pgwg
 #endif
 
+#if SWITCH_HACKS && INJECTOR_HACKS
+	InjectorHack();
+#endif
+
 #if POLF_HACKS
 	POLFHack();
 #endif
