@@ -35,19 +35,19 @@ void SetClutch(int value)
 }
 #endif
 
+#ifdef pBrakeFlags
 void SetBrake(int value)
 {
-	#ifdef pBrakeFlags
-		if (value == 0)
-		{
-			*pBrakeFlags &= ~(BrakeBitMask);
-		}
-		else
-		{
-			*pBrakeFlags |= BrakeBitMask;
-		}
-	#endif
+	if (value == 0)
+	{
+		*pBrakeFlags &= ~(BrakeBitMask);
+	}
+	else
+	{
+		*pBrakeFlags |= BrakeBitMask;
+	}
 }
+#endif
 
 #if REVLIM_HACKS
 
@@ -76,9 +76,12 @@ void RevLimUnitTest(unsigned char flag, int brake, int clutch, float throttle, f
 	pRamVariables->VinAuth = 0x01;
 #endif
 
+#ifdef pBrakeFlags
 	SetBrake(brake);
+#endif
+
 	SetClutch(clutch);
-	
+	*pThrottlePlate = throttle;
 	*pEngineSpeed = rpm;
 	*pVehicleSpeed = mph;
 
@@ -158,7 +161,7 @@ void RevLimUnitTests()
 	//SHOULD RESUME HERE, but LC still engaged (on LC limit)
 	*pEngineSpeed = DefaultLaunchControlCut - DefaultLaunchControlHyst - 1;
 	RevLimCode();
-	Assert(GetFuelCutFlag() && pRamVariables->LCEngaged , "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
+	Assert(!GetFuelCutFlag() && pRamVariables->LCEngaged , "Launch Control: Resume fuel at LaunchControlResume - 1 RPM, standstill, clutch pressed");
 	
 	//TEST7: low throttle
 	//Set throttle 
@@ -250,7 +253,9 @@ void RevLimUnitTests()
 	*pEngineSpeed = 6000.0f;
 	*pVehicleSpeed = 0.0f;
 	SetClutch(1);
+	#ifdef pBrakeFlags
 	SetBrake(0);
+	#endif
 	*pFlagsRevLim = 0x00;					
 	RevLimCode();
 	unsigned char flags = *pFlagsRevLim;
