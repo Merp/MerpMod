@@ -1,7 +1,7 @@
-#define MOD_DATE 13.5.23.149
+#define MOD_DATE 14.5.10.044
 
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
+#include "Flash.h"
+#define MOD_CONFIG Flash
 #define MOD_BUILD Testing
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DH200Y
@@ -19,13 +19,18 @@
 #define sPull3DFloat (0x00002110)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x000145AC)
 #define sRevLimStart (0x0002C8A8)
 #define sRevLimEnd (0x0002C8DE)
-#define pFlagsRevLim ((char*)0xFFFF7008)
+#define pFlagsRevLim ((unsigned char*)0xFFFF7008)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -47,7 +52,7 @@
 
 #define sCelTrigger (0x00073048)
 #define hCelSignal (0x00073160)
-#define pCelSignalOem ((char*)0xFFFF89BA)
+#define pCelSignalOem ((unsigned char*)0xFFFF89BA)
 
 /////////////////////
 // Boost Hacks
@@ -84,16 +89,16 @@
 // Flags-Signals
 /////////////////////
 
-#define pClutchFlags ((char*)0xFFFF67B5)
-#define ClutchBitMask ((char)0x80)
+#define pClutchFlags ((unsigned char*)0xFFFF67B5)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6930)
+#define pFbkc1 ((unsigned char*)0xFFFF6930)
 #define pFbkc4 ((float*)0xFFFF72DC)
-#define pIam1 ((char*)0xFFFF6935)
+#define pIam1 ((unsigned char*)0xFFFF6935)
 #define pIam4 ((float*)0xFFFF28F4)
 #define pEngineSpeed ((float*)0xFFFF67DC)
 #define pVehicleSpeed ((float*)0xFFFF67D4)
@@ -106,7 +111,7 @@
 #define pEngineLoad ((float*)0xFFFF660C)
 #define pReqTorque ((float*)0xFFFF75D0)
 #define pThrottlePlate ((float*)0xFFFF6508)
-#define pCurrentGear ((char*)0xFFFF68E5)
+#define pCurrentGear ((unsigned char*)0xFFFF68E5)
 #define pAf1Res ((float*)0xFFFF5F08)
 
 /////////////////////
