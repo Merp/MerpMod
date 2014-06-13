@@ -1,8 +1,8 @@
-#define MOD_DATE 13.8.14.2226
+#define MOD_DATE 14.6.12.1258
 
 #include "Flash.h"
 #define MOD_CONFIG Flash
-#define MOD_BUILD Debug
+#define MOD_BUILD Testing
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DH200V
 #define ECU_IDENTIFIER 4352594006
