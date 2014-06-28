@@ -1,5 +1,9 @@
 SECTIONS
 {
+	REVLIM_START 0x00033D68 : AT (0x00033D68)
+	{
+		*(RevLimit)
+	}
 	SPARK_CUT_OCR_START 0x0000A756 : AT (0x0000A756)
 	{
 		*(SparkCutOCRhook)
@@ -19,6 +23,8 @@ SECTIONS
 		*(RomHole_BoostHackTables)
 		*(RomHole_TimingHackTables)
 		*(RomHole_MapSwitchTables)
+		*(RomHole_ProgModeTables)
+		*(RomHole_PortLoggerTables)
 		*(RomHole_Vin)
 		*(RomHole_Code)
 		*(RomHole_Functions)

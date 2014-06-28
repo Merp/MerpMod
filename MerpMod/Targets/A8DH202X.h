@@ -1,7 +1,7 @@
-#define MOD_DATE 13.8.29.2358
+#define MOD_DATE 14.6.24.2050
 
-#include "Switch.h"
-#define MOD_CONFIG Switch
+#include "Flash.h"
+#define MOD_CONFIG Flash
 #define MOD_BUILD Testing
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DH202X
