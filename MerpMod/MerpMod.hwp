@@ -138,6 +138,9 @@
 "Object file" "GNU Linker" "GNU Assembler" 
 "Object file" "GNU Linker" "GNU Compiler" 
 [PROJECT_FILES]
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A2TB100U.h" "User" "C header file|ECU Specific Headers|JDM|SGT|A2TB100U_JDM_2008_SGT" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A2TB100U.txt" "User" "C header file|ECU Specific Headers|JDM|SGT|A2TB100U_JDM_2008_SGT" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A2TB100UConfig.h" "User" "C header file|ECU Specific Headers|JDM|SGT|A2TB100U_JDM_2008_SGT" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "User" "C source file" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "User" "C source file|Data & Tables" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "User" "C source file" 2 
@@ -359,6 +362,8 @@
 "C header file|ECU Specific Headers|JDM" "" 
 "C header file|ECU Specific Headers|JDM|FSTI" "" 
 "C header file|ECU Specific Headers|JDM|FSTI|A2WC012E_JDM_2007_FSTI" "" 
+"C header file|ECU Specific Headers|JDM|SGT" "" 
+"C header file|ECU Specific Headers|JDM|SGT|A2TB100U_JDM_2008_SGT" "" 
 "C header file|ECU Specific Headers|JDM|STI" "" 
 "C header file|ECU Specific Headers|JDM|STI|AZ1G301F_JDM_2008_STI" "" 
 "C header file|ECU Specific Headers|JDM|STI|AZ1G500F_JDM_2009_STI" "" 
