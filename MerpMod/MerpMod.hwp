@@ -138,6 +138,9 @@
 "Object file" "GNU Linker" "GNU Assembler" 
 "Object file" "GNU Linker" "GNU Compiler" 
 [PROJECT_FILES]
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A8DH200O.h" "User" "C header file|ECU Specific Headers|ADM|A8DH200O_ADM_2006_WRX" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A8DH200O.txt" "User" "C header file|ECU Specific Headers|ADM|A8DH200O_ADM_2006_WRX" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\Targets\A8DH200OConfig.h" "User" "C header file|ECU Specific Headers|ADM|A8DH200O_ADM_2006_WRX" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "User" "C source file" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "User" "C source file|Data & Tables" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "User" "C source file" 2 
@@ -337,6 +340,7 @@
 "C header file|ECU Specific Headers" "" 
 "C header file|ECU Specific Headers|ADM" "" 
 "C header file|ECU Specific Headers|ADM|A2ZJD02G_ADM_2004_LibertyGT" "" 
+"C header file|ECU Specific Headers|ADM|A8DH200O_ADM_2006_WRX" "" 
 "C header file|ECU Specific Headers|ADM|A8DH200V_ADM_2006_STI" "" 
 "C header file|ECU Specific Headers|ADM|AZ1G900C_ADM_2011_WRX" "" 
 "C header file|ECU Specific Headers|EDM" "" 
