@@ -21,11 +21,9 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 unsigned char DefaultRevLimMode REVLIMDATA = 1;
-unsigned char DefaultFlatFootShiftMode	REVLIMDATA = 2;
 float DefaultRedLineCut REVLIMDATA = 7200.0f;
 float DefaultRedLineHyst REVLIMDATA = 50.0f;
 float DefaultFlatFootShiftHyst REVLIMDATA = 50.0f;
-float DefaultFlatFootShiftAutoDelta REVLIMDATA = 0.0f;
 float DefaultFlatFootShiftStaticDelta REVLIMDATA = 4000.0f;
 float DefaultFlatFootShiftSpeedThreshold REVLIMDATA = 40.0f;
 float DefaultFlatFootShiftRpmThreshold REVLIMDATA = 4500.0f;
@@ -34,6 +32,8 @@ float DefaultLaunchControlCut REVLIMDATA = 4000.0f;
 float DefaultLaunchControlHyst REVLIMDATA = 50.0f;
 
 #ifdef pCurrentGear
+unsigned char DefaultFlatFootShiftMode	REVLIMDATA = 1;
+float DefaultFlatFootShiftAutoDelta REVLIMDATA = 0.0f;
 float GearRatios[6] REVLIMDATA = 
 {3.636,2.375,1.761,1.346,0.971,0.756};
 #endif
