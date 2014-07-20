@@ -97,6 +97,8 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables->LaunchControlHyst = DefaultLaunchControlHyst;
 	pRamVariables->FlatFootShiftSpeedThreshold = DefaultFlatFootShiftSpeedThreshold;
 	pRamVariables->FlatFootShiftRpmThreshold = DefaultFlatFootShiftRpmThreshold;
+	pRamVariables->ClutchSwitchLast = *pClutchFlags & ClutchBitMask;
+	RevLimReset();
 #endif 
 
 #if VIN_HACKS

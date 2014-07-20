@@ -70,13 +70,12 @@ typedef struct
 	//Rev Limiter params
 	unsigned char  	RevLimInitFlag;  //96
 	unsigned char  	RevLimMode;
-	char	FlatFootShiftMode;
-	char	LCEngaged;
-	char	FFSEngaged;
-	char	elemptteey;
-	char	elempty1;
+	unsigned char	FlatFootShiftMode;
+	unsigned char	LCEngaged;
+	unsigned char	FFSEngaged;
+	unsigned char	ClutchSwitchLast;
+	unsigned char FFSGear;
 	char	eleemee2;
-	float	FFSGear;
 	float 	RevLimCut;	//96
 	float 	RevLimResume;
   	float  	RedLineCut;

@@ -254,7 +254,7 @@ DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);
 DEFINERAMVAR("MerpMod FFS Mode",FlatFootShiftMode,"uint8","E");//TODO add to def base
 DEFINERAMVAR("MerpMod LC Engaged Signal",LCEngaged,"uint8","E");
 DEFINERAMVAR("MerpMod FFS Engaged Signal",FFSEngaged,"uint8","E");
-DEFINERAMVAR("MerpMod FFS Gear Monitor",FFSGear,"uint8","E");
+DEFINERAMVAR("MerpMod FFS Gear Monitor 1-Byte",FFSGear,"uint8","E");
 DEFINERAMVAR("MerpMod RevLimit Active Cut RPM",RevLimCut,"float","E");
 DEFINERAMVAR("MerpMod RevLimit Active Resume RPM",RevLimResume,"float","E");
 DEFINERAMVAR("MerpMod RedLine Cut RPM",RedLineCut,"float","E");

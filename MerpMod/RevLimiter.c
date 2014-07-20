@@ -45,16 +45,62 @@ void RevLimCode()
 void RevLimReset()
 {
 	pRamVariables->RevLimCut = pRamVariables->RedLineCut;
-				pRamVariables->RevLimResume = pRamVariables->RedLineCut - HighPass(pRamVariables->RedLineHyst,0.0f);
-				//Disable FFS if clutch is out or brake is pressed
-				pRamVariables->FFSEngaged = 0;
-				pRamVariables->LCEngaged = 0;
-				#ifdef pCurrentGear
-				if(*pCurrentGear > 0)
-				{
-					pRamVariables->FFSGear = *pCurrentGear;
-				}
-				#endif
+	pRamVariables->RevLimResume = pRamVariables->RedLineCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+	//Disable FFS if clutch is out or brake is pressed
+	pRamVariables->FFSEngaged = 0;
+	pRamVariables->LCEngaged = 0;
+	#ifdef pCurrentGear
+	if(*pCurrentGear > 0)
+	{
+		pRamVariables->FFSGear = *pCurrentGear;
+	}
+	#endif
+}
+
+void TestFFSEntry()
+{
+	//check for FFS speed threshold
+	if (*pVehicleSpeed > pRamVariables->FlatFootShiftSpeedThreshold
+	&& pRamVariables->FlatFootShiftMode != 0 
+	&& *pThrottlePlate > FFSMinimumThrottle)
+	{
+		
+		pRamVariables->LCEngaged = 0;
+		
+		//calculate target rpm
+		if(pRamVariables->FFSEngaged == 0 && *pEngineSpeed > pRamVariables->FlatFootShiftRpmThreshold)
+		{
+			pRamVariables->FFSEngaged = 1;
+			pRamVariables->FFSRPM = *pEngineSpeed;
+		}
+	}
+	else
+	{
+		pRamVariables->FFSEngaged = 0;
+	}
+}
+
+void TestLCEntry()
+{
+	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed < pRamVariables->LaunchControlSpeedMax && *pThrottlePlate > LCMinimumThrottle)
+	{
+		// Launch control rev limiter thresholds.
+		pRamVariables->LCEngaged = 1;
+		pRamVariables->RevLimCut = pRamVariables->LaunchControlCut;
+		pRamVariables->RevLimResume = pRamVariables->LaunchControlCut - HighPass(pRamVariables->LaunchControlHyst,0.0f);
+	}
+}
+
+unsigned char TestClutchSwitchDepressedEvent()
+{
+	unsigned char ret = 0x00;
+	unsigned char result = *pClutchFlags & ClutchBitMask;
+	if(result != pRamVariables->ClutchSwitchLast && TestClutchSwitch())
+	{
+		ret = 0x01;
+	}
+	pRamVariables->ClutchSwitchLast = result;
+	return ret;
 }
 
 void RevLimCode()
@@ -70,44 +116,24 @@ void RevLimCode()
 	else
 	{
 #endif
-
-	#ifdef pBrakeFlags
-		if (!TestClutchSwitch() || TestBrakeSwitch())
-	#else
-		if (!TestClutchSwitch())//TODO: if this works, change the rest!!
-	#endif
+		unsigned char testClutch = TestClutchSwitchDepressedEvent();
+		#ifdef pBrakeFlags
+		if(!TestClutchSwitch() || TestBrakeSwitch())
+		#else
+		if(!TestClutchSwitch())
+		#endif
 		{
-				RevLimReset();
+			RevLimReset();
+		}
+		else if(testClutch)
+		{
+			TestFFSEntry();
+			TestLCEntry();
 		}
 		else
 		{
-			//check for FFS speed threshold
-			if (*pVehicleSpeed > pRamVariables->FlatFootShiftSpeedThreshold 
-			&& *pEngineSpeed > pRamVariables->FlatFootShiftRpmThreshold 
-			&& pRamVariables->FlatFootShiftMode != 0 
-			&& *pThrottlePlate > FFSMinimumThrottle)
-			{
-				pRamVariables->LCEngaged = 0;
-				
-				//calculate target rpm
-				if(pRamVariables->FFSEngaged == 0)
-				{
-					pRamVariables->FFSEngaged = 1;
-					pRamVariables->FFSRPM = *pEngineSpeed;
-				}
-			}
-			else if (*pVehicleSpeed < pRamVariables->LaunchControlSpeedMax && *pThrottlePlate > LCMinimumThrottle)
-			{
-				// Launch control rev limiter thresholds.
-				pRamVariables->FFSEngaged = 0;
-				pRamVariables->LCEngaged = 1;
-				pRamVariables->RevLimCut = pRamVariables->LaunchControlCut;
-				pRamVariables->RevLimResume = pRamVariables->LaunchControlCut - HighPass(pRamVariables->LaunchControlHyst,0.0f);
-			}
-			else
-				RevLimReset();
-
-			}
+			TestLCEntry();
+		}
 	
 		if (pRamVariables->FFSEngaged == 1)
 		{
@@ -115,8 +141,16 @@ void RevLimCode()
 			if (pRamVariables->FlatFootShiftMode == 2)
 			{
 				float cut =  pRamVariables->FFSRPM;
-				cut *=  GearRatios[(int)pRamVariables->FFSGear + 1]; 
-				cut *= 1 / GearRatios[(int)pRamVariables->FFSGear];
+				//int gear1 = (int)pRamVariables->FFSGear-1;
+				int gear1 = BandPassInt((int)pRamVariables->FFSGear-1, 0, 5);//(sizeof(GearRatios)/sizeof(GearRatios[0]))-1);
+				//int gear2 = (int)pRamVariables->FFSGear;
+				int gear2 = BandPassInt((int)pRamVariables->FFSGear, 0, 5);// (sizeof(GearRatios)/sizeof(GearRatios[0]))-1);//TODO: SANITIZE THE LOOKUP!!! 
+				float ratio1 = GearRatios[gear1];
+				float ratio2 = GearRatios[gear2];
+				cut *= ratio1;
+				cut *= 1/ratio2;
+				//cut *=  GearRatios[(int)pRamVariables->FFSGear + 1]; 
+				//cut *= 1 / GearRatios[(int)pRamVariables->FFSGear];
 				cut += pRamVariables->FlatFootShiftAutoDelta;
 				pRamVariables->RevLimCut = cut;
 				pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->FlatFootShiftHyst,0.0f);

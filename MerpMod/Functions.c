@@ -37,3 +37,24 @@ float HighPass(float input, float limit)
 	else
 		return limit;
 }
+
+float BandPass(float input, float lowlim, float highlim)
+{
+	if(input > highlim)
+		return highlim;
+	else if(input < lowlim)
+		return lowlim;
+	else
+		return input;
+}
+
+int BandPassInt(int input, int lowlim, int highlim)
+{
+	if(input > highlim)
+		return highlim;
+	else if(input < lowlim)
+		return lowlim;
+	else
+		return input;
+}
+	

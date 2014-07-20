@@ -28,6 +28,7 @@ void RamHoleScanner() ROMCODE;
 
 unsigned char TestBrakeSwitch()	ROMCODE;
 unsigned char TestClutchSwitch() ROMCODE;
+unsigned char TestClutchSwitchDepressedEvent() ROMCODE;
 unsigned char TestCruiseResumeSwitch() ROMCODE;
 unsigned char TestCruiseCoastSwitch() ROMCODE;
 void TestCruiseControlToggles() ROMCODE;
@@ -77,9 +78,13 @@ void SetBrake(int value) __attribute__ ((section ("Misc")));
 float Abs(float input) ROMCODE;
 float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
+float BandPass(float input, float lowlim, float highlim) ROMCODE;
+int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
 
-void RevLimCode(void) ROMCODE;
-void RevLimReset(void) ROMCODE;
+void TestFFSEntry() ROMCODE;
+void TestLCEntry() ROMCODE;
+void RevLimCode() ROMCODE;
+void RevLimReset() ROMCODE;
 
 float BlendAndSwitch(TableGroup tg, float xLookup, float yLookup) ROMCODE;
 float SwitchSelect(TableSubSet tss, float xLookup, float yLookup) ROMCODE;
@@ -198,7 +203,7 @@ extern ThreeDTable LCTimingRetardTable;
 extern float RPMLockWGDC;
 extern float ThrottleLockWGDC;
 
-extern float GearRatios[];
+extern float GearRatios[6];
 
 extern float FFSMinimumThrottle;
 extern float LCMinimumThrottle;
