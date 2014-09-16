@@ -35,7 +35,7 @@ void ResetRamVariables()
 
 void InitRamVariables()
 {
-	if(pRamVariables->MasterInitFlag != 0xB4)
+	if(pRamVariables->ECUIdentifier != *(long*)dEcuId)
 	{
 		ClearRamVariables((long*)pRamVariables,(long*)&pRamVariables->RamHoleEndMarker);
 		PopulateRamVariables();
@@ -140,7 +140,7 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables->MafMode = DefaultMafMode;
 #endif
 
-pRamVariables->MasterInitFlag = 0xB4;//TODO Absract this
+pRamVariables->ECUIdentifier = *(long*)dEcuId;
 
 }
 
