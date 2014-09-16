@@ -17,10 +17,11 @@
 //////////////////////////
 typedef struct
 {
-	unsigned char MasterInitFlag;
+	unsigned char RamVariableStart;
 	unsigned char VinAuth;
 	unsigned char CruiseCoastLast;
 	unsigned char CruiseResumeLast;
+	unsigned long ECUIdentifier;
 	
 #if VIN_HACKS
 	unsigned char VehicleIdent[20];
