@@ -224,14 +224,19 @@ void RevLimUnitTests()
 	//Should engage FFS and cut
 	*pEngineSpeed = pRamVariables->FlatFootShiftRpmThreshold + 500;
 	*pThrottlePlate = FFSMinimumThrottle + 1;
-	RevLimCode(); //This sets the FFS engaged, and sets the FFSRPM
+	SetClutch(0);
+	RevLimCode(); //This sets the clutch depressed test
+	SetClutch(1);
+	RevLimCode(); //Sets FFSEngaged = 1 and sets the FFSRPM
+	Assert(pRamVariables->FFSEngaged == 1,"FFS Intermediate step");
+	RevLimCode(); //Sets FFSEngaged = 2
 	Assert(GetFuelCutFlag() && (pRamVariables->FFSEngaged == 2), "Flat Foot Shifting: Cut fuel at FlatFootShiftCut + 1 RPM, moving, clutch pressed");	
 
 	//TEST 3: Set rpm low
 	//Should disable FFS and resume fuel
 	*pEngineSpeed = pRamVariables->RevLimResume - 1;
 	RevLimCode();
-	Assert(!GetFuelCutFlag() && !pRamVariables->FFSEngaged, "FFS resume when rpm drops");
+	Assert(!GetFuelCutFlag() && pRamVariables->FFSEngaged == 2, "FFS resume when rpm drops");
 	
 	//TEST 4: Engage ffs and cut again
 	*pEngineSpeed = pRamVariables->FlatFootShiftRpmThreshold + 500;

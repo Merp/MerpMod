@@ -14,6 +14,11 @@
 
 #include "EcuHacks.h"
 
+void TestFFSEntry() ROMCODE;
+void TestFFSExit() ROMCODE;
+void TestLCEntry() ROMCODE;
+void TestLCExit() ROMCODE;
+
 #if REVLIM_HACKS
 
 #if CRUISE_CONTROL && LC_ADJUST //does this need #if for CC?
@@ -60,9 +65,9 @@ void RevLimReset()
 void TestFFSEntry()
 {
 	//check for FFS speed threshold
-	if (*pVehicleSpeed > pRamVariables->FlatFootShiftSpeedThreshold
+	if (*pVehicleSpeed >= pRamVariables->FlatFootShiftSpeedThreshold
 	&& pRamVariables->FlatFootShiftMode != 0 
-	&& *pThrottlePlate > FFSMinimumThrottle)
+	&& *pThrottlePlate >= FFSMinimumThrottle)
 	{
 		
 		pRamVariables->LCEngaged = 0;
@@ -82,7 +87,7 @@ void TestFFSEntry()
 
 void TestLCEntry()
 {
-	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed < pRamVariables->LaunchControlSpeedMax && *pThrottlePlate > LCMinimumThrottle)
+	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed <= pRamVariables->LaunchControlSpeedMax && *pThrottlePlate >= LCMinimumThrottle)
 	{
 		// Launch control rev limiter thresholds.
 		pRamVariables->LCEngaged = 1;
@@ -103,6 +108,22 @@ unsigned char TestClutchSwitchDepressedEvent()
 	return ret;
 }
 
+void TestLCExit()
+{
+	if(*pVehicleSpeed > pRamVariables->LaunchControlSpeedMax || *pThrottlePlate < LCMinimumThrottle)
+	{
+		RevLimReset();
+	}
+}
+
+void TestFFSExit()
+{
+	if(*pVehicleSpeed < pRamVariables->FlatFootShiftSpeedThreshold || *pThrottlePlate < FFSMinimumThrottle)
+	{
+		RevLimReset();
+	}
+}
+
 void RevLimCode()
 {	
 
@@ -116,7 +137,7 @@ void RevLimCode()
 	else
 	{
 #endif
-		unsigned char testClutch = TestClutchSwitchDepressedEvent();
+		unsigned char testClutchDepressed = TestClutchSwitchDepressedEvent();
 		#ifdef pBrakeFlags
 		if(!TestClutchSwitch() || TestBrakeSwitch())
 		#else
@@ -125,17 +146,20 @@ void RevLimCode()
 		{
 			RevLimReset();
 		}
-		else if(testClutch)
+		else if(pRamVariables->LCEngaged == 1)
+		{
+			TestLCExit();
+		}
+		else if(pRamVariables->FFSEngaged == 2)
+		{
+			TestFFSExit();
+		}
+		//no need to test FFS exit, only depends on clutch!
+		else if(testClutchDepressed)
 		{
 			TestFFSEntry();
-			TestLCEntry();
 		}
-		else
-		{
-			TestLCEntry();
-		}
-	
-		if (pRamVariables->FFSEngaged == 1)
+		else if (pRamVariables->FFSEngaged == 1)
 		{
 			#ifdef pCurrentGear
 			if (pRamVariables->FlatFootShiftMode == 2)
@@ -167,6 +191,10 @@ void RevLimCode()
 			}
 			#endif
 			pRamVariables->FFSEngaged = 2;
+		}
+		else
+		{
+			TestLCEntry();
 		}
 		
 	#if PROG_MODE
