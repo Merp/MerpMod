@@ -81,8 +81,6 @@ float HighPass(float input, float limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
 
-void TestFFSEntry() ROMCODE;
-void TestLCEntry() ROMCODE;
 void RevLimCode() ROMCODE;
 void RevLimReset() ROMCODE;
 
