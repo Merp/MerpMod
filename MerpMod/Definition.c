@@ -273,7 +273,7 @@ DEFNEW1D("Launch Control Adjustment Step",LCAdjustStep);
 #endif
 
 #if SWITCH_HACKS
-DEFINERAMVAR("MerpMod Master Init Flag",MasterInitFlag,"uint8","E");
+DEFINERAMVAR("MerpMod ECU Identifier",ECUIdentifier,"uint32","E");
 	
 DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E");
 DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E");
