@@ -19,7 +19,7 @@
 /////////////////
 #if BOOST_HACKS
 
-unsigned char DefaultBoostHackEnabled BOOSTDATA = 0x01;
+unsigned char DefaultBoostHackEnabled BOOSTDATA = 0x00;
 
 float RPMLockWGDC BOOSTDATA = 3000.0f;
 float ThrottleLockWGDC BOOSTDATA = 85.0f;
