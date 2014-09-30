@@ -26,7 +26,7 @@ float DefaultRedLineHyst REVLIMDATA = 50.0f;
 float DefaultFlatFootShiftHyst REVLIMDATA = 50.0f;
 float DefaultFlatFootShiftStaticDelta REVLIMDATA = 4000.0f;
 float DefaultFlatFootShiftSpeedThreshold REVLIMDATA = 40.0f;
-float DefaultFlatFootShiftRpmThreshold REVLIMDATA = 4500.0f;
+float DefaultFlatFootShiftRpmThreshold REVLIMDATA = 3500.0f;
 float DefaultLaunchControlSpeedMax REVLIMDATA = 5.0f;
 float DefaultLaunchControlCut REVLIMDATA = 4000.0f;
 float DefaultLaunchControlHyst REVLIMDATA = 50.0f;
@@ -39,7 +39,7 @@ float GearRatios[6] REVLIMDATA =
 #endif
 
 float LCMinimumThrottle REVLIMDATA =  60.0f;
-float FFSMinimumThrottle REVLIMDATA = 83.0f;
+float FFSMinimumThrottle REVLIMDATA = 60.0f;
 
 #if PROG_MODE
 float ValetModeRevLim = 4000.0f;//TODO integrate with requested torque and use a different throttle map instead!!
