@@ -171,12 +171,12 @@ void RevLimCode()
 				int gear2 = BandPassInt((int)pRamVariables->FFSGear, 0, 5);// (sizeof(GearRatios)/sizeof(GearRatios[0]))-1);//TODO: SANITIZE THE LOOKUP!!! 
 				float ratio1 = GearRatios[gear1];
 				float ratio2 = GearRatios[gear2];
-				cut *= ratio1;
-				cut *= 1/ratio2;
+				cut *= ratio2;
+				cut *= 1/ratio1;
 				//cut *=  GearRatios[(int)pRamVariables->FFSGear + 1]; 
 				//cut *= 1 / GearRatios[(int)pRamVariables->FFSGear];
 				cut += pRamVariables->FlatFootShiftAutoDelta;
-				pRamVariables->RevLimCut = cut;
+				pRamVariables->RevLimCut = LowPass(cut, pRamVariables->RedLineCut);
 				pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->FlatFootShiftHyst,0.0f);
 			}
 			else
@@ -184,7 +184,7 @@ void RevLimCode()
 			#endif
 			
 				float cut = pRamVariables->RedLineCut - HighPass(pRamVariables->FlatFootShiftStaticDelta,0.0f);
-				pRamVariables->RevLimCut = cut;
+				pRamVariables->RevLimCut = LowPass(cut, pRamVariables->RedLineCut);
 				pRamVariables->RevLimResume = cut - HighPass(pRamVariables->FlatFootShiftHyst,0.0f);
 			
 			#ifdef pCurrentGear
