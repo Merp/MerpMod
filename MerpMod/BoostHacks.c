@@ -77,21 +77,25 @@ EcuHacksMain();
 	#endif
 	
 	pRamVariables->PGWGComp = PGWGComp;
+	WGDCInitial *= PGWGComp;
+	WGDCMax *= PGWGComp;
+	pRamVariables->WGDCInitialTarget = WGDCInitial;
+	pRamVariables->WGDCMaxTarget = WGDCMax;
 	
-	if(pRamVariables->BoostHackEnabled == 0x01)
+	if(pRamVariables->BoostHackEnabled == HackEnabled)
 	{
 		#if WGDC_LOCK
 		//Apply locks
 		if(*pEngineSpeed < RPMLockWGDC && *pThrottlePlate > ThrottleLockWGDC)
 		{
-			pRamVariables->WGDCInitial = 100.0;
-			pRamVariables->WGDCMax = 100.0;
+			pRamVariables->WGDCInitialOutput = 100.0;
+			pRamVariables->WGDCMaxOutput = 100.0;
 		}
 		else{
 		#endif
 	
-		pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
-		pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+		pRamVariables->WGDCInitialOutput = WGDCInitial;
+		pRamVariables->WGDCMaxOutput = WGDCMax;
 		
 		#if WGDC_LOCK
 		}
@@ -99,8 +103,9 @@ EcuHacksMain();
 	}
 	else
 	{
-		pRamVariables->WGDCInitial = Pull3DHooked((void*)OEMWGDCInitialTable, *pReqTorque, *pEngineSpeed);
-		pRamVariables->WGDCMax = Pull3DHooked((void*)OEMWGDCMaxTable, *pReqTorque, *pEngineSpeed);	
+		//TODO: Might need to use conditionals here! Do some roms use Requested Torque lookups??
+		pRamVariables->WGDCInitialOutput = Pull3DHooked((void*)OEMWGDCInitialTable, *pThrottlePlate, *pEngineSpeed);
+		pRamVariables->WGDCMaxOutput = Pull3DHooked((void*)OEMWGDCMaxTable, *pThrottlePlate, *pEngineSpeed);	
 	}
 		
 #endif
@@ -162,12 +167,19 @@ void TargetBoostHack()
 	
 	pRamVariables->PGTBComp = PGTBComp;
 	
-	if(pRamVariables->BoostHackEnabled == 0x01)
-		pRamVariables->TargetBoost = TargetBoost * PGTBComp;
-	else
-		pRamVariables->TargetBoost = Pull3DHooked((void*)OEMTargetBoostTable, *pReqTorque, *pEngineSpeed);	
-		
+	TargetBoost *= PGTBComp;
 	
+	pRamVariables->TargetBoostTarget = TargetBoost;
+	
+	if(pRamVariables->BoostHackEnabled == HackEnabled)
+	{
+		pRamVariables->TargetBoostOutput = TargetBoost;
+	}
+	else
+	{		
+		//TODO: Need to use conditionals here! Some roms use Requested Torque lookups!
+		pRamVariables->TargetBoostOutput = Pull3DHooked((void*)OEMTargetBoostTable, *pThrottlePlate, *pEngineSpeed);			
+	}
 }
 #endif
 #endif

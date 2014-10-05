@@ -132,8 +132,8 @@ typedef struct
 	unsigned char 	LCTimingMode;
 	unsigned char	TimingHackEnabled;
 	char	Tempty1;	
-	float	BaseTiming;
-	float 	TimingHackOutput;	//97
+	float	BaseTimingTarget;
+	float 	BaseTimingOutput;	//97
 	float 	LCTimingRetard;		//97
 	float 	LCTimingLock;		//97
 	float	LCTimingLockRPM;
@@ -161,15 +161,18 @@ typedef struct
 	unsigned char bhempty1;
 	unsigned char bhempty2;
 	//Target Boost Params
-	float TargetBoost;
+	float TargetBoostTarget;
+	float TargetBoostOutput;
 		
 	//PGWG Params
 	float PGWGComp;
 	float PGTBComp;
 	
 	//WGDC Params
-	float WGDCInitial;
-	float WGDCMax;
+	float WGDCInitialTarget;
+	float WGDCInitialOutput;
+	float WGDCMaxTarget;
+	float WGDCMaxOutput;
 #endif
 	
 	

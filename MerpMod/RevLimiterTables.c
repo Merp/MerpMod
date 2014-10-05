@@ -20,7 +20,7 @@
 //!! Cut/resume thresholds
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-unsigned char DefaultRevLimMode REVLIMDATA = 1;
+unsigned char DefaultRevLimMode REVLIMDATA = RevLimModeFuelCut;
 float DefaultRedLineCut REVLIMDATA = 7200.0f;
 float DefaultRedLineHyst REVLIMDATA = 50.0f;
 float DefaultFlatFootShiftHyst REVLIMDATA = 50.0f;

@@ -66,7 +66,7 @@ void TestFFSEntry()
 {
 	//check for FFS speed threshold
 	if (*pVehicleSpeed >= pRamVariables->FlatFootShiftSpeedThreshold
-	&& pRamVariables->FlatFootShiftMode != 0 
+	&& pRamVariables->FlatFootShiftMode != FlatFootShiftModeDisabled 
 	&& *pThrottlePlate >= FFSMinimumThrottle)
 	{
 		
@@ -162,7 +162,7 @@ void RevLimCode()
 		else if (pRamVariables->FFSEngaged == 1)
 		{
 			#ifdef pCurrentGear
-			if (pRamVariables->FlatFootShiftMode == 2)
+			if (pRamVariables->FlatFootShiftMode == FlatFootShiftModeAuto)
 			{
 				float cut =  pRamVariables->FFSRPM;
 				//int gear1 = (int)pRamVariables->FFSGear-1;
