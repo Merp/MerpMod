@@ -70,6 +70,12 @@ enum LCFuelModeValues
 	LCFuelModeCompensated = 2,
 	LCFuelModeLocked = 3,
 };
+enum FlatFootShiftModeValues
+{
+	FlatFootShiftModeDisabled = 0,
+	FlatFootShiftModeStatic = 1,
+	FlatFootShiftModeAuto = 2,
+};
 enum InputModeValues
 {
 	InputModeUndefined = 0,
@@ -84,7 +90,11 @@ enum MapSwitchValues
 	MapSwitch2 = 2,
 	MapSwitch3 = 3,
 };
-
+enum HackSwitch
+{
+	HackDisabled = 0,
+	HackEnabled = 1,
+};
 //,1=S,2=S#,3=I,8=S#,16=I"
 enum SiDriveModes
 {

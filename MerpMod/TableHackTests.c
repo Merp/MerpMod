@@ -43,16 +43,16 @@ void TimingHackUnitTests()
 	Assert(pRamVariables->LCTimingLock == DefaultLCTimingLock, "check timing lock default value");
 	Assert(pRamVariables->MapBlendRatio == DefaultBlend, "Check default blending value");
 	Assert(pRamVariables->TimingHackInitFlag == 0x01, "Check Timing init flag is set");
-	Assert(pRamVariables->TimingHackOutput == -12.96875, "check timing map 1 is used");
+	Assert(pRamVariables->BaseTimingOutput == -12.96875, "check timing map 1 is used");
 	
 	pRamVariables->MapBlendRatio = 1;
 	TimingHack();
-	Assert(pRamVariables->TimingHackOutput == -20, "check timing map 1 is used");
+	Assert(pRamVariables->BaseTimingOutput == -20, "check timing map 1 is used");
 	
 	
 	pRamVariables->MapBlendRatio = 0.5;
 	TimingHack();
-	Assert(pRamVariables->TimingHackOutput == ((-12.96875 - 20)/2), "check timing map 1 is used");
+	Assert(pRamVariables->BaseTimingOutput == ((-12.96875 - 20)/2), "check timing map 1 is used");
 	
 	pRamVariables->LCTimingMode = LCTimingModeLocked;		//Set locked timing, default is +20
 	

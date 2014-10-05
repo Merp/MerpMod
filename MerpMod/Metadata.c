@@ -291,7 +291,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaAlt,
 			oldval: tWgdcInitialKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Initial KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGInitialKcaBLo METADATA =
@@ -299,7 +299,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBLo,
 			oldval: tWgdcInitialKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Initial KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGInitialKcaBHi METADATA =
@@ -307,7 +307,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBHi,
 			oldval: tWgdcInitialKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Initial KCA B High Table Hook)
 		};
 	#else
@@ -316,7 +316,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitial,
 			oldval: tWgdcInitial,
-			newval: (int)&(pRamVariables->WGDCInitial),
+			newval: (int)&(pRamVariables->WGDCInitialOutput),
 			name: STR(WGDC Initial Table Hook)
 		};
 	#endif
@@ -334,7 +334,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaAlt,
 			oldval: tWgdcMaxKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Max KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGMaxKcaBLo METADATA =
@@ -342,7 +342,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBLo,
 			oldval: tWgdcMaxKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Max KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGMaxKcaBHi METADATA =
@@ -350,7 +350,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBHi,
 			oldval: tWgdcMaxKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Max KCA B High Table Hook)
 		};
 	#else
@@ -359,7 +359,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMax,
 			oldval: tWgdcMax,
-			newval: (int)&(pRamVariables->WGDCMax),
+			newval: (int)&(pRamVariables->WGDCMaxOutput),
 			name: STR(WGDC Max Table Hook)
 		};
 	#endif
@@ -368,7 +368,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableWgdcMaxAlt,
 		oldval: tWgdcMaxAlt,
-		newval: (int)&(pRamVariables->WGDCMax),
+		newval: (int)&(pRamVariables->WGDCMaxOutput),
 	};*/
 	
 	///Target boost table hooks
@@ -386,7 +386,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaAlt,
 			oldval: tTargetBoostKcaAlt,
-			newval: (int)&(pRamVariables->TargetBoost),
+			newval: (int)&(pRamVariables->TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBLoHookTable METADATA =
@@ -394,7 +394,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBLo,
 			oldval: tTargetBoostKcaBLo,
-			newval: (int)&(pRamVariables->TargetBoost),
+			newval: (int)&(pRamVariables->TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBHiHookTable METADATA =
@@ -402,7 +402,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBHi,
 			oldval: tTargetBoostKcaBHi,
-			newval: (int)&(pRamVariables->TargetBoost),
+			newval: (int)&(pRamVariables->TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
 		};
 	#else
@@ -411,7 +411,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoost,
 			oldval: tTargetBoost,
-			newval: (int)&(pRamVariables->TargetBoost),
+			newval: (int)&(pRamVariables->TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
 		};
 	#endif
@@ -420,7 +420,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableTargetBoostAlt,
 		oldval: tTargetBoosAlt,
-		newval: (int)&(pRamVariables->TargetBoost),
+		newval: (int)&(pRamVariables->TargetBoostOutput),
 	};*/
 	
 #endif
@@ -461,7 +461,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTiming,
 		oldval: tBaseTiming,
-		newval: (int)&(pRamVariables->TimingHackOutput),
+		newval: (int)&(pRamVariables->BaseTimingOutput),
 		name: STR(Timing Table Hook)
 	};
 #else
@@ -470,7 +470,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTimingPCruise,
 		oldval: tBaseTimingPCruise,
-		newval: (int)&(pRamVariables->TimingHackOutput),
+		newval: (int)&(pRamVariables->BaseTimingOutput),
 		name: STR(Base Timing Primary Cruise Table Hook)
 	};
 	const MetaReplace BaseTimingPNonCruiseTablePatch METADATA =
@@ -478,7 +478,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTimingPNonCruise,
 		oldval: tBaseTimingPNonCruise,
-		newval: (int)&(pRamVariables->TimingHackOutput),
+		newval: (int)&(pRamVariables->BaseTimingOutput),
 		name: STR(Base Timing Primary Non Cruise Table Hook)
 	};
 	const MetaReplace BaseTimingRCruiseAvcsTablePatch METADATA =
@@ -486,7 +486,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address:hTableBaseTimingRCruiseAvcs,
 		oldval: tBaseTimingRCruiseAvcs,
-		newval: (int)&(pRamVariables->TimingHackOutput),
+		newval: (int)&(pRamVariables->BaseTimingOutput),
 		name: STR(Base Timing Reference Cruise AVCS Table Hook)
 	};
 	const MetaReplace BaseTimingRNonCruiseAvcsTablePatch METADATA =
@@ -494,7 +494,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address:hTableBaseTimingRNonCruiseAvcs,
 		oldval: tBaseTimingRNonCruiseAvcs,
-		newval: (int)&(pRamVariables->TimingHackOutput),
+		newval: (int)&(pRamVariables->BaseTimingOutput),
 		name: STR(Base Timing Reference Non Cruise AVCS Table Hook)
 	};
 #endif

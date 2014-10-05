@@ -305,9 +305,9 @@ DEFINERAMVAR("MerpMod LC Fueling Lock Enrichment",LCFuelLock,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Mode",LCFuelMode,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E");	
+DEFINERAMVAR("MerpMod Primary Open Loop Fueling Target",PolfTarget,"float","E");
 DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E");	
 	
-	//TODO add ENABLE SWITCHES
 #if SWITCH_HACKS
 DEFNEW1D("Primary Open Loop Fuel Hack Enable",DefaultPolfHackEnabled);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Intelligent",FuelTable1i);
@@ -396,7 +396,8 @@ DEFNEW3D("Per Gear Target Boost Table 1",PGTBTable1i);
 DEFNEW3D("Per Gear Target Boost Table 2",PGTBTable2i);
 #endif
 
-DEFINERAMVAR("MerpMod Max WGDC Per Gear",WGDCMax,4,"E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,4,"E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Output",WGDCMaxOutput,4,"E");
 #if SWITCH_HACKS
 DEFNEW3D("Max Wastegate Duty Compensation Table 1 Intelligent",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Compensation Table 2 Intelligent",WGDCMaxTable2i);
@@ -409,7 +410,8 @@ DEFNEW3D("Max Wastegate Duty Compensation Table 1",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Compensation Table 2",WGDCMaxTable2i);
 #endif
 
-DEFINERAMVAR("MerpMod Initial WGDC Per Gear",WGDCInitial,"float","E");
+DEFINERAMVAR("MerpMod Initial WGDC Per Gear Target",WGDCInitialTarget,"float","E");
+DEFINERAMVAR("MerpMod Initial WGDC Per Gear Output",WGDCInitialOutput,"float","E");
 #if SWITCH_HACKS
 DEFNEW3D("Initial Wastegate Duty Compensation Table 1 Intelligent",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Compensation Table 2 Intelligent",WGDCInitialTable2i);
@@ -422,7 +424,8 @@ DEFNEW3D("Initial Wastegate Duty Compensation Table 1",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Compensation Table 2",WGDCInitialTable2i);
 #endif
 
-DEFINERAMVAR("MerpMod Target Boost Output",TargetBoost,"float","E");
+DEFINERAMVAR("MerpMod Target Boost Target",TargetBoostTarget,"float","E");
+DEFINERAMVAR("MerpMod Target Boost Output",TargetBoostOutput,"float","E");
 #if SWITCH_HACKS
 DEFNEW3D("Target Boost Compensation Table 1 Intelligent",TargetBoostTable1i);
 DEFNEW3D("Target Boost Compensation Table 2 Intelligent",TargetBoostTable2i);
@@ -446,7 +449,8 @@ DEFINERAMVAR("MerpMod LC Timing Mode",LCTimingMode,"uint8","E");
 DEFINERAMVAR("MerpMod LC Timing Lock Value",LCTimingLock,"float","E");
 DEFINERAMVAR("MerpMod LC Timing Retard",LCTimingRetard,"float","E");
 DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,"float","E");
-DEFINERAMVAR("MerpMod Base Timing Final Output",TimingHackOutput,"float","E");
+DEFINERAMVAR("MerpMod Base Timing Final Target",BaseTimingTarget,"float","E");
+DEFINERAMVAR("MerpMod Base Timing Final Output",BaseTimingOutput,"float","E");
 	
 DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
 DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	

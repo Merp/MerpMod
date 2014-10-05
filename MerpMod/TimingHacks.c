@@ -63,12 +63,14 @@ float TimingHack()
 		OutputValue -= HighPass(pRamVariables->LCTimingRetard,0.0f);
 	}
 
-	pRamVariables->BaseTiming = OutputValue;
+	OutputValue -= Abs(pRamVariables->SubtractiveKCA);
 	
-	if(pRamVariables->TimingHackEnabled == 0x01)
-		pRamVariables->TimingHackOutput = pRamVariables->BaseTiming - Abs(pRamVariables->SubtractiveKCA);
+	pRamVariables->BaseTimingTarget = OutputValue;
+	
+	if(pRamVariables->TimingHackEnabled == HackEnabled)
+		pRamVariables->BaseTimingOutput = OutputValue;
 	else
-		pRamVariables->TimingHackOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+		pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
 		
 	//Call existing!
 	BaseTimingHooked();
