@@ -165,7 +165,8 @@ typedef struct
 	float TargetBoostOutput;
 		
 	//PGWG Params
-	float PGWGComp;
+	float PGWGInitialComp;
+	float PGWGMaxComp;
 	float PGTBComp;
 	
 	//WGDC Params

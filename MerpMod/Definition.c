@@ -371,7 +371,8 @@ DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,"uint8","E");
 
 #if BOOST_HACKS
 DEFNEW1D("Boost Hack Enable",DefaultBoostHackEnabled);
-DEFINERAMVAR("MerpMod PGWG Compensation",PGWGComp,"float","E");
+DEFINERAMVAR("MerpMod PGWG Initial Compensation",PGWGInitialComp,"float","E");
+DEFINERAMVAR("MerpMod PGWG Max Compensation",PGWGMaxComp,"float","E");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Wastegate Table 1 Intelligent",PGWGTable1i);
 DEFNEW3D("Per Gear Wastegate Table 2 Intelligent",PGWGTable2i);
