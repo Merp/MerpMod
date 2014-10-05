@@ -30,23 +30,27 @@ EcuHacksMain();
 
 	//Calculated gear is a BYTE!
 	float cgear = (char)*pCurrentGear;
-	float PGWGComp;
-	float WGDCInitial;
-	float WGDCMax;
+	float PGWGInitial;
+	float PGWGMax;
+	float WGDCInitialComp;
+	float WGDCMaxComp;
 
 	#if PGWG_RAMTUNING
 		if(pRamVariables->PGWGRamFlag = 0x01)
 		{
-			PGWGComp = Pull3DHooked(&PGWGRamTable, cgear, *pEngineSpeed);
+			PGWGInitial = Pull3DHooked(&PGWGRamTable, cgear, *pEngineSpeed);
+			PGWGMax = PGWGInitial;
 		}
 		else
 		{
 	#endif
 	
 	#if SWITCH_HACKS
-		PGWGComp = BlendAndSwitch(PGWGTableGroup, cgear, *pEngineSpeed);
+		PGWGInitial = BlendAndSwitch(PGWGTableGroup, cgear, *pEngineSpeed);
+		PGWGMax = PGWGInitial;
 	#else
-		PGWGComp = Pull3DHooked(PGWGTable1i, cgear, *pEngineSpeed);
+		PGWGInitial = Pull3DHooked(PGWGTable1i, cgear, *pEngineSpeed);
+		PGWGMax = PGWGInitial;
 	#endif
 
 	#if PGWG_RAMTUNING
@@ -57,30 +61,31 @@ EcuHacksMain();
 	#if WGDC_RAMTUNING
 		if(pRamVariables->WGDCInitialRamFlag = 0x01)
 		{
-			WGDCInitial = Pull3DHooked(&WGDCInitialRamTable, *pReqTorque, *pEngineSpeed);
-			WGDCMax = Pull3DHooked(&WGDCMaxRamTable, *pReqTorque, *pEngineSpeed);
+			WGDCInitialComp = Pull3DHooked(&WGDCInitialRamTable, *pReqTorque, *pEngineSpeed);
+			WGDCMaxComp = Pull3DHooked(&WGDCMaxRamTable, *pReqTorque, *pEngineSpeed);
 		}
 		else
 		{
 	#endif
 	
 	#if SWITCH_HACKS
-		WGDCInitial = BlendAndSwitch(WGDCInitialTableGroup, *pReqTorque, *pEngineSpeed);
-		WGDCMax = BlendAndSwitch(WGDCMaxTableGroup, *pReqTorque, *pEngineSpeed);
+		WGDCInitialComp = BlendAndSwitch(WGDCInitialTableGroup, *pReqTorque, *pEngineSpeed);
+		WGDCMaxComp = BlendAndSwitch(WGDCMaxTableGroup, *pReqTorque, *pEngineSpeed);
 	#else
-		WGDCInitial = Pull3DHooked(WGDCInitialTable1i, *pReqTorque, *pEngineSpeed);
-		WGDCMax = Pull3DHooked(WGDCMaxTable1i, *pReqTorque, *pEngineSpeed);
+		WGDCInitialComp = Pull3DHooked(WGDCInitialTable1i, *pReqTorque, *pEngineSpeed);
+		WGDCMaxComp = Pull3DHooked(WGDCMaxTable1i, *pReqTorque, *pEngineSpeed);
 	#endif
 	
 	#if WGDC_RAMTUNING
 		}
 	#endif
 	
-	pRamVariables->PGWGComp = PGWGComp;
-	WGDCInitial *= PGWGComp;
-	WGDCMax *= PGWGComp;
-	pRamVariables->WGDCInitialTarget = WGDCInitial;
-	pRamVariables->WGDCMaxTarget = WGDCMax;
+	pRamVariables->PGWGMaxComp = WGDCMaxComp;
+	pRamVariables->PGWGInitialComp = WGDCInitialComp;
+	PGWGInitial *= WGDCInitialComp;
+	PGWGMax *= WGDCMaxComp;
+	pRamVariables->WGDCInitialTarget = PGWGInitial;
+	pRamVariables->WGDCMaxTarget = PGWGMax;
 	
 	if(pRamVariables->BoostHackEnabled == HackEnabled)
 	{
@@ -94,8 +99,8 @@ EcuHacksMain();
 		else{
 		#endif
 	
-		pRamVariables->WGDCInitialOutput = WGDCInitial;
-		pRamVariables->WGDCMaxOutput = WGDCMax;
+		pRamVariables->WGDCInitialOutput = PGWGInitial;
+		pRamVariables->WGDCMaxOutput = PGWGMax;
 		
 		#if WGDC_LOCK
 		}
@@ -123,22 +128,22 @@ void TargetBoostHack()
 {
 		//Calculated gear is a BYTE!
 	float cgear = (char)*pCurrentGear;
-	float PGTBComp;
-	float TargetBoost;
+	float PGTB;
+	float TargetBoostComp;
 
 	#if PGWG_RAMTUNING
 		if(pRamVariables->PGWGRamFlag = 0x01)
 		{
-			PGTBComp = Pull3DHooked(&PGTBRamTable, cgear, *pEngineSpeed);
+			PGTB = Pull3DHooked(&PGTBRamTable, cgear, *pEngineSpeed);
 		}
 		else
 		{
 	#endif
 		
 	#if SWITCH_HACKS
-		PGTBComp = BlendAndSwitch(PGTBTableGroup, cgear, *pEngineSpeed);
+		PGTB = BlendAndSwitch(PGTBTableGroup, cgear, *pEngineSpeed);
 	#else
-		PGTBComp = Pull3DHooked(PGTBTable1i, cgear, *pEngineSpeed);
+		PGTB = Pull3DHooked(PGTBTable1i, cgear, *pEngineSpeed);
 	#endif
 		
 	#if PGTB_RAMTUNING
@@ -149,31 +154,31 @@ void TargetBoostHack()
 	#if TARGET_BOOST_RAMTUNING
 		if(pRamVariables->TargetBoostRamFlag = 0x01)
 		{
-			TargetBoost = Pull3DHooked(&TargetBoostRamTable, *pReqTorque, *pEngineSpeed);
+			TargetBoostComp = Pull3DHooked(&TargetBoostRamTable, *pReqTorque, *pEngineSpeed);
 		}
 		else
 		{
 	#endif
 
 	#if SWITCH_HACKS
-		TargetBoost = BlendAndSwitch(TargetBoostTableGroup, *pReqTorque, *pEngineSpeed);
+		TargetBoostComp = BlendAndSwitch(TargetBoostTableGroup, *pReqTorque, *pEngineSpeed);
 	#else
-		TargetBoost = Pull3DHooked(TargetBoostTable1i, *pReqTorque, *pEngineSpeed);
+		TargetBoostComp = Pull3DHooked(TargetBoostTable1i, *pReqTorque, *pEngineSpeed);
 	#endif
 	
 	#if TARGET_BOOST_RAMTUNING
 		}
 	#endif
 	
-	pRamVariables->PGTBComp = PGTBComp;
+	pRamVariables->PGTBComp = TargetBoostComp;
 	
-	TargetBoost *= PGTBComp;
+	PGTB = ( ( PGTB - 760) * TargetBoostComp) + 760; //COMP IS APPLIED TO RELATIVE UNITS NOT ABSOLUTE!!
 	
-	pRamVariables->TargetBoostTarget = TargetBoost;
+	pRamVariables->TargetBoostTarget = PGTB;
 	
 	if(pRamVariables->BoostHackEnabled == HackEnabled)
 	{
-		pRamVariables->TargetBoostOutput = TargetBoost;
+		pRamVariables->TargetBoostOutput = PGTB;
 	}
 	else
 	{		
