@@ -43,6 +43,7 @@ Menu Items
 3. Launch Control Adjust
 4. IAM Adjust
 5. Valet Mode 
+6. Hard Reset
 
 1. Map Switch
 ----------
@@ -88,3 +89,10 @@ The current valet mode is displayed as:
 0 flashes = OFF
 1 flash = ON
 
+6. Hard Reset
+----------
+
+The current hard reset flag is displayed as:
+
+0 flashes = OFF
+1 flash = ON (Ram Variable reset occurs when key is cycled. Currently, this DOES NOT FULLY RESET THE ECU, only MerpMod persistent ram variables [switch build with RAM_PERSIST=1])
