@@ -30,77 +30,82 @@ enum TableType2D
 
 enum CruiseToggles
 {
-	ToggleCoast = (unsigned char)0,
-	ToggleResume = (unsigned char)1,
-	ToggleCancel = (unsigned char)2,
-	ToggleCruise = (unsigned char)3,
+	ToggleCoast = (unsigned char)0x00,
+	ToggleResume = (unsigned char)0x01,
+	ToggleCancel = (unsigned char)0x02,
+	ToggleCruise = (unsigned char)0x03,
 };
 
 enum ValetModes
 {
-	ValetModeDisabled = 0,
-	ValetModeEnabled = 1
+	ValetModeDisabled = (unsigned char)0x00,
+	ValetModeEnabled = (unsigned char)0x01
 };
 
 enum MafModeValues
 {
-	MafModeUndefined = 0,
-	MafModeSensor = 1,
-	MafModeSpeedDensity = 2,
-	MafModeBlending = 3,
+	MafModeUndefined = (unsigned char)0x00,
+	MafModeSensor = (unsigned char)0x01,
+	MafModeSpeedDensity = (unsigned char)0x02,
+	MafModeBlending = (unsigned char)0x03,
 };
 enum RevLimModeValues
 {
-	RevLimModeUndefined = 0,
-	RevLimModeFuelCut = 1,
-	RevLimModeSparkCut = 2,
-	RevLimModeComboCut = 3,
+	RevLimModeUndefined = (unsigned char)0x00,
+	RevLimModeFuelCut = (unsigned char)0x01,
+	RevLimModeSparkCut = (unsigned char)0x02,
+	RevLimModeComboCut = (unsigned char)0x03,
 };
 enum LCTimingModeValues
 {
-	LCTimingModeUndefined = 0,
-	LCTimingModeDisabled = 1,
-	LCTimingModeCompensated = 2,
-	LCTimingModeLocked = 3,
+	LCTimingModeUndefined = (unsigned char)0x00,
+	LCTimingModeDisabled = (unsigned char)0x01,
+	LCTimingModeCompensated = (unsigned char)0x02,
+	LCTimingModeLocked = (unsigned char)0x03,
 };
 enum LCFuelModeValues
 {
-	LCFuelModeUndefined = 0,
-	LCFuelModeDisabled = 1,
-	LCFuelModeCompensated = 2,
-	LCFuelModeLocked = 3,
+	LCFuelModeUndefined = (unsigned char)0x00,
+	LCFuelModeDisabled = (unsigned char)0x01,
+	LCFuelModeCompensated = (unsigned char)0x02,
+	LCFuelModeLocked = (unsigned char)0x03,
 };
 enum FlatFootShiftModeValues
 {
-	FlatFootShiftModeDisabled = 0,
-	FlatFootShiftModeStatic = 1,
-	FlatFootShiftModeAuto = 2,
+	FlatFootShiftModeDisabled = (unsigned char)0x00,
+	FlatFootShiftModeStatic = (unsigned char)0x01,
+	FlatFootShiftModeAuto = (unsigned char)0x0,
 };
 enum InputModeValues
 {
-	InputModeUndefined = 0,
-	InputModeTGVLeft = 1,
-	InputModeTGVRight = 2,
-	InputModeSiDrive = 3
+	InputModeUndefined = (unsigned char)0x00,
+	InputModeTGVLeft = (unsigned char)0x01,
+	InputModeTGVRight = (unsigned char)0x02,
+	InputModeSiDrive = (unsigned char)0x03
+};
+enum HardResetFlagValues
+{
+	HardResetFlagDisabled = (unsigned char)0x00,
+	HardResetFlagEnabled = (unsigned char)0x01,
 };
 enum MapSwitchValues
 {
-	MapSwitchUndefined = 0,
-	MapSwitch1 = 1,
-	MapSwitch2 = 2,
-	MapSwitch3 = 3,
+	MapSwitchUndefined = (unsigned char)0x00,
+	MapSwitch1 = (unsigned char)0x01,
+	MapSwitch2 = (unsigned char)0x02,
+	MapSwitch3 = (unsigned char)0x03,
 };
 enum HackSwitch
 {
-	HackDisabled = 0,
-	HackEnabled = 1,
+	HackDisabled = (unsigned char)0x00,
+	HackEnabled = (unsigned char)0x01,
 };
 //,1=S,2=S#,3=I,8=S#,16=I"
 enum SiDriveModes
 {
-	SiDriveSS = 2,
-	SiDriveSSAlt = 8,
-	SiDriveS = 1,
+	SiDriveSS = (unsigned char)0x02,
+	SiDriveSSAlt = (unsigned char)0x08,
+	SiDriveS = (unsigned char)0x01,
 };
 
 //////////////////////////////
