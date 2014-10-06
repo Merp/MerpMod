@@ -42,7 +42,7 @@ float LCMinimumThrottle REVLIMDATA =  60.0f;
 float FFSMinimumThrottle REVLIMDATA = 60.0f;
 
 #if PROG_MODE
-float ValetModeRevLim = 4000.0f;//TODO integrate with requested torque and use a different throttle map instead!!
+float ValetModeRevLim REVLIMDATA = 4000.0f;//TODO integrate with requested torque and use a different throttle map instead!!
 #endif
 
 #if LC_ADJUST

@@ -89,22 +89,33 @@ EcuHacksMain();
 	
 	if(pRamVariables->BoostHackEnabled == HackEnabled)
 	{
+		#if PROG_MODE
+		if(pRamVariables->ValetMode == ValetModeEnabled)
+		{
+			pRamVariables->WGDCInitialOutput = WGDCInitialComp * Pull3DHooked(&PGWGTableValetMode, *pReqTorque, *pEngineSpeed);
+			pRamVariables->WGDCMaxOutput = WGDCMaxComp * pRamVariables->WGDCInitialOutput;
+		}
+		#endif
 		#if WGDC_LOCK
+		#if PROG_MODE
+		else
+		#else
+		else if
+		#endif
 		//Apply locks
-		if(*pEngineSpeed < RPMLockWGDC && *pThrottlePlate > ThrottleLockWGDC)
+		(*pEngineSpeed < RPMLockWGDC && *pThrottlePlate > ThrottleLockWGDC)
 		{
 			pRamVariables->WGDCInitialOutput = 100.0;
 			pRamVariables->WGDCMaxOutput = 100.0;
 		}
-		else{
 		#endif
-	
-		pRamVariables->WGDCInitialOutput = PGWGInitial;
-		pRamVariables->WGDCMaxOutput = PGWGMax;
-		
-		#if WGDC_LOCK
+		#if WGDC_LOCK || PROG_MODE
+		else
+		#endif
+		{
+			pRamVariables->WGDCInitialOutput = PGWGInitial;
+			pRamVariables->WGDCMaxOutput = PGWGMax;	
 		}
-		#endif
 	}
 	else
 	{
@@ -178,7 +189,14 @@ void TargetBoostHack()
 	
 	if(pRamVariables->BoostHackEnabled == HackEnabled)
 	{
-		pRamVariables->TargetBoostOutput = PGTB;
+		if(pRamVariables->ValetMode == ValetModeEnabled)
+		{
+			pRamVariables->TargetBoostOutput = Pull3DHooked(&PGTBTableValetMode, *pReqTorque, *pEngineSpeed);
+		}
+		else
+		{
+			pRamVariables->TargetBoostOutput = PGTB;
+		}
 	}
 	else
 	{		

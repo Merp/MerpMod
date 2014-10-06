@@ -154,6 +154,7 @@ DEFINERAMVAR("MerpMod Prog Mode Enable",ProgModeEnable,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
+DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
 #endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);
@@ -395,6 +396,10 @@ DEFNEW3D("Per Gear Target Boost Table 2 Sport Sharp",PGTBTable2ss);
 #else
 DEFNEW3D("Per Gear Target Boost Table 1",PGTBTable1i);
 DEFNEW3D("Per Gear Target Boost Table 2",PGTBTable2i);
+#endif
+#if PROG_MODE
+DEFNEW3D("Per Gear Target Boost Table Valet Mode",PGTBTableValetMode);
+DEFNEW3D("Per Gear Wastegate Table Valet Mode",PGWGTableValetMode);
 #endif
 
 DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,4,"E");
