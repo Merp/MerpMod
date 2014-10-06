@@ -22,6 +22,10 @@ typedef struct
 	unsigned char CruiseCoastLast;
 	unsigned char CruiseResumeLast;
 	unsigned long ECUIdentifier;
+	unsigned char HardResetFlag;
+	unsigned char blank0;
+	unsigned char blank1;
+	unsigned char blank2;
 	
 #if VIN_HACKS
 	unsigned char VehicleIdent[20];

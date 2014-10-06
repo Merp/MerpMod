@@ -35,10 +35,9 @@ void ResetRamVariables()
 
 void InitRamVariables()
 {
-	if(pRamVariables->ECUIdentifier != *(long*)dEcuId)
+	if(pRamVariables->ECUIdentifier != *(long*)dEcuId || pRamVariables->HardResetFlag == HardResetFlagEnabled)
 	{
-		ClearRamVariables((long*)pRamVariables,(long*)&pRamVariables->RamHoleEndMarker);
-		PopulateRamVariables();
+		ResetRamVariables();
 	}
 }
 
@@ -142,6 +141,7 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 pRamVariables->ECUIdentifier = *(long*)dEcuId;
+pRamVariables->HardResetFlag = HardResetFlagDisabled;
 
 }
 

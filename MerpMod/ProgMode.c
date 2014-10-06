@@ -15,6 +15,14 @@
 #include "EcuHacks.h"
 
 #if PROG_MODE
+
+void ProgModeMapSwitch()  ROMCODE;
+void ProgModeBlendAdjust()  ROMCODE;
+void ProgModeLCAdjust()  ROMCODE;
+void ProgModeIAMAdjust() ROMCODE;
+void ProgModeValetMode() ROMCODE;
+void ProgModeHardReset() ROMCODE;
+
 // Constants need to be declared as 'extern' with their values defined in the 
 // function body or in an external asm file.  This is a convoluted way to 
 // declare and define variables, but the standard approach causes the compiler
@@ -55,7 +63,7 @@
 	*/
 
 
-#define PROG_MODE_COUNT 5
+#define PROG_MODE_COUNT 6
 #define PROG_THROTTLE_HI 80.0f
 #define PROG_THROTTLE_LO 10.0f
 
@@ -211,6 +219,10 @@ void ProgModeMain()
 		ProgModeValetMode();
 		break;
 		
+		case 6:
+		ProgModeHardReset();
+		break;
+		
 		default:
 		pRamVariables->ProgModeCurrentMode = 1;
 		break;
@@ -345,14 +357,14 @@ void ProgModeValetMode()
 	if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 	{	
 		if(pRamVariables->ValetMode <=0)
-			pRamVariables->ValetMode = 1;
+			pRamVariables->ValetMode = ValetModeEnabled;
 	
 		pRamVariables->ProgModeWait = 1;
 	}
 	else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 	{
 		if(pRamVariables->ValetMode >= 1 )
-			pRamVariables->ValetMode = 0;
+			pRamVariables->ValetMode = ValetModeDisabled;
 			
 		pRamVariables->ProgModeWait = 1;
 	}
@@ -363,6 +375,32 @@ void ProgModeValetMode()
 	}
 	pRamVariables->ProgModeValue = pRamVariables->ValetMode;
 	pRamVariables->ProgModeValueFlashes = pRamVariables->ValetMode;
+	
+}
+
+void ProgModeHardReset()
+{
+	if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
+	{	
+		if(pRamVariables->HardResetFlag <=0)
+			pRamVariables->HardResetFlag = HardResetFlagEnabled;
+	
+		pRamVariables->ProgModeWait = 1;
+	}
+	else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
+	{
+		if(pRamVariables->HardResetFlag >= 1 )
+			pRamVariables->HardResetFlag = HardResetFlagDisabled;
+			
+		pRamVariables->ProgModeWait = 1;
+	}
+	else
+	{
+		if(pRamVariables->ProgModeWait != 0 && (*pThrottlePlate < PROG_THROTTLE_LO) && (*pBrakeFlags & BrakeBitMask) == 0)
+			pRamVariables->ProgModeWait--;
+	}
+	pRamVariables->ProgModeValue = pRamVariables->HardResetFlag;
+	pRamVariables->ProgModeValueFlashes = pRamVariables->HardResetFlag;
 }
 
 #endif

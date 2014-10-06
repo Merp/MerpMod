@@ -155,6 +155,7 @@ DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
 DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
+DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
 #endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);
