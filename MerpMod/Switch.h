@@ -40,7 +40,7 @@
 //		RAMTUNING FLAGS		//
 //////////////////////////////
 							//
-#define RAM_PERSIST 0		//
+#define RAM_PERSIST 1		//
 #define VE_RAMTUNING 0		//
 #define POLF_RAMTUNING 0	//
 #define TIMING_RAMTUNING 0	//
