@@ -140,6 +140,7 @@ extern ThreeDTable PGTBTable1s;
 extern ThreeDTable PGTBTable2s;
 extern ThreeDTable PGWGTable1ss;
 extern ThreeDTable PGWGTable2ss;
+extern ThreeDTable PGWGTableValetMode;
 
 extern TableGroup PGTBTableGroup;
 extern ThreeDTable PGTBTable1i;
@@ -148,6 +149,7 @@ extern ThreeDTable PGWGTable1s;
 extern ThreeDTable PGWGTable2s;
 extern ThreeDTable PGTBTable1ss;
 extern ThreeDTable PGTBTable2ss;
+extern ThreeDTable PGTBTableValetMode;
 
 extern TableGroup TargetBoostTableGroup;
 extern ThreeDTable TargetBoostTable1i;

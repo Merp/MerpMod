@@ -77,6 +77,7 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables->ProgModeEntry = 0;
 	pRamVariables->ProgModeEnable = 0;
 	pRamVariables->ProgModeCurrentMode = 0;
+	pRamVariables->ValetMode = ValetModeDisabled;
 #endif
 
 #if REVLIM_HACKS

@@ -49,8 +49,21 @@ void RevLimCode()
 
 void RevLimReset()
 {
+	#if PROG_MODE
+		if (pRamVariables->ValetMode != ValetModeDisabled)
+		{
+			pRamVariables->RevLimCut = ValetModeRevLim;
+			pRamVariables->RevLimResume = pRamVariables->RedLineCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+		}
+		else
+		{
+	#endif
 	pRamVariables->RevLimCut = pRamVariables->RedLineCut;
-	pRamVariables->RevLimResume = pRamVariables->RedLineCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+	pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+	#if PROG_MODE
+	}
+	#endif
+	
 	//Disable FFS if clutch is out or brake is pressed
 	pRamVariables->FFSEngaged = 0;
 	pRamVariables->LCEngaged = 0;
@@ -87,7 +100,11 @@ void TestFFSEntry()
 
 void TestLCEntry()
 {
-	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed <= pRamVariables->LaunchControlSpeedMax && *pThrottlePlate >= LCMinimumThrottle)
+	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed <= pRamVariables->LaunchControlSpeedMax && *pThrottlePlate >= LCMinimumThrottle 
+	#if PROG_MODE
+	&& pRamVariables->ValetMode == ValetModeDisabled
+	#endif
+	)
 	{
 		// Launch control rev limiter thresholds.
 		pRamVariables->LCEngaged = 1;
@@ -200,7 +217,8 @@ void RevLimCode()
 	#if PROG_MODE
 		if (pRamVariables->ValetMode != ValetModeDisabled)
 		{
-			pRamVariables->RedLineCut = ValetModeRevLim;
+			pRamVariables->RevLimCut = ValetModeRevLim;
+			pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->RedLineHyst,0.0f);
 		}
 	#endif
 
