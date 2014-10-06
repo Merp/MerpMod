@@ -62,12 +62,6 @@ void EnterProgMode()  ROMCODE;
 void ExitProgMode()  ROMCODE;
 void ProgModeCruiseToggled(unsigned char) ROMCODE;
 
-void ProgModeMapSwitch()  ROMCODE;
-void ProgModeBlendAdjust()  ROMCODE;
-void ProgModeLCAdjust()  ROMCODE;
-void ProgModeIAMAdjust() ROMCODE;
-void ProgModeValetMode() ROMCODE;
-
 void LCAdjustCruiseToggled(unsigned char) ROMCODE;
 
 #if !AUTO_TRANS
