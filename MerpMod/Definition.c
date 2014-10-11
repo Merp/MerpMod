@@ -403,8 +403,8 @@ DEFNEW3D("Per Gear Target Boost Table Valet Mode",PGTBTableValetMode);
 DEFNEW3D("Per Gear Wastegate Table Valet Mode",PGWGTableValetMode);
 #endif
 
-DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,4,"E");
-DEFINERAMVAR("MerpMod Max WGDC Per Gear Output",WGDCMaxOutput,4,"E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,"float","E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Output",WGDCMaxOutput,"float","E");
 #if SWITCH_HACKS
 DEFNEW3D("Max Wastegate Duty Compensation Table 1 Intelligent",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Compensation Table 2 Intelligent",WGDCMaxTable2i);
