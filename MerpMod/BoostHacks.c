@@ -93,7 +93,7 @@ EcuHacksMain();
 		if(pRamVariables->ValetMode == ValetModeEnabled)
 		{
 			pRamVariables->WGDCInitialOutput = WGDCInitialComp * Pull3DHooked(&PGWGTableValetMode, *pReqTorque, *pEngineSpeed);
-			pRamVariables->WGDCMaxOutput = WGDCMaxComp * pRamVariables->WGDCInitialOutput;
+			pRamVariables->WGDCMaxOutput = WGDCMaxComp * Pull3DHooked(&PGWGTableValetMode, *pReqTorque, *pEngineSpeed);
 		}
 		#endif
 		#if WGDC_LOCK
