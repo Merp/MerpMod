@@ -34,6 +34,7 @@ enum CruiseToggles
 	ToggleResume = (unsigned char)0x01,
 	ToggleCancel = (unsigned char)0x02,
 	ToggleCruise = (unsigned char)0x03,
+	ToggleInit = (unsigned char)0xFF,
 };
 
 enum ValetModes
@@ -106,6 +107,14 @@ enum SiDriveModes
 	SiDriveSS = (unsigned char)0x02,
 	SiDriveSSAlt = (unsigned char)0x08,
 	SiDriveS = (unsigned char)0x01,
+};
+
+enum ProgModeStatusValues
+{
+	ProgModeDisabled = (unsigned char)0x00,
+	ProgModeEnabled = (unsigned char)0x01,
+	ProgModeSelectMode = (unsigned char)0x02,
+	ProgModeAdjustValue = (unsigned char)0x03,
 };
 
 //////////////////////////////

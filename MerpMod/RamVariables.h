@@ -119,10 +119,7 @@ typedef struct
 #endif
 
 #if PROG_MODE
-	unsigned char ProgModeEnable;
-	unsigned char ProgModeTimer;
-	unsigned char ProgModeEntry;
-	unsigned char ProgModeWait;
+	unsigned char ProgModeStatus;
 	unsigned char ProgModeCurrentMode;
 	unsigned char ProgModeValueFlashes;
 	unsigned char ValetMode;
@@ -258,6 +255,7 @@ typedef struct
 	unsigned char testchar3;
 	unsigned char testchar4;
 	unsigned short PortParameters[20];
+	unsigned short ADCParameters[40];
 	
 #endif
 

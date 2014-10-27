@@ -147,10 +147,7 @@ DEFINERAMVAR("MerpMod Ram Hole Scanner Stack Pointer",ScannedStackPointer,"uint3
 #endif
 
 #if PROG_MODE
-DEFINERAMVAR("MerpMod Prog Mode Entry",ProgModeEntry,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Wait",ProgModeWait,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Timer",ProgModeTimer,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Enable",ProgModeEnable,"uint8","E");
+DEFINERAMVAR("MerpMod Prog Mode Status",ProgModeStatus,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E");
 DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
