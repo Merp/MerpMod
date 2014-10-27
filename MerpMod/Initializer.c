@@ -25,6 +25,19 @@ void Initializer()
 	ResetRamVariables();
 #endif
 
+#if PROG_MODE
+	//Check every init for test mode switch (entering OEM test mode)
+	//If entering OEM test mode, disable programming mode to stop CEL flash
+	if(TestTestModeSwitch())
+	{
+		pRamVariables->ProgModeStatus = ProgModeDisabled;
+	}
+	else
+	{
+		pRamVariables->ProgModeStatus = ProgModeEnabled;
+	}
+#endif
+
 }
 
 void ResetRamVariables()
@@ -71,11 +84,8 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 #if PROG_MODE
-	pRamVariables->ProgModeEnable = 0;
-	pRamVariables->ProgModeWait = 0;
-	pRamVariables->ProgModeEntry = 0;
-	pRamVariables->ProgModeEnable = 0;
-	pRamVariables->ProgModeCurrentMode = 0;
+	pRamVariables->ProgModeCurrentMode = 1;
+	pRamVariables->ProgModeValueFlashes = 0;
 	pRamVariables->ValetMode = ValetModeDisabled;
 #endif
 

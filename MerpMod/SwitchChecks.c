@@ -14,6 +14,28 @@
 
 #include "EcuHacks.h"
 
+#ifdef pTestModeFlags
+unsigned char TestTestModeSwitch()
+{
+	unsigned char result = *pTestModeFlags & TestModeBitMask;
+	if(result == TestModeBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
+#endif
+
+#ifdef pDefogFlags
+unsigned char TestDefogSwitch()
+{
+	unsigned char result = *pDefogFlags & DefogBitMask;
+	if(result == DefogBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
+#endif
+
 #ifdef pBrakeFlags
 unsigned char TestBrakeSwitch()
 {

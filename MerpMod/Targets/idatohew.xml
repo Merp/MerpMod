@@ -355,6 +355,19 @@
         <define name="ClutchBitMask" type="unsigned char">
             <ida name="CLUTCH_BITMASK" type="bitmask"/>
         </define>
+		<define name="pTestModeFlags" type="unsigned char*">
+			<ida name="TESTMODE_FLAGS" />
+		</define>
+		<define name="TestModeBitMask" type="unsigned char">
+			<ida name="TESTMODE_BITMASK" type="bitmask"/>
+		</define>
+		<define name="pDefogFlags" type="unsigned char*">
+			<ida name="DEFOG_FLAGS" />
+		</define>
+		<define name="DefogBitMask" type="unsigned char">
+			<ida name="DEFOG_BITMASK" type="bitmask"/>
+		</define>
+		
     </category>
 
     <category name="NonSpecific Engine params">

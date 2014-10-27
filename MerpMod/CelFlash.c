@@ -102,7 +102,11 @@ void CelFlash()
 ////////////////////////////////
 //KNOCK LIGHT CODE w/ IAM RECALL
 ////////////////////////////////
-
+#if PROG_MODE
+//Disable flashes during programming mode
+if(pRamVariables->ProgModeStatus == ProgModeEnabled)
+{
+#endif
 	if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold)
 	{
 		CelFlashStart(FBKCHiFlashes,FBKCHiFlashSpeed,0,0);
@@ -125,6 +129,9 @@ void CelFlash()
 	{
 		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
 	}
+#if PROG_MODE
+}
+#endif
 	
 	// Call triggers if signal changes!
 	if(pRamVariables->CelSignal != pRamVariables->CelSignalLast)

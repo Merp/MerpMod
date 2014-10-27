@@ -26,6 +26,8 @@ void PortLogger() ROMCODE;
 void RamHoleScanner() ROMCODE;
 #endif
 
+unsigned char TestTestModeSwitch() ROMCODE;
+unsigned char TestDefogSwitch() ROMCODE;
 unsigned char TestBrakeSwitch()	ROMCODE;
 unsigned char TestClutchSwitch() ROMCODE;
 unsigned char TestClutchSwitchDepressedEvent() ROMCODE;
@@ -58,8 +60,6 @@ void VinCheck() ROMCODE;
 
 void ProgModeListener()  ROMCODE;
 void ProgModeMain()  ROMCODE;
-void EnterProgMode()  ROMCODE;
-void ExitProgMode()  ROMCODE;
 void ProgModeCruiseToggled(unsigned char) ROMCODE;
 
 void LCAdjustCruiseToggled(unsigned char) ROMCODE;
