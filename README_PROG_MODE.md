@@ -17,7 +17,7 @@ With the defog switch ON, programming mode is in 'value adjust mode'. Current se
 
 To select the next menu item or increment (+) the value, press the cruise control resume button.
 
-To select the previous menu item or decrement (-) the value, press the cruise control resume button.
+To select the previous menu item or decrement (-) the value, press the cruise control coast button.
 
 Menu Items
 ----------
