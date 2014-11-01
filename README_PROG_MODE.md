@@ -4,46 +4,31 @@ MerpMod Programming Mode
 Entering and Exiting
 --------------------
 
-Initial Requirements:
-+Engine off
-+Clutch out
-+Brake out
-+Gas out
-+Defog Switch off
-
-1. Press the brake pedal.
-2. Fully press and depress the gas pedal three times.
-
-The CEL should now be flashing.
-
-To exit programming mode, press the clutch in.
+Programming mode is entered and exited using the test mode connector. It is recommended to wire a switch to the connectors. Connecting the leads enters programming mode and puts the car into test mode limp. Disconnecting the leads exits. This does not interfere with the OEM test mode. If the ECU is started with test mode connectors connected, it WILL NOT enter programming mode.
 
 Readout, Selection, and Adjustment
 ----------------------------------
 
 Programming mode uses the CEL light to read out the current menu item and the current value of the selected menu item.
 
-The current menu item is indicated by the count of SLOW flashes.
+With the defog switch OFF, programming mode is in 'menu selection mode'. Current menu item is displayed by the count of SLOW flashes.
 
-The current value is indicated by the count of FAST flashes.
+With the defog switch ON, programming mode is in 'value adjust mode'. Current selected menu item's VALUE is indicated by the count of FAST flashes.
 
-To select the next menu item, press the cruise control resume button.
+To select the next menu item or increment (+) the value, press the cruise control resume button.
 
-To select the previous menu item, press the cruise control resume button.
-
-To increase the value associated with the current menu item, press and depress the gas pedal.
-
-To decrease the value associated with the current menu item, press and depress the brake pedal.
+To select the previous menu item or decrement (-) the value, press the cruise control resume button.
 
 Menu Items
 ----------
 
 1. Map Switch (Intelligent / Sport / Sport Sharp)
-2. Map Blending (Map 1 / Map 2)
-3. Launch Control Adjust
-4. IAM Adjust
-5. Valet Mode 
-6. Hard Reset
+2. Map Blending Input Mode (Undefined, TGV Left, TGV Right)
+3. Map Blending (Map 1 / Map 2)
+4. Launch Control Adjust
+5. IAM Adjust
+6. Valet Mode 
+7. Hard Reset
 
 1. Map Switch
 ----------
@@ -53,7 +38,15 @@ Intelligent: 1 flash
 Sport: 2 flashes
 Sport Sharp: 3 flashes
 
-2. Map Blending
+2. Map Blending Mode
+--------------------
+
+The current map blending mode is displayed using the current input mode value where:
+1 flash = undefined
+2 flashes = TGV Left
+3 flashes = TGV Right
+
+3. Map Blending
 ------------
 
 The current map blending ratio is displayed using a value of 1-11 where:
@@ -63,7 +56,7 @@ The current map blending ratio is displayed using a value of 1-11 where:
 ...	(Blending)
 11 flashes = 2.0 (Map 2)
 
-3. Launch Control Adjust
+4. Launch Control Adjust
 ---------------------
 
 The current launch control RPM is displayed in ranges of 1000 RPM where:
@@ -72,7 +65,7 @@ The current launch control RPM is displayed in ranges of 1000 RPM where:
 3 flashes = 3000-4000 RPM
 ...
 
-4. iAM Adjust
+5. iAM Adjust
 ----------
 
 The current IAM value is displayed in increments of 0.1 where:
@@ -81,7 +74,7 @@ The current IAM value is displayed in increments of 0.1 where:
 ...
 11 flashes = 1.0 IAM
 
-5. Valet Mode
+6. Valet Mode
 ----------
 
 The current valet mode is displayed as:
@@ -89,10 +82,10 @@ The current valet mode is displayed as:
 0 flashes = OFF
 1 flash = ON
 
-6. Hard Reset
+7. ECU Reset
 ----------
 
 The current hard reset flag is displayed as:
 
 0 flashes = OFF
-1 flash = ON (Ram Variable reset occurs when key is cycled. Currently, this DOES NOT FULLY RESET THE ECU, only MerpMod persistent ram variables [switch build with RAM_PERSIST=1])
+1 flash = ON (Ram Variable reset occurs when key is cycled. Also performs SSM soft ecu reset. Resets MerpMod persistent ram variables [switch build with RAM_PERSIST=1])

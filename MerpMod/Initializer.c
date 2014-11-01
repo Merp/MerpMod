@@ -81,6 +81,8 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 #if SWITCH_HACKS
 	pRamVariables->MapSwitch = DefaultMapSwitch;
 	pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
+	pRamVariables->MapSwitchingInputMode = DefaultMapSwitchingInputMode;
+	pRamVariables->MapBlendingInputMode = DefaultMapBlendingInputMode;
 #endif
 
 #if PROG_MODE

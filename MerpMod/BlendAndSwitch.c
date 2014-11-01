@@ -79,16 +79,16 @@ void InputUpdate()//TODO: put on SD branch
 	pRamVariables->TGVLeftScaled = Pull2DHooked(&TGVLeftScaling,pRamVariables->TGVLeftVolts);
 	pRamVariables->TGVRightScaled = Pull2DHooked(&TGVRightScaling,pRamVariables->TGVRightVolts);
 	
-	switch(BlendRatioInput)
+	switch(pRamVariables->MapBlendingInputMode)
 	{
-		case InputModeUndefined:
+		case MapBlendingInputModeUndefined:
 		break;
 		
-		case InputModeTGVLeft:
+		case MapBlendingInputModeTGVLeft:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVLeftScaled;
 			break;
 		
-		case InputModeTGVRight:
+		case MapBlendingInputModeTGVRight:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVRightScaled;
 			break;
 		
@@ -97,13 +97,13 @@ void InputUpdate()//TODO: put on SD branch
 			break;
 	}
 	
-	switch(MapSwitchInput)
+	switch(pRamVariables->MapSwitchingInputMode)
 	{
-		case InputModeUndefined:
+		case MapSwitchingInputModeUndefined:
 		break;
 		
 		#ifdef pSiDrive
-		case InputModeSiDrive:
+		case MapSwitchingInputModeSiDrive:
 		{
 			switch(*pSiDrive)
 		
@@ -126,11 +126,11 @@ void InputUpdate()//TODO: put on SD branch
 		}
 		#endif
 		
-		case InputModeTGVLeft:
+		case MapSwitchingInputModeTGVLeft:
 			MapSwitchThresholdCheck(pRamVariables->TGVLeftVolts);
 			break;
 		
-		case InputModeTGVRight:
+		case MapSwitchingInputModeTGVRight:
 			MapSwitchThresholdCheck(pRamVariables->TGVRightVolts);
 			break;
 		

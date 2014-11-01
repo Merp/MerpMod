@@ -367,6 +367,9 @@
 		<define name="DefogBitMask" type="unsigned char">
 			<ida name="DEFOG_BITMASK" type="bitmask"/>
 		</define>
+		<define name="pSSMResetByte" type="unsigned char*">
+			<ida name="SSM_RESET_BYTE" />
+		</define>
 		
     </category>
 

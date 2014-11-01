@@ -17,6 +17,7 @@
 #if PROG_MODE
 
 void ProgModeMapSwitch(unsigned char toggleType)  ROMCODE;
+void ProgModeBlendModeAdjust(unsigned char toggleType)	ROMCODE;
 void ProgModeBlendAdjust(unsigned char toggleType)  ROMCODE;
 void ProgModeLCAdjust(unsigned char toggleType)  ROMCODE;
 void ProgModeIAMAdjust(unsigned char toggleType) ROMCODE;
@@ -64,7 +65,7 @@ void ProgModeAdjust(unsigned char toggleType) ROMCODE;
 	*/
 
 
-#define PROG_MODE_COUNT 6
+#define PROG_MODE_COUNT 7
 #define PROG_THROTTLE_HI 80.0f
 #define PROG_THROTTLE_LO 10.0f
 
@@ -185,22 +186,26 @@ void ProgModeAdjust(unsigned char toggleType)
 		break;
 		
 		case 2:
-		ProgModeBlendAdjust(toggleType);
+		ProgModeBlendModeAdjust(toggleType);
 		break;
 		
 		case 3:
-		ProgModeLCAdjust(toggleType);
+		ProgModeBlendAdjust(toggleType);
 		break;
 		
 		case 4:
+		ProgModeLCAdjust(toggleType);
+		break;
+		
+		case 5:
 		ProgModeIAMAdjust(toggleType);
 		break;
 		
-		case 5://Put this in ENUM if you want to reorder them easily
+		case 6://Put this in ENUM if you want to reorder them easily
 		ProgModeValetMode(toggleType);
 		break;
 		
-		case 6:
+		case 7:
 		ProgModeHardReset(toggleType);
 		break;
 		
@@ -212,7 +217,7 @@ void ProgModeAdjust(unsigned char toggleType)
 
 void ProgModeMapSwitch(unsigned char toggleType)
 {
-	if(MapSwitchInput == InputModeUndefined)
+	if(pRamVariables->MapSwitchingInputMode == MapSwitchingInputModeUndefined)
 	{	
 		if(toggleType == ToggleResume)
 		{	
@@ -220,8 +225,6 @@ void ProgModeMapSwitch(unsigned char toggleType)
 				asm("nop");//pRamVariables->MapSwitch = 1;
 			else
 				pRamVariables->MapSwitch++;
-		
-			pRamVariables->ProgModeWait = 1;
 		}
 		else if(toggleType == ToggleCoast)
 		{
@@ -229,17 +232,32 @@ void ProgModeMapSwitch(unsigned char toggleType)
 				asm("nop");//pRamVariables->MapSwitch = 3;
 			else
 				pRamVariables->MapSwitch--;
-				
-			pRamVariables->ProgModeWait = 1;
 		}
 	}
 	pRamVariables->ProgModeValue = pRamVariables->MapSwitch;
 	pRamVariables->ProgModeValueFlashes = pRamVariables->MapSwitch;
 }
 
+void ProgModeBlendModeAdjust(unsigned char toggleType)
+{
+	if(toggleType == ToggleResume)
+	{
+		if(pRamVariables->MapBlendingInputMode < 2)
+			pRamVariables->MapBlendingInputMode++;
+	}
+	else if(toggleType == ToggleCoast)
+	{
+		if(pRamVariables->MapBlendingInputMode > 0)
+			pRamVariables->MapBlendingInputMode--;
+	}
+	
+	pRamVariables->ProgModeValue = pRamVariables->MapBlendingInputMode;
+	pRamVariables->ProgModeValueFlashes = pRamVariables->MapBlendingInputMode;
+}
+
 void ProgModeBlendAdjust(unsigned char toggleType)
 {
-	if(BlendRatioInput == InputModeUndefined)
+	if(pRamVariables->MapBlendingInputMode == MapBlendingInputModeUndefined)
 	{
 		if(toggleType == ToggleResume)
 		{	
@@ -327,12 +345,19 @@ void ProgModeHardReset(unsigned char toggleType)
 	if(toggleType == ToggleResume)
 	{	
 		if(pRamVariables->HardResetFlag <=0)
+		{
 			pRamVariables->HardResetFlag = HardResetFlagEnabled;
+			*pSSMResetByte = 0x40;
+		}
+		
 	}
 	else if(toggleType == ToggleCoast)
 	{
 		if(pRamVariables->HardResetFlag >= 1 )
+		{
 			pRamVariables->HardResetFlag = HardResetFlagDisabled;
+			*pSSMResetByte = 0x40;
+		}
 	}
 	pRamVariables->ProgModeValue = pRamVariables->HardResetFlag;
 	pRamVariables->ProgModeValueFlashes = pRamVariables->HardResetFlag;

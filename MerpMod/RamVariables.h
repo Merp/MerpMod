@@ -48,6 +48,9 @@ typedef struct
 
 #if SWITCH_HACKS
 	unsigned char MapSwitch;
+	unsigned char MapBlendingInputMode;
+	unsigned char MapSwitchingInputMode;
+	unsigned char swblank;
 	float MapBlendRatio;
 	float TGVLeftVolts;
 	float TGVRightVolts;
@@ -132,7 +135,7 @@ typedef struct
 	unsigned char 	TimingHackInitFlag;		//97
 	unsigned char 	LCTimingMode;
 	unsigned char	TimingHackEnabled;
-	char	Tempty1;	
+	unsigned char	Tempty1;	
 	float	BaseTimingTarget;
 	float 	BaseTimingOutput;	//97
 	float 	LCTimingRetard;		//97
@@ -148,7 +151,7 @@ typedef struct
 	unsigned char 	POLFuelHackInitFlag;	//97
 	unsigned char 	LCFuelMode;
 	unsigned char	PolfHackEnabled;
-	char	Fempty1;	
+	unsigned char	Fempty1;	
 	float PolfTarget;
 	float PolfOutput;		//97
 	float LCFuelEnrich;			//97

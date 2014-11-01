@@ -77,12 +77,18 @@ enum FlatFootShiftModeValues
 	FlatFootShiftModeStatic = (unsigned char)0x01,
 	FlatFootShiftModeAuto = (unsigned char)0x0,
 };
-enum InputModeValues
+enum MapBlendModeValues
 {
-	InputModeUndefined = (unsigned char)0x00,
-	InputModeTGVLeft = (unsigned char)0x01,
-	InputModeTGVRight = (unsigned char)0x02,
-	InputModeSiDrive = (unsigned char)0x03
+	MapBlendingInputModeUndefined = (unsigned char)0x00,
+	MapBlendingInputModeTGVLeft = (unsigned char)0x01,
+	MapBlendingInputModeTGVRight = (unsigned char)0x02
+};
+enum MapSwitchModeValues
+{
+	MapSwitchingInputModeUndefined = (unsigned char)0x00,
+	MapSwitchingInputModeTGVLeft = (unsigned char)0x01,
+	MapSwitchingInputModeTGVRight = (unsigned char)0x02,
+	MapSwitchingInputModeSiDrive = (unsigned char)0x03
 };
 enum HardResetFlagValues
 {
