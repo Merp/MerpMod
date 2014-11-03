@@ -35,6 +35,33 @@ float FBKCHiThreshold CELFLASHDATA = -2.1f;
 float FBKCLoadThreshold CELFLASHDATA = 1.5f;
 float EGTCelLoadThreshold CELFLASHDATA = 1.5f;
 float EGTResistanceThreshold CELFLASHDATA = 25.0f;
+unsigned char ShiftLightFlashes CELFLASHDATA = 0x01;
+unsigned char ShiftLightFlashSpeed CELFLASHDATA = 0x08;
+unsigned char KillModeFlashes CELFLASHDATA = 0x20;
+unsigned char KillModeFlashSpeed CELFLASHDATA = 0x01;
+unsigned char ALSModeFlashSpeed CELFLASHDATA = 0x04;
+
+ThreeDTable ShiftLightRPMs __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+float SHIFTLIGHTRPM_COLS[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+{1,2,3,4,5,6};
+float SHIFTLIGHTRPM_ROWS[4] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+{0,1,2,3};
+short SHIFTLIGHTRPM_DATA[24] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{1300,2500,3000,3500,6400,6400,
+1300,2500,3000,3500,6400,6400,
+1300,2500,3000,3500,6400,6400,
+1300,2500,3000,3500,6400,6400};
+
+ThreeDTable ShiftLightRPMs __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 6,
+	.rowCount = 4,
+	.columnHeaderArray = SHIFTLIGHTRPM_COLS,
+	.rowHeaderArray = SHIFTLIGHTRPM_ROWS,
+	.tableCells = SHIFTLIGHTRPM_DATA,
+	.tableType = UInt16Table3D,
+	.multiplier =  0.25f,
+	.offset = 0 };	
+	
 
 //TwoDTable LeanBoostThreshold CELFLASHDATA = //MAP axis, LAMBDA data
 //unsigned char LeanBoostInputMode CELFLASHDATA = LeanBoostInputModeOEM; //TODO EXTERN
