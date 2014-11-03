@@ -24,9 +24,20 @@ void DriveModeHack()
 		unsigned char KillMode = pRamVariables->KillMode;
 		unsigned char KillWait = pRamVariables->KillWait;
 		unsigned char ModeWait = pRamVariables->ALSModeWait;
-	
-	
-		if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch())//Change to CruiseMaster&Resume/Coast
+
+		if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseCoastSwitch() && TestBrakeSwitch())
+		{
+			if (KillWait == 0)
+			{
+				KillMode += 1;
+				pRamVariables->KillWait = 0x01;
+				pRamVariables->DriveMode = 0x00;
+			}
+			else
+			{
+			}
+		}
+		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch())
 		{	
 			if (ModeWait == 0)
 			{
@@ -46,18 +57,6 @@ void DriveModeHack()
 				NewDriveMode = DriveModeSwitchAlt();
 				pRamVariables->DriveMode = NewDriveMode;
 				pRamVariables->ALSModeWait = 0x01;
-			}
-			else
-			{
-			}
-		}
-		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseCoastSwitch() && TestBrakeSwitch())
-		{
-			if (KillWait == 0)
-			{
-				KillMode += 1;
-				pRamVariables->KillWait = 0x01;
-				pRamVariables->DriveMode = 0x00;
 			}
 			else
 			{
