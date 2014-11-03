@@ -82,6 +82,14 @@ void InputUpdate()//TODO: put on SD branch
 	switch(pRamVariables->MapBlendingInputMode)
 	{
 		case MapBlendingInputModeUndefined:
+			if (FlexFuelEnabled == 1)
+			{
+				pRamVariables->MapBlendRatio = pRamVariables->FlexFuelRatio;
+			}
+			else
+			{
+				pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
+			}
 		break;
 		
 		case MapBlendingInputModeTGVLeft:
@@ -100,6 +108,18 @@ void InputUpdate()//TODO: put on SD branch
 	switch(pRamVariables->MapSwitchingInputMode)
 	{
 		case MapSwitchingInputModeUndefined:
+			if (pRamVariables->DriveMode <= 1)
+			{
+				pRamVariables->MapSwitch = DefaultMapSwitch;
+			}
+			else if (pRamVariables->DriveMode == 2)
+			{
+				pRamVariables->MapSwitch = MapSwitch2;
+			}
+			else
+			{
+				pRamVariables->MapSwitch = MapSwitch3;
+			}
 		break;
 		
 		#ifdef pSiDrive
