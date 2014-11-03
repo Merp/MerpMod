@@ -102,6 +102,9 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 	WGDCHack();
 #endif
 
+#if ALS_HACKS
+	DriveModeHack();
+#endif
 }
 
 void (*RevLimDeleteHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sRevLimEnd;
