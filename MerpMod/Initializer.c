@@ -152,6 +152,25 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables->MafMode = DefaultMafMode;
 #endif
 
+#if SHIFTLIGHT_HACKS
+	pRamVariables->ShiftLightRPM = 7000;
+#endif
+
+#if ALS_HACKS
+	pRamVariables->TargetIdleSpeed = Pull2DHooked((void*)PrimaryOEMTargetIdleSpeedTableA, *pCoolantTemp);
+	pRamVariables->ALSModeWait = 0x00;
+	pRamVariables->ALSEnable = 0x00;
+	pRamVariables->ALSActive = 0x00;
+	pRamVariables->RequestedTorque = Pull3DHooked((void*)tRequestedTorqueA, *pAcceleratorPedal, *pEngineSpeed);
+	pRamVariables->DriveMode = DefaultDriveMode;
+	pRamVariables->KillMode = 0x00;
+	pRamVariables->TimerSeconds = 0x00;
+	pRamVariables->TimerMinutes = 0x00;
+	pRamVariables->StartTimer = 0.0;
+//	pRamVariables->TimerUp = 0x01;
+	
+#endif
+
 pRamVariables->ECUIdentifier = *(long*)dEcuId;
 pRamVariables->HardResetFlag = HardResetFlagDisabled;
 
