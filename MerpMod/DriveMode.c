@@ -21,7 +21,6 @@ void DriveModeHack()
 {
 	{
 		unsigned char NewDriveMode;
-		unsigned char KillMode = pRamVariables->KillMode;
 		unsigned char KillWait = pRamVariables->KillWait;
 		unsigned char ModeWait = pRamVariables->ALSModeWait;
 
@@ -29,28 +28,31 @@ void DriveModeHack()
 		{
 			if (KillWait == 0)
 			{
-				KillMode += 1;
+				pRamVariables->KillMode += 1;
 				pRamVariables->KillWait = 0x01;
 				pRamVariables->DriveMode = 0x00;
+				pRamVariables->ALSModeWait = 0x01;
 			}
 			else
 			{
 			}
 		}
-		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch())
+		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch())		
+//		else if (TestCruiseMasterSwitch() && TestCruiseResumeSwitch())
 		{	
 			if (ModeWait == 0)
 			{
 				NewDriveMode = DriveModeSwitch();
 				pRamVariables->DriveMode = NewDriveMode;
 				pRamVariables->ALSModeWait = 0x01;
-				KillMode = 0x00;
+				pRamVariables->KillMode = 0x00;
 			}
 			else
 			{
 			}
 		}
-		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseCoastSwitch())
+//		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseCoastSwitch())
+		else if (TestCruiseMasterSwitch() && TestCruiseCoastSwitch())
 		{	
 			if (ModeWait == 0)
 			{
@@ -73,8 +75,6 @@ void DriveModeHack()
 		else
 		{
 		}
-
-		pRamVariables->KillMode = KillMode;
 
 		float TargetIdleSpeed;
 		float RequestedTorque;
@@ -128,7 +128,7 @@ void DriveModeHack()
 		}
 	}
 	MemorySoftReset();
-	Timer(0, 30);//Delete ME WHEN TESTED AND MOVED!!
+//	Timer(0, 30);//Delete ME WHEN MOVED!!
 }
 
 void MemorySoftReset()
