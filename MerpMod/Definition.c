@@ -573,6 +573,37 @@ DEFNEW3D("Knock Correction Retard Table 2",KnockCorrectionRetardTable2i);
 #if WGDC_RAMTUNING
 #endif
 
+#if SHIFTLIGHT_HACKS
+DEFINERAMVAR("ShiftLightRPM",ShiftLightRPM,4,"E");
+DEFINERAMVAR("ALSModeWait",ALSModeWait,1,"E");
+DEFINERAMVAR("ALSEnable",ALSEnable,1,"E");
+DEFINERAMVAR("ALSActive",ALSActive,1,"E");
+DEFINERAMVAR("DriveMode",DriveMode,1,"E");
+DEFINERAMVAR("KillMode",KillMode,1,"E");
+DEFNEW1D("Shift Light Flash Speed",ShiftLightFlashSpeed);
+DEFNEW1D("Shift Light Flash Count",ShiftLightFlashes);
+DEFNEW3D("Shift Light RPMs",ShiftLightRPMs);
+DEFNEW1D("Default Vehicle Drive Mode",DefaultDriveMode);
+DEFNEW1D("ALS Target Idle Speed",DefaultALSTargetIdleSpeed);
+#endif
+
+#if ALS_HACKS
+DEFINERAMVAR("Target Idle Speed ALS",TargetIdleSpeed,2,"E");
+DEFINERAMVAR("Requested Torque A ALS",RequestedTorque,2,"E");
+DEFNEW1D("POLF Hack Mode",DefaultPolfHackEnabled);
+DEFNEW1D("Timing Hack Mode",DefaultTimingHackEnabled);
+//DEFNEW1D("Flex Fuel Self Learning Mode",FlexFuelEnabled);
+//DEFINERAMVAR("IdleMapSelect",IdleMapSelect,1,"E");
+DEFNEW3D("Requested Torque Valet Mode",ReqTorqTable1);
+DEFNEW3D("Requested Torque Performance Mode",ReqTorqTable2);
+DEFNEW3D("Requested Torque ALS Mode",ReqTorqTable3);
+DEFINERAMVAR("TimerSeconds",TimerSeconds,4,"E");
+DEFINERAMVAR("TimerMinutes",TimerMinutes,4,"E");
+//DEFNEW1D("ALS Timing Lock", DefaultALSTimingLock);
+//DEFNEW1D("ALS Fuel Lock", DefaultALSFuelLock);
+//DEFNEW1D("ALS Boost Target/Limit", DefaultALSBoostLimit);
+//DEFNEW1D("Cycles Per Second", CyclesPerSec;
+#endif
 
 const long endofdeffile __attribute__ ((section ("DefinitionDataEnd"),aligned(4))) = 0x00090009;
 const long endofdeffile1 __attribute__ ((section ("DefinitionDataEnd"),aligned(4))) = 0x00090009;
