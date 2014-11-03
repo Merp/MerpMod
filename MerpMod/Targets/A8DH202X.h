@@ -151,6 +151,11 @@
 #define pDefogFlags ((unsigned char*)0xFFFF69EF)
 #define DefogBitMask ((unsigned char)0x20)
 #define pSSMResetByte ((unsigned char*)0xFFFF2D8E)
+#define DefoggerBitMask ((unsigned char)0x20)
+//#define pCruiseMasterFlags ((unsigned char*)0xFFFF64B0)
+//#define CruiseMasterSwitchBitMask ((unsigned char)0x02)
+//#define pOpenClosedLoopFlags ((unsigned char*)0xFFFF9299)  Ready for idatohew
+//8 = Closed Loop (normal)]  [10 = Open Loop (normal)]  [7 = Open Loop due insufficient coolant temp]  [14 = Open Loop due to system failure].
 
 /////////////////////
 // NonSpecific Engine params
@@ -175,6 +180,34 @@
 #define pCurrentGear ((unsigned char*)0xFFFF6B21)
 #define pAf1Res ((float*)0xFFFF5F08)
 #define pDeltaMap ((float*)0xFFFF668C)
+#define pAcceleratorPedal ((float*)0xFFFF68E4)
+#define pTargetIdleSpeed ((float*)0xFFFF7C3C)
+#define hPullTargetIdleSpeed (0x00042EB8)
+#define hTableTargetIdleSpeedA (0x00042EBC)
+#define tTargetIdleSpeedA (0x00095F1C)
+#define hTableTargetIdleSpeedB (0x00042EC4)
+#define tTargetIdleSpeedB (0x00095F44)
+#define hTableTargetIdleSpeedC (0x00042ECC)
+#define tTargetIdleSpeedC (0x00095F6C)
+#define hPullIdleMapSelection (0x00042EA4)
+#define pIdleMapSelection (0xFFFF7CB4)
+#define hPullRequestedTorqueA (0x000BEA7C)
+#define tRequestedTorqueA (0x000964D0)
+#define hTableRequestedTorqueA (0x000BE9FC)
+#define sFloatToShort (0x00002564)
+#define dEvapFuelComp (0x000273c0)
+#define pCPCDutyRatio ((float*)0xFFFF6BC0)
+//#define pAirPump ((float*)0xFFFF62CC)   Ready for IDAtohew
+//#define pFuelLevel ((float*)0xFFFF67F0)  Ready for IDAtohew
+//#define pSTFTs1 ((float*)0xFFFF707C)   Ready
+//#define pLTFTsA ((float*)0xFFFF7238)   Ready
+//#define dLTFTLimitA (0x000C8568)  Ready for idatohew & Metahooks
+//#define dLTFTLimitB (0x000C856C)  Ready for idatohew & Metahooks
+//#define hLTFTLimitA1 (0x0002EE44)  Ready for idatohew & Metahooks
+//#define hLTFTLimitB1 (0x0002EE40)  Ready for idatohew & Metahooks
+//#define hLTFTLimitA2 (0x0002F50C)  Ready for idatohew & Metahooks
+//#define hLTFTLimitB2 (0x0002F508)  Ready for idatohew & Metahooks
+
 
 /////////////////////
 // OBD Experimental stuff
@@ -198,4 +231,5 @@
 #define hMemoryReset (0x0000DBC8)
 #define pMemoryResetLimit (0xFFFFBFBB)
 #define hMemoryResetLimit (0x00012038)
+#define sMemorySoftReset (0x00056A24)
 
