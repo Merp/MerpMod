@@ -34,6 +34,8 @@ unsigned char TestClutchSwitch() ROMCODE;
 unsigned char TestClutchSwitchDepressedEvent() ROMCODE;
 unsigned char TestCruiseResumeSwitch() ROMCODE;
 unsigned char TestCruiseCoastSwitch() ROMCODE;
+unsigned char TestIdleSwitch() ROMCODE;
+unsigned char TestNeutralSwitch() ROMCODE;
 void TestCruiseControlToggles() ROMCODE;
 
 void Initializer()	ROMCODE;
@@ -54,6 +56,10 @@ void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
 void InjectorHack() ROMCODE;
 void POLFHack()  ROMCODE;
+void DriveModeHack()  ROMCODE;
+void ALSActivate() ROMCODE;
+void MemorySoftReset() ROMCODE;
+void Timer(float Minutes, float Seconds) ROMCODE;
 float TimingHack()  ROMCODE;
 float Pull2DRamHook(float* table, float xLookup) ROMCODE;
 float Pull2DRamHookTipIn(float* table, float xLookup) ROMCODE;
@@ -130,6 +136,7 @@ extern ThreeDTable FuelTable2ss;
 extern ThreeDTable LCFuelEnrichTable;
 extern unsigned char DefaultLCFuelMode;
 extern float DefaultLCFuelLock;
+extern float PGFuelComp;
 extern float DefaultLCFuelEnrichMultiplier;
 
 extern unsigned char DefaultBoostHackEnabled;
@@ -181,6 +188,7 @@ extern ThreeDTable WGDCMaxRamTable;
 
 
 extern unsigned char DefaultTimingHackEnabled;
+extern float PGTimingComp;
 extern TableGroup TimingTableGroup;
 extern ThreeDTable TimingTable1i;
 extern ThreeDTable TimingTable2i;
@@ -255,7 +263,41 @@ extern float FBKCHiThreshold;
 extern float FBKCLoadThreshold;
 extern float EGTCelLoadThreshold;
 extern float EGTResistanceThreshold;
+extern unsigned char ShiftLightFlashes;
+extern unsigned char ShiftLightFlashSpeed;
+extern unsigned char KillModeFlashes;
+extern unsigned char KillModeFlashSpeed;
+extern ThreeDTable ShiftLightRPMs;
 
+#if ALS_HACKS
+unsigned char DriveModeSwitch() ROMCODE;
+unsigned char DriveModeSwitchAlt() ROMCODE;
+extern float TargetIdleSpeed;
+extern float DefaultALSBoostLimit;
+extern float DefaultALSFuelLock;
+extern float DefaultALSTimingLock;
+extern float RequestedTorque;
+extern float DefaultALSTargetIdleSpeed;
+extern unsigned char NewDriveMode;
+extern unsigned char KillMode;
+extern unsigned char DefaultDriveMode;
+extern unsigned char ShiftMode;
+extern unsigned char ModeWait;
+extern unsigned char KillWait;
+extern unsigned char ALSModeFlashes;
+extern unsigned char ALSModeFlashSpeed;
+extern ThreeDTable ReqTorqTable1;
+extern ThreeDTable ReqTorqTable2;
+extern ThreeDTable ReqTorqTable3;
+extern float StartTimer;
+extern float CyclesPerSec;
+extern unsigned char TimerStarted;
+extern unsigned char FlexFuelEnabled;
+//extern unsigned char FuelUpWaitMinutes;
+//extern unsigned char FuelUpWaitSeconds;
+//extern unsigned char O2WaitMinutes;
+//extern unsigned char O2WaitSeconds;
+#endif
 
 //Rev Limiter Defaults
 extern unsigned char DefaultRevLimMode;
