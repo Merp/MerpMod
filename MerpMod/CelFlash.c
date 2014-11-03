@@ -98,6 +98,38 @@ void CelFlash()
 	//	}
 	//}
 	
+#if SHIFTLIGHT_HACKS
+
+	unsigned char ShiftMode = pRamVariables->DriveMode;
+	unsigned char ALSModeFlashes = pRamVariables->DriveMode;
+	float DefaultShiftLightRPM = 10000.0;
+	
+		if(*pCurrentGear >= 1)
+		{
+		pRamVariables->ShiftLightRPM = Pull3DHooked(&ShiftLightRPMs,*pCurrentGear, ShiftMode);
+		}
+		else
+		{
+		pRamVariables->ShiftLightRPM = DefaultShiftLightRPM;
+		}
+#endif
+
+/*
+#if DASHBOARD_CEL
+
+	unsigned char FirstFlash;
+	unsigned char SecondFlash;
+	unsigned char ThirdFlash;
+	unsigned char FourthFlash;
+
+	if (entry conditions)
+	{
+		CelFlashStart(FirstFlash,FirstFlashSpeed,0,0); DELAY!!!!
+		CelFlashStart(SecondFlash,SecondFlashSpeed,0,0); DELAY!!!!
+		CelFlashStart(ThirdFlash,ThirdFlashSpeed,0,0); DELAY!!!!
+		CelFlashStart(FourthFlash,FourthFlashSpeed,0,0); LONG DELAY!!!!
+	}
+*/
 
 ////////////////////////////////
 //KNOCK LIGHT CODE w/ IAM RECALL
@@ -115,6 +147,24 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 	{
 		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
 	}
+#if SHIFTLIGHT_HACKS
+	else if(*pEngineSpeed >= pRamVariables->ShiftLightRPM)
+	{
+		CelFlashStart(ShiftLightFlashes,ShiftLightFlashSpeed,0,0);
+	}
+#endif
+
+#if ALS_HACKS
+	else if(pRamVariables->ALSModeWait == 1)
+	{
+		CelFlashStart(ALSModeFlashes,ALSModeFlashSpeed,0,0);
+	}
+	else if(pRamVariables->KillMode >= 2)
+	{
+		CelFlashStart(KillModeFlashes,KillModeFlashSpeed,0,0);
+	}
+#endif
+
 #if !defined(NOAF1RES)
 	else if(*pAf1Res < EGTResistanceThreshold && *pEngineLoad > EGTCelLoadThreshold)
 	{
