@@ -36,9 +36,8 @@ void DriveModeHack()
 			else
 			{
 			}
-		}
-		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch())		
-//		else if (TestCruiseMasterSwitch() && TestCruiseResumeSwitch())
+		}	
+		else if (TestCruiseMasterSwitch() && TestCruiseResumeSwitch())
 		{	
 			if (ModeWait == 0)
 			{
@@ -51,7 +50,6 @@ void DriveModeHack()
 			{
 			}
 		}
-//		else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseCoastSwitch())
 		else if (TestCruiseMasterSwitch() && TestCruiseCoastSwitch())
 		{	
 			if (ModeWait == 0)
@@ -128,7 +126,6 @@ void DriveModeHack()
 		}
 	}
 	MemorySoftReset();
-//	Timer(0, 30);//Delete ME WHEN MOVED!!
 }
 
 void MemorySoftReset()
