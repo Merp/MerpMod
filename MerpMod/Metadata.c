@@ -140,7 +140,11 @@ ecuidbytes: ECU_IDENTIFIER_CHARS,
 ecuid:		STR(ECU_IDENTIFIER),
 pad3:   OpDelim,
 newecuidop:	OpNewECUID,
+#ifdef MOD_ECUID
+newecuid:	STR(MOD_ECUID),
+#else
 newecuid:	STR(MOD_ECU_IDENTIFIER),
+#endif
 pad4:   OpDelim,
 
 //Mod Information
