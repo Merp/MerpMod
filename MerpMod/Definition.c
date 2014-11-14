@@ -329,6 +329,9 @@ DEFNEW2D("TGV Right Input Scaling_",TGVRightScaling);
 DEFNEW1D("TGV Left Input Smoothing Factor",LeftTGVInputSmoothingFactor);
 DEFNEW1D("TGV Right Input Smoothing Factor",RightTGVInputSmoothingFactor);
 
+DEFNEW1D("TGV Left Input Multiplier",LeftTGVInputMultiplier);
+DEFNEW1D("TGV Right Input Multiplier",RightTGVInputMultiplier);
+
 DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
 DEFNEW1D("Map Switch Input Mode",DefaultMapSwitchingInputMode);

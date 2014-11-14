@@ -19,16 +19,17 @@
 unsigned char DefaultMapSwitch SWITCHDATA = MapSwitch1;
 float DefaultMapBlendRatio SWITCHDATA = 0.0f;
 
-float LeftTGVInputSmoothingFactor SWITCHDATA = 0.8f;//TODO DEFINE THESE
+float LeftTGVInputSmoothingFactor SWITCHDATA = 0.8f;
 float RightTGVInputSmoothingFactor SWITCHDATA = 0.8f;
+
+float LeftTGVInputMultiplier SWITCHDATA = 100.0f;
+float RightTGVInputMultiplier SWITCHDATA = 1.0f;
 
 float MapSwitchThresholdLo SWITCHDATA = 1.5f;
 float MapSwitchThresholdHi SWITCHDATA = 3.5f;
 
 unsigned char DefaultMapBlendingInputMode SWITCHDATA = MapBlendingInputModeUndefined;
 unsigned char DefaultMapSwitchingInputMode  SWITCHDATA = MapSwitchingInputModeUndefined;
-
-
 
 //TODO TEST pull2d function here!
 
@@ -43,9 +44,9 @@ TwoDTable TGVLeftScaling  SWITCHDATA = {
 	.tableType = UInt16Table2D,
 	.columnHeaderArray = INPUT1_SCALING_ROWS,
 	.tableCells = INPUT1_SCALING_DATA,
-	.multiplier = 0.001525902f,	//todo unit test these
+	.multiplier = 0.00001525902f,	//todo unit test these
 	.offset = 0.0 };
-//! 100/65535  (0-100.00 range, 16bit precision)
+//! 1/65535  (0-1.00 range, 16bit precision)
 
 float INPUT2_SCALING_ROWS[11] SWITCHDATA =
 {0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5};
@@ -58,8 +59,8 @@ TwoDTable TGVRightScaling  SWITCHDATA = {
 	.tableType = UInt16Table2D,//TODO: CHECK that these are consistent between 2d/3d tables!
 	.columnHeaderArray = INPUT2_SCALING_ROWS,
 	.tableCells = INPUT2_SCALING_DATA,
-	.multiplier = 0.001525902f,	//todo unit test these
+	.multiplier = 0.00001525902f,	//todo unit test these
 	.offset = 0.0 };
-//! 100/65535  (0-100.00 range, 16bit precision)
+//! 1/65535  (0-1.00 range, 16bit precision)
 
 #endif

@@ -279,6 +279,8 @@ extern unsigned char DefaultMapSwitch;
 extern float DefaultMapBlendRatio;
 extern float LeftTGVInputSmoothingFactor;
 extern float RightTGVInputSmoothingFactor;
+extern float LeftTGVInputMultiplier;
+extern float RightTGVInputMultiplier;
 extern TwoDTable TGVLeftScaling;
 extern TwoDTable TGVRightScaling;
 extern float MapSwitchThresholdLo;
