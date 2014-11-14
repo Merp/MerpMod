@@ -74,6 +74,7 @@ float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
+float Smooth(float smoothingFactor, float input, float previous) ROMCODE;
 
 void RevLimCode() ROMCODE;
 void RevLimReset() ROMCODE;
@@ -276,6 +277,8 @@ extern unsigned char Licensee[];
 #if SWITCH_HACKS
 extern unsigned char DefaultMapSwitch;
 extern float DefaultMapBlendRatio;
+extern float LeftTGVInputSmoothingFactor;
+extern float RightTGVInputSmoothingFactor;
 extern TwoDTable TGVLeftScaling;
 extern TwoDTable TGVRightScaling;
 extern float MapSwitchThresholdLo;
