@@ -55,22 +55,30 @@ float SwitchSelect(TableSubSet tss, float xLookup, float yLookup)
 	float OutputValue;
 		switch(pRamVariables->MapSwitch)
 		{
+			case MapSwitch4:
+			OutputValue = Pull3DHooked(tss.Tabless, xLookup, yLookup);
+			break;
+			
 			case MapSwitch3:
-			OutputValue = Pull3DHooked(tss.TableSS, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tables, xLookup, yLookup);
 			break;
 			
 			case MapSwitch2:
-			OutputValue = Pull3DHooked(tss.TableS, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tablei, xLookup, yLookup);
+			break;
+			
+			case MapSwitch1:
+			OutputValue = Pull3DHooked(tss.Tablev, xLookup, yLookup);
 			break;
 			
 			default:
-			OutputValue = Pull3DHooked(tss.TableI, xLookup, yLookup);
+			OutputValue = Pull3DHooked(tss.Tablei, xLookup, yLookup);
 			break;
 		}
 	return OutputValue;
 }
 
-void InputUpdate()//TODO: put on SD branch
+void InputUpdate()
 {
 	float grad = 0.0000762939453125;
 	float offs = 0.0f;
@@ -79,25 +87,21 @@ void InputUpdate()//TODO: put on SD branch
 	pRamVariables->TGVLeftScaled = Smooth(LeftTGVInputSmoothingFactor,Pull2DHooked(&TGVLeftScaling,pRamVariables->TGVLeftVolts), pRamVariables->TGVLeftScaled) * LeftTGVInputMultiplier + LeftTGVInputOffset;
 	pRamVariables->TGVRightScaled = Smooth(RightTGVInputSmoothingFactor,Pull2DHooked(&TGVRightScaling,pRamVariables->TGVRightVolts), pRamVariables->TGVRightScaled) * RightTGVInputMultiplier + LeftTGVInputOffset;
 	
-	switch(pRamVariables->MapBlendingInputMode)
+	switch(BlendRatioInput)
 	{
-		case MapBlendingInputModeUndefined:
-			if (FlexFuelEnabled == 1)
-			{
-				pRamVariables->MapBlendRatio = pRamVariables->FlexFuelRatio;
-			}
-			else
-			{
-				pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
-			}
+		case InputModeUndefined:
 		break;
 		
-		case MapBlendingInputModeTGVLeft:
+		case InputModeTGVLeft:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVLeftScaled;
 			break;
 		
-		case MapBlendingInputModeTGVRight:
+		case InputModeTGVRight:
 			pRamVariables->MapBlendRatio = pRamVariables->TGVRightScaled;
+			break;
+			
+		case InputModeVirtualFlexSensor:
+			pRamVariables->MapBlendRatio = pRamVariables->FlexFuelRatio;
 			break;
 		
 		default:
@@ -105,30 +109,18 @@ void InputUpdate()//TODO: put on SD branch
 			break;
 	}
 	
-	switch(pRamVariables->MapSwitchingInputMode)
+	switch(MapSwitchInput)
 	{
-		case MapSwitchingInputModeUndefined:
-			if (pRamVariables->DriveMode <= 1)
-			{
-				pRamVariables->MapSwitch = DefaultMapSwitch;
-			}
-			else if (pRamVariables->DriveMode == 2)
-			{
-				pRamVariables->MapSwitch = MapSwitch2;
-			}
-			else
-			{
-				pRamVariables->MapSwitch = MapSwitch3;
-			}
+		case InputModeUndefined:
 		break;
 		
 		#ifdef pSiDrive
-		case MapSwitchingInputModeSiDrive:
+		case InputModeSiDrive:
 		{
 			switch(*pSiDrive)
 		
 			case SiDriveSS:
-			pRamVariables->MapSwitch = MapSwitch3;
+			pRamVariables->MapSwitch = MapSwitch4;
 			break;
 			
 			case SiDriveSSAlt:
@@ -140,22 +132,24 @@ void InputUpdate()//TODO: put on SD branch
 			break;
 		
 			default:
-			pRamVariables->MapSwitch = MapSwitch1;
+			pRamVariables->MapSwitch = MapSwitch2;
 			break;
-			}
 		}
 		#endif
 		
-		case MapSwitchingInputModeTGVLeft:
+		case InputModeTGVLeft:
 			MapSwitchThresholdCheck(pRamVariables->TGVLeftVolts);
 			break;
 		
-		case MapSwitchingInputModeTGVRight:
+		case InputModeTGVRight:
 			MapSwitchThresholdCheck(pRamVariables->TGVRightVolts);
+			break;
+			
+		case InputModeDriveMode:
+			pRamVariables->MapSwitch = pRamVariables->DriveMode;
 			break;
 		
 		default:
-		pRamVariables->MapSwitch = DefaultMapSwitch;
 		break;
 	}
 }
@@ -165,17 +159,17 @@ void MapSwitchThresholdCheck(float input)
 	if(input < MapSwitchThresholdLo)
 	{
 		//Low, map 1
-		pRamVariables->MapSwitch = MapSwitch1;
+		pRamVariables->MapSwitch = MapSwitch2;
 	}
 	else if (input < MapSwitchThresholdHi)
 	{
 		//Mid, map 2
-		pRamVariables->MapSwitch = MapSwitch2;
+		pRamVariables->MapSwitch = MapSwitch3;
 	}
 	else
 	{
 		//High, map 3
-		pRamVariables->MapSwitch = MapSwitch3;
+		pRamVariables->MapSwitch = MapSwitch4;
 	}
 }
 
