@@ -30,7 +30,7 @@ void DriveModeHack()
 			{
 				pRamVariables->KillMode += 1;
 				pRamVariables->KillWait = 0x01;
-				pRamVariables->DriveMode = 0x00;
+				pRamVariables->DriveMode = 0x01;
 				pRamVariables->ALSModeWait = 0x01;
 			}
 			else
@@ -76,69 +76,61 @@ void DriveModeHack()
 
 		float TargetIdleSpeed;
 		float RequestedTorque;
-	
+		
+		RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
+
 		if (pRamVariables->KillMode >= 2)
 		//Kill Mode
 			{
-				TargetIdleSpeed = 0;
-				RequestedTorque = 0;
+//				*pFlagsRevLim |= RevLimBitMask;//FuelCut
+				TargetIdleSpeed = 0.0;
+				RequestedTorque = 0.0;
 			}
-		else if (pRamVariables->DriveMode == 0 && pRamVariables->KillMode <= 1)
+		else if (pRamVariables->DriveMode == 1 && pRamVariables->KillMode <= 1)
 		//Valet Mode
 			{
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedA, *pCoolantTemp);
-				RequestedTorque = Pull3DHooked(&ReqTorqTable1, *pAcceleratorPedal, *pEngineSpeed);
 			}
-		else if (pRamVariables->DriveMode == 1)
+		else if (pRamVariables->DriveMode == 2)
 		//Normal Mode
 			{
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedA, *pCoolantTemp);
-				RequestedTorque = Pull3DHooked((void*)tRequestedTorqueA, *pAcceleratorPedal, *pEngineSpeed);
-			}	
-		else if (pRamVariables->DriveMode == 2)
+			}
+		else if (pRamVariables->DriveMode == 3)
 		//Performance Mode
 			{
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedB, *pCoolantTemp);
-				RequestedTorque = Pull3DHooked(&ReqTorqTable2, *pAcceleratorPedal, *pEngineSpeed);
 			}
-		else if (pRamVariables->DriveMode >= 3)
+		else if (pRamVariables->DriveMode >= 4)
 		//ALS Mode
 			{
+
 				TargetIdleSpeed = DefaultALSTargetIdleSpeed;
-				RequestedTorque = Pull3DHooked(&ReqTorqTable3, *pAcceleratorPedal, *pEngineSpeed);
 			}
 		else
 			{
 			}
+
 		//add if A/C check here?
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
 		pRamVariables->RequestedTorque = RequestedTorque;
-		
-		if (pRamVariables->DriveMode >= 3)
-		{
-			pRamVariables->ALSEnable = 0x01;
-			ALSActivate();
-		}
-		else
-		{
-			pRamVariables->ALSEnable = 0x00;
-			pRamVariables->ALSActive = 0x00;
-		}
+
 	}
-	MemorySoftReset();
+	ALSActivate();
+	MemoryHardReset();
 }
 
-void MemorySoftReset()
-	
+void MemoryHardReset()	
 {
 	//Conditions for Memory Reset
 	if (pRamVariables->KillMode >= 5 && *pEngineSpeed == 0)
-	{
-	SSMResetWrite(0x40);
-	}
+		{
+			ResetRamVariables();
+			SSMResetWrite(0x40);
+		}
 	else
-	{
-	}
+		{
+		}
 }
 
 #endif
@@ -147,12 +139,12 @@ void MemorySoftReset()
 	unsigned char DriveModeSwitch()
 	{
 		unsigned char result = pRamVariables->DriveMode;
-		if(result <= 0)
-			return 0x01;
-		else if(result == 1)
+		if(result == 1)
 			return 0x02;
 		else if(result == 2)
 			return 0x03;
+		else if(result == 3)
+			return 0x04;
 		else
 			return DefaultDriveMode;
 	}
@@ -160,10 +152,12 @@ void MemorySoftReset()
 	{
 		unsigned char result = pRamVariables->DriveMode;
 		if(result <= 1)
-			return 0x00;
+			return 0x01;
 		else if(result == 2)
 			return 0x01;
-		else
+		else if(result == 3)
 			return 0x02;
+		else
+			return 0x03;
 	} 	
 #endif

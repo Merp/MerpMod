@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <idatohew>
   <defines>
 
@@ -417,23 +417,26 @@
         <define name="ClutchBitMask" type="unsigned char">
             <ida name="CLUTCH_BITMASK" type="bitmask"/>
         </define>
-		<define name="pTestModeFlags" type="unsigned char*">
-			<ida name="TESTMODE_FLAGS" />
+		<define name="pIdleFlags" type="unsigned char*">
+        	</define>
+        	<define name="IdleBitMask" type="unsigned char">
+        	</define>
+		<define name="pNeutralFlags" type="unsigned char*">
+        	</define>
+       	<define name="NeutralBitMask" type="unsigned char">
 		</define>
-		<define name="TestModeBitMask" type="unsigned char">
-			<ida name="TESTMODE_BITMASK" type="bitmask"/>
+		<define name="pDefoggerFlags" type="unsigned char*">
 		</define>
-		<define name="pDefogFlags" type="unsigned char*">
-			<ida name="DEFOG_FLAGS" />
+		<define name="DefoggerBitMask" type="unsigned char">
 		</define>
-		<define name="DefogBitMask" type="unsigned char">
-			<ida name="DEFOG_BITMASK" type="bitmask"/>
+		<define name="pCruiseMasterFlags" type="unsigned char*">
 		</define>
-		<define name="pSSMResetByte" type="unsigned char*">
-			<ida name="SSM_RESET_BYTE" />
+		<define name="CruiseMasterBitMask" type="unsigned char">
 		</define>
-		
-    </category>
+		<define name="pClosedLoopFlags" type="unsigned char*">
+		</define>
+
+	</category>
 
     <category name="NonSpecific Engine params">
         <define name="pFbkc1" type="unsigned char*">
@@ -494,6 +497,32 @@
             <ida name="E_AF_SENSOR_1_RESISTANCE" priority="3"/>
         </define>
         <define name="pDeltaMap" type="float*"/>
+	<define name="pAcceleratorPedal" type="float*"/>
+	<define name="pTargetIdleSpeed" type="float*"/>
+	<define name="hPullTargetIdleSpeed"/>
+        <define name="hTableTargetIdleSpeedA"/>
+        <define name="tTargetIdleSpeedA"/>
+        <define name="hTableTargetIdleSpeedB"/>
+        <define name="tTargetIdleSpeedB"/>
+        <define name="hTableTargetIdleSpeedC"/>
+        <define name="tTargetIdleSpeedC"/>
+	  <define name="hPullIdleMapSelection"/>
+        <define name="pIdleMapSelection"/>
+		<define name="hPullRequestedTorqueA"/>
+		<define name="tRequestedTorqueA"/>
+		<define name="hTableRequestedTorqueA"/>
+	 	<define name="sFloatToShort"/>
+		<define name="dEvapFuelComp"/>
+	 	<define name="pCPCDutyRatio"/>
+<define name="pAirPump"/>
+<define name="pFuelLevel"/>
+<define name="pSTFTs1"/>
+<define name="pSTFTsA"/>
+<define name="hLTFTLimitA1"/>
+<define name="hLTFTLimitB1"/>
+<define name="hLTFTLimitA2"/>
+<define name="hLTFTLimitB2"/>
+
     </category>
 
 
@@ -501,11 +530,12 @@
         <define name="pObdVinDirect" type="unsigned char*" />
     </category>
 
+
+
     <category name="New Definitions">
         <define name="dLoadSmoothingA"/>
         <define name="dLoadSmoothingB"/>
         <define name="dLoadSmoothingAlt"/>
-		<define name="dLoadSmoothingAlt2"/>
         <define name="dLoadSmoothingFinal"/>
     </category>
     
@@ -521,6 +551,9 @@
         </define>
         <define name="hMemoryResetLimit">
             <ida name="HOOK_MEMORY_RESET_LIMIT" />
+<define name="sMemorySoftReset"/>
+
+
         </define>
     </category>
   
@@ -547,8 +580,7 @@
       <subsection name="RomHole_BoostHackTables" />
       <subsection name="RomHole_TimingHackTables" />
       <subsection name="RomHole_MapSwitchTables" />
-	  <subsection name="RomHole_ProgModeTables" />
-	  <subsection name="RomHole_PortLoggerTables" />
+      <subsection name="RomHole_AntiLagTables" />
       <subsection name="RomHole_Vin" />
       <subsection name="RomHole_Code" />
       <subsection name="RomHole_Functions" />

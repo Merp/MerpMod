@@ -83,7 +83,7 @@ Assert(0,"error in ram hole!");
 #endif
 
 #if REVLIM_HACKS
-	RevLimHook();
+	RevLimCode();
 #endif
 
 #if WGDC_HOOK_DEFINED

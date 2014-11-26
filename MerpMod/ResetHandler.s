@@ -35,14 +35,13 @@
 		.section 	RSTHandler,"ax"
 _ResetHandler:
 				mov.l	Stack,r15
-				mov.l	@r15,r15
 				mov.l	SetValues,r0
 				jsr		@r0
 				nop
 				
-				!!mov.l	DemonstrateAssertionFailure, r0
-				!!jsr		@r0
-				!!nop
+				mov.l	DemonstrateAssertionFailure, r0
+				jsr		@r0
+				nop
 				
 				mov.l	GenericTests,r0			
 				jsr		@r0			
@@ -51,11 +50,9 @@ _ResetHandler:
 				bra		.stop
 				nop								
 		.align 4
-		
-#include "TargetConfig.h"
 
 Stack:
-		.long	_ArchStackPointer
+		.long	0xFFFF1000
 		
 !! So you can't just "mov.l _SetValues,r0" (or any other function) since the
 !! functions all live in other segments.  You get "pcrel too far" errors.

@@ -23,14 +23,14 @@ float INJECTOR_SCALING_ROWS[11] FUELDATA =
 short INJECTOR_SCALING_DATA[11] FUELDATA =
 {20000,20100,20200,20300,20400,20500,20600,20700,20800,20900,21000};//TODO: document the native units here
 
-TwoDTable InjectorScalingTable  FUELDATA = {
-	.columnCount = 11,
-	.tableType = UInt16Table2D,
-	.columnHeaderArray = INJECTOR_SCALING_ROWS,
-	.tableCells = INJECTOR_SCALING_DATA,
-	.multiplier = 0.824f,	//todo unit test these
-	.offset = 0.0 };
-//! 27000/32767  (0-27000.00 range, 16bit precision)
+TwoDTable InjectorScalingTable FUELDATA = {
+.columnCount = 11,
+.tableType = UInt16Table2D,
+.columnHeaderArray = INJECTOR_SCALING_ROWS,
+.tableCells = INJECTOR_SCALING_DATA,
+.multiplier = 0.824f, //todo unit test these
+.offset = 0.0 };
+//! 27000/32767 (0-27000.00 range, 16bit precision)
 */
 
 float INJECTOR_SCALING_MULTIPLIER_ROWS[11] FUELDATA =
@@ -53,16 +53,19 @@ TwoDTable InjectorScalingMultiplierTable  FUELDATA = {
 #if POLF_HACKS
 
 unsigned char DefaultPolfHackEnabled FUELDATA = HackDisabled;
-unsigned char DefaultLCFuelMode FUELDATA = LCFuelModeDisabled;
+unsigned char DefaultLCFuelMode FUELDATA = 0x01;
 float DefaultLCFuelLock FUELDATA = 0.35f;
 float DefaultLCFuelEnrichMultiplier FUELDATA = 1.0f;
+float PGFuelComp FUELDATA = 1.0f;
 
 #if SWITCH_HACKS
 TableGroup FuelTableGroup FUELDATA = {
 	{&FuelTable1i,
+	&FuelTable1i,
 	&FuelTable1s,
 	&FuelTable1ss},
 	{&FuelTable2i,
+	&FuelTable2i,
 	&FuelTable2s,
 	&FuelTable2ss}
 };
@@ -70,8 +73,10 @@ TableGroup FuelTableGroup FUELDATA = {
 TableGroup FuelTableGroup FUELDATA = {
 	{&FuelTable1i,
 	&FuelTable1i,
+	&FuelTable1i,
 	&FuelTable1i},
 	{&FuelTable2i,
+	&FuelTable2i,
 	&FuelTable2i,
 	&FuelTable2i}
 };

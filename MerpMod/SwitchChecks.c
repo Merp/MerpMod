@@ -14,29 +14,6 @@
 
 #include "EcuHacks.h"
 
-#ifdef pTestModeFlags
-unsigned char TestTestModeSwitch()
-{
-	unsigned char result = *pTestModeFlags & TestModeBitMask;
-	if(result == TestModeBitMask)
-		return 0x01;
-	else
-		return 0x00;
-}
-#endif
-
-#ifdef pDefogFlags
-unsigned char TestDefogSwitch()
-{
-	unsigned char result = *pDefogFlags & DefogBitMask;
-	if(result == DefogBitMask)
-		return 0x01;
-	else
-		return 0x00;
-}
-#endif
-
-#ifdef pBrakeFlags
 unsigned char TestBrakeSwitch()
 {
 	unsigned char result = *pBrakeFlags & BrakeBitMask;
@@ -45,7 +22,15 @@ unsigned char TestBrakeSwitch()
 	else
 		return 0x00;
 }
-#endif
+
+unsigned char TestCruiseMasterSwitch()
+{
+	unsigned char result = *pCruiseMasterFlags & CruiseMasterBitMask;
+	if(result == CruiseMasterBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
 
 #ifdef pClutchFlags
 unsigned char TestClutchSwitch()
@@ -80,11 +65,49 @@ unsigned char TestCruiseCoastSwitch()
 }
 #endif
 
-#if defined(pCoastFlags) && defined(pResumeFlags)
+#ifdef pDefoggerFlags
+unsigned char TestDefoggerSwitch()
+{
+	unsigned char result = *pDefoggerFlags & DefoggerBitMask;
+	if(result == DefoggerBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
+#endif
+
+#ifdef pNeutralFlags
+unsigned char TestNeutralSwitch()
+{
+	unsigned char result = *pNeutralFlags & NeutralBitMask;
+	if(result == NeutralBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
+#endif
+
+#ifdef pIdleFlags
+unsigned char TestIdleSwitch()
+{
+	unsigned char result = *pIdleFlags & IdleBitMask;
+	if(result == IdleBitMask)
+		return 0x01;
+	else
+		return 0x00;
+}
+#endif
+
+
+
 void TestCruiseControlToggles()
 {
 	unsigned char resume = TestCruiseResumeSwitch();
 	unsigned char coast = TestCruiseCoastSwitch();
+	
+	unsigned char Idle = TestIdleSwitch();
+	unsigned char Neutral = TestNeutralSwitch();
+	unsigned char Defogger = TestDefoggerSwitch();
 	
 	if(pRamVariables->CruiseResumeLast != resume
 	&& pRamVariables->CruiseCoastLast != coast)
@@ -121,6 +144,7 @@ void TestCruiseControlToggles()
 	}
 	pRamVariables->CruiseCoastLast = coast;
 	pRamVariables->CruiseResumeLast = resume;
+	pRamVariables->IdleLast = Idle;
+	pRamVariables->NeutralLast = Neutral;
+	pRamVariables->DefoggerLast = Defogger;
 }
-
-#endif

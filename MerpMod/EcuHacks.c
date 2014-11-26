@@ -52,17 +52,8 @@ Validating hacks prior to ROM patching:
 
 #include "EcuHacks.h"
 
-void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
+void EcuHacksMain() //Constant Hz main routine
 {	
-	
-#if REVLIM_TEST
-	RevLimCode();
-
-		#if SWITCH_HACKS
-			InputUpdate();
-		#endif
-#endif
-
 #if PROG_MODE
 	ProgModeListener();
 #endif
@@ -75,50 +66,20 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 	CelFlash();
 #endif	
 
-#if PORT_LOGGER
-	PortLogger();
 	ADCLogger();
+#if ALS_HACKS
+	DriveModeHack();
+	FuelUp();
 #endif
+}
 
-#if RAM_HOLE_SCANNER
-	RamHoleScanner();
+void EcuHacksMainRPM() //RPM based Hz main routine
+{
+#if REVLIM_HACKS
+	RevLimCode();
 #endif
 
 #if SWITCH_HACKS
 	InputUpdate();
 #endif
-
-#if TIMING_HACKS
-	TimingHack();
-#endif
-
-#if SWITCH_HACKS && INJECTOR_HACKS
-	InjectorHack();
-#endif
-
-#if POLF_HACKS && !POLF_MAIN_HOOK
-	POLFHack();
-#elif BOOST_HACKS && !WGDC_MAIN_HOOK
-	WGDCHack();
-#endif
-
-#if ALS_HACKS
-	DriveModeHack();
-#endif
 }
-
-void (*RevLimDeleteHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sRevLimEnd;
-
-#if REVLIM_HACKS
-	void RevLimHook() //RPM based Hz main routine, hooked into rev limiter
-	{
-		RevLimCode();
-
-		#if SWITCH_HACKS
-			InputUpdate();
-		#endif
-
-		RevLimDeleteHooked();
-
-	}
-#endif

@@ -51,10 +51,6 @@
 #define SI_DRIVE
 #endif
 
-#ifdef dInjectorScaling
-#define InjectorScalingOem ((float*)dInjectorScaling)
-#endif
-
 #ifdef tPolf
 #define PrimaryOEMPolfTable tPolf
 #elif defined(tPolfKcaAlt) //TODO FIX THIS FOR NEWER CARS!!!!!
@@ -67,17 +63,13 @@
 #define PrimaryOEMTimingTable tBaseTimingPNonCruise
 #endif
 
-#ifdef tTargetBoost
-#define OEMTargetBoostTable tTargetBoost
+#ifdef tTargetIdleSpeedA
+#define PrimaryOEMTargetIdleSpeedTableA tTargetIdleSpeedA
+#define PrimaryOEMTargetIdleSpeedTableB tTargetIdleSpeedB
+#define PrimaryOEMTargetIdleSpeedTableC tTargetIdleSpeedC
 #endif
 
-#ifdef tWgdcInitial
-#define OEMWGDCInitialTable tWgdcInitial
-#endif
-
-#ifdef tWgdcMax
-#define OEMWGDCMaxTable tWgdcMax
-#endif
+#define InjectorScalingOem ((float*)dInjectorScaling)
 
 /* OLD STUFF
 #define pEngineSpeed                      ((float*)E_ENGINE_SPEED)
@@ -138,10 +130,13 @@
 #endif
 #endif
 
+
+
 #define CoastBitMask				((char)CRUISE_COAST_BITMASK)// Coast button is SSM switch #65
 
 #define pCelSignalOem				((char*)CEL_TRIGGER_BYTE)
 //#define pCruiseSignalOem			((char*)0x1234)//
 
+#define InjectorScalingOem ((float*)dInjectorScaling)
 #define pFlagsRevLimit				((char*)pFlagsRevLimit)
 */

@@ -138,6 +138,8 @@
 // Flags-Signals
 /////////////////////
 
+#define pCruiseMasterFlags ((unsigned char*)0xFFFF64B0)
+#define CruiseMasterBitMask ((unsigned char)0x01)
 #define pResumeFlags ((unsigned char*)0xFFFF64B0)
 #define ResumeBitMask ((unsigned char)0x04)
 #define pCoastFlags ((unsigned char*)0xFFFF64B0)
@@ -152,9 +154,7 @@
 #define DefogBitMask ((unsigned char)0x20)
 #define pSSMResetByte ((unsigned char*)0xFFFF2D8E)
 #define DefoggerBitMask ((unsigned char)0x20)
-//#define pCruiseMasterFlags ((unsigned char*)0xFFFF64B0)
-//#define CruiseMasterSwitchBitMask ((unsigned char)0x02)
-//#define pOpenClosedLoopFlags ((unsigned char*)0xFFFF9299)  Ready for idatohew
+#define pClosedLoopFlags ((unsigned char*)0xFFFF9299)
 //8 = Closed Loop (normal)]  [10 = Open Loop (normal)]  [7 = Open Loop due insufficient coolant temp]  [14 = Open Loop due to system failure].
 
 /////////////////////
@@ -195,19 +195,18 @@
 #define tRequestedTorqueA (0x000964D0)
 #define hTableRequestedTorqueA (0x000BE9FC)
 #define sFloatToShort (0x00002564)
-#define dEvapFuelComp (0x000273c0)
+#define dEvapFuelComp (0x000273c0)              //fix
 #define pCPCDutyRatio ((float*)0xFFFF6BC0)
-//#define pAirPump ((float*)0xFFFF62CC)   Ready for IDAtohew
-//#define pFuelLevel ((float*)0xFFFF67F0)  Ready for IDAtohew
-//#define pSTFTs1 ((float*)0xFFFF707C)   Ready
-//#define pLTFTsA ((float*)0xFFFF7238)   Ready
+#define pAirPump ((float*)0xFFFF62CC)
+#define pFuelLevel ((float*)0xFFFF67F0)
+#define pSTFTs1 ((float*)0xFFFF707C)
+#define pLTFTsA ((float*)0xFFFF7238)
 //#define dLTFTLimitA (0x000C8568)  Ready for idatohew & Metahooks
 //#define dLTFTLimitB (0x000C856C)  Ready for idatohew & Metahooks
-//#define hLTFTLimitA1 (0x0002EE44)  Ready for idatohew & Metahooks
-//#define hLTFTLimitB1 (0x0002EE40)  Ready for idatohew & Metahooks
-//#define hLTFTLimitA2 (0x0002F50C)  Ready for idatohew & Metahooks
-//#define hLTFTLimitB2 (0x0002F508)  Ready for idatohew & Metahooks
-
+#define hLTFTLimitA1 (0x0002EE44)
+#define hLTFTLimitB1 (0x0002EE40)
+#define hLTFTLimitA2 (0x0002F50C)
+#define hLTFTLimitB2 (0x0002F508)
 
 /////////////////////
 // OBD Experimental stuff

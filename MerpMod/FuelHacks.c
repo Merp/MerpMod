@@ -26,7 +26,7 @@ pRamVariables->InjectorScaling = pRamVariables->InjectorScalingMultiplier * *dIn
 
 #endif
 
-#if POLF_HOOK_DEFINED
+#if POLF_HACKS
 	void (*PolfHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sPolf;
 
 void POLFHack()
@@ -60,8 +60,20 @@ EcuHacksMain();
 			OutputValue += pRamVariables->LCFuelEnrich;
 		}
 		//Now run existing code!
-	
-		pRamVariables->PolfTarget = OutputValue;
+		
+#if ALS_HACKS
+	if (pRamVariables->ALSActive == 1)
+		{
+			OutputValue = DefaultALSFuelLock;
+		}
+	else
+		{
+#endif
+			OutputValue *= PGFuelComp;
+			
+#if ALS_HACKS
+		}
+#endif
 	
 		if(pRamVariables->PolfHackEnabled == HackEnabled)
 			pRamVariables->PolfOutput = OutputValue;

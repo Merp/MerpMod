@@ -13,7 +13,7 @@
 "Switch_Debug" 
 "Switch_Testing" 
 [CURRENT_CONFIGURATION]
-"Gratis_Debug" 
+"Switch_Testing" 
 [CURRENT_SESSION]
 "DefaultSession" 
 [GENERAL_DATA_PROJECT]
@@ -39,7 +39,7 @@
 [SESSIONS_Gratis_Testing]
 "DefaultSession" 
 [GENERAL_DATA_CONFIGURATION_Switch_Debug]
-"PROJECT_FILES_MODIFIED_DATA_TAG" "FALSE" 
+"PROJECT_FILES_MODIFIED_DATA_TAG" "TRUE" 
 [SESSIONS_Switch_Debug]
 "DefaultSession" 
 [GENERAL_DATA_CONFIGURATION_Switch_Testing]

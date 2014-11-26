@@ -18,6 +18,7 @@
 //		HACK CONFIGURATION	//
 //////////////////////////////
 							//
+#define WGDC_MAIN_HOOK 1	//
 #define MEMORY_HACKS 1		//
 #define VIN_HACKS 0			//
 #define VIN_TEST_LOG 0		//
@@ -28,6 +29,8 @@
 #define PROG_MODE 1			//
 #define SPARK_HACKS 0		//
 #define CEL_HACKS 1			//
+#define SHIFTLIGHT_HACKS 1		//
+#define ALS_HACKS 1		//
 #define BOOST_HACKS 1		//
 #define TIMING_HACKS 1		//
 #define POLF_HACKS 1		//	

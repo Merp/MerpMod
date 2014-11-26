@@ -15,16 +15,6 @@
 #include "EcuHacks.h"
 
 #if PROG_MODE
-
-void ProgModeMapSwitch(unsigned char toggleType)  ROMCODE;
-void ProgModeBlendModeAdjust(unsigned char toggleType)	ROMCODE;
-void ProgModeBlendAdjust(unsigned char toggleType)  ROMCODE;
-void ProgModeLCAdjust(unsigned char toggleType)  ROMCODE;
-void ProgModeIAMAdjust(unsigned char toggleType) ROMCODE;
-void ProgModeValetMode(unsigned char toggleType) ROMCODE;
-void ProgModeHardReset(unsigned char toggleType) ROMCODE;
-void ProgModeAdjust(unsigned char toggleType) ROMCODE;
-
 // Constants need to be declared as 'extern' with their values defined in the 
 // function body or in an external asm file.  This is a convoluted way to 
 // declare and define variables, but the standard approach causes the compiler
@@ -65,57 +55,107 @@ void ProgModeAdjust(unsigned char toggleType) ROMCODE;
 	*/
 
 
-#define PROG_MODE_COUNT 7
+#define PROG_MODE_COUNT 4
 #define PROG_THROTTLE_HI 80.0f
 #define PROG_THROTTLE_LO 10.0f
 
 #define VALUE_FLASH_SPEED 2
 #define VALUE_FLASH_DELAY 32
-#define MODE_FLASH_SPEED 6
+#define MODE_FLASH_SPEED 4
 #define MODE_FLASH_DELAY 16
 
 #define BLEND_MAX 1.0f
 #define BLEND_MIN 0.0f
 #define BLEND_STEP 0.1f
+#define BLEND_WAIT 32
 
 #define LC_MIN 2000.0f
 #define LC_STEP 500.0f
+#define LC_WAIT 32
 
 #define IAM_MIN 0
 #ifdef pIAM4
 #define IAM_MAX 1.0f
 #define IAM_STEP 0.1
 #else
-#define IAM_MAX 1
-#define IAM_STEP 0.1
+#define IAM_MAX 16
+#define IAM_STEP 1
 #endif
+#define IAM_WAIT 32
 
 void ProgModeListener()
 {
-	//Check for prog mode disable (entered OEM test mode)
-	if(pRamVariables->ProgModeStatus != ProgModeDisabled)
+	if(pRamVariables->ProgModeEnable == 1)
 	{
-		if(pRamVariables->ProgModeStatus == ProgModeEnabled)
+		//CHECK FOR EXIT CONDITIONS THEN RUN
+		if(TestClutchSwitch() || *pEngineSpeed > 10)
 		{
-			//Check for entry conditions, enter mode selection if met
-			if(TestTestModeSwitch())
-			{	
-				pRamVariables->ProgModeStatus = ProgModeSelectMode;
-			}
+			ExitProgMode();
 		}
 		else
 		{
-			//Check for exit conditions, run main if met.
-			if(!TestTestModeSwitch())
+			ProgModeMain();
+		}
+	}
+	else
+	{
+		//CHECK FOR ENTRY CONDITIONS
+		if(*pEngineSpeed < 10 && !TestClutchSwitch())
+		{
+			if (pRamVariables->ProgModeTimer > 0)
+				pRamVariables->ProgModeTimer--;
+
+			if (pRamVariables->ProgModeEntry < 1)
 			{
-				pRamVariables->ProgModeStatus = ProgModeEnabled;
+				if(TestBrakeSwitch())
+				{
+					pRamVariables->ProgModeEntry = 1;
+					pRamVariables->ProgModeTimer = 0xFF;
+				}
 			}
-			else
+		
+			if (pRamVariables->ProgModeEntry == 1)
 			{
-				ProgModeMain();
+				if(!TestBrakeSwitch())
+				{
+					pRamVariables->ProgModeEntry = 2;
+				}
+			}
+		
+			if (pRamVariables->ProgModeEntry > 1)
+			{
+				if((pRamVariables->ProgModeEntry/2)*2 == pRamVariables->ProgModeEntry)
+				{
+					if(*pThrottlePlate > PROG_THROTTLE_HI)
+					{
+						pRamVariables->ProgModeEntry++;
+					}
+				}
+				else if(*pThrottlePlate < PROG_THROTTLE_LO)
+				{
+					pRamVariables->ProgModeEntry++;
+				}
+			}
+		
+			if(pRamVariables->ProgModeEntry > 7)
+			{
+				EnterProgMode();
+				return;
 			}
 		}
 	}
+}
+
+void EnterProgMode()
+{
+	pRamVariables->ProgModeEnable = 1;
+	pRamVariables->ProgModeWait = 248;
+	pRamVariables->ProgModeEntry = 0;
+}
+
+void ExitProgMode()
+{
+	pRamVariables->ProgModeEnable = 0;
 }
 
 void ProgModeCruiseToggled(unsigned char toggleType)
@@ -123,30 +163,22 @@ void ProgModeCruiseToggled(unsigned char toggleType)
 	switch(toggleType)
 	{
 		case(ToggleResume):
-			if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
+			if(pRamVariables->ProgModeEnable)
 			{
 				if(pRamVariables->ProgModeCurrentMode >= PROG_MODE_COUNT)
 					pRamVariables->ProgModeCurrentMode = 1;
 				else
 					pRamVariables->ProgModeCurrentMode++;
 			}
-			else if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
-			{
-				ProgModeAdjust(toggleType);
-			}
 			break;
 		
 		case(ToggleCoast):		
-			if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
+			if(pRamVariables->ProgModeEnable)
 			{
 				if(pRamVariables->ProgModeCurrentMode <= 1)
 					pRamVariables->ProgModeCurrentMode = PROG_MODE_COUNT;
 				else
 					pRamVariables->ProgModeCurrentMode--;
-			}
-			else if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
-			{
-				ProgModeAdjust(toggleType);
 			}
 			break;
 		
@@ -157,142 +189,120 @@ void ProgModeCruiseToggled(unsigned char toggleType)
 
 void ProgModeMain()
 {
-	ProgModeAdjust(ToggleInit);
-	if(TestDefogSwitch())
-	{
-		pRamVariables->ProgModeStatus = ProgModeAdjustValue;
-	}
-	else
-	{
-		pRamVariables->ProgModeStatus = ProgModeSelectMode;
-	}
-	
-	if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
-	{
-		CelFlashStart(pRamVariables->ProgModeCurrentMode, MODE_FLASH_SPEED, MODE_FLASH_DELAY,0);
-	}
-	if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
-	{
-		CelFlashStart(pRamVariables->ProgModeValueFlashes, VALUE_FLASH_SPEED, VALUE_FLASH_DELAY,0);
-	}
-}
-		
-void ProgModeAdjust(unsigned char toggleType)
-{
 	switch(pRamVariables->ProgModeCurrentMode)
 	{
 		case 1:
-		ProgModeMapSwitch(toggleType);
+		ProgModeMapSwitch();
 		break;
 		
 		case 2:
-		ProgModeBlendModeAdjust(toggleType);
+		ProgModeBlendAdjust();
 		break;
 		
 		case 3:
-		ProgModeBlendAdjust(toggleType);
+		ProgModeLCAdjust();
 		break;
 		
 		case 4:
-		ProgModeLCAdjust(toggleType);
+		ProgModeIAMAdjust();
 		break;
 		
-		case 5:
-		ProgModeIAMAdjust(toggleType);
-		break;
-		
-		case 6://Put this in ENUM if you want to reorder them easily
-		ProgModeValetMode(toggleType);
-		break;
-		
-		case 7:
-		ProgModeHardReset(toggleType);
+		case 5://Put this in ENUM if you want to reorder them easily
+		ProgModeValetMode();
 		break;
 		
 		default:
 		pRamVariables->ProgModeCurrentMode = 1;
 		break;
 	}	
+	CelDoubleRepeat(&pRamVariables->ProgModeCurrentMode,MODE_FLASH_SPEED,&pRamVariables->ProgModeValueFlashes,VALUE_FLASH_SPEED,MODE_FLASH_DELAY,VALUE_FLASH_DELAY);//TODO abstract
 }
 
-void ProgModeMapSwitch(unsigned char toggleType)
+void ProgModeMapSwitch()
 {
-	if(pRamVariables->MapSwitchingInputMode == MapSwitchingInputModeUndefined)
+	if(MapSwitchInput == InputModeUndefined)
 	{	
-		if(toggleType == ToggleResume)
+		if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 		{	
 			if(pRamVariables->MapSwitch >= 3)
 				asm("nop");//pRamVariables->MapSwitch = 1;
 			else
 				pRamVariables->MapSwitch++;
+		
+			pRamVariables->ProgModeWait = 1;
 		}
-		else if(toggleType == ToggleCoast)
+		else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 		{
 			if(pRamVariables->MapSwitch == 1 )
 				asm("nop");//pRamVariables->MapSwitch = 3;
 			else
 				pRamVariables->MapSwitch--;
+				
+			pRamVariables->ProgModeWait = 1;
+		}
+		else
+		{
+			if(pRamVariables->ProgModeWait != 0 && (*pThrottlePlate < PROG_THROTTLE_LO) && (*pBrakeFlags & BrakeBitMask) == 0)
+				pRamVariables->ProgModeWait--;
 		}
 	}
 	pRamVariables->ProgModeValue = pRamVariables->MapSwitch;
 	pRamVariables->ProgModeValueFlashes = pRamVariables->MapSwitch;
 }
 
-void ProgModeBlendModeAdjust(unsigned char toggleType)
+void ProgModeBlendAdjust()
 {
-	if(toggleType == ToggleResume)
+	if(BlendRatioInput == InputModeUndefined)
 	{
-		if(pRamVariables->MapBlendingInputMode < 2)
-			pRamVariables->MapBlendingInputMode++;
-	}
-	else if(toggleType == ToggleCoast)
-	{
-		if(pRamVariables->MapBlendingInputMode > 0)
-			pRamVariables->MapBlendingInputMode--;
-	}
-	
-	pRamVariables->ProgModeValue = pRamVariables->MapBlendingInputMode;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->MapBlendingInputMode;
-}
-
-void ProgModeBlendAdjust(unsigned char toggleType)
-{
-	if(pRamVariables->MapBlendingInputMode == MapBlendingInputModeUndefined)
-	{
-		if(toggleType == ToggleResume)
+		if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 		{	
-			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - BLEND_STEP))
+			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - 0.01f))
 				pRamVariables->MapBlendRatio = BLEND_MAX;
 			else
-				pRamVariables->MapBlendRatio += BLEND_STEP;
+				pRamVariables->MapBlendRatio+= BLEND_STEP;
+		
+			pRamVariables->ProgModeWait = BLEND_WAIT;
 		}
-		else if(toggleType == ToggleCoast)
+		else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 		{
-			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + BLEND_STEP))
+			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + 0.01f))
 				pRamVariables->MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
 			else
-				pRamVariables->MapBlendRatio -= BLEND_STEP;
+				pRamVariables->MapBlendRatio-= BLEND_STEP;
+			pRamVariables->ProgModeWait = BLEND_WAIT;
+		}
+		else
+		{
+			if(pRamVariables->ProgModeWait != 0)
+				pRamVariables->ProgModeWait--;
 		}
 	}
 	pRamVariables->ProgModeValue = pRamVariables->MapBlendRatio + 1;
 	pRamVariables->ProgModeValueFlashes = (unsigned char)(pRamVariables->MapBlendRatio*10);
 }
 
-void ProgModeLCAdjust(unsigned char toggleType)
+void ProgModeLCAdjust()
 {
 	#if !AUTO_TRANS
-	if(toggleType == ToggleResume)
+	if((*pThrottlePlate > 50) && pRamVariables->ProgModeWait == 0)
 	{	
 		pRamVariables->LaunchControlCut++;
 		if(pRamVariables->LaunchControlCut < pRamVariables->RedLineCut)
 			pRamVariables->LaunchControlCut+= LC_STEP;
+		pRamVariables->ProgModeWait = LC_WAIT;
 	}
-	else if(toggleType == ToggleCoast)
+	else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 	{
 		if(pRamVariables->LaunchControlCut > LC_MIN)
 			pRamVariables->LaunchControlCut-= LC_STEP;//Hard limit, does not cycle to top again.
 		else
 			pRamVariables->LaunchControlCut = LC_MIN;
+		pRamVariables->ProgModeWait = LC_WAIT;
+	}
+	else
+	{
+		if(pRamVariables->ProgModeWait != 0)
+		pRamVariables->ProgModeWait--;
 	}
 	
 	pRamVariables->ProgModeValue = pRamVariables->LaunchControlCut;
@@ -303,64 +313,56 @@ void ProgModeLCAdjust(unsigned char toggleType)
 	#endif
 }
 
-void ProgModeIAMAdjust(unsigned char toggleType)
+void ProgModeIAMAdjust()
 {
-	if(toggleType == ToggleResume)
+	if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 	{	
 		if(*pIAM < IAM_MAX - IAM_STEP)
 			*pIAM += IAM_STEP;
 		else
 			*pIAM = IAM_MAX;
+		pRamVariables->ProgModeWait = IAM_WAIT;
 	}
-	else if(toggleType == ToggleCoast)
+	else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 	{
 		if(IAM > IAM_MIN + IAM_STEP)
 			*pIAM -= IAM_STEP;
 		else
 			*pIAM = IAM_MIN;
+		pRamVariables->ProgModeWait = IAM_WAIT;
+	}
+	else
+	{
+		if(pRamVariables->ProgModeWait != 0)
+			pRamVariables->ProgModeWait--;
 	}
 	pRamVariables->ProgModeValue = *pIAM;
-	pRamVariables->ProgModeValueFlashes = (10*(IAM))+1;
+	pRamVariables->ProgModeValueFlashes = (10*(1-IAM))+1;
 }
 
-void ProgModeValetMode(unsigned char toggleType)
+void ProgModeValetMode()
 {
-	if(toggleType == ToggleResume)
+	if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 	{	
 		if(pRamVariables->ValetMode <=0)
-			pRamVariables->ValetMode = ValetModeEnabled;
+			pRamVariables->ValetMode = 1;
+	
+		pRamVariables->ProgModeWait = 1;
 	}
-	else if(toggleType == ToggleCoast)
+	else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 	{
 		if(pRamVariables->ValetMode >= 1 )
-			pRamVariables->ValetMode = ValetModeDisabled;
+			pRamVariables->ValetMode = 0;
+			
+		pRamVariables->ProgModeWait = 1;
+	}
+	else
+	{
+		if(pRamVariables->ProgModeWait != 0 && (*pThrottlePlate < PROG_THROTTLE_LO) && (*pBrakeFlags & BrakeBitMask) == 0)
+			pRamVariables->ProgModeWait--;
 	}
 	pRamVariables->ProgModeValue = pRamVariables->ValetMode;
 	pRamVariables->ProgModeValueFlashes = pRamVariables->ValetMode;
-	
-}
-
-void ProgModeHardReset(unsigned char toggleType)
-{
-	if(toggleType == ToggleResume)
-	{	
-		if(pRamVariables->HardResetFlag <=0)
-		{
-			pRamVariables->HardResetFlag = HardResetFlagEnabled;
-			*pSSMResetByte = 0x40;
-		}
-		
-	}
-	else if(toggleType == ToggleCoast)
-	{
-		if(pRamVariables->HardResetFlag >= 1 )
-		{
-			pRamVariables->HardResetFlag = HardResetFlagDisabled;
-			*pSSMResetByte = 0x40;
-		}
-	}
-	pRamVariables->ProgModeValue = pRamVariables->HardResetFlag;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->HardResetFlag;
 }
 
 #endif

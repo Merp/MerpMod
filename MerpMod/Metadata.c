@@ -185,14 +185,16 @@ modinfo	:	ModInfo OpDelim
 //					//
 //////////////////////
 
+#if SD_HACKS && REVLIM_HACKS //Only works when SD is enabled (Revlim is called from SD)
 	const MetaReplace RevLimitDelete METADATA = 
 	{
 		op: OpReplace4Bytes,
 		address: hRevLimDelete,
 		oldval: sRevLimStart,
-		newval: (int)RevLimHook,
+		newval: sRevLimEnd,
 		name: STR(Rev Limit Subroutine Hook)
 	};
+#endif
 
 #endif
 
@@ -267,16 +269,7 @@ const MetaReplace WGDCHook METADATA =
 		address: hWgdc,
 		oldval: sWgdc,
 		newval: (int)WGDCHack,
-		name: STR(Main Subroutine Hook WGDC)
-	};
-#elif POLF_MAIN_HOOK
-const MetaReplace POLFHook METADATA = 
-	{
-		op: OpReplace4Bytes,
-		address: hPolf,
-		oldval: sPolf,
-		newval: (int)POLFHack,
-		name: STR(Main Subroutine Hook POLF)
+		name: STR(WGDC Subroutine Hook)
 	};
 #endif
 
@@ -289,37 +282,13 @@ const MetaReplace POLFHook METADATA =
 		newval: (int)Pull3DRamHook,
 		name: STR(WGDC Pull3D Hook)
 	} ;
-	
-	//TODO: make preprocessor produce an error if there aren't proper hooks!!!
-	#if defined(hTableWgdcInitial) && defined (tWgdcInitial)
-		const MetaReplace PGWGInitialHookTable METADATA =
-		{
-			op: OpReplace4Bytes,
-			address: hTableWgdcInitial,
-			oldval: tWgdcInitial,
-			newval: (int)&(pRamVariables->WGDCInitialOutput),
-			name: STR(WGDC Initial Table Hook)
-		};
-	#endif
-	
-	#if defined(hTableWgdcInitialAlt) && defined(tWgdcInitialAlt)
-	//TODO: NEED THIS????
-	/*	const MetaReplace PGWGInitialAltHookTable METADATA =
-	{
-		op: OpReplace4Bytes,
-		address: hTableWgdcInitialAlt,
-		oldval: tWgdcInitialAlt,
-		newval: (int)&(pRamVariables->WGDCInitial)
-	};*/
-	#endif
-	
 	#ifdef hTableWgdcInitialKcaAlt
 		const MetaReplace PGWGInitialKcaAlt METADATA =
 		{
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaAlt,
 			oldval: tWgdcInitialKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Initial KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGInitialKcaBLo METADATA =
@@ -327,7 +296,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBLo,
 			oldval: tWgdcInitialKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Initial KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGInitialKcaBHi METADATA =
@@ -335,34 +304,26 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBHi,
 			oldval: tWgdcInitialKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Initial KCA B High Table Hook)
 		};
-	#endif
-	
-	//Max WGDC HOOKS
-	
-	#if defined(hTableWgdcMax) && defined(tWgdcMax)
-		const MetaReplace PGWGMaxHookTable METADATA =
+	#else
+		const MetaReplace PGWGInitialHookTable METADATA =
 		{
 			op: OpReplace4Bytes,
-			address: hTableWgdcMax,
-			oldval: tWgdcMax,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
-			name: STR(WGDC Max Table Hook)
+			address: hTableWgdcInitial,
+			oldval: tWgdcInitial,
+			newval: (int)&(pRamVariables->WGDCInitial),
+			name: STR(WGDC Initial Table Hook)
 		};
 	#endif
-	
-	#if defined(hTableWgdcMaxAlt) && defined(tWgdcMaxAlt)
-	//TODO: NEED THIS???
-	/*	const MetaReplace PGWGMaxAltHookTable METADATA =
+	/*	const MetaReplace PGWGInitialAltHookTable METADATA =
 	{
 		op: OpReplace4Bytes,
-		address: hTableWgdcMaxAlt,
-		oldval: tWgdcMaxAlt,
-		newval: (int)&(pRamVariables->WGDCMaxOutput),
+		address: hTableWgdcInitialAlt,
+		oldval: tWgdcInitialAlt,
+		newval: (int)&(pRamVariables->WGDCInitial)
 	};*/
-	#endif
 	
 	#ifdef hTableWgdcMaxKcaAlt
 		const MetaReplace PGWGMaxKcaAlt METADATA =
@@ -370,7 +331,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaAlt,
 			oldval: tWgdcMaxKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Max KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGMaxKcaBLo METADATA =
@@ -378,7 +339,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBLo,
 			oldval: tWgdcMaxKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Max KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGMaxKcaBHi METADATA =
@@ -386,10 +347,26 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBHi,
 			oldval: tWgdcMaxKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables->WGDCMax),
 			name: STR(WGDC Max KCA B High Table Hook)
 		};
+	#else
+		const MetaReplace PGWGMaxHookTable METADATA =
+		{
+			op: OpReplace4Bytes,
+			address: hTableWgdcMax,
+			oldval: tWgdcMax,
+			newval: (int)&(pRamVariables->WGDCMax),
+			name: STR(WGDC Max Table Hook)
+		};
 	#endif
+	/*	const MetaReplace PGWGMaxAltHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableWgdcMaxAlt,
+		oldval: tWgdcMaxAlt,
+		newval: (int)&(pRamVariables->WGDCMax),
+	};*/
 	
 	///Target boost table hooks
 	const MetaReplace TargetBoostHookPull METADATA =
@@ -398,57 +375,50 @@ const MetaReplace POLFHook METADATA =
 		address: hPullTargetBoost,
 		oldval: sPull3DFloat,
 		newval: (int)Pull3DRamHook,
-		name: STR(Target Boost Pull3D Hook)
-	} ;
-	
-	#if defined(hTableTargetBoost) && defined(tTargetBoost)
-	const MetaReplace TargetBoostHookTable METADATA =
-	{
-		op: OpReplace4Bytes,
-		address: hTableTargetBoost,
-		oldval: tTargetBoost,
-		newval: (int)&(pRamVariables->TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
-	};
-	#endif
-	
-	#if defined(hTableTargetBoostAlt) && defined(tTargetBoostAlt)
-	//TODO: NEED THIS??????
-	/*	const MetaReplace TargetBoostAltHookTable METADATA =
-	{
-		op: OpReplace4Bytes,
-		address: hTableTargetBoostAlt,
-		oldval: tTargetBoosAlt,
-		newval: (int)&(pRamVariables->TargetBoostOutput),
-	};*/
-	#endif
-		
+	} ;
 	#ifdef hTableTargetBoostKcaAlt
 		const MetaReplace TargetBoostKcaAltHookTable METADATA =
 		{
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaAlt,
 			oldval: tTargetBoostKcaAlt,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
-		name: STR(Target Boost KCA Alt Table Hook)
+			newval: (int)&(pRamVariables->TargetBoost),
+			name: STR(Target Boost Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBLoHookTable METADATA =
 		{
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBLo,
 			oldval: tTargetBoostKcaBLo,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
-		name: STR(Target Boost KCA B Low Table Hook)
+			newval: (int)&(pRamVariables->TargetBoost),
+			name: STR(Target Boost Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBHiHookTable METADATA =
 		{
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBHi,
 			oldval: tTargetBoostKcaBHi,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
-		name: STR(Target Boost KCA B High Table Hook)
+			newval: (int)&(pRamVariables->TargetBoost),
+			name: STR(Target Boost Table Hook)
+		};
+	#else
+		const MetaReplace TargetBoostHookTable METADATA =
+		{
+			op: OpReplace4Bytes,
+			address: hTableTargetBoost,
+			oldval: tTargetBoost,
+			newval: (int)&(pRamVariables->TargetBoost),
+			name: STR(Target Boost Main Table Hook)
 		};
 	#endif
+/*	const MetaReplace TargetBoostAltHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableTargetBoostAlt,
+		oldval: tTargetBoostAlt,
+		newval: (int)&(pRamVariables->TargetBoost),
+	};*/
 	
 #endif
 
@@ -607,6 +577,7 @@ const MetaReplace POLFHook METADATA =
 //     E85 HACKS	//
 //					//
 //////////////////////
+/*
 	const MetaReplace InjectorHook METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -647,6 +618,120 @@ const MetaReplace POLFHook METADATA =
 		newval: (int)Pull2DRamHookStartupEnrich3,
 		name: STR(Startup Enrich 3 Pull2D Hook)
 	};
+
+	*/
+#endif
+
+#if ALS_HACKS
+//////////////////////
+//					//
+//ANTILAG HACKS	//
+//					//
+//////////////////////
+	const MetaReplace TargetIdleSpeedHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPullTargetIdleSpeed,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHook,
+		name: STR(Target Idle Speed Table Hook)
+	} ;
+	const MetaReplace TargetIdleSpeedAHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableTargetIdleSpeedA,
+		oldval: tTargetIdleSpeedA,
+		newval: (int)&(pRamVariables->TargetIdleSpeed),
+		name: STR(Target Idle Speed Table A Hook)
+	};
+	const MetaReplace TargetIdleSpeedBHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableTargetIdleSpeedB,
+		oldval: tTargetIdleSpeedB,
+		newval: (int)&(pRamVariables->TargetIdleSpeed),
+		name: STR(Target Idle Speed Table B Hook)
+	};
+	const MetaReplace TargetIdleSpeedCHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableTargetIdleSpeedC,
+		oldval: tTargetIdleSpeedC,
+		newval: (int)&(pRamVariables->TargetIdleSpeed),
+		name: STR(Target Idle Speed Table C Hook)
+	};
+/*
+	const MetaReplace IdleMapSelectionHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPullIdleMapSelection,
+		oldval: pIdleMapSelection,
+		newval: (int)&(pRamVariables->IdleMapSelect),
+		name: STR(Pull Idle Selection Hook)
+	};
+	
+	const MetaReplace LTFTA1HookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hLTFTLimitA1,
+		oldval: dLTFTLimitA,
+		newval: (int)&(pRamVariables->LTFTA),
+		name: STR(Pull LTFTA1 Hook)
+	};
+	
+	const MetaReplace LTFTB1HookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hLTFTLimitB1,
+		oldval: dLTFTLimitB,
+		newval: (int)&(pRamVariables->LTFTB),
+		name: STR(Pull LTFTB1 Hook)
+	};
+	
+	const MetaReplace LTFTA2HookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hLTFTLimitA2,
+		oldval: dLTFTLimitA,
+		newval: (int)&(pRamVariables->LTFTA),
+		name: STR(Pull LTFTA2 Hook)
+	};
+	
+	const MetaReplace LTFTB2HookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hLTFTLimitB2,
+		oldval: dLTFTLimitB,
+		newval: (int)&(pRamVariables->LTFTB),
+		name: STR(Pull LTFTB2 Hook)
+	};
+	const MetaReplace AVCSHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hAVCS,
+		oldval: pAVCS,
+		newval: (int)&(pRamVariables->AVCS),
+		name: STR(Pull AVCS Hook)
+	};
+*/
+	const MetaReplace RequestedTorqueAHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPullRequestedTorqueA,
+		oldval: sPull3DFloat,
+		newval: (int)Pull3DRamHook,
+		name: STR(Requested Torque Table Hook)
+	} ;
+
+	const MetaReplace RequestedTorqueAHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableRequestedTorqueA,
+		oldval: tRequestedTorqueA,
+		newval: (int)&(pRamVariables->RequestedTorque),
+		name: STR(Requested Torque Table A Hook)
+	};
+
 
 #endif
 

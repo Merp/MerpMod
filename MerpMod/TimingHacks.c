@@ -62,11 +62,24 @@ float TimingHack()
 		
 		OutputValue -= HighPass(pRamVariables->LCTimingRetard,0.0f);
 	}
-
+	
 	OutputValue -= Abs(pRamVariables->SubtractiveKCA);
 	
-	pRamVariables->BaseTimingTarget = OutputValue;
-	
+#if ALS_HACKS
+	if (pRamVariables->ALSActive == 1)
+		{
+			OutputValue = DefaultALSTimingLock;
+		}
+	else
+		{
+			OutputValue *= PGTimingComp;
+		}
+#else
+	{
+		OutputValue *= PGTimingComp;
+	}
+#endif
+
 	if(pRamVariables->TimingHackEnabled == HackEnabled)
 		pRamVariables->BaseTimingOutput = OutputValue;
 	else

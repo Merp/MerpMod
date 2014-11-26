@@ -20,14 +20,32 @@ void ALSActivate()
 {
 	//DOUBLE CHECK FUEL LOCK FOR ALS BEFORE ACTIVATING FUELHACKS!
 	//Conditions for AntiLag And Rotational Idle
-	if (pRamVariables->ALSEnable == 0x01 && *pAcceleratorPedal == 0)
-	{
-	pRamVariables->ALSActive = 0x01;
-	}
+	if (pRamVariables->DriveMode == 4)
+		{
+			pRamVariables->ALSEnable = 0x01;
+		}
 	else
-	{
-	pRamVariables->ALSActive = 0x00;
-	}
+		{
+			pRamVariables->ALSEnable = 0x00;
+		}
+		
+	if (pRamVariables->ALSEnable == 0x01 && *pAcceleratorPedal == 0 && TestIdleSwitch())
+		{
+			pRamVariables->ALSActive = 0x01;
+		}
+	else
+		{
+			pRamVariables->ALSActive = 0x00;
+		}
+/*		
+	if (pRamVariables->ALSActive == 0)
+		{
+			//Rotational Idle/ALS Specifics
+		}
+	else
+		{
+		}
+*/
 }
 
 #endif

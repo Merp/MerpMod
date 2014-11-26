@@ -45,7 +45,7 @@ ThreeDTable ShiftLightRPMs __attribute__ ((section ("RomHole_SpeedDensityTables"
 float SHIFTLIGHTRPM_COLS[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1,2,3,4,5,6};
 float SHIFTLIGHTRPM_ROWS[4] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,1,2,3};
+{1,2,3,4};
 short SHIFTLIGHTRPM_DATA[24] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {1300,2500,3000,3500,6400,6400,
 1300,2500,3000,3500,6400,6400,

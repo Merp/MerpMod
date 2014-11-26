@@ -16,101 +16,122 @@
 #if ALS_HACKS
 
 void FuelUp()
-{
-//float	unsigned char ClosedLoop = *pClosedLoopFlags
-
-//	if (&& ClosedLoop == 1)
-if (pRamVariables->FuelUp == 1 && *pEngineSpeed > 300)
+{	
+	if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch() && TestBrakeSwitch())
 		{
-			pRamVariables->FlexFuelLearning = 0x01;
-			pRamVariables->FlexCount += 1;
-			FlexLearn();
+			pRamVariables->FuelUp = 0x01;
+			pRamVariables->FuelCheckSwitch = 20;
+//			FlexRatioUser();
+			//Lock LTFTs;
+			//Flash CEL;
 		}
-else
-{
-	float FuelLevel1;
-	float FuelLevel2;
-	float FuelLevel3;
-	if (*pEngineSpeed <= 400)
+	else if (pRamVariables->FuelUp == 1)
+		{
+			FlexLearn();
+			//Iam = InitialIAM
+		}
+	else if (pRamVariables->FuelCheckSwitch == 20 && *pEngineSpeed > 400)
 		{
 			pRamVariables->FuelCheckSwitch = 0x00;
 		}
+	else if (pRamVariables->FuelCheckSwitch == 0 && *pEngineSpeed > 400)
+		{
+		}
 	else
 		{
 		}
-		
+	if (*pEngineSpeed < 400 && pRamVariables->FuelCheckSwitch < 20)
+		{
+			
+			if (pRamVariables->FuelCheckSwitch == 0)
+				{
+					Timer(0.0, 20.0);
+					LoadFuelLevels();
+				}
+			else if (pRamVariables->FuelCheckSwitch >= 3)
+				{
+					pRamVariables->FuelCheckSwitch = 20;
+					pRamVariables->FuelUp = 0x00;
+				}
+			else
+				{
+					Timer(0.0, FuelCheckWaitTime);
+					LoadFuelLevels();
+				}
+		}
+	else
+		{
+		}
+}
+
+void LoadFuelLevels()
+{
+			
+	if (pRamVariables->TimerUp == 1 && pRamVariables->FuelLevelSwitch == 0)
+		{
+			pRamVariables->FuelLevel1 = *pFuelLevel;
+			pRamVariables->FuelLevelSwitch += 1;
+		}			
+	else if (pRamVariables->FuelLevelSwitch == 1)
+		{
+			pRamVariables->FuelLevel2 = *pFuelLevel;
+			pRamVariables->FuelLevelSwitch += 1;
+		}
+	else if (pRamVariables->FuelLevelSwitch == 2)
+		{
+			pRamVariables->FuelLevel3 = *pFuelLevel;
+			pRamVariables->FuelLevelSwitch += 1;
+		}
+	else if (pRamVariables->FuelLevelSwitch == 3)
+		{
+			CheckFuelLevels();
+		}
+	else
+		{
+		}
+}
+
+void CheckFuelLevels()
+{
+	
+	pRamVariables->FuelLevelSwitch = 0x00;
+	pRamVariables->StartTimer = 0.0;
+	
 	if (pRamVariables->FuelCheckSwitch == 0)
 		{
-			Timer(0.0, 15.0);
-			if (pRamVariables->TimerUp == 1)
+			pRamVariables->FuelCheck1 = ((pRamVariables->FuelLevel1 + pRamVariables->FuelLevel2 + pRamVariables->FuelLevel3) / 3);
+			pRamVariables->FuelCheckSwitch += 1;
+		}
+	else if (pRamVariables->FuelCheckSwitch == 1)
+		{	
+			pRamVariables->FuelCheck2 = ((pRamVariables->FuelLevel1 + pRamVariables->FuelLevel2 + pRamVariables->FuelLevel3) / 3);
+			if (pRamVariables->FuelCheck2 <= (pRamVariables->FuelCheck1 * FuelRatio1))
 				{
-				FuelLevel1 = *pFuelLevel;
-				//make sure FuelLevel1 doesn't change and stays static value!
-				pRamVariables->FuelCheckSwitch = 0x01;
+					pRamVariables->FuelUp = 0x01;
+					pRamVariables->FuelCheckSwitch = 20;
+					//Lock LTFTs;
 				}
 			else
-			{
-			}
-		}
-	else
-		{
-		}
-
-	if (*pEngineSpeed > 400 && pRamVariables->FuelCheckSwitch == 1)
-		{
-			Timer(0.0, 15.0);
-			if (pRamVariables->TimerUp == 1 && pRamVariables->FuelCheckSwitch == 1)
 				{
-					FuelLevel2 = *pFuelLevel;
-					pRamVariables->FuelCheckSwitch = 0x02;
+					pRamVariables->FuelCheckSwitch += 1;
 				}
-			else
-			{
-			}
-		}
-	else
-		{
-		}
-	
-	if (pRamVariables->FuelCheckSwitch == 2 && (FuelLevel2 > (FuelLevel1 * 1.1)))
-		{
-			pRamVariables->FuelUp = 0x01;
-			pRamVariables->FuelCheckSwitch = 0x04;
 		}
 	else if (pRamVariables->FuelCheckSwitch == 2)
-		{
-			Timer(0.0, 30.0);
-			if (pRamVariables->TimerUp == 1 && pRamVariables->FuelCheckSwitch == 2)
+		{	
+			pRamVariables->FuelCheck2 = ((pRamVariables->FuelLevel1 + pRamVariables->FuelLevel2 + pRamVariables->FuelLevel3) / 3);
+			if (pRamVariables->FuelCheck2 <= (pRamVariables->FuelCheck1 * FuelRatio2))
 				{
-					FuelLevel3 = *pFuelLevel;
-					pRamVariables->FuelCheckSwitch = 0x03;
+					pRamVariables->FuelUp = 0x01;
+					pRamVariables->FuelCheckSwitch = 20;
+					//Lock LTFTs;
 				}
 			else
-			{
-			}
-		}
-	else
-		{
-		}
-		
-	if (pRamVariables->FuelCheckSwitch == 3 && (FuelLevel3 > (FuelLevel1 * 1.15)))
-		{
-			pRamVariables->FuelUp = 0x01;
-			pRamVariables->FuelCheckSwitch = 0x04;
-		}
-	else if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch() && TestBrakeSwitch())
-		{
-			pRamVariables->FuelUp = 0x01;
-			pRamVariables->FuelCheckSwitch = 0x04;
-		}
-	else if (pRamVariables->FuelCheckSwitch <= 3)
-		{
-			pRamVariables->FuelUp = 0x00;
+				{
+					pRamVariables->FuelCheckSwitch += 1;
+				}
 		}
 	else
 		{
 		}
 }
-}
-
 #endif

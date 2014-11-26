@@ -33,8 +33,10 @@ float Displacement SPEEDDENSITYDATA
 TableGroup VETableGroup SPEEDDENSITYDATA = {
 	{&VolumetricEfficiencyTable1,
 	&VolumetricEfficiencyTable1,
+	&VolumetricEfficiencyTable1,
 	&VolumetricEfficiencyTable1},
 	{&VolumetricEfficiencyTable2,
+	&VolumetricEfficiencyTable2,
 	&VolumetricEfficiencyTable2,
 	&VolumetricEfficiencyTable2}
 };

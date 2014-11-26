@@ -82,7 +82,7 @@ void CelFlash()
 	
 	//TODO HACK CRUISE LIGHT!!!!!
 	// Check for existing flash call
-	//if(*pCreuiseFlashCounter > 0)
+	//if(*pCruiseFlashCounter > 0)
 	//{
 	//	if(*pCruiseSpeedCounter == 0)
 	//	{			
@@ -134,11 +134,7 @@ void CelFlash()
 ////////////////////////////////
 //KNOCK LIGHT CODE w/ IAM RECALL
 ////////////////////////////////
-#if PROG_MODE
-//Disable flashes during programming mode
-if(pRamVariables->ProgModeStatus == ProgModeEnabled)
-{
-#endif
+
 	if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold)
 	{
 		CelFlashStart(FBKCHiFlashes,FBKCHiFlashSpeed,0,0);
@@ -147,6 +143,7 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 	{
 		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
 	}
+
 #if SHIFTLIGHT_HACKS
 	else if(*pEngineSpeed >= pRamVariables->ShiftLightRPM)
 	{
@@ -165,6 +162,7 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 	}
 #endif
 
+
 #if !defined(NOAF1RES)
 	else if(*pAf1Res < EGTResistanceThreshold && *pEngineLoad > EGTCelLoadThreshold)
 	{
@@ -175,20 +173,15 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 	{
 		CelFlashStart(ECTFlashes,ECTFlashSpeed,64,0);
 	}
-	else if(IAM < IAMFlashThreshold)
-	{
-		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
-	}
-#if PROG_MODE
-}
-#endif
-	
 	// Call triggers if signal changes!
 	if(pRamVariables->CelSignal != pRamVariables->CelSignalLast)
 	{
 		CelTrigger();
 	}
-	
+	if(IAM < IAMFlashThreshold)
+	{
+		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
+	}
 	
 	//if(*pCruiseSignal != *pCruiseSignalLast)
 	//{

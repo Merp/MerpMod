@@ -18,18 +18,28 @@
 //!! ALS constants
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-unsigned char DefaultDriveMode SPEEDDENSITYDATA = 0x01;
-float DefaultALSTargetIdleSpeed SPEEDDENSITYDATA = 2000.0f;
+unsigned char DefaultDriveMode SPEEDDENSITYDATA = 0x02;
+
+TableGroup ReqTorqTableGroup SPEEDDENSITYDATA = {
+	{&ReqTorqTable1v,
+	&ReqTorqTable1i,
+	&ReqTorqTable1s,
+	&ReqTorqTable1ss},
+	{&ReqTorqTable1v,
+	&ReqTorqTable1i,
+	&ReqTorqTable1s,
+	&ReqTorqTable1ss}
+};
 
 ///////////////
-//Requested Torque Table 1
+//Requested Torque Table 1v
 ///////////////
-ThreeDTable ReqTorqTable1 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols1[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+ThreeDTable ReqTorqTable1v __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+float ReqTorqCols1v[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
-float ReqTorqRows1[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+float ReqTorqRows1v[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1000,2000,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200};
-short ReqTorqData1[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+short ReqTorqData1v[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
@@ -48,25 +58,25 @@ short ReqTorqData1[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),a
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
 
-ThreeDTable ReqTorqTable1 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable ReqTorqTable1v __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols1,
-	.rowHeaderArray = ReqTorqRows1,
-	.tableCells = ReqTorqData1,
+	.columnHeaderArray = ReqTorqCols1v,
+	.rowHeaderArray = ReqTorqRows1v,
+	.tableCells = ReqTorqData1v,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0078125f,	
 	.offset = 0 };	
 
 ///////////////
-//Requested Torque Table 2
+//Requested Torque Table 1i
 ///////////////
-ThreeDTable ReqTorqTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols2[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+ThreeDTable ReqTorqTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+float ReqTorqCols1i[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
-float ReqTorqRows2[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+float ReqTorqRows1i[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1000,2000,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200};
-short ReqTorqData2[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+short ReqTorqData1i[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
@@ -85,25 +95,25 @@ short ReqTorqData2[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),a
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
 
-ThreeDTable ReqTorqTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable ReqTorqTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols2,
-	.rowHeaderArray = ReqTorqRows2,
-	.tableCells = ReqTorqData2,
+	.columnHeaderArray = ReqTorqCols1i,
+	.rowHeaderArray = ReqTorqRows1i,
+	.tableCells = ReqTorqData1i,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0078125f,	
 	.offset = 0 };	
 
 ///////////////
-//Requested Torque Table 3
+//Requested Torque Table 1s
 ///////////////
-ThreeDTable ReqTorqTable3 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols3[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+ThreeDTable ReqTorqTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+float ReqTorqCols1s[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
-float ReqTorqRows3[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+float ReqTorqRows1s[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1000,2000,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200};
-short ReqTorqData3[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+short ReqTorqData1s[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
@@ -122,12 +132,49 @@ short ReqTorqData3[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),a
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
 16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
 
-ThreeDTable ReqTorqTable3 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable ReqTorqTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols3,
-	.rowHeaderArray = ReqTorqRows3,
-	.tableCells = ReqTorqData3,
+	.columnHeaderArray = ReqTorqCols1s,
+	.rowHeaderArray = ReqTorqRows1s,
+	.tableCells = ReqTorqData1s,
+	.tableType = UInt16Table3D,
+	.multiplier = 0.0078125f,	
+	.offset = 0 };	
+	
+///////////////
+//Requested Torque Table 1ss
+///////////////
+ThreeDTable ReqTorqTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+float ReqTorqCols1ss[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+{0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
+float ReqTorqRows1ss[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+{1000,2000,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200};
+short ReqTorqData1ss[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,
+16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384,16384};
+
+ThreeDTable ReqTorqTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 15,
+	.rowCount = 17,
+	.columnHeaderArray = ReqTorqCols1ss,
+	.rowHeaderArray = ReqTorqRows1ss,
+	.tableCells = ReqTorqData1ss,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0078125f,	
 	.offset = 0 };	
