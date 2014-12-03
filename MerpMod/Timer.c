@@ -34,74 +34,74 @@ void Timer(float Minutes, float Seconds)
             pRamVariables->TimerUp = 0x00;
         }
 }
-/*
+
 void Timers(float Minutes, float Seconds, unsigned char Number)
 {
 	if (Number == 1)
-		TimerA(Minutes, Seconds);
-	else if Number == 2)
-		TimerB(Minutes, Seconds);
-	else if Number == 3)
-		TimerC(Minutes, Seconds);
+		Timer1(Minutes, Seconds);
+	else if (Number == 2)
+		Timer2(Minutes, Seconds);
+	else if (Number == 3)
+		Timer3(Minutes, Seconds);
 }
 
-void TimerA(float Minutes, float Seconds)
+void Timer1(float Minutes, float Seconds)
 {
-    if (pRamVariables->StartTimerA < 1)
+    if (pRamVariables->StartTimer1 < 1)
         {
-            pRamVariables->StartTimerA = (((Minutes * 60) + Seconds) * CyclesPerSec);
+            pRamVariables->StartTimer1 = (((Minutes * 60) + Seconds) * CyclesPerSec);
         }
     else
         {
-            pRamVariables->StartTimerA -= 1;
+            pRamVariables->StartTimer1 -= 1;
         }
-	if (pRamVariables->StartTimerA < 1)
+	if (pRamVariables->StartTimer1 < 1)
         {
-            pRamVariables->TimerUpA = 0x01;
-        }
-    else
-        {
-            pRamVariables->TimerUpA = 0x00;
-        }
-}
-
-void TimerB(float Minutes, float Seconds)
-{
-    if (pRamVariables->StartTimerB < 1)
-        {
-            pRamVariables->StartTimerB = (((Minutes * 60) + Seconds) * CyclesPerSec);
+            pRamVariables->TimerUp1 = 0x01;
         }
     else
         {
-            pRamVariables->StartTimerB -= 1;
-        }
-	if (pRamVariables->StartTimerB < 1)
-        {
-            pRamVariables->TimerUpB = 0x01;
-        }
-    else
-        {
-            pRamVariables->TimerUpB = 0x00;
+            pRamVariables->TimerUp1 = 0x00;
         }
 }
 
-void TimerC(float Minutes, float Seconds)
+void Timer2(float Minutes, float Seconds)
 {
-    if (pRamVariables->StartTimerC < 1)
+    if (pRamVariables->StartTimer2 < 1)
         {
-            pRamVariables->StartTimerC = (((Minutes * 60) + Seconds) * CyclesPerSec);
+            pRamVariables->StartTimer2 = (((Minutes * 60) + Seconds) * CyclesPerSec);
         }
     else
         {
-            pRamVariables->StartTimerC -= 1;
+            pRamVariables->StartTimer2 -= 1;
         }
-	if (pRamVariables->StartTimerC < 1)
+	if (pRamVariables->StartTimer2 < 1)
         {
-            pRamVariables->TimerUpC = 0x01;
+            pRamVariables->TimerUp2 = 0x01;
         }
     else
         {
-            pRamVariables->TimerUpC = 0x00;
+            pRamVariables->TimerUp2 = 0x00;
         }
-}*/
+}
+
+void Timer3(float Minutes, float Seconds)
+{
+    if (pRamVariables->StartTimer3 < 1)
+        {
+            pRamVariables->StartTimer3 = (((Minutes * 60) + Seconds) * CyclesPerSec);
+        }
+    else
+        {
+            pRamVariables->StartTimer3 -= 1;
+        }
+	if (pRamVariables->StartTimer3 < 1)
+        {
+            pRamVariables->TimerUp3 = 0x01;
+        }
+    else
+        {
+            pRamVariables->TimerUp3 = 0x00;
+        }
+}
 #endif

@@ -138,7 +138,7 @@ pRamVariables->DefoggerLast = TestDefoggerSwitch();
 #endif
 
 #if SHIFTLIGHT_HACKS
-	pRamVariables->ShiftLightRPM = 7000;
+	pRamVariables->ShiftLightRPM = DefaultShiftLightRPM;
 #endif
 
 #if ALS_HACKS

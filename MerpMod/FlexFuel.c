@@ -19,8 +19,8 @@ void FlexLearn()
 {
 /*
 //AFTER TESTING ALL OUT ADD IN A IF FLEXfUELENABLED SWITCH INTO ECUHACKS.C
-//Flash CEL
-Timer(0.0, 10.0, 1);
+
+Timers(0.0, 10.0, 1);
 if (pRamVariables->TimerUpA == 1)
 	{
 	if (*pCPCDutyRatio == 0)//&& LTFTs == 0 && pAirPump == pointless?)
@@ -142,18 +142,26 @@ void FlexLearnStop()
 }
 
 void FlexRatioUser()
-{
-	if (pRamVariables->FlexFuelRatio < 0.5)
+{	
+		if (pRamVariables->KillWait == 0)
 		{
-			pRamVariables->FlexFuelRatio += FlexRatioUserJump;
+			if (pRamVariables->FlexFuelRatio < 0.5)
+				{
+					pRamVariables->FlexFuelRatio += FlexRatioUserJump;
+				}
+			else if (pRamVariables->FlexFuelRatio > 0.5)
+				{
+					pRamVariables->FlexFuelRatio -= FlexRatioUserJump;
+				}
+			else
+				{
+				}
 		}
-	else if (pRamVariables->FlexFuelRatio > 0.5)
+		else
 		{
-			pRamVariables->FlexFuelRatio -= FlexRatioUserJump;
 		}
-	else
-		{
-		}
+		
+	pRamVariables->KillWait = 0x01;
 	BandPass(pRamVariables->FlexFuelRatio, 0.0, 1.0);
 }
 

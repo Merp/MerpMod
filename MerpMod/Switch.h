@@ -35,7 +35,9 @@
 #define TIMING_HACKS 1		//
 #define POLF_HACKS 1		//	
 #define PGWG_HACKS 1		//
-#define INJECTOR_HACKS 1	//
+#define INJECTOR_HACKS 0	//
+#define RAM_HOLE_SCANNER 0	//
+#define PORT_LOGGER 0	//
 							//
 //////////////////////////////
 							

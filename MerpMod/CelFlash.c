@@ -98,11 +98,11 @@ void CelFlash()
 	//	}
 	//}
 	
-#if SHIFTLIGHT_HACKS
+#if ALS_HACKS
 
 	unsigned char ShiftMode = pRamVariables->DriveMode;
 	unsigned char ALSModeFlashes = pRamVariables->DriveMode;
-	float DefaultShiftLightRPM = 10000.0;
+	unsigned char MapRatioFlashes = (pRamVariables->FlexFuelRatio * 10);
 	
 		if(*pCurrentGear >= 1)
 		{
@@ -159,6 +159,15 @@ void CelFlash()
 	else if(pRamVariables->KillMode >= 2)
 	{
 		CelFlashStart(KillModeFlashes,KillModeFlashSpeed,0,0);
+	}
+	else if(pRamVariables->FuelUp == 1)
+	{
+		CelFlashStart(FlexLearnFlashes,FlexLearnFlashSpeed,8,0);
+	}
+	else if(pRamVariables->FlexLearnHasRun == 1)
+	{
+		CelFlashStart(MapRatioFlashes,ALSModeFlashSpeed,0,0);
+		pRamVariables->FlexLearnHasRun = 0x00;
 	}
 #endif
 

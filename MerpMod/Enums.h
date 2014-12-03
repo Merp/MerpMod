@@ -72,12 +72,12 @@ enum LCFuelModeValues
 };
 enum InputModeValues
 {
-	InputModeUndefined = 0,
-	InputModeTGVLeft = 1,
-	InputModeTGVRight = 2,
-	InputModeSiDrive = 3,
-	InputModeDriveMode = 4,
-	InputModeVirtualFlexSensor = 5,
+	InputModeUndefined = 0x00,
+	InputModeTGVLeft = 0x01,
+	InputModeTGVRight = 0x02,
+	InputModeSiDrive = 0x03,
+	InputModeDriveMode = 0x04,
+	InputModeVirtualFlexSensor = 0x05,
 };
 enum MapSwitchValues
 {
@@ -89,8 +89,8 @@ enum MapSwitchValues
 };
 enum HackSwitch
 {
-	HackDisabled = (unsigned char)0,
-	HackEnabled = (unsigned char)1,
+	HackDisabled = (unsigned char)0x00,
+	HackEnabled = (unsigned char)0x01,
 };
 
 //,1=S,2=S#,3=I,8=S#,16=I"

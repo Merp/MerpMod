@@ -16,19 +16,19 @@
 #if ALS_HACKS
 
 void FuelUp()
-{	
+{
 	if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch() && TestBrakeSwitch())
 		{
 			pRamVariables->FuelUp = 0x01;
-			pRamVariables->FuelCheckSwitch = 20;
-//			FlexRatioUser();
+			pRamVariables->FuelCheckSwitch = 0x14;
+			FlexRatioUser();
 			//Lock LTFTs;
-			//Flash CEL;
+			//Enable MapRatio CELFlash Check
 		}
 	else if (pRamVariables->FuelUp == 1)
 		{
-			FlexLearn();
 			//Iam = InitialIAM
+			FlexLearn();
 		}
 	else if (pRamVariables->FuelCheckSwitch == 20 && *pEngineSpeed > 400)
 		{
@@ -42,7 +42,8 @@ void FuelUp()
 		}
 	if (*pEngineSpeed < 400 && pRamVariables->FuelCheckSwitch < 20)
 		{
-			
+			pRamVariables->FlexLearnHasRun = 0x00;
+
 			if (pRamVariables->FuelCheckSwitch == 0)
 				{
 					Timer(0.0, 20.0);
@@ -50,7 +51,7 @@ void FuelUp()
 				}
 			else if (pRamVariables->FuelCheckSwitch >= 3)
 				{
-					pRamVariables->FuelCheckSwitch = 20;
+					pRamVariables->FuelCheckSwitch = 0x14;
 					pRamVariables->FuelUp = 0x00;
 				}
 			else
@@ -108,7 +109,7 @@ void CheckFuelLevels()
 			if (pRamVariables->FuelCheck2 <= (pRamVariables->FuelCheck1 * FuelRatio1))
 				{
 					pRamVariables->FuelUp = 0x01;
-					pRamVariables->FuelCheckSwitch = 20;
+					pRamVariables->FuelCheckSwitch = 0x14;
 					//Lock LTFTs;
 				}
 			else
@@ -122,7 +123,7 @@ void CheckFuelLevels()
 			if (pRamVariables->FuelCheck2 <= (pRamVariables->FuelCheck1 * FuelRatio2))
 				{
 					pRamVariables->FuelUp = 0x01;
-					pRamVariables->FuelCheckSwitch = 20;
+					pRamVariables->FuelCheckSwitch = 0x14;
 					//Lock LTFTs;
 				}
 			else

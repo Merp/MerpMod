@@ -76,35 +76,38 @@ void DriveModeHack()
 
 		float TargetIdleSpeed;
 		float RequestedTorque;
-		
-		RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
+		float AVCS;
+
+		AVCS = BlendAndSwitch(AVCSTableGroup, *pEngineLoad, *pEngineSpeed);
+
 
 		if (pRamVariables->KillMode >= 2)
 		//Kill Mode
 			{
-//				*pFlagsRevLim |= RevLimBitMask;//FuelCut
-				TargetIdleSpeed = 0.0;
-				RequestedTorque = 0.0;
+				//FuelCut
 			}
 		else if (pRamVariables->DriveMode == 1 && pRamVariables->KillMode <= 1)
 		//Valet Mode
 			{
+				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedA, *pCoolantTemp);
 			}
 		else if (pRamVariables->DriveMode == 2)
 		//Normal Mode
 			{
+				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedA, *pCoolantTemp);
 			}
 		else if (pRamVariables->DriveMode == 3)
 		//Performance Mode
 			{
+				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 				TargetIdleSpeed = Pull2DHooked((void*)tTargetIdleSpeedB, *pCoolantTemp);
 			}
 		else if (pRamVariables->DriveMode >= 4)
 		//ALS Mode
 			{
-
+				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 				TargetIdleSpeed = DefaultALSTargetIdleSpeed;
 			}
 		else
@@ -112,12 +115,11 @@ void DriveModeHack()
 			}
 
 		//add if A/C check here?
+		pRamVariables->AVCS = AVCS;
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
 		pRamVariables->RequestedTorque = RequestedTorque;
 
 	}
-	ALSActivate();
-	MemoryHardReset();
 }
 
 void MemoryHardReset()	

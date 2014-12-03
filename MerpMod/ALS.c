@@ -37,7 +37,7 @@ void ALSActivate()
 		{
 			pRamVariables->ALSActive = 0x00;
 		}
-/*		
+		
 	if (pRamVariables->ALSActive == 0)
 		{
 			//Rotational Idle/ALS Specifics
@@ -45,7 +45,6 @@ void ALSActivate()
 	else
 		{
 		}
-*/
 }
 
 #endif

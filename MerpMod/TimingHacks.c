@@ -25,7 +25,7 @@ void (*BaseTimingHooked)() __attribute__ ((section ("RomHole_Functions"))) = (vo
 float TimingHack()
 {
 	float OutputValue;
-	
+	float PGTimingComp;
 	float subIam;
 	float iam;
 
@@ -34,6 +34,19 @@ float TimingHack()
 	pRamVariables->MaxSubtractiveKCA = HighPass(BlendAndSwitch(KnockCorrectionRetardTableGroup, *pEngineLoad, *pEngineSpeed),0.0f);
 	
 	pRamVariables->SubtractiveKCA = subIam *  pRamVariables->MaxSubtractiveKCA;
+	
+	if (*pCurrentGear == 1)
+		{
+			PGTimingComp = Pull3DHooked(&FirstGearTimingAdditiveTable, *pEngineLoad, *pEngineSpeed);
+		}
+	else if (*pCurrentGear == 2)
+		{
+			PGTimingComp = Pull3DHooked(&SecondGearTimingAdditiveTable, *pEngineLoad, *pEngineSpeed);
+		}
+	else
+		{
+			PGTimingComp = PGHighGearsTimingComp;
+		}
 	
 #if TIMING_RAM_TUNING
 	if(pRamVariables->WGDCMaxRamFlag = 0x01)
@@ -72,19 +85,20 @@ float TimingHack()
 		}
 	else
 		{
-			OutputValue *= PGTimingComp;
+#endif
+			OutputValue += PGTimingComp;
+#if ALS_HACKS
 		}
-#else
-	{
-		OutputValue *= PGTimingComp;
-	}
 #endif
 
 	if(pRamVariables->TimingHackEnabled == HackEnabled)
-		pRamVariables->BaseTimingOutput = OutputValue;
+		{
+			pRamVariables->BaseTimingOutput = OutputValue;
+		}
 	else
-		pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
-		
+		{
+			pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+		}
 	//Call existing!
 	BaseTimingHooked();
 

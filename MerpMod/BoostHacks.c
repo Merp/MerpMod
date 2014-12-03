@@ -148,12 +148,11 @@ void TargetBoostHack()
 		}
 		else
 		{
-			pRamVariables->TargetBoost = TargetBoost * PGTBComp;
-		}
-	#else
-		pRamVariables->TargetBoost = TargetBoost * PGTBComp;
 	#endif
-
+			pRamVariables->TargetBoost = TargetBoost * PGTBComp;
+	#if ALS_HACKS
+		}
+	#endif
 }
 #endif
 #endif

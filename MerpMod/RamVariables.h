@@ -30,7 +30,8 @@ typedef struct
 	unsigned char VehicleIdent[20];
 #endif
 
-	float InjectorScaling;
+#if INJECTOR_HACKS
+float InjectorScaling;
 	float InjectorScalingMultiplier;
 #endif
 	
@@ -137,7 +138,6 @@ unsigned char TimingHackInitFlag; //97
 unsigned char LCTimingMode;
 unsigned char	TimingHackEnabled;
 unsigned char	Tempty1;
-//float	BaseTimingTarget;
 float BaseTimingOutput; //97
 float LCTimingRetard; //97
 float LCTimingLock; //97
@@ -152,8 +152,7 @@ float	MaxSubtractiveKCA;
 	unsigned char 	POLFuelHackInitFlag;	//97
 	unsigned char 	LCFuelMode;
 	unsigned char	PolfHackEnabled;
-	char	Fempty1;	
-//	float PolfTarget;
+	char	Fempty1;
 	float PolfOutput;		//97
 	float LCFuelEnrich;			//97
 	float LCFuelLock;			//97
@@ -254,9 +253,6 @@ float	MaxSubtractiveKCA;
 	unsigned char ALSEnable;
 	unsigned char ALSActive;
 	unsigned char TimerUp;
-//	unsigned char TimerUpA;
-//	unsigned char TimerUpB;
-//	unsigned char TimerUpC;	
 	unsigned char FlexCount;
 	unsigned char FuelUp;
 	unsigned char FuelCheckSwitch;
@@ -266,20 +262,23 @@ float	MaxSubtractiveKCA;
 	unsigned char ALSempty1;
 	unsigned char ALSempty2;
 	unsigned char ALSempty3;
-//	unsigned char IdleMapSelect;
 	float RequestedTorque;
-//	float TimerSeconds;
-//	float TimerMinutes;
 	float StartTimer;
-//	float StartTimerA;
-//	float StartTimerB;
-//	float StartTimerC;
 	float FlexFuelRatio;
 	float FuelCheck1;
 	float FuelCheck2;
 	float FuelLevel1;
 	float FuelLevel2;
 	float FuelLevel3;
+	float AVCS;
+	float StartTimer1;
+	float StartTimer2;
+	float StartTimer3;
+	unsigned char TimerUp1;
+	unsigned char TimerUp2;
+	unsigned char TimerUp3;
+	unsigned char Timerempty;
+//	unsigned char IdleMapSelect;	
 #endif
 
 long	RamHoleSpace;

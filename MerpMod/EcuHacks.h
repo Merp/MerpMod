@@ -41,7 +41,6 @@ SHORT TERM:
 #define SWITCHDATA __attribute__ ((section ("RomHole_MapSwitchTables"),aligned(4))) 
 #define FUELDATA __attribute__ ((section ("RomHole_POLFHackTables"),aligned(4))) 
 #define BOOSTDATA __attribute__ ((section ("RomHole_BoostHackTables"),aligned(4)))
-//#define ALSDATA  __attribute__ ((section ("RomHole_AntiLagTables"),aligned(4)))
 
 //Select ECU Target!!
 #include "TargetHeader.h"

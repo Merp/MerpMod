@@ -36,10 +36,13 @@ float FBKCLoadThreshold CELFLASHDATA = 1.5f;
 float EGTCelLoadThreshold CELFLASHDATA = 1.5f;
 float EGTResistanceThreshold CELFLASHDATA = 25.0f;
 unsigned char ShiftLightFlashes CELFLASHDATA = 0x01;
-unsigned char ShiftLightFlashSpeed CELFLASHDATA = 0x08;
+unsigned char ShiftLightFlashSpeed CELFLASHDATA = 0x10;
+unsigned char FlexLearnFlashes CELFLASHDATA = 0x01;
+unsigned char FlexLearnFlashSpeed CELFLASHDATA = 0x08;
 unsigned char KillModeFlashes CELFLASHDATA = 0x20;
 unsigned char KillModeFlashSpeed CELFLASHDATA = 0x01;
 unsigned char ALSModeFlashSpeed CELFLASHDATA = 0x04;
+float DefaultShiftLightRPM CELFLASHDATA = 10000.0f;
 
 ThreeDTable ShiftLightRPMs __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 float SHIFTLIGHTRPM_COLS[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
