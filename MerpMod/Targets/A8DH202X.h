@@ -207,6 +207,11 @@
 #define hLTFTLimitB1 (0x0002EE40)
 #define hLTFTLimitA2 (0x0002F50C)
 #define hLTFTLimitB2 (0x0002F508)
+#define pAVCS ((float*)0xFFFF8308)
+#define hPullAVCS (0x00053984)
+#define tAVCS (0x00096A28)
+#define hTableAVCS (0x0005398C)
+
 
 /////////////////////
 // OBD Experimental stuff

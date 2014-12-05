@@ -9,7 +9,21 @@
 "ECXLABEL_LAST_FINDS_DATA" "" 
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\Definition.c" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\DriveMode.c" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\DriveModeTables.c" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\FlexFuel.c" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\FuelUp.c" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\RamVariables.h" 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\TargetHeader.h" 
 [WORKSPACE_FILE_STATES]
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\Definition.c" 0 0 1043 846 0 8 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\DriveMode.c" -4 -30 1043 846 1 5 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\DriveModeTables.c" 88 116 837 551 0 7 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\FlexFuel.c" 198 261 837 551 0 3 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\FuelUp.c" 176 232 837 551 0 2 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\RamVariables.h" 44 58 837 551 0 4 
+"C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\TargetHeader.h" 0 0 1043 846 0 6 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]

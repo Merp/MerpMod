@@ -522,6 +522,10 @@
 <define name="hLTFTLimitB1"/>
 <define name="hLTFTLimitA2"/>
 <define name="hLTFTLimitB2"/>
+<define name="pAVCS"/>
+<define name="hPullAVCS"/>
+<define name="tAVCS"/>
+<define name="hTableAVCS"/>
 
     </category>
 

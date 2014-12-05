@@ -42,6 +42,17 @@ TableGroup AVCSTableGroup SPEEDDENSITYDATA = {
 	&AVCSTable2}
 };
 
+TableGroup AVCSGear5TableGroup SPEEDDENSITYDATA = {
+	{&AVCSTable1Gear5,
+	&AVCSTable1Gear5,
+	&AVCSTable1Gear5,
+	&AVCSTable1}Gear5,
+	{&AVCSTable2Gear5,
+	&AVCSTable2Gear5,
+	&AVCSTable2Gear5,
+	&AVCSTable2Gear5}
+};
+
 ///////////////
 //Requested Torque Table 1v
 ///////////////
@@ -263,3 +274,74 @@ ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),al
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
 
+///////////////
+// AVCS Table 1 Fifth Gear
+///////////////
+ThreeDTable AVCSTable1Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData1Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+ThreeDTable AVCSTable1Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 20,
+	.rowCount = 20,
+	.columnHeaderArray = AVCSCols1,
+	.rowHeaderArray = AVCSRows1,
+	.tableCells = AVCSData1Gear5,
+	.tableType = UInt16Table3D,
+	.multiplier = 0.0054931640625f,	
+	.offset = 0 };	
+	
+///////////////
+// AVCS Table 2 Fifth Gear
+///////////////
+ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData2Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 20,
+	.rowCount = 20,
+	.columnHeaderArray = AVCSCols1,
+	.rowHeaderArray = AVCSRows1,
+	.tableCells = AVCSData2Gear5,
+	.tableType = UInt16Table3D,
+	.multiplier = 0.0054931640625f,	
+	.offset = 0 };	

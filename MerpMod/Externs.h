@@ -162,6 +162,9 @@ extern ThreeDTable ReqTorqTable1ss;
 extern TableGroup AVCSTableGroup;
 extern ThreeDTable AVCSTable1;
 extern ThreeDTable AVCSTable2;
+extern TableGroup AVCSGear5TableGroup;
+extern ThreeDTable AVCSTable1Gear5;
+extern ThreeDTable AVCSTable2Gear5;
 
 extern TableGroup PGWGTableGroup;
 extern ThreeDTable PGWGTable1i;

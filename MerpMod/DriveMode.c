@@ -77,9 +77,15 @@ void DriveModeHack()
 		float TargetIdleSpeed;
 		float RequestedTorque;
 		float AVCS;
-
-		AVCS = BlendAndSwitch(AVCSTableGroup, *pEngineLoad, *pEngineSpeed);
-
+		
+		if (*pCurrentGear == 5)
+			{
+				AVCS = BlendAndSwitch(AVCSGear5TableGroup, *pEngineLoad, *pEngineSpeed);
+			}
+		else
+			{
+				AVCS = BlendAndSwitch(AVCSTableGroup, *pEngineLoad, *pEngineSpeed);
+			}
 
 		if (pRamVariables->KillMode >= 2)
 		//Kill Mode
