@@ -73,7 +73,7 @@ OpModAuth=		0x1234000E,
 OpModId=		0x1234000F
 };
 
-#define OpDelim "\0\0\0\0\0\0"
+#define OpDelim STR(\0\0\0\0\0\0)
 
 typedef struct
 {
@@ -601,10 +601,10 @@ const MetaReplace POLFHook METADATA =
 
 #endif
 
-#if INJECTOR_HACKS
+#if E85_HACKS
 //////////////////////
 //					//
-//INJECTOR HACKS	//
+//     E85 HACKS	//
 //					//
 //////////////////////
 	const MetaReplace InjectorHook METADATA =
@@ -615,6 +615,39 @@ const MetaReplace POLFHook METADATA =
 		newval: (int)&(pRamVariables->InjectorScaling),
 		name: STR(Injector Scalar Hook)
 	};
+	const MetaReplace TipInEnrichHookPull METADATA = 
+	{
+		op: OpReplace4Bytes,
+		address: hPull2DTipInEnrich,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHookTipInEnrich,
+		name: STR(Tip In Enrichment Pull2D Hook)
+	};
+	const MetaReplace CrankingFuelHookPull METADATA = 
+	{
+		op: OpReplace4Bytes,
+		address: hPull2DCrankingFuel,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHookCrankingFuel,
+		name: STR(Cranking Fuel Pull2D Hook)
+	};
+	const MetaReplace StartupEnrich2HookPull METADATA = 
+	{
+		op: OpReplace4Bytes,
+		address: hPull2DStartupEnrich2,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHookStartupEnrich2,
+		name: STR(Startup Enrich 2 Pull2D Hook)
+	};
+	const MetaReplace StartupEnrich3HookPull METADATA = 
+	{
+		op: OpReplace4Bytes,
+		address: hPull2DStartupEnrich3,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHookStartupEnrich3,
+		name: STR(Startup Enrich 3 Pull2D Hook)
+	};
+
 #endif
 
 //////////////////////

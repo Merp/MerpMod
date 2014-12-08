@@ -33,6 +33,7 @@ typedef struct
 
 #if INJECTOR_HACKS
 	float InjectorScaling;
+	float InjectorScalingMultiplier;
 #endif
 	
 #if SPARK_CUT
