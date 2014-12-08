@@ -323,14 +323,17 @@ DEFINERAMVAR("MerpMod ECU Identifier",ECUIdentifier,"uint32","E");
 DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E");
 DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E");
 
-DEFNEW2D("TGV Left Input Scaling_",TGVLeftScaling);
-DEFNEW2D("TGV Right Input Scaling_",TGVRightScaling);
+DEFNEW2D("TGV Left Input Scaling",TGVLeftScaling);
+DEFNEW2D("TGV Right Input Scaling",TGVRightScaling);
 
 DEFNEW1D("TGV Left Input Smoothing Factor",LeftTGVInputSmoothingFactor);
 DEFNEW1D("TGV Right Input Smoothing Factor",RightTGVInputSmoothingFactor);
 
 DEFNEW1D("TGV Left Input Multiplier",LeftTGVInputMultiplier);
 DEFNEW1D("TGV Right Input Multiplier",RightTGVInputMultiplier);
+
+DEFNEW1D("TGV Left Input Offset",LeftTGVInputOffset);
+DEFNEW1D("TGV Right Input Offset",RightTGVInputOffset);
 
 DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
@@ -347,9 +350,13 @@ DEFNEW1D("Default Map Blending Ratio",DefaultMapBlendRatio);
 DEFNEW1D("Default Map Switch",DefaultMapSwitch);
 
 #if INJECTOR_HACKS
-DEFNEW2D("Map Blending Injector Scaling",InjectorScalingTable);
+DEFNEW2D("Map Blending Injector Scaling Multiplier",InjectorScalingMultiplierTable);
 DEFINERAMVAR("MerpMod Injector Scaling",InjectorScaling,"float","E");
 #endif
+
+DEFNEW2D("Map Blending Throttle Tip-In Enrichment Multiplier",TipInEnrichMultiplier);
+DEFNEW2D("Map Blending Cranking Fuel Multiplier",CrankingFuelMultiplier);
+DEFNEW2D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 
 #endif
 

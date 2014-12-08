@@ -48,3 +48,46 @@ float Pull2DRamHook(float* table, float xLookup)
 		 return Pull2DHooked((TwoDTable*)table, xLookup);
 	}
 }
+
+float Pull2DRamHookTipIn(float* table, float xLookup)
+{
+	if(table == tTipInEnrich)//This hook is used by other tables!!
+		return Pull2DHooked((TwoDTable*)table, xLookup) 
+		* Pull2DHooked((TwoDTable*)&TipInEnrichMultiplier, xLookup)
+		* pRamVariables->InjectorScalingMultiplier;		
+	return Pull2DHooked((TwoDTable*)table, xLookup);
+}
+
+float Pull2DRamHookCrankingFuel(float* table, float xLookup)
+{
+	if(table == tCrankingFuelA ||
+	table == tCrankingFuelB ||
+	table == tCrankingFuelC ||
+	table == tCrankingFuelD ||
+	table == tCrankingFuelE ||
+	table == tCrankingFuelF)//This hook is used by other tables!!
+		return Pull2DHooked((TwoDTable*)table, xLookup) 
+		* Pull2DHooked((TwoDTable*)&CrankingFuelMultiplier, xLookup)
+		* pRamVariables->InjectorScalingMultiplier;
+	return Pull2DHooked((TwoDTable*)table, xLookup);
+}
+
+float Pull2DRamHookStartupEnrich2(float* table, float xLookup)
+{
+	if(table == tStartupEnrich2_1A ||
+	table == tStartupEnrich2_1B ||
+	table == tStartupEnrich2_2A ||
+	table == tStartupEnrich2_2B)//This hook is used by other tables!!
+		return Pull2DHooked((TwoDTable*)table, xLookup) * Pull2DHooked((TwoDTable*)&StartupEnrichMultiplier, xLookup);
+	return Pull2DHooked((TwoDTable*)table, xLookup);
+}
+
+float Pull2DRamHookStartupEnrich3(float* table, float xLookup)
+{
+	if(table == tStartupEnrich3_1A ||
+	table == tStartupEnrich3_1B ||
+	table == tStartupEnrich3_2A ||
+	table == tStartupEnrich3_2B)//This hook is used by other tables!!
+		return Pull2DHooked((TwoDTable*)table, xLookup) * Pull2DHooked((TwoDTable*)&StartupEnrichMultiplier, xLookup);
+	return Pull2DHooked((TwoDTable*)table, xLookup);
+}

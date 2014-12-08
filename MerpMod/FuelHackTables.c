@@ -16,6 +16,7 @@
 
 #if SWITCH_HACKS && INJECTOR_HACKS
 
+/*
 float INJECTOR_SCALING_ROWS[11] FUELDATA =
 {0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0};
 
@@ -30,6 +31,22 @@ TwoDTable InjectorScalingTable  FUELDATA = {
 	.multiplier = 0.824f,	//todo unit test these
 	.offset = 0.0 };
 //! 27000/32767  (0-27000.00 range, 16bit precision)
+*/
+
+float INJECTOR_SCALING_MULTIPLIER_ROWS[11] FUELDATA =
+{0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0};
+
+short INJECTOR_SCALING_MULTIPLIER_DATA[11] FUELDATA =
+{6554,6357,6160,5964,5767,5570,5374,5177,4981,4784,4587};
+
+TwoDTable InjectorScalingMultiplierTable  FUELDATA = {
+	.columnCount = 11,
+	.tableType = UInt16Table2D,
+	.columnHeaderArray = INJECTOR_SCALING_MULTIPLIER_ROWS,
+	.tableCells = INJECTOR_SCALING_MULTIPLIER_DATA,
+	.multiplier = 0.0001525902f,	//todo unit test these
+	.offset = 0.0 };
+//! 10/65535  (0-10 range, 16bit precision)
 
 #endif
 

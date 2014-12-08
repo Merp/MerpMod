@@ -39,6 +39,68 @@
         <define name="sShortToFloat">
             <ida name="SBR_SHORT_TO_FLOAT"/>
         </define>
+		
+		<define name="hPull2DTipInEnrich">
+            <ida name="HOOKPULL_TIPIN_ENRICH" />
+        </define>
+        <define name="tTipInEnrich">
+            <ida name="Table_Throttle_Tipin_Enrichment" />
+        </define>
+		
+		<define name="hPull2DCrankingFuel">
+            <ida name="HOOKPULL_CRANKING_FUEL"/>
+        </define>
+		<define name="tCrankingFuelA">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_A_ECT" />
+        </define>
+		<define name="tCrankingFuelB">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_B_ECT" />
+        </define>
+		<define name="tCrankingFuelC">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_C_ECT" />
+        </define>
+		<define name="tCrankingFuelD">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_D_ECT" />
+        </define>
+		<define name="tCrankingFuelE">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_E_ECT" />
+        </define>
+		<define name="tCrankingFuelF">
+            <ida name="Table_Cranking_Fuel_Injector_Pulse_Width_F_ECT" />
+        </define>
+		
+		<define name="hPull2DStartupEnrich2">
+            <ida name="HOOKPULL_STARTUP_ENRICH_2"/>
+        </define>
+		<define name="tStartupEnrich2_1A">
+            <ida name="Table_Min_Primary_Base_Enrich_2_Initial_Start_1A" />
+        </define>
+		<define name="tStartupEnrich2_1B">
+            <ida name="Table_Min_Primary_Base_Enrich_2_Initial_Start_1B" />
+        </define>
+		<define name="tStartupEnrich2_2A">
+            <ida name="Table_Min_Primary_Base_Enrich_2_Initial_Start_2A" />
+        </define>
+		<define name="tStartupEnrich2_2B">
+            <ida name="Table_Min_Primary_Base_Enrich_2_Initial_Start_2B" />
+        </define>
+		
+		<define name="hPull2DStartupEnrich3">
+            <ida name="HOOKPULL_STARTUP_ENRICH_3"/>
+        </define>
+		<define name="tStartupEnrich3_1A">
+            <ida name="Table_Min_Primary_Base_Enrich_3_Initial_Start_1A" />
+        </define>
+		<define name="tStartupEnrich3_1B">
+            <ida name="Table_Min_Primary_Base_Enrich_3_Initial_Start_1B" />
+        </define>
+		<define name="tStartupEnrich3_2A">
+            <ida name="Table_Min_Primary_Base_Enrich_3_Initial_Start_2A" />
+        </define>
+		<define name="tStartupEnrich3_2B">
+            <ida name="Table_Min_Primary_Base_Enrich_3_Initial_Start_2B" />
+        </define>
+		
     </category>
 
     <category name="Rev Limit Hack">

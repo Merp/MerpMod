@@ -18,11 +18,9 @@
 
 void InjectorHack(){
 
-float OutputValue;
+pRamVariables->InjectorScalingMultiplier = Pull2DHooked(&InjectorScalingMultiplierTable,pRamVariables->MapBlendRatio);
 
-OutputValue = Pull2DHooked(&InjectorScalingTable,pRamVariables->MapBlendRatio);
-
-pRamVariables->InjectorScaling = OutputValue;
+pRamVariables->InjectorScaling = pRamVariables->InjectorScalingMultiplier * *dInjectorScaling;
 
 }
 
@@ -56,7 +54,7 @@ EcuHacksMain();
 		}
 	#endif
 		pRamVariables->LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables->LCFuelEnrichMultiplier;
-	
+
 		if(pRamVariables->LCFuelMode == LCFuelModeCompensated)
 		{
 			OutputValue += pRamVariables->LCFuelEnrich;

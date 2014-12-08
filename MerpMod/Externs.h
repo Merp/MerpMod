@@ -55,6 +55,10 @@ void InjectorHack() ROMCODE;
 void POLFHack()  ROMCODE;
 float TimingHack()  ROMCODE;
 float Pull2DRamHook(float* table, float xLookup) ROMCODE;
+float Pull2DRamHookTipIn(float* table, float xLookup) ROMCODE;
+float Pull2DRamHookCrankingFuel(float* table, float xLookup) ROMCODE;
+float Pull2DRamHookStartupEnrich2(float* table, float xLookup) ROMCODE;
+float Pull2DRamHookStartupEnrich3(float* table, float xLookup) ROMCODE;
 float Pull3DRamHook(float* table, float xLookup, float yLookup) ROMCODE;
 void VinCheck() ROMCODE;
 
@@ -112,7 +116,7 @@ extern ThreeDTable TemperatureCompensationTable;
 extern ThreeDTable AtmosphericCompensationTable;
 extern ThreeDTable SDBlendingTable;
 
-extern TwoDTable InjectorScalingTable;
+extern TwoDTable InjectorScalingMultiplierTable;
 
 extern unsigned char DefaultPolfHackEnabled;
 extern TableGroup FuelTableGroup;
@@ -281,12 +285,18 @@ extern float LeftTGVInputSmoothingFactor;
 extern float RightTGVInputSmoothingFactor;
 extern float LeftTGVInputMultiplier;
 extern float RightTGVInputMultiplier;
+extern float LeftTGVInputOffset;
+extern float RightTGVInputOffset;
 extern TwoDTable TGVLeftScaling;
 extern TwoDTable TGVRightScaling;
 extern float MapSwitchThresholdLo;
 extern float MapSwitchThresholdHi;
 extern unsigned char DefaultMapBlendingInputMode;
 extern unsigned char DefaultMapSwitchingInputMode;
+
+extern TwoDTable TipInEnrichMultiplier;
+extern TwoDTable CrankingFuelMultiplier;
+extern TwoDTable StartupEnrichMultiplier;
 #endif
 
 extern long RomHoleEndMarker;
