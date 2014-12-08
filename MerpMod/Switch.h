@@ -37,8 +37,9 @@
 #define PGWG_HACKS 1		//
 #define INJECTOR_HACKS 1	//
 #define RAM_HOLE_SCANNER 0	//
-#define PORT_LOGGER 0	//
-#define MPG_HACKS 1	//
+#define PORT_LOGGER 0		//
+#define MPG_HACKS 1		//
+#define ALS_RAMTUNING 0		//
 					//
 //////////////////////////////
 							

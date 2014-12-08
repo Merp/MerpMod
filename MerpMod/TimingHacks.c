@@ -82,6 +82,9 @@ float TimingHack()
 	if (pRamVariables->ALSActive == 1)
 		{
 			OutputValue = DefaultALSTimingLock;
+#if ALS_RAMTUNING
+			OutputValue += pRamVariables->ALSTimingRamTuning;
+#endif
 		}
 	else
 		{

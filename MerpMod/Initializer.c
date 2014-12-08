@@ -169,6 +169,11 @@ pRamVariables->DefoggerLast = TestDefoggerSwitch();
 	pRamVariables->FuelLevel1 = 0.0;
 	pRamVariables->FuelLevel2 = 0.0;
 	pRamVariables->FuelLevel3 = 0.0;
+#if ALS_RAMTUNING
+	pRamVariables->ALSAVCSRamTuning = DefaultALSAVCSRamTuning;
+	pRamVariables->ALSPOLFRamTuning = DefaultALSPOLFRamTuning;
+	pRamVariables->ALSTimingRamTuning = DefaultALSTimingRamTuning;
+#endif
 #endif
 
 pRamVariables->ECUIdentifier = *(long*)dEcuId;

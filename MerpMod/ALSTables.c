@@ -17,10 +17,17 @@
 
 float DefaultALSTimingLock SPEEDDENSITYDATA = 20.0f;
 float DefaultALSFuelLock SPEEDDENSITYDATA = 0.35f;
-float DefaultALSBoostLimit SPEEDDENSITYDATA = 0.0f;//FIX ME!!
+float DefaultALSBoostLimit SPEEDDENSITYDATA = 1500.0f;
 float DefaultALSTargetIdleSpeed SPEEDDENSITYDATA = 2000.0f;
 float ALSWGDC SPEEDDENSITYDATA = 100.0f;
 float ALSAVCS SPEEDDENSITYDATA = 0.0f;
+
+#if ALS_RAMTUNING
+float DefaultALSPOLFRamTuning = 0.0f;
+float DefaultALSTimingRamTuning = 0.0f;
+float DefaultALSAVCSRamTuning = 0.0f;
+#endif
+
 // float? ALSRevLimit SPEEDDENSITYDATA = 3000.0f;
 // float ALSThrottleKick SPEEDDENSITYDATA = 100.0f; ReqTorq? Or unneeded?
 

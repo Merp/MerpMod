@@ -279,7 +279,14 @@ float	MaxSubtractiveKCA;
 	unsigned char TimerUp3;
 	unsigned char Timerempty;
 //	unsigned char IdleMapSelect;
-	float TargetCLAFR;	
+	float TargetCLAFR;
+
+#if ALS_RAMTUNING
+	float ALSPOLFRamTuning;
+	float ALSTimingRamTuning;
+	float ALSAVCSRamTuning;
+#endif
+
 #endif
 
 long	RamHoleSpace;

@@ -126,17 +126,16 @@ void DriveModeHack()
 			{
 			}
 
-		//add if A/C check here?
+
 		if (pRamVariables->ALSActive == 1)
 			{
-				//pRamVariables->AVCS = ALSAVCS;//Test
-				pRamVariables->AVCS = AVCS;
+				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear swithes
 			}
 		else
 			{
 				pRamVariables->AVCS = AVCS;
 			}
-			
+
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
 		pRamVariables->RequestedTorque = RequestedTorque;
 
