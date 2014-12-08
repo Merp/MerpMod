@@ -23,9 +23,13 @@ float ALSWGDC SPEEDDENSITYDATA = 100.0f;
 float ALSAVCS SPEEDDENSITYDATA = 0.0f;
 
 #if ALS_RAMTUNING
-float DefaultALSPOLFRamTuning = 0.0f;
-float DefaultALSTimingRamTuning = 0.0f;
-float DefaultALSAVCSRamTuning = 0.0f;
+float DefaultALSPOLFRamTuning SPEEDDENSITYDATA = 0.0f;
+float DefaultALSTimingRamTuning SPEEDDENSITYDATA = 0.0f;
+float DefaultALSAVCSRamTuning SPEEDDENSITYDATA = 0.0f;
+float DefaultALSPOLFRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+float DefaultALSTimingRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+float DefaultALSAVCSRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+
 #endif
 
 // float? ALSRevLimit SPEEDDENSITYDATA = 3000.0f;
