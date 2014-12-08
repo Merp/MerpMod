@@ -77,29 +77,22 @@ void DriveModeHack()
 		float TargetIdleSpeed;
 		float RequestedTorque;
 		float AVCS;
-<<<<<<< HEAD
+
 
 #if MPG_HACKS		
-=======
-		
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
+
 		if (*pCurrentGear == 5)
 			{
 				AVCS = BlendAndSwitch(AVCSGear5TableGroup, *pEngineLoad, *pEngineSpeed);
 			}
 		else
 			{
-<<<<<<< HEAD
 #endif
 				AVCS = BlendAndSwitch(AVCSTableGroup, *pEngineLoad, *pEngineSpeed);
 #if MPG_HACKS					
 			}
 #endif
-=======
-				AVCS = BlendAndSwitch(AVCSTableGroup, *pEngineLoad, *pEngineSpeed);
-			}
 
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 		if (pRamVariables->KillMode >= 2)
 		//Kill Mode
 			{
@@ -136,7 +129,7 @@ void DriveModeHack()
 		//add if A/C check here?
 		if (pRamVariables->ALSActive == 1)
 			{
-				//pRamVariables->AVCS = ALSAVCS;//Test and Implement?
+				//pRamVariables->AVCS = ALSAVCS;//Test
 				pRamVariables->AVCS = AVCS;
 			}
 		else

@@ -42,33 +42,24 @@ TableGroup AVCSTableGroup SPEEDDENSITYDATA = {
 	&AVCSTable2}
 };
 
-<<<<<<< HEAD
 #if MPG_HACKS
 
 float LeanCruiseLoadThreshold SPEEDDENSITYDATA = 0.80f;
 
-=======
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 TableGroup AVCSGear5TableGroup SPEEDDENSITYDATA = {
 	{&AVCSTable1Gear5,
 	&AVCSTable1Gear5,
 	&AVCSTable1Gear5,
-<<<<<<< HEAD
 	&AVCSTable1Gear5},
-=======
-	&AVCSTable1}Gear5,
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
+	&AVCSTable1Gear5},
 	{&AVCSTable2Gear5,
 	&AVCSTable2Gear5,
 	&AVCSTable2Gear5,
 	&AVCSTable2Gear5}
 };
 
-<<<<<<< HEAD
 #endif
 
-=======
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 ///////////////
 //Requested Torque Table 1v
 ///////////////
@@ -290,11 +281,8 @@ ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),al
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
 
-<<<<<<< HEAD
 #if MPG_HACKS
 
-=======
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 ///////////////
 // AVCS Table 1 Fifth Gear
 ///////////////
@@ -334,6 +322,7 @@ ThreeDTable AVCSTable1Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables
 ///////////////
 // AVCS Table 2 Fifth Gear
 ///////////////
+
 ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 short AVCSData2Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -365,7 +354,6 @@ ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables
 	.tableCells = AVCSData2Gear5,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
-<<<<<<< HEAD
 	.offset = 0 };	
 
 float O2SensorScalingMPGRows[13] SPEEDDENSITYDATA =
@@ -385,6 +373,3 @@ TwoDTable O2SensorScalingMPGTable SPEEDDENSITYDATA = {
 
 #endif
 #endif
-=======
-	.offset = 0 };	
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3

@@ -526,14 +526,11 @@
 <define name="hPullAVCS"/>
 <define name="tAVCS"/>
 <define name="hTableAVCS"/>
-<<<<<<< HEAD
 <define name="pO2SensorScaling"/>
 <define name="hPullO2SensorScaling"/>
 <define name="tO2SensorScaling"/>
 <define name="hTableO2SensorScaling"/>
 <define name="pAFSensor1Current"/>
-=======
->>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 
     </category>
 
