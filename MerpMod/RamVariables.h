@@ -278,7 +278,8 @@ float	MaxSubtractiveKCA;
 	unsigned char TimerUp2;
 	unsigned char TimerUp3;
 	unsigned char Timerempty;
-//	unsigned char IdleMapSelect;	
+//	unsigned char IdleMapSelect;
+	float TargetCLAFR;	
 #endif
 
 long	RamHoleSpace;

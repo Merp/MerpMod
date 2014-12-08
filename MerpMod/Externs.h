@@ -54,6 +54,7 @@ void DriveModeHack()  ROMCODE;
 void LoadFuelLevels() ROMCODE;
 void CheckFuelLevels() ROMCODE;
 void FuelUp() ROMCODE;
+void Mileage() ROMCODE;
 void FlexLearn() ROMCODE;
 void FlexRatioUser() ROMCODE;
 void FlexLearnStop() ROMCODE;
@@ -323,6 +324,11 @@ extern float FlexRoughRatio;
 extern float FlexFineRatio;
 extern float FuelCheckWaitTime;
 extern float FlexRatioUserJump;
+extern float TargetCLAFR;
+extern float LeanCruiseLoadThreshold;
+extern TwoDTable O2SensorScalingMPGTable;
+extern float ALSWGDC;
+extern float ALSAVCS;
 
 #endif
 

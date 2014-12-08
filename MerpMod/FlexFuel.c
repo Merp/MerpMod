@@ -17,33 +17,40 @@
 
 void FlexLearn()
 {
-/*
 //AFTER TESTING ALL OUT ADD IN A IF FLEXfUELENABLED SWITCH INTO ECUHACKS.C
-
-Timers(0.0, 10.0, 1);
-if (pRamVariables->TimerUpA == 1)
-	{
-	if (*pCPCDutyRatio == 0)//&& LTFTs == 0 && pAirPump == pointless?)
+	if (pRamVariables->FlexCount >= 6)
 		{
-			pRamVariables->FlexFuelRatio = pRamVariables->MapBlendRatio;
-
-
-			if (pRamVariables->FlexCount < 3)
-        		{
-        		   FlexRoughCorrect();
-        		}
-    		else if (pRamVariables->FlexCount >= 3)
-    		    {
-    		        FlexFineCorrect();
-        		}
-    		else
-        		{
-        		}
-
+			FlexLearnStop();
+		}
+	else
+		{
+			Timers(0.0, 10.0, 1);
+			if (pRamVariables->TimerUp1 == 1)
+				{
+					if (*pCPCDutyRatio == 0)//&& LTFTs == 0 && pAirPump == pointless?)
+						{
+							pRamVariables->FlexFuelRatio = pRamVariables->MapBlendRatio;
+							if (pRamVariables->FlexCount < 3)
+        						{
+        						   FlexRoughCorrect();
+        						}
+    						else
+    						    {
+    		    				    FlexFineCorrect();
+        						}
+						}
+					else
+						{
+						}
+				}
+			else
+				{
+				}
+				
    			if (pRamVariables->FlexWait == 1)
 				{
-				    Timer(0.0, 30.0, 2);
-					if (pRamVariables->TimerUpB == 1)
+				    Timers(0.0, 30.0, 2);
+					if (pRamVariables->TimerUp2 == 1)
         				{
         		    		pRamVariables->FlexWait = 0x00;
        					}
@@ -55,22 +62,7 @@ if (pRamVariables->TimerUpA == 1)
 			else
 				{
 				}
-
-			if (pRamVariables->FlexCount >= 6)
-				{
-					FlexLearnStop();
-				}
-			else
-				{
-				}
 		}
-	else
-		{
-		}
-	}
-else
-	{
-	}
 }
 
 void FlexRoughCorrect()
@@ -129,15 +121,14 @@ void FlexFineCorrect()
 
     else
     {
-    }*/
-	FlexLearnStop();
+    }
 }
 
 void FlexLearnStop()
 {
 	pRamVariables->FuelUp = 0x00;
 	pRamVariables->FlexLearnHasRun = 0x01;//Delete when tested??  Or leave?
-//	pRamVariables->FlexCount = 0x00;
+	pRamVariables->FlexCount = 0x00;
 	//unlock LTFTs pRamVariables->LTFTs = OEM;
 }
 

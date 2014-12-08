@@ -74,9 +74,21 @@ EcuHacksMain();
 		}
 	#endif
 	
-	pRamVariables->PGWGComp = PGWGComp;	
-	pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
-	pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+	#if ALS_HACKS
+		if (pRamVariables->ALSActive == 1)
+			{
+				pRamVariables->WGDCInitial = ALSWGDC;
+				pRamVariables->WGDCMax = ALSWGDC;
+			}
+		else
+			{
+	#endif
+				pRamVariables->PGWGComp = PGWGComp;	
+				pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
+				pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+	#if ALS_HACKS
+			}
+	#endif
 	
 	#if WGDC_LOCK
 	}

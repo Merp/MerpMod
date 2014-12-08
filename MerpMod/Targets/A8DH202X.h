@@ -211,7 +211,15 @@
 #define hPullAVCS (0x00053984)
 #define tAVCS (0x00096A28)
 #define hTableAVCS (0x0005398C)
+<<<<<<< HEAD
+#define pO2SensorScaling ((float*)0xFFFF5F00)
+#define hPullO2SensorScaling (0x0000BFD8)
+#define tO2SensorScaling (0x00096600)
+#define hTableO2SensorScaling (0x0000BFD4)
+#define pAFSensor1Current ((float*)0xFFFF5F04)
+=======
 
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 
 /////////////////////
 // OBD Experimental stuff

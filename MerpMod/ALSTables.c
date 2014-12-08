@@ -17,11 +17,11 @@
 
 float DefaultALSTimingLock SPEEDDENSITYDATA = 20.0f;
 float DefaultALSFuelLock SPEEDDENSITYDATA = 0.35f;
-float DefaultALSBoostLimit SPEEDDENSITYDATA = 0.0f;
+float DefaultALSBoostLimit SPEEDDENSITYDATA = 0.0f;//FIX ME!!
 float DefaultALSTargetIdleSpeed SPEEDDENSITYDATA = 2000.0f;
-// float? ALSWGDC = 100.0f;
-// float? ALSWGDCMax = 100.0f;
-// float? ALSRevLimit = 3000.0f;
-// float? ALSThrottleKick = 100.0f;
+float ALSWGDC SPEEDDENSITYDATA = 100.0f;
+float ALSAVCS SPEEDDENSITYDATA = 0.0f;
+// float? ALSRevLimit SPEEDDENSITYDATA = 3000.0f;
+// float ALSThrottleKick SPEEDDENSITYDATA = 100.0f; ReqTorq? Or unneeded?
 
 #endif

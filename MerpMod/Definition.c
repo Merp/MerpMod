@@ -538,9 +538,17 @@ DEFNEW1D("Fuel Check Ratio 2",FuelRatio2);
 DEFNEW1D("User Ratio",FlexRatioUserJump);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1",AVCSTable1);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2",AVCSTable2);
+<<<<<<< HEAD
+#if MPG_HACKS
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Fifth Gear Only",AVCSTable1Gear5);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Fifth Gear Only",AVCSTable2Gear5);
+DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);
+#endif
+=======
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Fifth Gear Only",AVCSTable1Gear5);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Fifth Gear Only",AVCSTable2Gear5);
 
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 #endif
 
 #if TIMING_RAMTUNING

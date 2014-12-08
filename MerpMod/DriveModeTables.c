@@ -13,7 +13,7 @@
 */
 
 #include "EcuHacks.h"
-
+#if ALS_HACKS
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!! ALS constants
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -42,17 +42,33 @@ TableGroup AVCSTableGroup SPEEDDENSITYDATA = {
 	&AVCSTable2}
 };
 
+<<<<<<< HEAD
+#if MPG_HACKS
+
+float LeanCruiseLoadThreshold SPEEDDENSITYDATA = 0.80f;
+
+=======
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 TableGroup AVCSGear5TableGroup SPEEDDENSITYDATA = {
 	{&AVCSTable1Gear5,
 	&AVCSTable1Gear5,
 	&AVCSTable1Gear5,
+<<<<<<< HEAD
+	&AVCSTable1Gear5},
+=======
 	&AVCSTable1}Gear5,
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 	{&AVCSTable2Gear5,
 	&AVCSTable2Gear5,
 	&AVCSTable2Gear5,
 	&AVCSTable2Gear5}
 };
 
+<<<<<<< HEAD
+#endif
+
+=======
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 ///////////////
 //Requested Torque Table 1v
 ///////////////
@@ -274,6 +290,11 @@ ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),al
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
 
+<<<<<<< HEAD
+#if MPG_HACKS
+
+=======
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
 ///////////////
 // AVCS Table 1 Fifth Gear
 ///////////////
@@ -344,4 +365,26 @@ ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables
 	.tableCells = AVCSData2Gear5,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
+<<<<<<< HEAD
 	.offset = 0 };	
+
+float O2SensorScalingMPGRows[13] SPEEDDENSITYDATA =
+{-1.53,-1.43,-1.3,-0.87,-0.47,-0.14,0.0,0.1,0.24,0.39,0.53,0.64,0.74};
+
+float O2SensorScalingMPGDATA[13] SPEEDDENSITYDATA =
+{0.73,0.742,0.759,0.828,0.897,0.965,1.0,1.035,1.103,1.172,1.241,1.31,1.38};
+
+TwoDTable O2SensorScalingMPGTable SPEEDDENSITYDATA = {
+.columnCount = 13,
+.tableType = UInt16Table2D,
+.columnHeaderArray = O2SensorScalingMPGRows,
+.tableCells = O2SensorScalingMPGDATA,
+.multiplier = 0.0f,
+.offset = 0.0 };
+
+
+#endif
+#endif
+=======
+	.offset = 0 };	
+>>>>>>> eabe2c077d2ee5a49fb879b670475eaf6cf249d3
