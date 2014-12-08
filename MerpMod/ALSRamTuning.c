@@ -22,7 +22,73 @@ void ALSRamTuning()
 		unsigned char KillWait = pRamVariables->KillWait;
 		unsigned char ModeWait = pRamVariables->ALSModeWait;
 
-  if (TestCruiseMasterSwitch() && TestCruiseResumeSwitch())
+  		if (TestBrakeSwitch() && TestCruiseResumeSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSTimingRamTuning += ALSTimingRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		else if (TestBrakeSwitch() && TestCruiseCoastSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSTimingRamTuning -= ALSTimingRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		if (TestClutchSwitch() && TestCruiseResumeSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSPOLFRamTuning += ALSPOLFRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		else if (TestClutchSwitch() && TestCruiseCoastSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSPOLFRamTuning -= ALSPOLFRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		if (TestDefoggerSwitch() && TestCruiseResumeSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSAVCSRamTuning += ALSAVCSRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		else if (TestDefoggerSwitch() && TestCruiseCoastSwitch())
+		{	
+			if (ModeWait == 0)
+			{
+				pRamVariables->ALSModeWait = 0x01;
+				pRamVariables->ALSAVCSRamTuning -= ALSAVCSRamTuningAdder;
+			}
+			else
+			{
+			}
+		}
+  		if (TestCruiseMasterSwitch() && TestCruiseResumeSwitch())
 		{	
 			if (ModeWait == 0)
 			{
