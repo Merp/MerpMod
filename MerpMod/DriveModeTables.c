@@ -51,7 +51,6 @@ TableGroup AVCSGear5TableGroup SPEEDDENSITYDATA = {
 	&AVCSTable1Gear5,
 	&AVCSTable1Gear5,
 	&AVCSTable1Gear5},
-	&AVCSTable1Gear5},
 	{&AVCSTable2Gear5,
 	&AVCSTable2Gear5,
 	&AVCSTable2Gear5,

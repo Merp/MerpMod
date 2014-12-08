@@ -15,7 +15,7 @@
 
 float (*SSMResetWrite)(short ByteData) __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sMemorySoftReset;
 
-#if ALS_HACKS
+#if ALS_HACKS && !ALS_RAMTUNING
 
 void DriveModeHack()
 {

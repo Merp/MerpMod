@@ -79,10 +79,10 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 #if ALS_HACKS
 #if !ALS_RAMTUNING
 	DriveModeHack();
+	MemoryHardReset();
 #endif
 	FuelUp();
 	ALSActivate();
-	MemoryHardReset();
 	Mileage();
 #if ALS_RAMTUNING
 	ALSRamTuning();

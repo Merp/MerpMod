@@ -3,12 +3,12 @@
 [DATABASE_VERSION]
 "11.0" 
 [WORKSPACE_DETAILS]
-"MerpMod" "C:\Documents and Settings\Scott\Desktop\Merp\Merp" "C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod.hws" "SuperH RISC engine" "KPIT GNUSH [ELF]" 
+"MerpMod" "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod" "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod.hws" "SuperH RISC engine" "KPIT GNUSH [ELF]" 
 [SHARED_WORKSPACE_CONTROL_STATUS]
 "" "" "" 
 "" "" "" 
 [PROJECTS]
-"MerpMod" "C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod" "C:\Documents and Settings\Scott\Desktop\Merp\Merp\MerpMod\MerpMod.hwp" 0 
+"MerpMod" "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod" "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\MerpMod.hwp" 0 
 [INFORMATION]
 "No workspace information available" 
 [SCRAP]

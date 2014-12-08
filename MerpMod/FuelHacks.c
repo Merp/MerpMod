@@ -67,7 +67,7 @@ EcuHacksMain();
 		{
 			OutputValue = DefaultALSFuelLock;
 #if ALS_RAMTUNING
-			OutputValue += ALSPOLFRamTuning;
+			OutputValue += pRamVariables->ALSPOLFRamTuning;
 #endif
 		}
 	else

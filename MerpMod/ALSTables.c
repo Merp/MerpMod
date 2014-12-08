@@ -26,9 +26,9 @@ float ALSAVCS SPEEDDENSITYDATA = 0.0f;
 float DefaultALSPOLFRamTuning SPEEDDENSITYDATA = 0.0f;
 float DefaultALSTimingRamTuning SPEEDDENSITYDATA = 0.0f;
 float DefaultALSAVCSRamTuning SPEEDDENSITYDATA = 0.0f;
-float DefaultALSPOLFRamTuningAdder SPEEDDENSITYDATA = 0.0f;
-float DefaultALSTimingRamTuningAdder SPEEDDENSITYDATA = 0.0f;
-float DefaultALSAVCSRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+float ALSPOLFRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+float ALSTimingRamTuningAdder SPEEDDENSITYDATA = 0.0f;
+float ALSAVCSRamTuningAdder SPEEDDENSITYDATA = 0.0f;
 
 #endif
 

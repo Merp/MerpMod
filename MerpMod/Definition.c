@@ -543,8 +543,6 @@ DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Fifth Gear Only",AVCSTable1Gea
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Fifth Gear Only",AVCSTable2Gear5);
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);
 #endif
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Fifth Gear Only",AVCSTable1Gear5);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Fifth Gear Only",AVCSTable2Gear5);
 #endif
 
 #if TIMING_RAMTUNING

@@ -11,8 +11,7 @@ GNU General Public License for more details.
 
 #include "EcuHacks.h"
 
-#if ALS_HACKS
-#if ALS_RAMTUNING
+#if ALS_HACKS && ALS_RAMTUNING
 
 //Replaces Drivemode!
 void ALSRamTuning()
@@ -158,5 +157,4 @@ void ALSRamTuning()
 	}
 }
 
-#endif
 #endif
