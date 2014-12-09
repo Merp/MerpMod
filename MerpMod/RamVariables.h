@@ -280,6 +280,7 @@ float	MaxSubtractiveKCA;
 	unsigned char Timerempty;
 //	unsigned char IdleMapSelect;
 	float TargetCLAFR;
+	float OpenLoopAFRmin;
 
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;

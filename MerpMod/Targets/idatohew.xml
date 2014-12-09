@@ -531,6 +531,8 @@
 <define name="tO2SensorScaling"/>
 <define name="hTableO2SensorScaling"/>
 <define name="pAFSensor1Current"/>
+<define name="hOpenLoopAFRmin"/>
+<define name="dOpenLoopAFRmin"/>
 
     </category>
 

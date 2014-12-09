@@ -19,6 +19,7 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 unsigned char DefaultDriveMode SPEEDDENSITYDATA = 0x02;
+float OpenLoopAFRmin SPEEDDENSITYDATA = 0.05f;
 
 TableGroup ReqTorqTableGroup SPEEDDENSITYDATA = {
 	{&ReqTorqTable1v,

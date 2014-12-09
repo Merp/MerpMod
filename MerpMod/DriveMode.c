@@ -97,8 +97,14 @@ void DriveModeHack()
 		//Kill Mode
 			{
 				//FuelCut
+				*pFlagsRevLim |= RevLimBitMask;
 			}
-		else if (pRamVariables->DriveMode == 1 && pRamVariables->KillMode <= 1)
+		else
+			{
+				*pFlagsRevLim &= ~RevLimBitMask;
+			}
+
+		if (pRamVariables->DriveMode == 1 && pRamVariables->KillMode <= 1)
 		//Valet Mode
 			{
 				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
@@ -130,10 +136,12 @@ void DriveModeHack()
 		if (pRamVariables->ALSActive == 1)
 			{
 				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear swithes
+				pRamVariables->OpenLoopAFRmin = *dOpenLoopAFRmin;
 			}
 		else
 			{
 				pRamVariables->AVCS = AVCS;
+				pRamVariables->OpenLoopAFRmin = OpenLoopAFRmin;
 			}
 
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;

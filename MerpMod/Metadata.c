@@ -737,6 +737,14 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->TargetCLAFR),
 		name: STR(Pull AVCS Table Hook)
 	};
+	const MetaReplace OpenLoopAFRminHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hOpenLoopAFRmin,
+		oldval: dOpenLoopAFRmin,
+		newval: (int)&(pRamVariables->OpenLoopAFRmin),
+		name: STR(OpenLoop Min AFR Hook)
+	};
 */
 	const MetaReplace RequestedTorqueAHookPull METADATA =
 	{

@@ -216,6 +216,9 @@
 #define tO2SensorScaling (0x00096600)
 #define hTableO2SensorScaling (0x0000BFD4)
 #define pAFSensor1Current ((float*)0xFFFF5F04)
+#define hOpenLoopAFRmin (0x000306C0)
+#define dOpenLoopAFRmin (0x000C8598)
+
 
 /////////////////////
 // OBD Experimental stuff
