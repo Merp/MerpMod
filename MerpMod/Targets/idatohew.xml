@@ -512,6 +512,7 @@
 		<define name="tRequestedTorqueA"/>
 		<define name="hTableRequestedTorqueA"/>
 	 	<define name="sFloatToShort"/>
+	 	<define name="sFloatToByte"/>
 		<define name="dEvapFuelComp"/>
 	 	<define name="pCPCDutyRatio"/>
 <define name="pAirPump"/>
@@ -533,6 +534,9 @@
 <define name="pAFSensor1Current"/>
 <define name="hOpenLoopAFRmin"/>
 <define name="dOpenLoopAFRmin"/>
+<define name="hSSMReplace1"/>
+<define name="hSSMReplace2"/>
+<define name="dSSMReplace"/>
 
     </category>
 

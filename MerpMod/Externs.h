@@ -56,6 +56,8 @@ void CheckFuelLevels() ROMCODE;
 void FuelUp() ROMCODE;
 void ALSRamTuning() ROMCODE;
 void Mileage() ROMCODE;
+void SSMHack1() ROMCODE;
+void SSMHack2() ROMCODE;
 void FlexLearn() ROMCODE;
 void FlexRatioUser() ROMCODE;
 void FlexLearnStop() ROMCODE;
@@ -117,7 +119,7 @@ void MapSwitchThresholdCheck(float input) ROMCODE;
 extern float (*Pull3DHooked)(ThreeDTable* table, float xLookup, float yLookup);
 extern float (*Pull2DHooked)(TwoDTable* table, float xLookup);
 extern float (*ShortToFloatHooked)(unsigned short input, float grad, float offs);
-//extern float (*SSMWrite)(TwoDTable* Address, short xLookup);
+extern float (*FloatToShortHooked)(float input, float grad, float offs);
 
 #define MafVoltageToInternalUnits 13107.20005368709
 
@@ -336,6 +338,8 @@ extern float DefaultALSAVCSRamTuning;
 extern float ALSTimingRamTuningAdder;
 extern float ALSPOLFRamTuningAdder;
 extern float ALSAVCSRamTuningAdder;
+extern float OpenLoopAFRmin;
+//extern float SSM1;
 
 #endif
 

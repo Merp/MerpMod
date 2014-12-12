@@ -195,6 +195,7 @@
 #define tRequestedTorqueA (0x000964D0)
 #define hTableRequestedTorqueA (0x000BE9FC)
 #define sFloatToShort (0x00002564)
+#define sFloatToByte (0x000025A4)
 #define dEvapFuelComp (0x000273c0)              //fix
 #define pCPCDutyRatio ((float*)0xFFFF6BC0)
 #define pAirPump ((float*)0xFFFF62CC)
@@ -218,7 +219,9 @@
 #define pAFSensor1Current ((float*)0xFFFF5F04)
 #define hOpenLoopAFRmin (0x000306C0)
 #define dOpenLoopAFRmin (0x000C8598)
-
+#define dSSMReplace (0x0004E510)
+#define hSSMReplace1 (0x00056290)
+#define hSSMReplace2 (0x00056294)
 
 /////////////////////
 // OBD Experimental stuff

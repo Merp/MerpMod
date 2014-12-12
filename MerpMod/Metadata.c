@@ -770,23 +770,23 @@ const MetaReplace WGDCHook METADATA =
 //					//
 //////////////////////
 
-/*
-	const MetaReplace SSMMapRatio METADATA =
-	{
-		op: OpReplace4Bytes,
-		address: hTableRequestedTorqueA,//RearO2Sensor??
-		oldval: tRequestedTorqueA,
-		newval: (int)&(pRamVariables->MapBlendRatio),
-		name: STR(Requested Torque Table A Hook)
-	};
 
-	const MetaReplace SSMMapSwitch METADATA =
+	const MetaReplace SSMHackHook1 METADATA =
 	{
 		op: OpReplace4Bytes,
-		address: hTableRequestedTorqueA,
-		oldval: tRequestedTorqueA,
-		newval: (int)&(pRamVariables->MapSwitch),
-		name: STR(Requested Torque Table A Hook)
+		address: hSSMReplace1,
+		oldval: dSSMReplace,
+		newval: (int)SSMHack1,
+		name: STR(SSM Spot 1 Hack)
+	};
+/*
+	const MetaReplace SSMHackHook2 METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hSSMReplace2,
+		oldval: dSSMReplace,
+		newval: (int)SSMHack2,
+		name: STR(SSM Spot 2 Hack)
 	};
 */
 

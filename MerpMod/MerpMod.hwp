@@ -188,6 +188,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "User" "C source file" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "User" "C source file|Data & Tables" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "User" "C source file|Tests" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "User" "C source file" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "User" "C source file" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "User" "C source file" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "User" "C source file|Data & Tables" 2 
@@ -509,6 +510,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "0c9afd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "0c9afd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "0c9afd23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "0c9afd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "0c9afd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "0c9afd23307eec10" 2 
@@ -523,11 +525,11 @@
 [OPTIONS_Flash_Debug_GNU Library Generator]
 "Single Shot" "0c9afd23307eec10" 1 
 [OPTIONS_Flash_Debug_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Flash_Debug_Target Selection]
 "Single Shot" "0c9afd23307eec10" 0 
 [OPTIONS_Flash_Debug_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Flash_Debug]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -588,6 +590,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "0e51bd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "0e51bd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "0e51bd23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "0e51bd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "0e51bd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "0e51bd23307eec10" 2 
@@ -602,11 +605,11 @@
 [OPTIONS_Flash_Testing_GNU Library Generator]
 "Single Shot" "0e51bd23307eec10" 1 
 [OPTIONS_Flash_Testing_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Flash_Testing_Target Selection]
 "Single Shot" "0e51bd23307eec10" 0 
 [OPTIONS_Flash_Testing_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Flash_Testing]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -667,6 +670,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "04f89d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "04f89d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "04f89d23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "04f89d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "04f89d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "04f89d23307eec10" 2 
@@ -681,11 +685,11 @@
 [OPTIONS_Gratis_Debug_GNU Library Generator]
 "Single Shot" "04f89d23307eec10" 1 
 [OPTIONS_Gratis_Debug_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Gratis_Debug_Target Selection]
 "Single Shot" "04f89d23307eec10" 0 
 [OPTIONS_Gratis_Debug_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Gratis_Debug]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -746,6 +750,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "08c9cd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "08c9cd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "08c9cd23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "08c9cd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "08c9cd23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "08c9cd23307eec10" 2 
@@ -760,11 +765,11 @@
 [OPTIONS_Gratis_Release_GNU Library Generator]
 "Single Shot" "08c9cd23307eec10" 1 
 [OPTIONS_Gratis_Release_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Gratis_Release_Target Selection]
 "Single Shot" "08c9cd23307eec10" 0 
 [OPTIONS_Gratis_Release_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Gratis_Release]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -825,6 +830,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "06031e23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "06031e23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "06031e23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "06031e23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "06031e23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "06031e23307eec10" 2 
@@ -839,11 +845,11 @@
 [OPTIONS_Gratis_Testing_GNU Library Generator]
 "Single Shot" "06031e23307eec10" 1 
 [OPTIONS_Gratis_Testing_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Gratis_Testing_Target Selection]
 "Single Shot" "06031e23307eec10" 0 
 [OPTIONS_Gratis_Testing_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Gratis_Testing]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -904,6 +910,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "06bf4d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "06bf4d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "06bf4d23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "06bf4d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "06bf4d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "06bf4d23307eec10" 2 
@@ -918,11 +925,11 @@
 [OPTIONS_Switch_Debug_GNU Library Generator]
 "Single Shot" "06bf4d23307eec10" 1 
 [OPTIONS_Switch_Debug_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Switch_Debug_Target Selection]
 "Single Shot" "06bf4d23307eec10" 0 
 [OPTIONS_Switch_Debug_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Switch_Debug]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
@@ -983,6 +990,7 @@
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiter.c" "00286d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTables.c" "00286d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RevLimiterTests.c" "00286d23307eec10" 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" "08ea6cb2c5510d10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SparkHacks.c" "00286d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensity.c" "00286d23307eec10" 2 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SpeedDensityTables.c" "00286d23307eec10" 2 
@@ -997,11 +1005,11 @@
 [OPTIONS_Switch_Testing_GNU Library Generator]
 "Single Shot" "00286d23307eec10" 1 
 [OPTIONS_Switch_Testing_GNU Linker]
-"Single Shot" "077039df0e210d10" 4 
+"Single Shot" "053aedb2c5510d10" 4 
 [OPTIONS_Switch_Testing_Target Selection]
 "Single Shot" "00286d23307eec10" 0 
 [OPTIONS_Switch_Testing_Update Test Rom]
-"Single Shot" "0a4ff7df0e210d10" 0 
+"Single Shot" "08ea6cb2c5510d10" 0 
 [OPTIONS_Switch_Testing]
 "" 0 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler

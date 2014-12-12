@@ -136,7 +136,7 @@ void DriveModeHack()
 		if (pRamVariables->ALSActive == 1)
 			{
 				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear swithes
-				pRamVariables->OpenLoopAFRmin = *dOpenLoopAFRmin;
+				pRamVariables->OpenLoopAFRmin = dOpenLoopAFRmin;
 			}
 		else
 			{
