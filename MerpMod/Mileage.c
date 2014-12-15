@@ -19,8 +19,8 @@ void Mileage()
 	
 {
 	float TargetCLAFR;
-	//Lean 5th Gear Cruise
-	if (*pCurrentGear == 5 && *pEngineLoad <= LeanCruiseLoadThreshold)
+	//Lean 5th Gear Cruise and idle
+	if (*pCurrentGear == 5 && *pEngineLoad <= LeanCruiseLoadThreshold || TestIdleSwitch())
 		{
 			TargetCLAFR = Pull2DHooked(&O2SensorScalingMPGTable, *pAFSensor1Current);
 		}
