@@ -49,6 +49,7 @@ float Pull2DRamHook(float* table, float xLookup)
 	}
 }
 
+#if SWITCH_HACKS
 float Pull2DRamHookTipIn(float* table, float xLookup)
 {
 	if(table == tTipInEnrich)//This hook is used by other tables!!
@@ -91,3 +92,4 @@ float Pull2DRamHookStartupEnrich3(float* table, float xLookup)
 		return Pull2DHooked((TwoDTable*)table, xLookup) * Pull2DHooked((TwoDTable*)&StartupEnrichMultiplier, xLookup);
 	return Pull2DHooked((TwoDTable*)table, xLookup);
 }
+#endif
