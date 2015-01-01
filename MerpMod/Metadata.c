@@ -705,6 +705,15 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->LTFTB),
 		name: STR(Pull LTFTB2 Hook)
 	};
+	const MetaReplace OpenLoopAFRminHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hOpenLoopAFRmin,
+		oldval: dOpenLoopAFRmin,
+		newval: (int)&(pRamVariables->OpenLoopAFRmin),
+		name: STR(OpenLoop Min AFR Hook)
+	};
+*/
 	const MetaReplace AVCSHookPull METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -727,7 +736,7 @@ const MetaReplace WGDCHook METADATA =
 		address: hPullO2SensorScaling,
 		oldval: sPull2DFloat,
 		newval: (int)Pull2DRamHook,
-		name: STR(Pull AVCS Hook)
+		name: STR(Pull o2 scaling Hook)
 	};
 	const MetaReplace FrontO2TableHookPull METADATA =
 	{
@@ -735,17 +744,8 @@ const MetaReplace WGDCHook METADATA =
 		address: hTableO2SensorScaling,
 		oldval: tO2SensorScaling,
 		newval: (int)&(pRamVariables->TargetCLAFR),
-		name: STR(Pull AVCS Table Hook)
+		name: STR(Pull o2 Scaling Table Hook)
 	};
-	const MetaReplace OpenLoopAFRminHook METADATA =
-	{
-		op: OpReplace4Bytes,
-		address: hOpenLoopAFRmin,
-		oldval: dOpenLoopAFRmin,
-		newval: (int)&(pRamVariables->OpenLoopAFRmin),
-		name: STR(OpenLoop Min AFR Hook)
-	};
-*/
 	const MetaReplace RequestedTorqueAHookPull METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -754,7 +754,6 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)Pull3DRamHook,
 		name: STR(Requested Torque Table Pull Hook)
 	} ;
-
 	const MetaReplace RequestedTorqueAHookTable METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -763,13 +762,54 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->RequestedTorque),
 		name: STR(Requested Torque Table A Hook)
 	};
-
+/*	const MetaReplace BaseTimingIdleHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPullBaseTimingIdle,
+		oldval: sPull2DFloat,
+		newval: (int)Pull2DRamHook,
+		name: STR(Base Timing Idle Table Hook)
+	} ;
+	const MetaReplace BaseTimingIdleInGearAHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableBaseTimingIdleInGearA,
+		oldval: tBaseTimingIdleInGearA,
+		newval: (int)&(pRamVariables->BaseTimingIdle),
+		name: STR(Base Timing Idle In Gear A Hook)
+	};
+	const MetaReplace BaseTimingIdleInGearBHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableBaseTimingIdleInGearB,
+		oldval: tBaseTimingIdleInGearB,
+		newval: (int)&(pRamVariables->BaseTimingIdle),
+		name: STR(Base Timing Idle In Gear B Hook)
+	};
+	const MetaReplace BaseTimingIdleNeutralAHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableBaseTimingIdleNeutralA,
+		oldval: tBaseTimingIdleNeutralA,
+		newval: (int)&(pRamVariables->BaseTimingIdle),
+		name: STR(Base Timing Idle Neutral A Hook)
+	};
+	const MetaReplace BaseTimingIdleNeutralBHookTable METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTableBaseTimingIdleNeutralB,
+		oldval: tBaseTimingIdleNeutralB,
+		newval: (int)&(pRamVariables->BaseTimingIdle),
+		name: STR(Base Timing Idle Neutral B Hook)
+	};
+*/
 //////////////////////
 //					//
 //SSM HACKS			//
 //					//
 //////////////////////
 
+#if SSM_HACKS
 
 	const MetaReplace SSMHackHook1 METADATA =
 	{
@@ -789,7 +829,7 @@ const MetaReplace WGDCHook METADATA =
 		name: STR(SSM Spot 2 Hack)
 	};
 */
-
+#endif
 #endif
 
 //////////////////////

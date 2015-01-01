@@ -369,6 +369,16 @@
         <define name="pKcaIam">
             <ida name="E_KNOCK_CORRECTION_ADVANCE_IAM_ONLYEXT_E40" />
         </define>
+<define name="pBaseTimingIdle"/>
+<define name="hPullBaseTimingIdle"/>
+<define name="hTableBaseTimingIdleInGearA"/>
+<define name="tBaseTimingIdleInGearA"/>
+<define name="hTableBaseTimingIdleInGearB"/>
+<define name="tBaseTimingIdleInGearB"/>
+<define name="hTableBaseTimingIdleNeutralB"/>
+<define name="tBaseTimingIdleNeutralB"/>
+<define name="hTableBaseTimingIdleNeutralA"/>
+<define name="tBaseTimingIdleNeutralA"/>
     </category>
 
     <category name="Spark Cut">

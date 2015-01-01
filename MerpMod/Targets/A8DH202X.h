@@ -124,6 +124,16 @@
 #define hPull3DTiming (0x00037DDC)
 #define hSubKca (0x00037654)
 #define pKcaIam (0xFFFF7840)
+#define pBaseTimingIdle (0xFFFF76C0)
+#define hPullBaseTimingIdle (0x00038290)
+#define hTableBaseTimingIdleInGearA (0x00038294)
+#define tBaseTimingIdleInGearA (0x00095734)
+#define hTableBaseTimingIdleInGearB (0x00038298)
+#define tBaseTimingIdleInGearB (0x00095748)
+#define hTableBaseTimingIdleNeutralA (0x0003829C)
+#define tBaseTimingIdleNeutralA (0x0009575C)
+#define hTableBaseTimingIdleNeutralB (0x000382A0)
+#define tBaseTimingIdleNeutralB (0x00095770)
 
 /////////////////////
 // Spark Cut
@@ -246,4 +256,5 @@
 #define pMemoryResetLimit (0xFFFFBFBB)
 #define hMemoryResetLimit (0x00012038)
 #define sMemorySoftReset (0x00056A24)
+
 

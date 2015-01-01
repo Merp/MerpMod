@@ -33,30 +33,19 @@ TableGroup ReqTorqTableGroup SPEEDDENSITYDATA = {
 };
 
 TableGroup AVCSTableGroup SPEEDDENSITYDATA = {
-	{&AVCSTable1,
-	&AVCSTable1,
-	&AVCSTable1,
-	&AVCSTable1},
-	{&AVCSTable2,
-	&AVCSTable2,
-	&AVCSTable2,
-	&AVCSTable2}
+	{&AVCSTable1i,
+	&AVCSTable1i,
+	&AVCSTable1s,
+	&AVCSTable1ss},
+	{&AVCSTable2i,
+	&AVCSTable2i,
+	&AVCSTable2s,
+	&AVCSTable2ss}
 };
 
 #if MPG_HACKS
 
 float LeanCruiseLoadThreshold SPEEDDENSITYDATA = 0.80f;
-
-TableGroup AVCSGear5TableGroup SPEEDDENSITYDATA = {
-	{&AVCSTable1Gear5,
-	&AVCSTable1Gear5,
-	&AVCSTable1Gear5,
-	&AVCSTable1Gear5},
-	{&AVCSTable2Gear5,
-	&AVCSTable2Gear5,
-	&AVCSTable2Gear5,
-	&AVCSTable2Gear5}
-};
 
 #endif
 
@@ -206,14 +195,14 @@ ThreeDTable ReqTorqTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables
 	.offset = 0 };	
 
 ///////////////
-// AVCS Table 1
+// AVCS Table 1i
 ///////////////
-ThreeDTable AVCSTable1 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+ThreeDTable AVCSTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 float AVCSCols1[20] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {0.2,0.35,0.5,0.65,.80,0.95,1.1,1.25,1.4,1.66,2.0,2.33,2.66,3.0,3.25,3.50,3.75,4.0,4.25, 4.5};
 float AVCSRows1[20] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {800,1200,1600,2000,2400,2800,3200,3600,4000,4400,4800,5200,5600,6000,6400,6800,7200,7300,7400,8000};
-short AVCSData1[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+short AVCSData1i[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3276.8,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -235,21 +224,21 @@ short AVCSData1[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),alig
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-ThreeDTable AVCSTable1 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable AVCSTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 20,
 	.rowCount = 20,
 	.columnHeaderArray = AVCSCols1,
 	.rowHeaderArray = AVCSRows1,
-	.tableCells = AVCSData1,
+	.tableCells = AVCSData1i,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
 
 ///////////////
-// AVCS Table 2
+// AVCS Table 1s
 ///////////////
-ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-short AVCSData2[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+ThreeDTable AVCSTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData1s[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -271,12 +260,12 @@ short AVCSData2[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),alig
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable AVCSTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 20,
 	.rowCount = 20,
 	.columnHeaderArray = AVCSCols1,
 	.rowHeaderArray = AVCSRows1,
-	.tableCells = AVCSData2,
+	.tableCells = AVCSData1s,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
@@ -284,10 +273,10 @@ ThreeDTable AVCSTable2 __attribute__ ((section ("RomHole_SpeedDensityTables"),al
 #if MPG_HACKS
 
 ///////////////
-// AVCS Table 1 Fifth Gear
+// AVCS Table 1ss
 ///////////////
-ThreeDTable AVCSTable1Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-short AVCSData1Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+ThreeDTable AVCSTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData1ss[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -309,22 +298,22 @@ short AVCSData1Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables")
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-ThreeDTable AVCSTable1Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable AVCSTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 20,
 	.rowCount = 20,
 	.columnHeaderArray = AVCSCols1,
 	.rowHeaderArray = AVCSRows1,
-	.tableCells = AVCSData1Gear5,
+	.tableCells = AVCSData1ss,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	
 	
 ///////////////
-// AVCS Table 2 Fifth Gear
+// AVCS Table 2i
 ///////////////
 
-ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-short AVCSData2Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+ThreeDTable AVCSTable2i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData2i[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -346,12 +335,86 @@ short AVCSData2Gear5[400] __attribute__ ((section ("RomHole_SpeedDensityTables")
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-ThreeDTable AVCSTable2Gear5 __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+ThreeDTable AVCSTable2i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 20,
 	.rowCount = 20,
 	.columnHeaderArray = AVCSCols1,
 	.rowHeaderArray = AVCSRows1,
-	.tableCells = AVCSData2Gear5,
+	.tableCells = AVCSData2i,
+	.tableType = UInt16Table3D,
+	.multiplier = 0.0054931640625f,	
+	.offset = 0 };	
+
+///////////////
+// AVCS Table 2s
+///////////////
+
+ThreeDTable AVCSTable2s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData2s[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+ThreeDTable AVCSTable2s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 20,
+	.rowCount = 20,
+	.columnHeaderArray = AVCSCols1,
+	.rowHeaderArray = AVCSRows1,
+	.tableCells = AVCSData2s,
+	.tableType = UInt16Table3D,
+	.multiplier = 0.0054931640625f,	
+	.offset = 0 };	
+	
+///////////////
+// AVCS Table 2ss
+///////////////
+
+ThreeDTable AVCSTable2ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
+short AVCSData2ss[400] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+ThreeDTable AVCSTable2ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
+	.columnCount = 20,
+	.rowCount = 20,
+	.columnHeaderArray = AVCSCols1,
+	.rowHeaderArray = AVCSRows1,
+	.tableCells = AVCSData2ss,
 	.tableType = UInt16Table3D,
 	.multiplier = 0.0054931640625f,	
 	.offset = 0 };	

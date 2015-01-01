@@ -58,6 +58,7 @@ void ALSRamTuning() ROMCODE;
 void Mileage() ROMCODE;
 void SSMHack1() ROMCODE;
 void SSMHack2() ROMCODE;
+void IdleTimingHack()  ROMCODE;
 void FlexLearn() ROMCODE;
 void FlexRatioUser() ROMCODE;
 void FlexLearnStop() ROMCODE;
@@ -164,11 +165,15 @@ extern ThreeDTable ReqTorqTable1s;
 extern ThreeDTable ReqTorqTable1ss;
 
 extern TableGroup AVCSTableGroup;
-extern ThreeDTable AVCSTable1;
-extern ThreeDTable AVCSTable2;
-extern TableGroup AVCSGear5TableGroup;
-extern ThreeDTable AVCSTable1Gear5;
-extern ThreeDTable AVCSTable2Gear5;
+extern ThreeDTable AVCSTable1i;
+extern ThreeDTable AVCSTable1s;
+extern ThreeDTable AVCSTable1ss;
+extern ThreeDTable AVCSTable2i;
+extern ThreeDTable AVCSTable2s;
+extern ThreeDTable AVCSTable2ss;
+//extern TableGroup AVCSGear5TableGroup;
+//extern ThreeDTable AVCSTable1Gear5;
+//extern ThreeDTable AVCSTable2Gear5;
 
 extern TableGroup PGWGTableGroup;
 extern ThreeDTable PGWGTable1i;

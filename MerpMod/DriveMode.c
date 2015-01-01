@@ -45,6 +45,7 @@ void DriveModeHack()
 				pRamVariables->DriveMode = NewDriveMode;
 				pRamVariables->ALSModeWait = 0x01;
 				pRamVariables->KillMode = 0x00;
+				*pFlagsRevLim &= ~RevLimBitMask;
 			}
 			else
 			{
@@ -81,9 +82,9 @@ void DriveModeHack()
 
 #if MPG_HACKS		
 
-		if (*pCurrentGear == 5)
+		if (*pCurrentGear >= 5)
 			{
-				AVCS = BlendAndSwitch(AVCSGear5TableGroup, *pEngineLoad, *pEngineSpeed);
+				AVCS = Pull3DHooked(&AVCSTable1i, *pEngineLoad, *pEngineSpeed);
 			}
 		else
 			{
@@ -101,7 +102,6 @@ void DriveModeHack()
 			}
 		else
 			{
-				*pFlagsRevLim &= ~RevLimBitMask;
 			}
 
 		if (pRamVariables->DriveMode == 1 && pRamVariables->KillMode <= 1)

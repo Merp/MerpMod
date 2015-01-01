@@ -104,7 +104,13 @@ float TimingHack()
 		}
 	//Call existing!
 	BaseTimingHooked();
+	IdleTimingHack();
 
 }
+#endif
 
+#if ALS_HACKS
+void IdleTimingHack()
+{
+}
 #endif

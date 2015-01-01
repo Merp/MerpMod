@@ -536,12 +536,14 @@ DEFNEW1D("Fuel Check Wait Time",FuelCheckWaitTime);
 DEFNEW1D("Fuel Check Ratio 1",FuelRatio1);
 DEFNEW1D("Fuel Check Ratio 2",FuelRatio2);
 DEFNEW1D("User Ratio",FlexRatioUserJump);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1",AVCSTable1);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2",AVCSTable2);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1i",AVCSTable1i);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1s",AVCSTable1s);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1ss",AVCSTable1ss);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2i",AVCSTable2i);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2s",AVCSTable2s);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2ss",AVCSTable2ss);
 DEFNEW1D("Open Loop Minimum Active AFR during ALS",OpenLoopAFRmin);
 #if MPG_HACKS
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Fifth Gear Only",AVCSTable1Gear5);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Fifth Gear Only",AVCSTable2Gear5);
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);
 #endif
 #endif
