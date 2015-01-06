@@ -101,6 +101,7 @@ float TimingHack()
 	else
 		{
 			pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+			pRamVariables->BaseTimingOutputMERP = OutputValue;//DELETE AFTER TEST
 		}
 	//Call existing!
 	BaseTimingHooked();
@@ -111,6 +112,19 @@ float TimingHack()
 
 #if ALS_HACKS
 void IdleTimingHack()
+
 {
+	float BaseTimingIdle;
+
+	if(pRamVariables->TimingHackEnabled == HackEnabled && pRamVariables->ALSActive == 1)
+		{
+			BaseTimingIdle = DefaultALSTimingLock;
+		}
+	else
+		{
+			BaseTimingIdle = Pull2DHooked((void*)tBaseTimingIdleInGearA, *pCoolantTemp);
+		}
+
+	pRamVariables->BaseTimingIdle = BaseTimingIdle;
 }
 #endif

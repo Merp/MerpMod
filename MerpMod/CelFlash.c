@@ -145,7 +145,7 @@ void CelFlash()
 	}
 
 #if SHIFTLIGHT_HACKS
-	else if(*pEngineSpeed >= pRamVariables->ShiftLightRPM)
+	else if(*pEngineSpeed >= pRamVariables->ShiftLightRPM && ShiftLightEnabled == HackEnabled)
 	{
 		CelFlashStart(ShiftLightFlashes,ShiftLightFlashSpeed,0,0);
 	}
@@ -160,7 +160,7 @@ void CelFlash()
 	{
 		CelFlashStart(KillModeFlashes,KillModeFlashSpeed,0,0);
 	}
-	else if(pRamVariables->FuelUp == 1)
+/*	else if(pRamVariables->FuelUp == 1)
 	{
 		CelFlashStart(FlexLearnFlashes,FlexLearnFlashSpeed,8,0);
 	}
@@ -169,6 +169,7 @@ void CelFlash()
 		CelFlashStart(MapRatioFlashes,ALSModeFlashSpeed,0,0);
 		pRamVariables->FlexLearnHasRun = 0x00;
 	}
+*/
 #endif
 
 

@@ -307,6 +307,7 @@ extern unsigned char KillModeFlashes;
 extern unsigned char KillModeFlashSpeed;
 extern unsigned char FlexLearnFlashes;
 extern unsigned char FlexLearnFlashSpeed;
+extern unsigned char ShiftLightEnabled;
 extern ThreeDTable ShiftLightRPMs;
 
 

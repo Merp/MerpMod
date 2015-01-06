@@ -542,7 +542,12 @@ DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1ss",AVCSTable1ss);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2i",AVCSTable2i);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2s",AVCSTable2s);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2ss",AVCSTable2ss);
-DEFNEW1D("Open Loop Minimum Active AFR during ALS",OpenLoopAFRmin);
+DEFNEW1D("Minimum Active Primary Open Loop Enrichment For ALS",OpenLoopAFRmin);
+DEFNEW1D("ShiftLight Mode", ShiftLightEnabled);
+DEFNEW1D("ALS WGDC Lock", ALSWGDC);
+DEFNEW1D("ALS Boost Lock", DefaultALSBoostLimit);
+DEFNEW1D("ALS AVCS Lock", ALSAVCS);
+
 #if MPG_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);
 #endif

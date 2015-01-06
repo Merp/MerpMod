@@ -19,7 +19,6 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 unsigned char DefaultDriveMode SPEEDDENSITYDATA = 0x02;
-float OpenLoopAFRmin SPEEDDENSITYDATA = 0.05f;
 
 TableGroup ReqTorqTableGroup SPEEDDENSITYDATA = {
 	{&ReqTorqTable1v,
@@ -54,7 +53,7 @@ float LeanCruiseLoadThreshold SPEEDDENSITYDATA = 0.80f;
 ///////////////
 ThreeDTable ReqTorqTable1v __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 float ReqTorqCols1v[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
+{0,3,10,16.5,25,31,37,44,52,58,64.3,71.4,78.6,85.7,98.5};
 float ReqTorqRows1v[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1000,2000,2600,3000,3400,3800,4200,4600,5000,5400,5800,6200,6600,7000,7400,7800,8200};
 short ReqTorqData1v[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
@@ -90,8 +89,6 @@ ThreeDTable ReqTorqTable1v __attribute__ ((section ("RomHole_SpeedDensityTables"
 //Requested Torque Table 1i
 ///////////////
 ThreeDTable ReqTorqTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols1i[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
 
 short ReqTorqData1i[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -115,7 +112,7 @@ short ReqTorqData1i[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),
 ThreeDTable ReqTorqTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols1i,
+	.columnHeaderArray = ReqTorqCols1v,
 	.rowHeaderArray = ReqTorqRows1v,
 	.tableCells = ReqTorqData1i,
 	.tableType = UInt16Table3D,
@@ -126,8 +123,6 @@ ThreeDTable ReqTorqTable1i __attribute__ ((section ("RomHole_SpeedDensityTables"
 //Requested Torque Table 1s
 ///////////////
 ThreeDTable ReqTorqTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols1s[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
 
 short ReqTorqData1s[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -151,7 +146,7 @@ short ReqTorqData1s[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),
 ThreeDTable ReqTorqTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols1s,
+	.columnHeaderArray = ReqTorqCols1v,
 	.rowHeaderArray = ReqTorqRows1v,
 	.tableCells = ReqTorqData1s,
 	.tableType = UInt16Table3D,
@@ -162,8 +157,6 @@ ThreeDTable ReqTorqTable1s __attribute__ ((section ("RomHole_SpeedDensityTables"
 //Requested Torque Table 1ss
 ///////////////
 ThreeDTable ReqTorqTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
-float ReqTorqCols1ss[15] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,2,3,4,5,6,7,8,9,10,11,12,13,14,100};
 
 short ReqTorqData1ss[255] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -187,7 +180,7 @@ short ReqTorqData1ss[255] __attribute__ ((section ("RomHole_SpeedDensityTables")
 ThreeDTable ReqTorqTable1ss __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 15,
 	.rowCount = 17,
-	.columnHeaderArray = ReqTorqCols1ss,
+	.columnHeaderArray = ReqTorqCols1v,
 	.rowHeaderArray = ReqTorqRows1v,
 	.tableCells = ReqTorqData1ss,
 	.tableType = UInt16Table3D,
@@ -427,7 +420,7 @@ float O2SensorScalingMPGDATA[13] SPEEDDENSITYDATA =
 
 TwoDTable O2SensorScalingMPGTable SPEEDDENSITYDATA = {
 .columnCount = 13,
-.tableType = UInt16Table2D,
+.tableType = FloatTable2D,
 .columnHeaderArray = O2SensorScalingMPGRows,
 .tableCells = O2SensorScalingMPGDATA,
 .multiplier = 0.0f,

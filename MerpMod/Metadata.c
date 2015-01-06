@@ -577,7 +577,7 @@ const MetaReplace WGDCHook METADATA =
 //     E85 HACKS	//
 //					//
 //////////////////////
-/*
+
 	const MetaReplace InjectorHook METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -705,7 +705,7 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->LTFTB),
 		name: STR(Pull LTFTB2 Hook)
 	};
-	const MetaReplace OpenLoopAFRminHook METADATA =
+*/	const MetaReplace OpenLoopAFRminHook METADATA =
 	{
 		op: OpReplace4Bytes,
 		address: hOpenLoopAFRmin,
@@ -713,7 +713,6 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->OpenLoopAFRmin),
 		name: STR(OpenLoop Min AFR Hook)
 	};
-*/
 	const MetaReplace AVCSHookPull METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -762,7 +761,7 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->RequestedTorque),
 		name: STR(Requested Torque Table A Hook)
 	};
-/*	const MetaReplace BaseTimingIdleHookPull METADATA =
+	const MetaReplace BaseTimingIdleHookPull METADATA =
 	{
 		op: OpReplace4Bytes,
 		address: hPullBaseTimingIdle,
@@ -802,7 +801,7 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->BaseTimingIdle),
 		name: STR(Base Timing Idle Neutral B Hook)
 	};
-*/
+
 //////////////////////
 //					//
 //SSM HACKS			//

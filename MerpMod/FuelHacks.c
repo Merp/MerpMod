@@ -65,6 +65,7 @@ EcuHacksMain();
 #if ALS_HACKS
 	if (pRamVariables->ALSActive == 1)
 		{
+			pRamVariables->OpenLoopAFRmin = dOpenLoopAFRmin;
 			OutputValue = DefaultALSFuelLock;
 #if ALS_RAMTUNING
 			OutputValue += pRamVariables->ALSPOLFRamTuning;
@@ -73,6 +74,7 @@ EcuHacksMain();
 	else
 		{
 #endif
+			pRamVariables->OpenLoopAFRmin = OpenLoopAFRmin;
 			OutputValue *= PGFuelComp;
 			
 #if ALS_HACKS
@@ -86,6 +88,7 @@ EcuHacksMain();
 		else
 			{
 				pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);
+				pRamVariables->PolfOutputMERP = OutputValue;//DELETE AFTER TEST
 			}	
 #endif
 		

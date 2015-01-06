@@ -43,6 +43,7 @@ unsigned char KillModeFlashes CELFLASHDATA = 0x20;
 unsigned char KillModeFlashSpeed CELFLASHDATA = 0x01;
 unsigned char ALSModeFlashSpeed CELFLASHDATA = 0x04;
 float DefaultShiftLightRPM CELFLASHDATA = 10000.0f;
+unsigned char ShiftLightEnabled CELFLASHDATA = HackDisabled;
 
 ThreeDTable ShiftLightRPMs __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 float SHIFTLIGHTRPM_COLS[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 

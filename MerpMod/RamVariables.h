@@ -281,7 +281,10 @@ float	MaxSubtractiveKCA;
 //	unsigned char IdleMapSelect;
 	float TargetCLAFR;
 	float OpenLoopAFRmin;
-
+	float BaseTimingIdle;
+	float BaseTimingOutputMERP;//Delete after test
+	float PolfOutputMERP;//Delete after test
+	
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;
 	float ALSTimingRamTuning;

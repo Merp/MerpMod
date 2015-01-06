@@ -21,11 +21,11 @@ float INJECTOR_SCALING_ROWS[11] FUELDATA =
 {0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0};
 
 float INJECTOR_SCALING_DATA[11] FUELDATA =
-{5966,5966,5966,5966,5966,5966,5966,5966,5966,5966,5966};
+{4916,4916,4916,4916,4916,4916,4916,4916,4916,4916,4916};
 
 TwoDTable InjectorScalingTable FUELDATA = {
 .columnCount = 11,
-.tableType = UInt16Table2D,
+.tableType = FloatTable2D,
 .columnHeaderArray = INJECTOR_SCALING_ROWS,
 .tableCells = INJECTOR_SCALING_DATA,
 .multiplier = 0.824f, //todo unit test these
@@ -57,6 +57,7 @@ unsigned char DefaultLCFuelMode FUELDATA = 0x01;
 float DefaultLCFuelLock FUELDATA = 0.35f;
 float DefaultLCFuelEnrichMultiplier FUELDATA = 1.0f;
 float PGFuelComp FUELDATA = 1.0f;
+float OpenLoopAFRmin FUELDATA = 0.05f;
 
 #if SWITCH_HACKS
 TableGroup FuelTableGroup FUELDATA = {

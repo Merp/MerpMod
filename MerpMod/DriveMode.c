@@ -135,13 +135,11 @@ void DriveModeHack()
 
 		if (pRamVariables->ALSActive == 1)
 			{
-				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear swithes
-				pRamVariables->OpenLoopAFRmin = dOpenLoopAFRmin;
+				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear switches
 			}
 		else
 			{
 				pRamVariables->AVCS = AVCS;
-				pRamVariables->OpenLoopAFRmin = OpenLoopAFRmin;
 			}
 
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
