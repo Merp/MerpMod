@@ -103,10 +103,9 @@ float TimingHack()
 			pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
 			pRamVariables->BaseTimingOutputMERP = OutputValue;//DELETE AFTER TEST
 		}
+	IdleTimingHack();
 	//Call existing!
 	BaseTimingHooked();
-	IdleTimingHack();
-
 }
 #endif
 

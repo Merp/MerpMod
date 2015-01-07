@@ -547,6 +547,7 @@
 <define name="hSSMReplace1"/>
 <define name="hSSMReplace2"/>
 <define name="dSSMReplace"/>
+<define name="pBoostPressure"/>
 
     </category>
 

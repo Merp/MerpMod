@@ -17,7 +17,7 @@
 
 float DefaultALSTimingLock SPEEDDENSITYDATA = 20.0f;
 float DefaultALSFuelLock SPEEDDENSITYDATA = 0.35f;
-float DefaultALSBoostLimit SPEEDDENSITYDATA = 1500.0f;
+float DefaultALSBoostLimit SPEEDDENSITYDATA = 1381.0f;
 float DefaultALSTargetIdleSpeed SPEEDDENSITYDATA = 2000.0f;
 float ALSWGDC SPEEDDENSITYDATA = 100.0f;
 float ALSAVCS SPEEDDENSITYDATA = 0.0f;
