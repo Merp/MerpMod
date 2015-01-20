@@ -24,3 +24,43 @@ void SSMHack1()
 }
 
 #endif
+/*
+void SSMHack1()
+
+{
+	FloatToShortHooked(SSMMapSwitch);
+}
+//Move To Enums!
+enum SSMAddressValues
+{
+	SSMAddressUndefined = Address,
+	SSMAddressMapSwitch = Address,
+	SSMAddressMapBlend = Address,
+	SSMAddressEmpty1 = Address,
+	SSMAddressEmpty2 = Address,
+};
+enum SSMgradValues
+{
+	SSMgradUndefined = 0.00,
+	SSMgradMapSwitch = 0.00,
+	SSMgradMapBlend = 0.00,
+	SSMgradEmpty1 = 0.00,
+	SSMgradEmpty2 = 0.00,
+};
+enum SSMoffsValues
+{
+	SSMoffsUndefined = 0.00,
+	SSMoffsMapSwitch = 0.00,
+	SSMoffsMapBlend = 0.00,
+	SSMoffsEmpty1 = 0.00,
+	SSMoffsEmpty2 = 0.00,
+};
+enum SSMVariableValues
+{
+	SSMUndefined = (SSMAddressUndefined, SSMgradUndefined, SSMoffsUndefined),
+	SSMMapSwitch = (SSMAddressMapSwitch, SSMgradMapSwitch, SSMoffsMapSwitch),
+	SSMMapBlend = (SSMAddressMapBlend, SSMgradMapBlend, SSMoffsMapBlend),
+	SSMEmpty1 = (SSMAddressEmpty1, SSMgradMapEmpty1, SSMoffsMapEmpty1),
+	SSMEmpty2 = (SSMAddressEmpty2, SSMgradMapEmpty2, SSMoffsMapEmpty2),
+};
+*/

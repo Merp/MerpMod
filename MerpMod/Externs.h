@@ -58,6 +58,7 @@ void ALSRamTuning() ROMCODE;
 void Mileage() ROMCODE;
 void SSMHack1() ROMCODE;
 void SSMHack2() ROMCODE;
+void AntiLag() ROMCODE;
 void IdleTimingHack()  ROMCODE;
 void FlexLearn() ROMCODE;
 void FlexRatioUser() ROMCODE;
@@ -104,6 +105,7 @@ float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
+unsigned short BandPassShort(unsigned short input, unsigned short lowlim, unsigned short highlim) ROMCODE;
 float Smooth(float smoothingFactor, float input, float previous) ROMCODE;
 
 void RevLimCode(void) ROMCODE;
@@ -345,7 +347,10 @@ extern float ALSTimingRamTuningAdder;
 extern float ALSPOLFRamTuningAdder;
 extern float ALSAVCSRamTuningAdder;
 extern float OpenLoopAFRmin;
-//extern float SSM1;
+extern float ALSAcceleratorTrigger;
+extern float ALSRPMLimit;
+extern float ALSVehicleSpeedEnable;
+extern float ALSRequestedTorque;
 
 #endif
 

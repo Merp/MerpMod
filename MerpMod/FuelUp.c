@@ -17,6 +17,8 @@
 
 void FuelUp()
 {
+if (pRamVariables->FlexFuelEnabled == HackEnabled)
+{
 	if (TestClutchSwitch() && TestDefoggerSwitch() && TestCruiseResumeSwitch() && TestBrakeSwitch())
 		{
 			pRamVariables->FuelUp = 0x01;
@@ -64,7 +66,7 @@ void FuelUp()
 		{
 		}
 }
-
+}
 void LoadFuelLevels()
 {
 			

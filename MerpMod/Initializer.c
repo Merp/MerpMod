@@ -159,10 +159,11 @@ pRamVariables->DefoggerLast = TestDefoggerSwitch();
 	pRamVariables->FuelCheckSwitch = 0x00;
 	pRamVariables->FuelLevelSwitch = 0x00;
 	pRamVariables->FlexLearnHasRun = 0x00;
-	pRamVariables->FlexFuelRatio = 0.0;	
+//	pRamVariables->FlexFuelRatio = 0.0;	
 	pRamVariables->FuelLevel1 = 0.0;
 	pRamVariables->FuelLevel2 = 0.0;
 	pRamVariables->FuelLevel3 = 0.0;
+	pRamVariables->FlexFuelEnabled = FlexFuelEnabled;
 #if ALS_RAMTUNING
 	pRamVariables->ALSAVCSRamTuning = DefaultALSAVCSRamTuning;
 	pRamVariables->ALSPOLFRamTuning = DefaultALSPOLFRamTuning;

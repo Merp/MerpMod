@@ -127,15 +127,24 @@ void DriveModeHack()
 			{
 				RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 				TargetIdleSpeed = DefaultALSTargetIdleSpeed;
+				pRamVariables->OpenLoopAFRmin = OpenLoopAFRmin;
+				//Lock in Open Loop;
 			}
 		else
 			{
 			}
 
-
-		if (pRamVariables->ALSActive == 1)
+		if (pRamVariables->DriveMode < 4)
 			{
-				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear switches
+				pRamVariables->OpenLoopAFRmin = dOpenLoopAFRmin;
+			}
+		else
+			{
+			}
+
+		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
+			{
+				pRamVariables->AVCS = AVCS;//pRamVariables->AVCS = ALSAVCS;Test, need to fix neutral/ingear switches
 			}
 		else
 			{
@@ -143,12 +152,11 @@ void DriveModeHack()
 			}
 
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
-		pRamVariables->RequestedTorque = RequestedTorque;
-
+		pRamVariables->RequestedTorque = RequestedTorque + pRamVariables->ALSRequestedTorque;
 	}
 }
 
-void MemoryHardReset()	
+void MemoryHardReset()
 {
 	//Conditions for Memory Reset
 	if (pRamVariables->KillMode >= 5 && *pEngineSpeed == 0)

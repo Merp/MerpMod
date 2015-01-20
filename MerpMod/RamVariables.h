@@ -259,7 +259,7 @@ float	MaxSubtractiveKCA;
 	unsigned char FuelLevelSwitch;
 	unsigned char FlexLearnHasRun;
 	unsigned char FlexWait;
-	unsigned char ALSempty1;
+	unsigned char FlexFuelEnabled;
 	unsigned char ALSempty2;
 	unsigned char ALSempty3;
 	float RequestedTorque;
@@ -284,6 +284,9 @@ float	MaxSubtractiveKCA;
 	float BaseTimingIdle;
 	float BaseTimingOutputMERP;//Delete after test
 	float PolfOutputMERP;//Delete after test
+	float ALSRequestedTorque;
+//	unsigned short AcceleratorVolts;
+//	short ALSunused;
 	
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;

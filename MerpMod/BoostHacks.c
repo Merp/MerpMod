@@ -75,7 +75,7 @@ EcuHacksMain();
 	#endif
 	
 	#if ALS_HACKS
-		if (pRamVariables->ALSActive == 1)
+		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
 			{
 				pRamVariables->WGDCInitial = ALSWGDC;
 				pRamVariables->WGDCMax = ALSWGDC;
@@ -154,7 +154,7 @@ void TargetBoostHack()
 	pRamVariables->PGTBComp = PGTBComp;
 
 	#if ALS_HACKS
-		if (pRamVariables->ALSActive == 1)
+		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
 		{
 			pRamVariables->TargetBoost = DefaultALSBoostLimit;
 		}

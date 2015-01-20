@@ -548,6 +548,13 @@
 <define name="hSSMReplace2"/>
 <define name="dSSMReplace"/>
 <define name="pBoostPressure"/>
+<define name="pThrottlePlateTarget"/>
+<define name="tTargetThrottlePlateA"/>
+<define name="hTableTargetThrottlePlateA"/>
+<define name="hSSMMainAcceleratorSensor"/>
+<define name="hMainAcceleratorSensor1"/>
+<define name="hMainAcceleratorSensor2"/>
+<define name="pMainAcceleratorSensor"/>
 
     </category>
 

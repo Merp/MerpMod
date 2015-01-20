@@ -58,6 +58,16 @@ int BandPassInt(int input, int lowlim, int highlim)
 		return input;
 }
 
+unsigned short BandPassShort(unsigned short input, unsigned short lowlim, unsigned short highlim)
+{
+	if(input > highlim)
+		return highlim;
+	else if(input < lowlim)
+		return lowlim;
+	else
+		return input;
+}
+
 float Smooth(float smoothingFactor, float input, float previous)
 {
 	float output = previous;

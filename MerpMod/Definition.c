@@ -536,17 +536,22 @@ DEFNEW1D("Fuel Check Wait Time",FuelCheckWaitTime);
 DEFNEW1D("Fuel Check Ratio 1",FuelRatio1);
 DEFNEW1D("Fuel Check Ratio 2",FuelRatio2);
 DEFNEW1D("User Ratio",FlexRatioUserJump);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1i",AVCSTable1i);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1s",AVCSTable1s);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1ss",AVCSTable1ss);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2i",AVCSTable2i);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2s",AVCSTable2s);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2ss",AVCSTable2ss);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Intelligent",AVCSTable1i);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport",AVCSTable1s);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport Sharp",AVCSTable1ss);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Intelligent",AVCSTable2i);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Sport",AVCSTable2s);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Sport Sharp",AVCSTable2ss);
 DEFNEW1D("Minimum Active Primary Open Loop Enrichment For ALS",OpenLoopAFRmin);
 DEFNEW1D("ShiftLight Mode", ShiftLightEnabled);
 DEFNEW1D("ALS WGDC Lock", ALSWGDC);
 DEFNEW1D("ALS Boost Lock", DefaultALSBoostLimit);
 DEFNEW1D("ALS AVCS Lock", ALSAVCS);
+DEFNEW1D("ALS Accelerator Pedal Activation", ALSAcceleratorTrigger);
+DEFNEW1D("ALS Vehicle Speed Minimum", ALSVehicleSpeedEnable);
+DEFNEW1D("ALS RPM Limit", ALSRPMLimit);
+DEFNEW1D("ALS Requested Torque", ALSRequestedTorque);
+DEFNEW1D("ALS Throttle Kick", ThrottleKickVoltsMin);
 
 #if MPG_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);

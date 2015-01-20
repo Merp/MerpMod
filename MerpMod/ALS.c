@@ -16,36 +16,76 @@
 #if ALS_HACKS
 
 void ALSActivate()
-	
 {
-	//DOUBLE CHECK FUEL LOCK FOR ALS BEFORE ACTIVATING FUELHACKS!
+
 	//Conditions for AntiLag And Rotational Idle
-	if (pRamVariables->DriveMode == 4 && *pAf1Res < EGTResistanceThreshold && *pEngineLoad < EGTCelLoadThreshold && *pManifoldAbsolutePressure <= DefaultALSBoostLimit)
+	if (pRamVariables->DriveMode == 4)// && *pAf1Res > EGTResistanceThreshold && *pManifoldAbsolutePressure <= DefaultALSBoostLimit)
 		{
-			pRamVariables->ALSEnable = 0x01;
-		}
-	else
-		{
-			pRamVariables->ALSEnable = 0x00;
-		}
-		
-	if (pRamVariables->ALSEnable == 0x01 && *pAcceleratorPedal == 0 && TestIdleSwitch())
-		{
-			pRamVariables->ALSActive = 0x01;
-			//Force Open Loop
+			if (pRamVariables->ALSActive == 0)
+				{
+					pRamVariables->ALSActive = 0x01;
+				}
+			else if (pRamVariables->ALSActive == 1)
+				{
+					//Rotational Idle Specific
+					if (TestIdleSwitch())
+						{
+							pRamVariables->ALSActive = 0x02;
+						}
+
+					else if (*pAcceleratorPedal >= ALSAcceleratorTrigger)
+						{
+							pRamVariables->ALSActive = 0x03;
+						}
+					else
+						{
+							pRamVariables->ALSActive = 0x01;
+						}
+				}
+			else if (pRamVariables->ALSActive == 2 && !TestIdleSwitch())
+				{
+					pRamVariables->ALSActive = 0x01;
+				}
+
+			//ALS Specific
+			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed >= ALSVehicleSpeedEnable && TestClutchSwitch())
+				{
+					AntiLag();
+				}
+			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed >= ALSVehicleSpeedEnable)
+				{
+					pRamVariables->ALSRequestedTorque = 0.0;
+					pRamVariables->ALSActive = 0x03;
+				}
+			else if (pRamVariables->ALSActive >= 3)
+				{
+					pRamVariables->ALSActive = 0x01;
+					pRamVariables->ALSRequestedTorque = 0.0;
+				}
+			else
+				{
+					pRamVariables->ALSRequestedTorque = 0.0;
+				}
 		}
 	else
 		{
 			pRamVariables->ALSActive = 0x00;
 		}
-		
-	if (pRamVariables->ALSActive == 1)
+}
+
+void AntiLag()
+{
+	if (*pEngineSpeed <= ALSRPMLimit)
 		{
-			//Rotational Idle/ALS Specifics
+			pRamVariables->ALSActive = 0x04;
+			pRamVariables->ALSRequestedTorque = ALSRequestedTorque;
 		}
 	else
 		{
+			pRamVariables->ALSActive = 0x03;
 		}
 }
 
 #endif
+
+

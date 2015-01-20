@@ -20,7 +20,7 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 float CyclesPerSec SPEEDDENSITYDATA = 15.5f;
-unsigned char FlexFuelEnabled SPEEDDENSITYDATA = HackEnabled;
+unsigned char FlexFuelEnabled SPEEDDENSITYDATA = HackDisabled;
 float FlexRoughFTs SPEEDDENSITYDATA = 12.0f;
 float FlexFineFTs SPEEDDENSITYDATA = 5.0f;
 float FlexRoughRatio SPEEDDENSITYDATA = 0.3f;

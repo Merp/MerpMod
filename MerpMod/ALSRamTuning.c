@@ -141,7 +141,7 @@ void ALSRamTuning()
 			{
 			}
 
-		if (pRamVariables->ALSActive == 1)
+		if (pRamVariables->ALSActive == 2)
 			{
 				ALSAVCS += pRamVariables->ALSAVCSRamTuning;//Test, need to fix neutral/ingear swithes
 				pRamVariables->AVCS = ALSAVCS;//Test, need to fix neutral/ingear swithes

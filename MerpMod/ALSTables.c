@@ -15,12 +15,18 @@
 
 #if ALS_HACKS
 
-float DefaultALSTimingLock SPEEDDENSITYDATA = 20.0f;
+float DefaultALSTimingLock SPEEDDENSITYDATA = 5.0f;
 float DefaultALSFuelLock SPEEDDENSITYDATA = 0.35f;
 float DefaultALSBoostLimit SPEEDDENSITYDATA = 1381.0f;
 float DefaultALSTargetIdleSpeed SPEEDDENSITYDATA = 2000.0f;
 float ALSWGDC SPEEDDENSITYDATA = 100.0f;
 float ALSAVCS SPEEDDENSITYDATA = 0.0f;
+float ALSAcceleratorTrigger SPEEDDENSITYDATA = 55.0f;
+float ALSVehicleSpeedEnable SPEEDDENSITYDATA = 45.0f;//kph, 28mph = 45kph
+float ALSRPMLimit SPEEDDENSITYDATA = 3500.0f;
+float ALSRequestedTorque SPEEDDENSITYDATA = 100.0f;//20%tps = 300
+//unsigned short ThrottleKickVoltsMin SPEEDDENSITYDATA = 0x4800;//4800 = 22% Pedal, 22C0 = 0%, A300 = 100%
+//unsigned short ThrottleKickVoltsMax SPEEDDENSITYDATA = 0xA300;
 
 #if ALS_RAMTUNING
 float DefaultALSPOLFRamTuning SPEEDDENSITYDATA = 0.0f;
@@ -31,8 +37,4 @@ float ALSTimingRamTuningAdder SPEEDDENSITYDATA = 0.0f;
 float ALSAVCSRamTuningAdder SPEEDDENSITYDATA = 0.0f;
 
 #endif
-
-// float? ALSRevLimit SPEEDDENSITYDATA = 3000.0f;
-// float ALSThrottleKick SPEEDDENSITYDATA = 100.0f; ReqTorq? Or unneeded?
-
 #endif
