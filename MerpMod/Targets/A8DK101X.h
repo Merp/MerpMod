@@ -1,5 +1,6 @@
-#define MOD_DATE 14.6.13.220
-
+#define MOD_IDENTIFIER STRI(A8DK101X.MeRpMoD.Flash.Testing.v00.60.d15.1.30.0233)
+#define MOD_ECUID CCA5006022
+#define MOD_DATE 15.1.30.0233
 #include "Flash.h"
 #define MOD_CONFIG Flash
 #define MOD_BUILD Testing
@@ -22,6 +23,10 @@
 // Switch Hacks
 /////////////////////
 
+#define tCrankingFuelD (0x0009AA64)
+#define tStartupEnrich2_1A (0x0009AAFC)
+#define tStartupEnrich2_2B (0x0009AB38)
+#define tStartupEnrich3_1A (0x0009AAAC)
 
 /////////////////////
 // Rev Limit Hack
