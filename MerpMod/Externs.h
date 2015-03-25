@@ -371,6 +371,7 @@ extern float FCRIPedalThresh;
 extern float ALSPedalThresh;
 extern float DefaultRimRPMDiff;
 extern float ECTALSThreshold;
+extern float ALSRPMDeltaLimit;
 
 #endif
 

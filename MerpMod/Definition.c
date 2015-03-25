@@ -565,6 +565,7 @@ DEFNEW1D("Rotational Idle RPM Under Target Disable Threshold", DefaultRimRPMDiff
 DEFNEW1D("ALS ECT Temp Minimum", ECTALSThreshold);
 DEFNEW1D("ALS Throttle", ALSTPS);
 DEFNEW1D("Displacement On Demand Mode",DODMode);
+DEFNEW1D("ALS Over Target RPM Limit", ALSRPMDeltaLimit);
 
 #if MPG_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);

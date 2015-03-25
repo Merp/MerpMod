@@ -94,9 +94,9 @@ void AntiLag()
 						{
 							pRamVariables->ALSActive = 0x01;
 						}
-					else if (ALSCutMode == 1 && *pBoost > DefaultALSBoostLimit)//Do I want Boost control here?
+					else if (ALSCutMode == 1)// && *pBoost > DefaultALSBoostLimit)//Do I want Boost control here?
 						{
-							RotationalFuelCut();
+							//RotationalFuelCut();//Needs more Conditions to Work Right.
 						}
 					else
 						{
@@ -134,16 +134,15 @@ void AntiLag()
 
 void ThrottleKick()
 {
-	float ALSRevMax = (DefaultALSTargetIdleSpeed + 500.0);
-	
-//	ALSTPSRPMCompensation = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0)
-//	float ALSTPSBoostCompensation = (*pBoostError * 5.0);
+	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238
+	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0)
+//	float ALSTPSBoostComp = (*pBoostError * 5.0);
 
-	if (*pEngineSpeed < ALSRevMax)
+	if (*pBoost < DefaultALSBoostLimit)
 		{
 			if (pRamVariables->ALSActive == 5)
 				{
-					pRamVariables->ALSTPS = ALSTPS;//	= (ALSTPS + ALSTPSBoostCompensation);
+					pRamVariables->ALSTPS = ALSTPS + ALSTPSRPMComp;//	= (ALSTPS + ALSTPSBoostComp);
 				}
 			else if (pRamVariables->ALSActive == 4)
 				{
