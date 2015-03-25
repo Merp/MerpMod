@@ -14,7 +14,7 @@
 #include "EcuHacks.h"
 
 #if ALS_HACKS
-
+//Fuelup Timer
 void Timer(float Minutes, float Seconds)
 {
     if (pRamVariables->StartTimer < 1)
@@ -44,7 +44,7 @@ void Timers(float Minutes, float Seconds, unsigned char Number)
 	else if (Number == 3)
 		Timer3(Minutes, Seconds);
 }
-
+//FlexFuel Timer
 void Timer1(float Minutes, float Seconds)
 {
     if (pRamVariables->StartTimer1 < 1)
@@ -64,7 +64,7 @@ void Timer1(float Minutes, float Seconds)
             pRamVariables->TimerUp1 = 0x00;
         }
 }
-
+//Flex Fuel Timer
 void Timer2(float Minutes, float Seconds)
 {
     if (pRamVariables->StartTimer2 < 1)
@@ -84,7 +84,7 @@ void Timer2(float Minutes, float Seconds)
             pRamVariables->TimerUp2 = 0x00;
         }
 }
-
+//ALS Timer
 void Timer3(float Minutes, float Seconds)
 {
     if (pRamVariables->StartTimer3 < 1)

@@ -509,14 +509,19 @@ DEFNEW1D("Shift Light Flash Count",ShiftLightFlashes);
 DEFNEW3D("Shift Light RPMs",ShiftLightRPMs);
 DEFNEW1D("Default Vehicle Drive Mode",DefaultDriveMode);
 DEFNEW1D("ALS Target Idle Speed",DefaultALSTargetIdleSpeed);
+DEFNEW1D("ALS Target Idle Speed FC Rotational Idle",DefaultALSTargetIdleSpeedFCRI);
 #endif
 
 #if ALS_HACKS
 DEFINERAMVAR("Target Idle Speed ALS",TargetIdleSpeed,2,"E");
 DEFNEW1D("ALS Timing Lock",DefaultALSTimingLock);
+DEFNEW1D("Rotational Idle Timing Lock",DefaultRIMTimingLock);
 DEFNEW1D("ALS Fuel Lock",DefaultALSFuelLock);
+DEFNEW1D("Rotational Idle Fuel Lock",DefaultRIMFuelLock);
 DEFINERAMVAR("Requested Torque A ALS",RequestedTorque,2,"E");
 DEFNEW1D("POLF Hack Mode",DefaultPolfHackEnabled);
+DEFNEW1D("Rotational Idle Cut Mode",RIMCutMode);
+DEFNEW1D("AntiLag Cut Mode",ALSCutMode);
 DEFNEW1D("Timing Hack Mode",DefaultTimingHackEnabled);
 //DEFINERAMVAR("IdleMapSelect",IdleMapSelect,1,"E");
 DEFNEW3D("Requested Torque Normal Mode",ReqTorqTable1i);
@@ -548,10 +553,18 @@ DEFNEW1D("ALS WGDC Lock", ALSWGDC);
 DEFNEW1D("ALS Boost Lock", DefaultALSBoostLimit);
 DEFNEW1D("ALS AVCS Lock", ALSAVCS);
 DEFNEW1D("ALS Accelerator Pedal Activation", ALSAcceleratorTrigger);
-DEFNEW1D("ALS Vehicle Speed Minimum", ALSVehicleSpeedEnable);
-DEFNEW1D("ALS RPM Limit", ALSRPMLimit);
+DEFNEW1D("ALS Vehicle Speed Minimum", ALSVehicleSpeedEnable);//Change to Rolling??
+DEFNEW1D("AntiLag Vehicle Speed Maximum", ALSVehicleSpeedDisable);
+DEFNEW1D("Rotational Idle Vehicle Speed Maximum", RIMVehicleSpeedDisable);
+DEFNEW1D("ALS RPM Engage Threshold", ALSRPMLimit);
 DEFNEW1D("ALS Requested Torque", ALSRequestedTorque);
-DEFNEW1D("ALS Throttle Kick", ThrottleKickVoltsMin);
+DEFNEW1D("FCRI Accelerator Pedal Dectivation Threshold", FCRIPedalThresh);
+DEFNEW1D("ALS Accelerator Pedal Dectivation Threshold", ALSPedalThresh);
+DEFNEW1D("Rolling AntiLag Mode", RollingAntiLagEnabled);
+DEFNEW1D("Rotational Idle RPM Under Target Disable Threshold", DefaultRimRPMDiff);
+DEFNEW1D("ALS ECT Temp Minimum", ECTALSThreshold);
+DEFNEW1D("ALS Throttle", ALSTPS);
+DEFNEW1D("Displacement On Demand Mode",DODMode);
 
 #if MPG_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);

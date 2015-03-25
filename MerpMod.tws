@@ -11,25 +11,9 @@
 [OPEN_WORKSPACE_FILES]
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\BoostHacks.c" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\DriveMode.c" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Enums.h" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Externs.h" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Functions.c" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RamVariables.h" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\TimingHacks.c" 
 [WORKSPACE_FILE_STATES]
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 0 0 1043 846 0 2 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 66 87 837 551 0 3 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\BoostHacks.c" -4 -30 1043 846 1 11 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\DriveMode.c" 110 145 837 551 0 4 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Enums.h" 44 58 837 551 0 6 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Externs.h" 198 261 837 551 0 8 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Functions.c" 44 58 837 551 0 10 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\RamVariables.h" 0 0 837 551 0 9 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\SSM.c" 0 0 1043 846 0 5 
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\TimingHacks.c" 154 203 837 551 0 7 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 0 0 1344 846 0 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" -4 -30 1043 846 1 3 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]

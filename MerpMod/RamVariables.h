@@ -285,8 +285,11 @@ float	MaxSubtractiveKCA;
 	float BaseTimingOutputMERP;//Delete after test
 	float PolfOutputMERP;//Delete after test
 	float ALSRequestedTorque;
-//	unsigned short AcceleratorVolts;
-//	short ALSunused;
+	float ALSTPS;
+	float ALSWGDC;
+	float ALSTargetIdleSpeed;
+	short FuelCut;
+	short FuelCutRIM;
 	
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;

@@ -145,14 +145,14 @@ void CelFlash()
 	}
 
 #if SHIFTLIGHT_HACKS
-	else if(*pEngineSpeed >= pRamVariables->ShiftLightRPM && ShiftLightEnabled == HackEnabled)
+	else if(ShiftLightEnabled == HackEnabled && *pEngineSpeed >= pRamVariables->ShiftLightRPM)
 	{
 		CelFlashStart(ShiftLightFlashes,ShiftLightFlashSpeed,0,0);
 	}
 #endif
 
 #if ALS_HACKS
-	else if(pRamVariables->ALSModeWait == 1)
+	else if(pRamVariables->ALSModeWait == 1)// || TestCruiseCancelSwitch())
 	{
 		CelFlashStart(ALSModeFlashes,ALSModeFlashSpeed,0,0);
 	}

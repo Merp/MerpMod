@@ -555,6 +555,22 @@
 <define name="hMainAcceleratorSensor1"/>
 <define name="hMainAcceleratorSensor2"/>
 <define name="pMainAcceleratorSensor"/>
+<define name="hTargetTPSBandPass"/>
+<define name="sBandPass"/>
+<define name="sDutyCycleOut"/>
+<define name="hDutyCycleOut"/>
+<define name="hFuelCut"/>
+<define name="pFuelCut"/>
+<define name="pBoost"/>
+<define name="hPrepForSpark"/>
+<define name="sPrepForSpark"/>
+<define name="pCyl1SparkCut"/>
+<define name="pCyl2SparkCut"/>
+<define name="pCyl3SparkCut"/>
+<define name="pCyl4SparkCut"/>
+<define name="pTargetTPSIdle"/>
+<define name="hTargetTPSIdle"/>
+
 
     </category>
 

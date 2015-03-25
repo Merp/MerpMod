@@ -235,6 +235,24 @@
 #define dSSMReplace (0x0004E510)
 #define hSSMReplace1 (0x00056290)
 #define hSSMReplace2 (0x00056294)
+#define hTargetTPSBandPass (0x000BE73C)
+#define sBandPass (0x000024D8)
+#define sDutyCycleOut (0x000023A8)
+#define hDutyCycleOut (0x00011A00)
+#define hTargetTPSIdle (0x000BEB2C)
+#define pTargetTPSIdle ((float*)0xFFFF7B70)
+////#define sBasicMotions (0x0002495A)
+////#define hBasicMotions (0x0002495A)
+#define hFuelCut (0x00035BD0)
+#define pFuelCut ((short*)0xFFFF6F74)
+#define pBoost ((float*)0xFFFF669C)
+#define hPrepForSpark (0x00006E0C)
+#define sPrepForSpark (0x0000A458)
+#define pCyl1SparkCut ((unsigned char*)0xFFFF5DF0)
+#define pCyl2SparkCut ((unsigned char*)0xFFFF5DF8)
+#define pCyl3SparkCut ((unsigned char*)0xFFFF5E00)
+#define pCyl4SparkCut ((unsigned char*)0xFFFF5E08)
+
 
 /////////////////////
 // OBD Experimental stuff

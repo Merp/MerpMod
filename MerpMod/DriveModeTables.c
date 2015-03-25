@@ -44,6 +44,7 @@ TableGroup AVCSTableGroup SPEEDDENSITYDATA = {
 
 #if MPG_HACKS
 
+unsigned char DODMode SPEEDDENSITYDATA = HackDisabled;
 float LeanCruiseLoadThreshold SPEEDDENSITYDATA = 0.80f;
 
 #endif

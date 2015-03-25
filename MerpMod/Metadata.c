@@ -801,6 +801,55 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)&(pRamVariables->BaseTimingIdle),
 		name: STR(Base Timing Idle Neutral B Hook)
 	};
+/*	const MetaReplace BaseTimingIdleMinHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hBaseTimingIdleMin,
+		oldval: dBaseTimingIdleMin,
+		newval: (int)&(pRamVariables->BaseTimingIdleMinimum),
+		name: STR(Base Idle Timing Min Hook)
+	};
+	const MetaReplace TargetTPSHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTargetTPSBandPass,
+		oldval: sBandPass,
+		newval: (int)TPSHiJack,
+		name: STR(TPS BandPass Subroutine Hook)
+	};
+*/
+	const MetaReplace WGDCHiJackHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hDutyCycleOut,
+		oldval: sDutyCycleOut,
+		newval: (int)WGDCalt,
+		name: STR(WGDC Final Subroutine Hook)
+	};
+	const MetaReplace TargetIdleTPSHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hTargetTPSIdle,
+		oldval: pTargetTPSIdle,
+		newval: (int)&(pRamVariables->ALSTPS),
+		name: STR(Target Idle TPS Hook)
+	};
+/*	const MetaReplace SparkHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPrepForSpark,
+		oldval: sPrepForSpark,
+		newval: (int)SparkCut,
+		name: STR(Spark Subroutine Hook)
+	};
+*/	const MetaReplace FuelCutCheckHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hFuelCut,
+		oldval: pFuelCut,
+		newval: (int)&(pRamVariables->FuelCut),
+		name: STR(Fuel Cut Check Hook)
+	};
 
 //////////////////////
 //					//

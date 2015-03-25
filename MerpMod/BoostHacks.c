@@ -18,6 +18,8 @@
 
 //Defines the function pointer to the existing WGDC Pull routine
 float (*WGDCHooked)() __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sWgdc;
+float (*DutyCycleOut)(int WGDCData) __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sDutyCycleOut;
+float (*DutyCycleOEM)() __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sDutyCycleOut;
 
 void WGDCHack()
 {
@@ -74,22 +76,10 @@ EcuHacksMain();
 		}
 	#endif
 	
-	#if ALS_HACKS
-		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
-			{
-				pRamVariables->WGDCInitial = ALSWGDC;
-				pRamVariables->WGDCMax = ALSWGDC;
-			}
-		else
-			{
-	#endif
-				pRamVariables->PGWGComp = PGWGComp;	
-				pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
-				pRamVariables->WGDCMax = WGDCMax * PGWGComp;
-	#if ALS_HACKS
-			}
-	#endif
-	
+	pRamVariables->PGWGComp = PGWGComp;	
+	pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
+	pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+
 	#if WGDC_LOCK
 	}
 	#endif
@@ -154,11 +144,15 @@ void TargetBoostHack()
 	pRamVariables->PGTBComp = PGTBComp;
 
 	#if ALS_HACKS
-		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
+		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4 || pRamVariables->ALSActive == 5)
 		{
 			pRamVariables->TargetBoost = DefaultALSBoostLimit;
 		}
-		else
+/*		else if (pRamVariables->DriveMode < 3) // No boost error in econ mode
+		{
+			pRamVariables->TargetBoost = *pBoost; //?
+		}
+*/		else
 		{
 	#endif
 			pRamVariables->TargetBoost = TargetBoost * PGTBComp;
@@ -166,5 +160,23 @@ void TargetBoostHack()
 		}
 	#endif
 }
+
+void WGDCalt()
+	{
+		int WGDCData;
+		float DutyScale = 65536.0f;
+		if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4 || pRamVariables->ALSActive == 5)
+		{
+			pRamVariables->ALSWGDC = ALSWGDC;
+			*pWgdc4 = ALSWGDC * 100.0;
+			WGDCData = (pRamVariables->ALSWGDC * DutyScale);
+			DutyCycleOut(WGDCData);
+			
+		}
+		else
+		{
+			DutyCycleOEM();
+		}
+	}
 #endif
 #endif

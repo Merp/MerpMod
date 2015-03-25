@@ -79,7 +79,14 @@ float TimingHack()
 	OutputValue -= Abs(pRamVariables->SubtractiveKCA);
 	
 #if ALS_HACKS
-	if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
+	if (pRamVariables->ALSActive == 2)
+		{
+			OutputValue = DefaultRIMTimingLock;
+#if ALS_RAMTUNING
+			OutputValue += pRamVariables->ALSTimingRamTuning;
+#endif
+		}
+	else if (pRamVariables->ALSActive == 5 || pRamVariables->ALSActive == 4)
 		{
 			OutputValue = DefaultALSTimingLock;
 #if ALS_RAMTUNING
@@ -115,9 +122,9 @@ void IdleTimingHack()
 {
 	float BaseTimingIdle;
 
-	if(pRamVariables->TimingHackEnabled == HackEnabled && pRamVariables->ALSActive == 2)
+	if(pRamVariables->TimingHackEnabled == HackEnabled && pRamVariables->ALSActive >= 2)
 		{
-			BaseTimingIdle = DefaultALSTimingLock;
+			BaseTimingIdle = pRamVariables->BaseTimingOutput;
 		}
 	else
 		{
@@ -126,6 +133,14 @@ void IdleTimingHack()
 
 	pRamVariables->BaseTimingIdle = BaseTimingIdle;
 	
-//	pRamVariables->BaseTimingIdleMinimum = Pull3DHooked(Table, MapSwitch, Coolant Temp);
+	if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
+		{
+			//Needs to be done if Playing with timing while Moving (ALSActive = 4?)
+//			pRamVariables->BaseTimingIdleMinimum = DefaultALSTimingLock;
+		}
+	else
+		{
+//			pRamVariables->BaseTimingIdleMinimum = Pull3DHooked(OEMTable, CoolantTemp);
+		}
 }
 #endif

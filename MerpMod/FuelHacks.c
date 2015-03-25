@@ -60,10 +60,16 @@ EcuHacksMain();
 		{
 			OutputValue += pRamVariables->LCFuelEnrich;
 		}
-		//Now run existing code!
-		
+
 #if ALS_HACKS
-	if (pRamVariables->ALSActive == 2 || pRamVariables->ALSActive == 4)
+	if (pRamVariables->ALSActive == 2)
+		{
+			OutputValue = DefaultRIMFuelLock;
+#if ALS_RAMTUNING
+			OutputValue += pRamVariables->ALSPOLFRamTuning;
+#endif
+		}
+	else if (pRamVariables->ALSActive == 5 || pRamVariables->ALSActive == 4)
 		{
 			OutputValue = DefaultALSFuelLock;
 #if ALS_RAMTUNING
@@ -89,7 +95,7 @@ EcuHacksMain();
 				pRamVariables->PolfOutputMERP = OutputValue;//DELETE AFTER TEST
 			}	
 #endif
-		
+	//Now run existing code!	
 	PolfHooked();
 }
 #endif

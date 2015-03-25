@@ -16,7 +16,6 @@
 #if MPG_HACKS
 
 void Mileage()
-	
 {
 	float TargetCLAFR;
 	//Lean 5th Gear Cruise and idle
@@ -32,4 +31,14 @@ void Mileage()
 	pRamVariables->TargetCLAFR = TargetCLAFR;
 }
 
+void DisplacementOnDemand()
+{
+	if (*pAcceleratorPedal < 15.0 && *pEngineLoad < 0.5 && *pVehicleSpeed > 72.0 && *pFuelCut < 13)
+		{
+			RotationalFuelCut();
+		}
+	else
+		{
+		}
+}
 #endif

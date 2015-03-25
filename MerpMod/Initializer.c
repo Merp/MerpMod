@@ -164,6 +164,8 @@ pRamVariables->DefoggerLast = TestDefoggerSwitch();
 	pRamVariables->FuelLevel2 = 0.0;
 	pRamVariables->FuelLevel3 = 0.0;
 	pRamVariables->FlexFuelEnabled = FlexFuelEnabled;
+	pRamVariables->FuelCut = 0x0000;
+	pRamVariables->ALSTargetIdleSpeed = DefaultALSTargetIdleSpeed;
 #if ALS_RAMTUNING
 	pRamVariables->ALSAVCSRamTuning = DefaultALSAVCSRamTuning;
 	pRamVariables->ALSPOLFRamTuning = DefaultALSPOLFRamTuning;
