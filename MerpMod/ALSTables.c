@@ -38,7 +38,7 @@ float FCRIPedalThresh SPEEDDENSITYDATA = 1.0f;
 float ALSPedalThresh SPEEDDENSITYDATA = 20.0f;
 float DefaultRimRPMDiff SPEEDDENSITYDATA = 15.0f;
 float ECTALSThreshold SPEEDDENSITYDATA = 30.0f;//86 fahrenheit
-float ALSRPMDeltaLimit SPEEDDENSITYDATA = 1500.0f;
+//float ALSRPMDeltaLimit SPEEDDENSITYDATA = 1500.0f;
 
 #if ALS_RAMTUNING
 float DefaultALSPOLFRamTuning SPEEDDENSITYDATA = 0.0f;

@@ -25,7 +25,7 @@ void AntiLag()
 				}
 			else if (pRamVariables->ALSActive == 1 || pRamVariables->ALSActive == 2)
 				{
-					if (TestIdleSwitch())
+					if (TestIdleSwitch() || *pVehicleSpeed < ALSVehicleSpeedDisable && *pEngineSpeed > ALSRPMLimit)
 						{
 							float RimRPMCutoff = (DefaultALSTargetIdleSpeedFCRI - DefaultRimRPMDiff);
 							
@@ -53,7 +53,7 @@ void AntiLag()
 									pRamVariables->ALSActive = 0x02;
 								}
 */
-							else if (*pEngineSpeed >= ALSRPMLimit && *pVehicleSpeed < ALSVehicleSpeedDisable && *pAcceleratorPedal < FCRIPedalThresh)//Add Smoothing for exiting?
+							else if (*pEngineSpeed > ALSRPMLimit && *pVehicleSpeed < ALSVehicleSpeedDisable && *pAcceleratorPedal < FCRIPedalThresh)//Add Smoothing for exiting?
 								{
 									//Enter ANTILAG!
 									pRamVariables->ALSActive = 0x05;
@@ -90,11 +90,11 @@ void AntiLag()
 			else if (pRamVariables->ALSActive == 5)
 				{
 					Timers(0.0, 5.0, 3);
-					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || *pAcceleratorPedal > ALSPedalThresh) // Or hits boost limit
+					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || *pAcceleratorPedal > ALSPedalThresh)
 						{
 							pRamVariables->ALSActive = 0x01;
 						}
-					else if (ALSCutMode == 1)// && *pBoost > DefaultALSBoostLimit)//Do I want Boost control here?
+					else if (ALSCutMode == 1)
 						{
 							//RotationalFuelCut();//Needs more Conditions to Work Right.
 						}
@@ -134,25 +134,25 @@ void AntiLag()
 
 void ThrottleKick()
 {
-	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238
-	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0)
-//	float ALSTPSBoostComp = (*pBoostError * 5.0);
+//	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238 in 0.999 build
+	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0);
+	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * 5.0);
 
-	if (*pBoost < DefaultALSBoostLimit)
+	if (pRamVariables->ALSActive == 5)
 		{
-			if (pRamVariables->ALSActive == 5)
+			if (ALSTPSBoostComp > 0.0)
 				{
-					pRamVariables->ALSTPS = ALSTPS + ALSTPSRPMComp;//	= (ALSTPS + ALSTPSBoostComp);
-				}
-			else if (pRamVariables->ALSActive == 4)
-				{
-				//	pRamVariables->ALSTPS = pRamVariables->ALSRevMatch;	//	Rev Matching
-					pRamVariables->ALSTPS = *pTargetTPSIdle;
+					pRamVariables->ALSTPS = ALSTPS - ALSTPSBoostComp;
 				}
 			else
 				{
-					pRamVariables->ALSTPS = *pTargetTPSIdle;
+					pRamVariables->ALSTPS = ALSTPS + ALSTPSRPMComp;
 				}
+		}
+	else if (pRamVariables->ALSActive == 4)
+		{
+		//	pRamVariables->ALSTPS = pRamVariables->ALSRevMatch;	//	Rev Matching
+			pRamVariables->ALSTPS = *pTargetTPSIdle;
 		}
 	else
 		{
