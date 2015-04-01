@@ -38,6 +38,14 @@ float HighPass(float input, float limit)
 		return limit;
 }
 
+unsigned short HighPassShort(unsigned short input, unsigned short limit)
+{
+	if(input > limit)
+		return input;
+	else
+		return limit;
+}
+
 float BandPass(float input, float lowlim, float highlim)
 {
 	if(input > highlim)

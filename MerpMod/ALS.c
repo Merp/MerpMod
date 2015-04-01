@@ -139,6 +139,7 @@ void ThrottleKick()
 {
 //	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238 in 0.999 build
 	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0);
+	pRamVariables->ALSRequestedTorque
 	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * 5.0);
 
 	if (pRamVariables->ALSActive == 5)
@@ -200,23 +201,23 @@ void RollingAntiLag()
 		}
 }
 
-void ADHack()//Need to make sure hook is good, then code	// add back in adjustment Logic from throttlematch code?
+void ADHack()// add back in adjustment Logic from throttlematch code?
 {
 	short offset = 8896;
 	float scale = 341.12;
 	pRamVariables->OEMPedalVolts = *pPedalVoltage;
-//	float OEMAcceleratorPedalVolts = ShortToFloatHooked(*pPedalVoltage,0.0000762939453125,0.0);//1.4v - 3.18v (22% - 100%)	//8896 = 0%	//18816 = 20%	//43008 = 100%
+	//8896 = 0%	//18816 = 20%	//43008 = 100%
 	pRamVariables->OEMAcceleratorPedal = (pRamVariables->OEMPedalVolts - offset) / scale;
 	
 	if (pRamVariables->ALSActive == 5)
 		{
-			*pPedalVoltage = HighPass(pRamVariables->OEMPedalVolts, PedalKick);
-			*pSubPedalVoltage = HighPass(pRamVariables->OEMPedalVolts, PedalKick);
+			*pPedalVoltage = HighPassShort(pRamVariables->OEMPedalVolts, PedalKick);
+			*pSubPedalVoltage = HighPassShort(pRamVariables->OEMPedalVolts, PedalKick);
 		}
 	else
 		{
+			//pRamVariables->ALSRequestedTorque = 0.0;
 		}
-//Finish Hook
 AfterAD();
 }
 

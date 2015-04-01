@@ -109,6 +109,7 @@ void SetBrake(int value) __attribute__ ((section ("Misc")));
 float Abs(float input) ROMCODE;
 float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
+unsigned short HighPassShort(unsigned short input, unsigned short limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
 unsigned short BandPassShort(unsigned short input, unsigned short lowlim, unsigned short highlim) ROMCODE;
