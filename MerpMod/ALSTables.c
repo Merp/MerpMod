@@ -30,15 +30,15 @@ float ALSVehicleSpeedDisable SPEEDDENSITYDATA = 1.0f;//kph
 float RIMVehicleSpeedDisable SPEEDDENSITYDATA = 12.0f;//kph
 float ALSRPMLimit SPEEDDENSITYDATA = 3500.0f;
 float ALSRequestedTorque SPEEDDENSITYDATA = 0.0f;//20%tps = 300 KEEP THIS LOW TO PREVENT CLUTCH SLIP!
-float ALSTPS SPEEDDENSITYDATA = 40.0f;
+float ALSTPS SPEEDDENSITYDATA = 20.0f;
 unsigned char ALSCutMode SPEEDDENSITYDATA = 0x01;
 unsigned char RIMCutMode SPEEDDENSITYDATA = 0x01;
-unsigned char RollingAntiLagEnabled SPEEDDENSITYDATA = HackDisabled;// = 0x00
+unsigned char RollingAntiLagEnabled SPEEDDENSITYDATA = HackEnabled;// = 0x00
 float FCRIPedalThresh SPEEDDENSITYDATA = 1.0f;
 float ALSPedalThresh SPEEDDENSITYDATA = 20.0f;
 float DefaultRimRPMDiff SPEEDDENSITYDATA = 15.0f;
 float ECTALSThreshold SPEEDDENSITYDATA = 30.0f;//86 fahrenheit
-//float ALSRPMDeltaLimit SPEEDDENSITYDATA = 1500.0f;
+short PedalKick SPEEDDENSITYDATA = 0x4980;
 
 #if ALS_RAMTUNING
 float DefaultALSPOLFRamTuning SPEEDDENSITYDATA = 0.0f;

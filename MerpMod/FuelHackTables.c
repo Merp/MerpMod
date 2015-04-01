@@ -52,7 +52,7 @@ TwoDTable InjectorScalingMultiplierTable  FUELDATA = {
 
 #if POLF_HACKS
 
-unsigned char DefaultPolfHackEnabled FUELDATA = HackDisabled;
+unsigned char DefaultPolfHackEnabled FUELDATA = HackEnabled;
 unsigned char DefaultLCFuelMode FUELDATA = 0x01;
 float DefaultLCFuelLock FUELDATA = 0.35f;
 float DefaultLCFuelEnrichMultiplier FUELDATA = 1.0f;

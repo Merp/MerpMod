@@ -15,6 +15,8 @@
 
 #if ALS_HACKS
 
+float (*AfterAD)() __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sAfterAD;
+
 void AntiLag()
 {
 	if (pRamVariables->DriveMode == 4 && *pAf1Res > EGTResistanceThreshold && *pCoolantTemp > ECTALSThreshold)
@@ -53,12 +55,12 @@ void AntiLag()
 									pRamVariables->ALSActive = 0x02;
 								}
 */
-							else if (*pEngineSpeed > ALSRPMLimit && *pVehicleSpeed < ALSVehicleSpeedDisable && *pAcceleratorPedal < FCRIPedalThresh)//Add Smoothing for exiting?
+							else if (*pEngineSpeed > ALSRPMLimit && *pVehicleSpeed < ALSVehicleSpeedDisable && *pAcceleratorPedal < FCRIPedalThresh)
 								{
 									//Enter ANTILAG!
 									pRamVariables->ALSActive = 0x05;
 									pRamVariables->FuelCut = *pFuelCut;
-									pRamVariables->ALSTargetIdleSpeed = DefaultALSTargetIdleSpeed;
+									pRamVariables->ALSTargetIdleSpeed = DefaultALSTargetIdleSpeed;//Not needed?
 									pRamVariables->StartTimer3 = 0.0;
 								}
 							else
@@ -90,7 +92,7 @@ void AntiLag()
 			else if (pRamVariables->ALSActive == 5)
 				{
 					Timers(0.0, 5.0, 3);
-					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || *pAcceleratorPedal > ALSPedalThresh)
+					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || pRamVariables->OEMAcceleratorPedal > ALSPedalThresh)
 						{
 							pRamVariables->ALSActive = 0x01;
 						}
@@ -116,7 +118,7 @@ void AntiLag()
 				{
 					pRamVariables->ALSRequestedTorque = 0.0;
 				}
-			if (RollingAntiLagEnabled == HackEnabled && *pAcceleratorPedal > ALSAcceleratorTrigger)
+			if (RollingAntiLagEnabled == HackEnabled && pRamVariables->OEMAcceleratorPedal > ALSAcceleratorTrigger)
 				{
 					RollingAntiLag();
 				}
@@ -129,9 +131,10 @@ void AntiLag()
 			pRamVariables->ALSActive = 0x00;
 			pRamVariables->FuelCut = *pFuelCut;
 		}
-	ThrottleKick();
+//	ThrottleKick();
+pRamVariables->ALSTPS = *pTargetTPSIdle;//Remove if reEnabling ThrottleKick Code
 }
-
+/*
 void ThrottleKick()
 {
 //	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238 in 0.999 build
@@ -159,7 +162,7 @@ void ThrottleKick()
 			pRamVariables->ALSTPS = *pTargetTPSIdle;
 		}
 }
-
+*/
 void RotationalFuelCut()
 {
 	short FuelCut;
@@ -195,6 +198,26 @@ void RollingAntiLag()
 			pRamVariables->ALSActive = 0x04;
 			pRamVariables->FuelCut = *pFuelCut;
 		}
+}
+
+void ADHack()//Need to make sure hook is good, then code	// add back in adjustment Logic from throttlematch code?
+{
+	short offset = 8896;
+	float scale = 341.12;
+	pRamVariables->OEMPedalVolts = *pPedalVoltage;
+//	float OEMAcceleratorPedalVolts = ShortToFloatHooked(*pPedalVoltage,0.0000762939453125,0.0);//1.4v - 3.18v (22% - 100%)	//8896 = 0%	//18816 = 20%	//43008 = 100%
+	pRamVariables->OEMAcceleratorPedal = (pRamVariables->OEMPedalVolts - offset) / scale;
+	
+	if (pRamVariables->ALSActive == 5)
+		{
+			*pPedalVoltage = HighPass(pRamVariables->OEMPedalVolts, PedalKick);
+			*pSubPedalVoltage = HighPass(pRamVariables->OEMPedalVolts, PedalKick);
+		}
+	else
+		{
+		}
+//Finish Hook
+AfterAD();
 }
 
 /*

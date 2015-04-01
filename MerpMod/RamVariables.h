@@ -290,6 +290,9 @@ float	MaxSubtractiveKCA;
 	float ALSTargetIdleSpeed;
 	short FuelCut;
 	short FuelCutRIM;
+	short OEMPedalVolts;
+	short pedalempty;
+	float OEMAcceleratorPedal;
 	
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;

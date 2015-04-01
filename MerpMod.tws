@@ -10,8 +10,14 @@
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Definition.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Externs.h" 
 [WORKSPACE_FILE_STATES]
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" -4 -30 1043 846 1 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 0 0 1043 846 0 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 132 174 837 551 0 3 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Definition.c" 154 203 1288 627 0 4 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Externs.h" -4 -30 1516 951 1 5 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]

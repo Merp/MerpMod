@@ -523,15 +523,10 @@ DEFNEW1D("POLF Hack Mode",DefaultPolfHackEnabled);
 DEFNEW1D("Rotational Idle Cut Mode",RIMCutMode);
 DEFNEW1D("AntiLag Cut Mode",ALSCutMode);
 DEFNEW1D("Timing Hack Mode",DefaultTimingHackEnabled);
-//DEFINERAMVAR("IdleMapSelect",IdleMapSelect,1,"E");
 DEFNEW3D("Requested Torque Normal Mode",ReqTorqTable1i);
 DEFNEW3D("Requested Torque Valet Mode",ReqTorqTable1v);
 DEFNEW3D("Requested Torque Performance Mode",ReqTorqTable1s);
 DEFNEW3D("Requested Torque ALS Mode",ReqTorqTable1ss);
-//DEFINERAMVAR("TimerSeconds",TimerSeconds,4,"E");
-//DEFINERAMVAR("TimerMinutes",TimerMinutes,4,"E");
-//DEFNEW1D("ALS Boost Target/Limit", DefaultALSBoostLimit);
-//DEFNEW1D("Cycles Per Second", CyclesPerSec;
 DEFNEW1D("Virtual Flex Fuel Sensor",FlexFuelEnabled);
 DEFNEW1D("Rough Correcting Ratio",FlexRoughRatio);
 DEFNEW1D("Fine Correcting Ratio",FlexFineRatio);
@@ -542,10 +537,10 @@ DEFNEW1D("Fuel Check Ratio 1",FuelRatio1);
 DEFNEW1D("Fuel Check Ratio 2",FuelRatio2);
 DEFNEW1D("User Ratio",FlexRatioUserJump);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Intelligent",AVCSTable1i);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport",AVCSTable1s);
-DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport Sharp",AVCSTable1ss);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Intelligent",AVCSTable2i);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport",AVCSTable1s);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Sport",AVCSTable2s);
+DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 1 Sport Sharp",AVCSTable1ss);
 DEFNEW3D("Intake Cam Advance Angle (AVCS) Table 2 Sport Sharp",AVCSTable2ss);
 DEFNEW1D("Minimum Active Primary Open Loop Enrichment For ALS",OpenLoopAFRmin);
 DEFNEW1D("ShiftLight Mode", ShiftLightEnabled);
@@ -564,8 +559,11 @@ DEFNEW1D("Rolling AntiLag Mode", RollingAntiLagEnabled);
 DEFNEW1D("Rotational Idle RPM Under Target Disable Threshold", DefaultRimRPMDiff);
 DEFNEW1D("ALS ECT Temp Minimum", ECTALSThreshold);
 DEFNEW1D("ALS Throttle", ALSTPS);
+DEFNEW1D("Throttle Kick", PedalKick);
 DEFNEW1D("Displacement On Demand Mode",DODMode);
 //DEFNEW1D("ALS Over Target RPM Limit", ALSRPMDeltaLimit);
+//DEFNEW1D("AntiLag Throttle Learning Denominator - RPM",DODMode);//add to externs and name variable
+//DEFNEW1D("AntiLag Throttle Learning Multiplier - Boost",DODMode);add to externs and name variable
 
 #if MPG_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Lean Cruise",O2SensorScalingMPGTable);

@@ -71,6 +71,7 @@ void FlexFineCorrect() ROMCODE;
 void MemoryHardReset() ROMCODE;
 void RotationalFuelCut() ROMCODE;
 void DisplacementOnDemand() ROMCODE;
+void ADHack() ROMCODE;
 void Timer(float Minutes, float Seconds) ROMCODE;
 void Timers(float Minutes, float Seconds, unsigned char Number) ROMCODE;
 void Timer1(float Minutes, float Seconds) ROMCODE;
@@ -361,8 +362,8 @@ extern float ALSVehicleSpeedEnable;
 extern float ALSVehicleSpeedDisable;
 extern float RIMVehicleSpeedDisable;
 extern float ALSRequestedTorque;
-extern float ALSTPS;
-extern float ALSTPS4;
+//extern float ALSTPS;
+//extern float ALSTPS4;
 extern unsigned char RIMCutMode;
 extern unsigned char ALSCutMode;
 extern unsigned char RollingAntiLagEnabled;
@@ -372,6 +373,7 @@ extern float ALSPedalThresh;
 extern float DefaultRimRPMDiff;
 extern float ECTALSThreshold;
 extern float ALSRPMDeltaLimit;
+extern short PedalKick;
 
 #endif
 

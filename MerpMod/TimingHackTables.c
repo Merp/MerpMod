@@ -17,7 +17,7 @@
 #if TIMING_HACKS
 
 unsigned char DefaultLCTimingMode TIMINGDATA = 0x01;
-unsigned char DefaultTimingHackEnabled TIMINGDATA = HackDisabled;
+unsigned char DefaultTimingHackEnabled TIMINGDATA = HackEnabled;
 float DefaultLCTimingLock TIMINGDATA = 20.0f;
 float DefaultLCTimingRetardMultiplier TIMINGDATA = 1.0f;
 float PGHighGearsTimingComp TIMINGDATA = 0.0f;

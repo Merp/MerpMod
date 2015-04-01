@@ -252,6 +252,12 @@
 #define pCyl2SparkCut ((unsigned char*)0xFFFF5DF8)
 #define pCyl3SparkCut ((unsigned char*)0xFFFF5E00)
 #define pCyl4SparkCut ((unsigned char*)0xFFFF5E08)
+#define sAfterAD (0x000066b8)
+//#define sAfterReloadAD (0x000066b8)
+#define hAfterAD (0x000067b4)
+//#define hAfterReloadAD (0x000066b8)
+#define pPedalVoltage ((short*)0xFFFF5c00)
+#define pSubPedalVoltage ((short*)0xFFFF5c02)
 
 
 /////////////////////
