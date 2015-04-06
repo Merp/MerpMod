@@ -825,7 +825,7 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)ADHack,
 		name: STR(AD Hook)
 	};
-*/
+
 	const MetaReplace PedalHook METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -834,7 +834,7 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)PedalHack,
 		name: STR(Pedal Hook)
 	};
-	const MetaReplace WGDCHiJackHook METADATA =
+*/	const MetaReplace WGDCHiJackHook METADATA =
 	{
 		op: OpReplace4Bytes,
 		address: hDutyCycleOut,

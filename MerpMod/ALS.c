@@ -83,6 +83,7 @@ void AntiLag()
 			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed > ALSVehicleSpeedEnable && TestClutchSwitch())
 				{
 					pRamVariables->ALSActive = 0x04;
+					ThrottleKick();
 				}
 			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed > ALSVehicleSpeedEnable)
 				{
@@ -98,11 +99,13 @@ void AntiLag()
 						}
 					else if (ALSCutMode == 1)
 						{
+							ThrottleKick();
 							//RotationalFuelCut();//Needs more Conditions to Work Right.
 						}
 					else
 						{
 							pRamVariables->FuelCut = *pFuelCut;
+							ThrottleKick();
 							//	AntiLag Stuff
 							//RotationalSparkCut();
 							//RotationalFuelCut();
@@ -131,16 +134,15 @@ void AntiLag()
 			pRamVariables->ALSActive = 0x00;
 			pRamVariables->FuelCut = *pFuelCut;
 		}
-//	ThrottleKick();
-pRamVariables->ALSTPS = *pTargetTPSIdle;//Remove if reEnabling ThrottleKick Code
 }
-/*
+
 void ThrottleKick()
 {
 //	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238 in 0.999 build
-	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / 100.0);
-	pRamVariables->ALSRequestedTorque
-	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * 5.0);
+	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / ThrottleRPMDenom);
+//	pRamVariables->ALSRequestedTorque
+	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * ThrottleBoostMult);
+	float ALSTPS = Pull3DHooked(ALSTPSTable, *pTargetIdleAir, *pEngineSpeed);					//Change to 2d??	//32bitbase!!!!
 
 	if (pRamVariables->ALSActive == 5)
 		{
@@ -163,7 +165,7 @@ void ThrottleKick()
 			pRamVariables->ALSTPS = *pTargetTPSIdle;
 		}
 }
-*/
+
 void RotationalFuelCut()
 {
 	short FuelCut;
@@ -200,7 +202,7 @@ void RollingAntiLag()
 			pRamVariables->FuelCut = *pFuelCut;
 		}
 }
-
+/*
 void PedalHack()// add back in adjustment Logic from throttlematch code?
 {
 	short offset = 8896;
@@ -221,7 +223,7 @@ void PedalHack()// add back in adjustment Logic from throttlematch code?
 AfterPedalHack();
 }
 
-/*
+
 void RotationalSparkCut()
 {
 	if (ALSCutMode == 2 && *pBoost >= DefaultALSBoostLimit)
