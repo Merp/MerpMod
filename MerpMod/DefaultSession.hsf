@@ -367,11 +367,14 @@
 [WINDOW_POSITION_STATE_DATA_VD3]
 [WINDOW_POSITION_STATE_DATA_VD4]
 [WINDOW_Z_ORDER]
-"C:\Documents and Settings\Scott\Desktop\Merp\MerpShiftlight_ALS\MerpMod\ALS.c" 
-"C:\Documents and Settings\Scott\Desktop\Merp\MerpShiftlight_ALS\MerpMod\Initializer.c" 
-"C:\Documents and Settings\Scott\Desktop\Merp\MerpShiftlight_ALS\MerpMod\SwitchChecks.c" 
-"C:\Documents and Settings\Scott\Desktop\Merp\MerpShiftlight_ALS\MerpMod\RevLimiter.c" 
-"C:\Documents and Settings\Scott\Desktop\Merp\MerpShiftlight_ALS\Disassembly" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Definition.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Externs.h" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Functions.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\Metadata.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\DriveMode.c" 
+"C:\Documents and Settings\Scott\Desktop\Disassembly" 
 "{WK_00000001_OUTPUT} WINDOW" 
 [TARGET_NAME]
 "SH-2E Simulator" "" 0 
@@ -396,7 +399,7 @@
 [STATUSBAR_DEBUGGER_PANESTATE_VD3]
 [STATUSBAR_DEBUGGER_PANESTATE_VD4]
 [DEBUGGER_OPTIONS]
-"[S|ROM_MODE|^"^"] [S|MAP|^"0x00000000,0xFFFEFFFF,EXT,16,202 0xFFFF0000,0xFFFFBFFF,RAM,32,101 0xFFFFC000,0xFFFFDFFF,EXT,16,202 0xFFFFE000,0xFFFFFFFF,I/O,16,202^"] [S|RESOURCE|^"0x00000000,0x000FFFFF,R/W 0x00E00000,0x00E003FF,R/W 0x00F00000,0x00F01FFF,R/W 0x07001000,0x070033FF,R/W 0x0E005000,0x0E0073FF,R/W 0x0F004000,0x0F0043FF,R/W 0x0F0F0000,0x0F0F03FF,R/W 0x80001000,0x800017FF,R/W 0x80002000,0x800023FF,R/W 0xFFFF0000,0xFFFFFFFF,R/W^"] [B|SIMIOF|0] [I|SIMIOADR|0x00000000]" 
+"[S|ROM_MODE|^"^"] [S|MAP|^"0x00000000,0xFFFEFFFF,EXT,16,202 0xFFFF0000,0xFFFFBFFF,RAM,32,101 0xFFFFC000,0xFFFFDFFF,EXT,16,202 0xFFFFE000,0xFFFFFFFF,I/O,16,202^"] [S|RESOURCE|^"0x00000000,0x000FFFFF,R/W 0x00E00000,0x00E003FF,R/W 0x00F00000,0x00F01BFF,R/W 0x07001000,0x070033FF,R/W 0x0E005000,0x0E0073FF,R/W 0x0F004000,0x0F0043FF,R/W 0x0F0F0000,0x0F0F03FF,R/W 0x80001000,0x800017FF,R/W 0x80002000,0x800023FF,R/W 0xFFFF0000,0xFFFFFFFF,R/W^"] [B|SIMIOF|0] [I|SIMIOADR|0x00000000] [V|VERSION|]" 
 [DOWNLOAD_MODULES]
 "$(PROJDIR)\TestRom\patched.bin" 0 "Binary" 0 0 1 0 
 "$(CONFIGDIR)\MerpMod.x" 0 "Elf/Dwarf2_KPIT" 0 0 1 0 

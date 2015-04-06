@@ -15,7 +15,7 @@
 
 #if ALS_HACKS
 
-float (*AfterAD)() __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sAfterAD;
+float (*AfterPedalHack)() __attribute__ ((section ("RomHole_Functions"))) = (float(*)()) sPedalSub;
 
 void AntiLag()
 {
@@ -201,7 +201,7 @@ void RollingAntiLag()
 		}
 }
 
-void ADHack()// add back in adjustment Logic from throttlematch code?
+void PedalHack()// add back in adjustment Logic from throttlematch code?
 {
 	short offset = 8896;
 	float scale = 341.12;
@@ -218,7 +218,7 @@ void ADHack()// add back in adjustment Logic from throttlematch code?
 		{
 			//pRamVariables->ALSRequestedTorque = 0.0;
 		}
-AfterAD();
+AfterPedalHack();
 }
 
 /*

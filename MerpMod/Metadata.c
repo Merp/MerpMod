@@ -817,7 +817,6 @@ const MetaReplace WGDCHook METADATA =
 		newval: (int)TPSHiJack,
 		name: STR(TPS BandPass Subroutine Hook)
 	};
-*/
 	const MetaReplace ADHook METADATA =
 	{
 		op: OpReplace4Bytes,
@@ -825,6 +824,15 @@ const MetaReplace WGDCHook METADATA =
 		oldval: sAfterAD,
 		newval: (int)ADHack,
 		name: STR(AD Hook)
+	};
+*/
+	const MetaReplace PedalHook METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPedalSub,
+		oldval: sPedalSub,
+		newval: (int)PedalHack,
+		name: STR(Pedal Hook)
 	};
 	const MetaReplace WGDCHiJackHook METADATA =
 	{

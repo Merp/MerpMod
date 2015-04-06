@@ -71,7 +71,7 @@ void FlexFineCorrect() ROMCODE;
 void MemoryHardReset() ROMCODE;
 void RotationalFuelCut() ROMCODE;
 void DisplacementOnDemand() ROMCODE;
-void ADHack() ROMCODE;
+void PedalHack() ROMCODE;
 void Timer(float Minutes, float Seconds) ROMCODE;
 void Timers(float Minutes, float Seconds, unsigned char Number) ROMCODE;
 void Timer1(float Minutes, float Seconds) ROMCODE;
