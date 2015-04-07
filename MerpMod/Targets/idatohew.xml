@@ -574,6 +574,7 @@
 <define name="sAfterAD"/>
 <define name="pPedalVoltage"/>
 <define name="pSubPedalVoltage"/>
+<define name="pTargetIdleAir"/>
 
 
     </category>

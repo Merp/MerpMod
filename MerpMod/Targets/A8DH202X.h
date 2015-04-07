@@ -260,6 +260,7 @@
 //#define hAfterReloadAD (0x000066b8)
 #define pPedalVoltage ((short*)0xFFFF5c00)
 #define pSubPedalVoltage ((short*)0xFFFF5c02)
+#define pTargetIdleAir ((float*)0xFFFF7b6c)
 
 
 /////////////////////

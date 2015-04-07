@@ -83,45 +83,42 @@ void AntiLag()
 			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed > ALSVehicleSpeedEnable && TestClutchSwitch())
 				{
 					pRamVariables->ALSActive = 0x04;
-					ThrottleKick();
 				}
 			else if (pRamVariables->ALSActive >= 3 && *pVehicleSpeed > ALSVehicleSpeedEnable)
 				{
-					pRamVariables->ALSRequestedTorque = 0.0;
 					pRamVariables->ALSActive = 0x03;
 				}
 			else if (pRamVariables->ALSActive == 5)
 				{
 					Timers(0.0, 5.0, 3);
-					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || pRamVariables->OEMAcceleratorPedal > ALSPedalThresh)
+					if (pRamVariables->TimerUp3 == 1 || *pVehicleSpeed > ALSVehicleSpeedDisable || *pAcceleratorPedal > ALSPedalThresh)
 						{
 							pRamVariables->ALSActive = 0x01;
 						}
 					else if (ALSCutMode == 1)
 						{
-							ThrottleKick();
-							//RotationalFuelCut();//Needs more Conditions to Work Right.
+							RotationalFuelCut();//Needs more Conditions to Work Right.
+						}
+					else if (ALSCutMode == 2)
+						{
+							//RotationalSparkCut();//Needs more Conditions to Work Right.
+							pRamVariables->FuelCut = *pFuelCut;//Delete After Implement of Sparkcut
 						}
 					else
 						{
 							pRamVariables->FuelCut = *pFuelCut;
-							ThrottleKick();
 							//	AntiLag Stuff
-							//RotationalSparkCut();
-							//RotationalFuelCut();
 							//RotationalComboCut();
 						}
 				}
 			else if (pRamVariables->ALSActive >= 3)
 				{
 					pRamVariables->ALSActive = 0x01;
-					pRamVariables->ALSRequestedTorque = 0.0;
 				}
 			else
 				{
-					pRamVariables->ALSRequestedTorque = 0.0;
 				}
-			if (RollingAntiLagEnabled == HackEnabled && pRamVariables->OEMAcceleratorPedal > ALSAcceleratorTrigger)
+			if (RollingAntiLagEnabled == HackEnabled && *pAcceleratorPedal > ALSAcceleratorTrigger)
 				{
 					RollingAntiLag();
 				}
@@ -134,15 +131,14 @@ void AntiLag()
 			pRamVariables->ALSActive = 0x00;
 			pRamVariables->FuelCut = *pFuelCut;
 		}
+	ThrottleKick();
 }
 
-void ThrottleKick()
+void ThrottleKick()//Idle Based
 {
-//	float ALSRevMax = (DefaultALSTargetIdleSpeed + ALSRPMDeltaLimit);//500 is ee238 in 0.999 build
 	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / ThrottleRPMDenom);
-//	pRamVariables->ALSRequestedTorque
 	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * ThrottleBoostMult);
-	float ALSTPS = Pull3DHooked(ALSTPSTable, *pTargetIdleAir, *pEngineSpeed);					//Change to 2d??	//32bitbase!!!!
+	float ALSTPS = Pull3DHooked(&ALSTPSTable, *pTargetIdleAir, pRamVariables->ALSActive);					//32bitbase!!!!
 
 	if (pRamVariables->ALSActive == 5)
 		{
@@ -155,14 +151,9 @@ void ThrottleKick()
 					pRamVariables->ALSTPS = ALSTPS + ALSTPSRPMComp;
 				}
 		}
-	else if (pRamVariables->ALSActive == 4)
-		{
-		//	pRamVariables->ALSTPS = pRamVariables->ALSRevMatch;	//	Rev Matching
-			pRamVariables->ALSTPS = *pTargetTPSIdle;
-		}
 	else
 		{
-			pRamVariables->ALSTPS = *pTargetTPSIdle;
+			pRamVariables->ALSTPS = ALSTPS;
 		}
 }
 
@@ -171,6 +162,23 @@ void RotationalFuelCut()
 	short FuelCut;
 	if (pRamVariables->ALSActive == 5 || pRamVariables->ALSActive == 4)
 		{
+			//ALS Specific Fuel Cut
+			if (pRamVariables->FuelCutRIM == 3)
+				{
+					FuelCut = 0x06;
+				}
+			else if (pRamVariables->FuelCutRIM == 6)
+				{
+					FuelCut = 0x0C;
+				}
+			else if (pRamVariables->FuelCutRIM == 9)
+				{
+					FuelCut = 0x03;
+				}
+			else
+				{
+					FuelCut = 0x09;
+				}
 		}
 	else
 		{
@@ -190,9 +198,9 @@ void RotationalFuelCut()
 				{
 					FuelCut = 0x09;
 				}
-			pRamVariables->FuelCutRIM = FuelCut;
-			pRamVariables->FuelCut = pRamVariables->FuelCutRIM;
 		}
+	pRamVariables->FuelCutRIM = FuelCut;
+	pRamVariables->FuelCut = pRamVariables->FuelCutRIM;
 }
 void RollingAntiLag()
 {
@@ -218,7 +226,6 @@ void PedalHack()// add back in adjustment Logic from throttlematch code?
 		}
 	else
 		{
-			//pRamVariables->ALSRequestedTorque = 0.0;
 		}
 AfterPedalHack();
 }

@@ -282,17 +282,14 @@ float	MaxSubtractiveKCA;
 	float TargetCLAFR;
 	float OpenLoopAFRmin;
 	float BaseTimingIdle;
-	float BaseTimingOutputMERP;//Delete after test
-	float PolfOutputMERP;//Delete after test
-	float ALSRequestedTorque;
 	float ALSTPS;
 	float ALSWGDC;
 	float ALSTargetIdleSpeed;
 	short FuelCut;
 	short FuelCutRIM;
-	short OEMPedalVolts;
-	short pedalempty;
-	float OEMAcceleratorPedal;
+//	short OEMPedalVolts;
+//	short pedalempty;
+//	float OEMAcceleratorPedal;
 	
 #if ALS_RAMTUNING
 	float ALSPOLFRamTuning;

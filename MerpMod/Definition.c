@@ -552,13 +552,12 @@ DEFNEW1D("ALS Vehicle Speed Minimum", ALSVehicleSpeedEnable);//Change to Rolling
 DEFNEW1D("AntiLag Vehicle Speed Maximum", ALSVehicleSpeedDisable);
 DEFNEW1D("Rotational Idle Vehicle Speed Maximum", RIMVehicleSpeedDisable);
 DEFNEW1D("ALS RPM Engage Threshold", ALSRPMLimit);
-DEFNEW1D("ALS Requested Torque", ALSRequestedTorque);
 DEFNEW1D("FCRI Accelerator Pedal Dectivation Threshold", FCRIPedalThresh);
 DEFNEW1D("ALS Accelerator Pedal Dectivation Threshold", ALSPedalThresh);
 DEFNEW1D("Rolling AntiLag Mode", RollingAntiLagEnabled);
 DEFNEW1D("Rotational Idle RPM Under Target Disable Threshold", DefaultRimRPMDiff);
 DEFNEW1D("ALS ECT Temp Minimum", ECTALSThreshold);
-DEFNEW1D("ALS Throttle Target", ALSTPSTable);//Change in 32bitbase! use same scalar WAS "ALS Throttle" defined
+DEFNEW3D("Target TPS Idle Airflow-Target Determined ALS", ALSTPSTable);
 //DEFNEW1D("Throttle Kick", PedalKick);
 DEFNEW1D("Displacement On Demand Mode",DODMode);
 //DEFNEW1D("ALS Over Target RPM Limit", ALSRPMDeltaLimit);

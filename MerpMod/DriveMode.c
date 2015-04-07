@@ -154,7 +154,7 @@ void DriveModeHack()
 
 		RequestedTorque = BlendAndSwitch(ReqTorqTableGroup, *pAcceleratorPedal, *pEngineSpeed);
 		pRamVariables->TargetIdleSpeed = TargetIdleSpeed;
-		pRamVariables->RequestedTorque = RequestedTorque + pRamVariables->ALSRequestedTorque;
+		pRamVariables->RequestedTorque = RequestedTorque;
 	}
 }
 

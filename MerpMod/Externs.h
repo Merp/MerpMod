@@ -348,6 +348,7 @@ extern float FlexRatioUserJump;
 extern float TargetCLAFR;
 extern float LeanCruiseLoadThreshold;
 extern TwoDTable O2SensorScalingMPGTable;
+extern ThreeDTable ALSTPSTable;
 extern float ALSWGDC;
 extern float ALSAVCS;
 extern float DefaultALSPOLFRamTuning;

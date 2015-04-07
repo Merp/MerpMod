@@ -92,7 +92,6 @@ EcuHacksMain();
 		else
 			{
 				pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);
-				pRamVariables->PolfOutputMERP = OutputValue;//DELETE AFTER TEST
 			}	
 #endif
 	//Now run existing code!	
