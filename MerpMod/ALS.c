@@ -97,7 +97,7 @@ void AntiLag()
 						}
 					else if (ALSCutMode == 1)
 						{
-							RotationalFuelCut();//Needs more Conditions to Work Right.
+							RotationalFuelCut();
 						}
 					else if (ALSCutMode == 2)
 						{
@@ -118,7 +118,7 @@ void AntiLag()
 			else
 				{
 				}
-			if (RollingAntiLagEnabled == HackEnabled && *pAcceleratorPedal > ALSAcceleratorTrigger)
+			if (RollingAntiLagEnabled == HackEnabled && *pVehicleSpeed >= ALSVehicleSpeedEnable)
 				{
 					RollingAntiLag();
 				}
@@ -138,7 +138,7 @@ void ThrottleKick()//Idle Based
 {
 	float ALSTPSRPMComp = ((pRamVariables->ALSTargetIdleSpeed - *pEngineSpeed) / ThrottleRPMDenom);
 	float ALSTPSBoostComp = ((*pManifoldAbsolutePressure - DefaultALSBoostLimit) * ThrottleBoostMult);
-	float ALSTPS = Pull3DHooked(&ALSTPSTable, *pTargetIdleAir, pRamVariables->ALSActive);					//32bitbase!!!!
+	float ALSTPS = Pull3DHooked(&ALSTPSTable, *pTargetIdleAir, pRamVariables->ALSActive);
 
 	if (pRamVariables->ALSActive == 5)
 		{
@@ -204,10 +204,14 @@ void RotationalFuelCut()
 }
 void RollingAntiLag()
 {
-	if (TestBrakeSwitch() && *pVehicleSpeed >= ALSVehicleSpeedEnable)//Maybe Switch Brake for Cruise Cancel or something?
+	if (TestCruiseMasterSwitch() && *pAcceleratorPedal > ALSAcceleratorTrigger)
 		{
 			pRamVariables->ALSActive = 0x04;
-			pRamVariables->FuelCut = *pFuelCut;
+			pRamVariables->FuelCut = *pFuelCut;//RotationalSparkCut();
+		}
+	else
+		{
+			//pRamVariables->FuelCut = *pFuelCut;
 		}
 }
 /*

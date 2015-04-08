@@ -18,7 +18,8 @@
 enum TableType3D
 {
 	UInt8Table3D = (unsigned long)0x04000000,
-	UInt16Table3D = (unsigned long)0x08000000
+	UInt16Table3D = (unsigned long)0x08000000,
+	FloatTable3D = (unsigned long)0x00000000
 };
 
 enum TableType2D

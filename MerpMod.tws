@@ -10,8 +10,12 @@
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
 "C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\DriveMode.c" 
 [WORKSPACE_FILE_STATES]
-"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" -4 -30 1200 846 1 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALS.c" 0 0 1216 846 0 2 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\ALSTables.c" 0 0 1043 846 0 3 
+"C:\Documents and Settings\Scott\Desktop\ECUHacks\Git\MerpMod\MerpMod\DriveMode.c" -4 -30 1524 941 1 4 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]

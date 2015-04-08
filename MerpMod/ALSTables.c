@@ -29,7 +29,7 @@ float ALSVehicleSpeedEnable SPEEDDENSITYDATA = 45.0f;//kph, 28mph = 45kph
 float ALSVehicleSpeedDisable SPEEDDENSITYDATA = 1.0f;//kph
 float RIMVehicleSpeedDisable SPEEDDENSITYDATA = 24.0f;//kph
 float ALSRPMLimit SPEEDDENSITYDATA = 2500.0f;
-float ThrottleRPMDenom SPEEDDENSITYDATA = 100.0f;
+float ThrottleRPMDenom SPEEDDENSITYDATA = 130.0f;
 float ThrottleBoostMult SPEEDDENSITYDATA = 5.0f;
 unsigned char ALSCutMode SPEEDDENSITYDATA = 0x00;
 unsigned char RIMCutMode SPEEDDENSITYDATA = 0x01;
@@ -46,15 +46,15 @@ float ECTALSThreshold SPEEDDENSITYDATA = 30.0f;//86 fahrenheit
 ThreeDTable ALSTPSTable __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4)));
 float ALSTPSCols[17] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
 {1.2,1.5,2.0,3.0,4.0,5.0,6.0,7.0,8.0,10.0,12.0,14.0,18.0,22.0,26.0,30.0,35.0};
-unsigned char ALSTPSRows[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
-{0,1,2,3,4,5};
-float ALSTPSData[102] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
-{0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0,
-0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0,
-0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0,
-0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0,
-0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0,
-0.074,0.354,0.788,1.595,2.334,3.023,3.683,4.255,4.827,5.855,6.863,7.765,9.463,10.99,12.80,15.35,20.0};
+float ALSTPSRows[6] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = 
+{0.0,1.0,2.0,3.0,4.0,5.0};
+short ALSTPSData[102] __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) =
+{33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808,
+33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808,
+33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808,
+33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808,
+33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808,
+33,156,347,702,1028,1331,1622,1874,2126,2579,3022,3420,4168,4840,5637,6760,8808};
 
 ThreeDTable ALSTPSTable __attribute__ ((section ("RomHole_SpeedDensityTables"),aligned(4))) = {
 	.columnCount = 17,
@@ -63,7 +63,7 @@ ThreeDTable ALSTPSTable __attribute__ ((section ("RomHole_SpeedDensityTables"),a
 	.rowHeaderArray = ALSTPSRows,
 	.tableCells = ALSTPSData,
 	.tableType = UInt16Table3D,
-	.multiplier = 1.0f,
+	.multiplier = 0.002270655357f,
 	.offset = 0 };
 
 
