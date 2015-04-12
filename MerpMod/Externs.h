@@ -20,6 +20,7 @@
 
 #if PORT_LOGGER
 void PortLogger() ROMCODE;
+void ADCLogger() ROMCODE;
 #endif
 
 #if RAM_HOLE_SCANNER

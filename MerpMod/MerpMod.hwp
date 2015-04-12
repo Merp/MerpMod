@@ -139,6 +139,11 @@
 "Object file" "GNU Linker" "GNU Assembler" 
 "Object file" "GNU Linker" "GNU Compiler" 
 [PROJECT_FILES]
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\PortLogger.c" "User" "C source file" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\RamHoleScanner.c" "User" "C source file" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\SH7055.h" "User" "C header file" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\SH7058.h" "User" "C header file" 2 
+"C:\Users\Merrill\Dev\MerpMod\MerpMod\SH72531.h" "User" "C header file" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BlendAndSwitch.c" "User" "C source file" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHackTables.c" "User" "C source file|Data & Tables" 2 
 "C:\Users\merrill\Dev\MerpMod\MerpMod\BoostHacks.c" "User" "C source file" 2 

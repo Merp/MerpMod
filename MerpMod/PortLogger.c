@@ -13,6 +13,7 @@
 */
 
 #include "EcuHacks.h"
+#include "SH7058.h"
 
 #if PORT_LOGGER
 
@@ -23,6 +24,7 @@ PACRH_W 0xFFFFF722
 PACRL_W 0xFFFFF724
 PADR_W 0xFFFFF726
 */
+#define PADR_W ((unsigned short*)0xFFFFF726)
 #define PAPR_W ((unsigned short*)0xFFFFF780)
 
 /*PBIOR_W 0xFFFFF730
@@ -31,6 +33,7 @@ PBCRL_W 0xFFFFF734
 PBIR_W 0xFFFFF736
 PBDR_W 0xFFFFF738
 */
+#define PBDR_W ((unsigned short*)0xFFFFF738)
 #define PBPR_W ((unsigned short*)0xFFFFF782)
 
 /*
@@ -45,6 +48,7 @@ PDCRH_W 0xFFFFF742
 PDCRL_W 0xFFFFF744
 PDDR_W 0xFFFFF746
 */
+#define PDDR_W ((unsigned short*)0xFFFFF746)
 #define PDPR_W ((unsigned short*)0xFFFFF784)
 
 /*
@@ -78,6 +82,7 @@ PJCRH_W 0xFFFFF768
 PJCRL_W 0xFFFFF76A
 PJDR_W 0xFFFFF76C
 */
+#define PJDR_W ((unsigned short*)0xFFFFF76C)
 #define PJPR_W ((unsigned short*)0xFFFFF786)
 
 /*
@@ -95,21 +100,22 @@ PLCRL_W 0xFFFFF75A
 PLIR_W 0xFFFFF75C
 PLDR_W 0xFFFFF75E
 */
+#define PLDR_W ((unsigned short*)0xFFFFF75E)
 #define PLPR_W ((unsigned short*)0xFFFFF788)
 
 
 unsigned short* PortAddresses[11] PORTDATA = {
-	PAPR_W,
-	PBPR_W,
+	PADR_W,
+	PBDR_W,
 	PCDR_W,
-	PDPR_W,
+	PDDR_W,
 	PEDR_W,
 	PFDR_W,
 	PGDR_W,
 	PHDR_W,
-	PJPR_W,
+	PJDR_W,
 	PKDR_W,
-	PLPR_W
+	PLDR_W
 };
 
 void PortLogger(){
@@ -123,6 +129,50 @@ void PortLogger(){
 	for(i = 0;i<count;i++)
 	{
 		pRamVariables->PortParameters[i] = *(PortAddresses[i]);
+	}
+}
+
+unsigned short* ADCAddresses[32] PORTDATA = {
+(unsigned short*)ADDR0H_B,
+(unsigned short*)ADDR1H_B,
+(unsigned short*)ADDR2H_B,
+(unsigned short*)ADDR3H_B,
+(unsigned short*)ADDR4H_B,
+(unsigned short*)ADDR5H_B,
+(unsigned short*)ADDR6H_B,
+(unsigned short*)ADDR7H_B,
+(unsigned short*)ADDR8H_B,
+(unsigned short*)ADDR9H_B,
+(unsigned short*)ADDR10H_B,
+(unsigned short*)ADDR11H_B,
+(unsigned short*)ADDR12H_B,
+(unsigned short*)ADDR13H_B,
+(unsigned short*)ADDR14H_B,
+(unsigned short*)ADDR15H_B,
+(unsigned short*)ADDR16H_B,
+(unsigned short*)ADDR17H_B,
+(unsigned short*)ADDR18H_B,
+(unsigned short*)ADDR19H_B,
+(unsigned short*)ADDR20H_B,
+(unsigned short*)ADDR21H_B,
+(unsigned short*)ADDR22H_B,
+(unsigned short*)ADDR23H_B,
+(unsigned short*)ADDR24H_B,
+(unsigned short*)ADDR25H_B,
+(unsigned short*)ADDR26H_B,
+(unsigned short*)ADDR27H_B,
+(unsigned short*)ADDR28H_B,
+(unsigned short*)ADDR29H_B,
+(unsigned short*)ADDR30H_B,
+(unsigned short*)ADDR31H_B
+};
+
+void ADCLogger(){
+	int i;
+	int count = (sizeof(ADCAddresses)/sizeof(ADCAddresses[0]));
+	for(i=0;i<count;i++)
+	{
+		pRamVariables->ADCParameters[i] = *ADCAddresses[i];
 	}
 }
 
