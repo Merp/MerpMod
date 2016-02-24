@@ -1,4 +1,6 @@
 #gitignore
+GITHASH
+MerpMod/GITHASH.h
 [Dd]ebug/
 [Mm]erp[Mm]od/[Rr]elease/
 [Mm]erp[Mm]od/[Tt]esting/
