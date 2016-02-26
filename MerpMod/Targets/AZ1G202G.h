@@ -1,7 +1,7 @@
-#define MOD_DATE 13.5.23.142
+#define MOD_DATE 14.5.15.1523
 
-#include "Flash.h"
-#define MOD_CONFIG Flash
+#include "Switch.h"
+#define MOD_CONFIG Switch
 #define MOD_BUILD Testing
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1G202G
@@ -16,6 +16,14 @@
 #define pRamHoleStart (0xFFFFA840)
 #define sPull2DFloat (0x000BE804)
 #define sPull3DFloat (0x000BE8B8)
+
+/////////////////////
+// Switch Hacks
+/////////////////////
+
+#define pTGVLeftVoltage ((unsigned short*)0xFFFF404A)
+#define pTGVRightVoltage ((unsigned short*)0xFFFF4028)
+#define sShortToFloat (0x000BE56C)
 
 /////////////////////
 // Rev Limit Hack
@@ -39,6 +47,7 @@
 /////////////////////
 
 #define dInjectorScaling ((float*)0x000C78A8)
+#define hInjectorScaling (0x0002B054)
 
 /////////////////////
 // Cel Hacks
@@ -52,26 +61,54 @@
 // Boost Hacks
 /////////////////////
 
+#define hPullTargetBoost (0x00014134)
+#define hTableTargetBoost (0x00014130)
+#define tTargetBoost (0x00086C50)
 
 /////////////////////
 // WGDC Hacks
 /////////////////////
 
+#define hPullWgdc (0x000145F8)
 #define hWgdc (0x000421A4)
 #define sWgdc (0x00013E80)
+#define hTableWgdcInitial (0x000145F4)
+#define tWgdcInitial (0x00086C34)
+#define hTableWgdcMax (0x00014614)
+#define tWgdcMax (0x00086C18)
 
 /////////////////////
 // Primary Open Loop Fueling Hacks
 /////////////////////
 
 #define pPolf4Byte (0xFFFF7458)
+#define hPull3DPolf (0x0002FDA0)
+#define hPolf (0x000426A8)
+#define sPolf (0x0002FB4C)
 #define pPolfEnrich (0xFFFF7458)
+#define tPolfKcaAlt (0x00089094)
+#define hTablePolfKcaAlt (0x0002FDB8)
+#define tPolfKcaBLo (0x000890B0)
+#define hTablePolfKcaBLo (0x0002FDBC)
+#define tPolfKcaBHi (0x00089024)
+#define hTablePolfKcaBHi (0x0002FD9C)
 
 /////////////////////
 // Timing Hacks
 /////////////////////
 
+#define hBaseTiming (0x0004276C)
 #define pBaseTiming (0xFFFF7988)
+#define sBaseTiming (0x00038B98)
+#define hPull3DTiming (0x00038E38)
+#define tBaseTimingPCruise (0x00089BA0)
+#define hTableBaseTimingPCruise (0x00038E34)
+#define tBaseTimingPNonCruise (0x00089BBC)
+#define hTableBaseTimingPNonCruise (0x00038E40)
+#define tBaseTimingRCruiseAvcs (0x00089BD8)
+#define hTableBaseTimingRCruiseAvcs (0x00038E3C)
+#define tBaseTimingRNonCruiseAvcs (0x00089BF4)
+#define hTableBaseTimingRNonCruiseAvcs (0x00038E44)
 #define pKcaIam (0xFFFF7CB0)
 
 /////////////////////
