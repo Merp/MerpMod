@@ -94,6 +94,7 @@
 #define pResumeFlags ((char*)0xFFFF4D64)
 #define ResumeBitMask ((char)0x04)
 #define pCoastFlags ((char*)0xFFFF4D64)
+#define CoastBitMask ((char)0x02)
 #define pBrakeFlags ((char*)0xFFFF4D64)
 #define BrakeBitMask ((char)0x08)
 #define pClutchFlags ((char*)0xFFFF51C9)
