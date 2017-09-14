@@ -16,7 +16,7 @@ The default tables included in the mods ARE NOT BASE MAPS, you will need to FIND
 
 This code can be compiled using a variety of different methods and toolchains. This will outline the method that I have used.
 
-Download and install latest GNUSH toolchain and Renesas HEW IDE from http://www.kpitgnutools.com/
+Download and install latest GNUSH toolchain and Renesas HEW IDE from https://gcc-renesas.com
 
 Clone this repository locally.
 
