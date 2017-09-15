@@ -16,7 +16,9 @@ The default tables included in the mods ARE NOT BASE MAPS, you will need to FIND
 
 This code can be compiled using a variety of different methods and toolchains. This will outline the method that I have used.
 
-Download and install latest GNUSH toolchain and Renesas HEW IDE from https://gcc-renesas.com
+Download and install latest Renesas HEW (High Performance Embedded Workshop) from https://www.renesas.com/en-us/products/software-tools/evaluation-software-tools.html (HEW is bundled with the C/C++ Compiler for SuperH Family)
+
+Download and install the latest GNUSH toolchain from https://gcc-renesas.com During the installation, opt to register the toolchain with HEW.
 
 Clone this repository locally.
 
