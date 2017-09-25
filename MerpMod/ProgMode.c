@@ -55,13 +55,13 @@
 	*/
 
 
-#define PROG_MODE_COUNT 4
+#define PROG_MODE_COUNT 5
 #define PROG_THROTTLE_HI 80.0f
 #define PROG_THROTTLE_LO 10.0f
 
 #define VALUE_FLASH_SPEED 2
 #define VALUE_FLASH_DELAY 32
-#define MODE_FLASH_SPEED 4
+#define MODE_FLASH_SPEED 6
 #define MODE_FLASH_DELAY 16
 
 #define BLEND_MAX 1.0f
@@ -256,19 +256,19 @@ void ProgModeBlendAdjust()
 	{
 		if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 		{	
-			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - 0.01f))
+			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - BLEND_STEP))
 				pRamVariables->MapBlendRatio = BLEND_MAX;
 			else
-				pRamVariables->MapBlendRatio+= BLEND_STEP;
+				pRamVariables->MapBlendRatio += BLEND_STEP;
 		
 			pRamVariables->ProgModeWait = BLEND_WAIT;
 		}
 		else if(TestBrakeSwitch() && pRamVariables->ProgModeWait ==0)
 		{
-			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + 0.01f))
+			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + BLEND_STEP))
 				pRamVariables->MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
 			else
-				pRamVariables->MapBlendRatio-= BLEND_STEP;
+				pRamVariables->MapBlendRatio -= BLEND_STEP;
 			pRamVariables->ProgModeWait = BLEND_WAIT;
 		}
 		else
@@ -284,7 +284,7 @@ void ProgModeBlendAdjust()
 void ProgModeLCAdjust()
 {
 	#if !AUTO_TRANS
-	if((*pThrottlePlate > 50) && pRamVariables->ProgModeWait == 0)
+	if((*pThrottlePlate > PROG_THROTTLE_HI) && pRamVariables->ProgModeWait == 0)
 	{	
 		pRamVariables->LaunchControlCut++;
 		if(pRamVariables->LaunchControlCut < pRamVariables->RedLineCut)
@@ -337,7 +337,7 @@ void ProgModeIAMAdjust()
 			pRamVariables->ProgModeWait--;
 	}
 	pRamVariables->ProgModeValue = *pIAM;
-	pRamVariables->ProgModeValueFlashes = (10*(1-IAM))+1;
+	pRamVariables->ProgModeValueFlashes = (10*(IAM))+1;
 }
 
 void ProgModeValetMode()

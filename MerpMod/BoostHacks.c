@@ -78,23 +78,31 @@ EcuHacksMain();
 	
 	pRamVariables->PGWGComp = PGWGComp;
 	
-	#if WGDC_LOCK
-	//Apply locks
-	if(*pEngineSpeed < RPMLockWGDC && *pThrottlePlate > ThrottleLockWGDC)
+	if(pRamVariables->BoostHackEnabled == 0x01)
 	{
-		pRamVariables->WGDCInitial = 100.0;
-		pRamVariables->WGDCMax = 100.0;
+		#if WGDC_LOCK
+		//Apply locks
+		if(*pEngineSpeed < RPMLockWGDC && *pThrottlePlate > ThrottleLockWGDC)
+		{
+			pRamVariables->WGDCInitial = 100.0;
+			pRamVariables->WGDCMax = 100.0;
+		}
+		else{
+		#endif
+	
+		pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
+		pRamVariables->WGDCMax = WGDCMax * PGWGComp;
+		
+		#if WGDC_LOCK
+		}
+		#endif
 	}
-	else{
-	#endif
-	
-	pRamVariables->WGDCInitial = WGDCInitial * PGWGComp;
-	pRamVariables->WGDCMax = WGDCMax * PGWGComp;
-	
-	#if WGDC_LOCK
+	else
+	{
+		pRamVariables->WGDCInitial = Pull3DHooked((void*)OEMWGDCInitialTable, *pReqTorque, *pEngineSpeed);
+		pRamVariables->WGDCMax = Pull3DHooked((void*)OEMWGDCMaxTable, *pReqTorque, *pEngineSpeed);	
 	}
-	#endif
-	
+		
 #endif
 
 	//Finish Pulling WGDC
@@ -153,7 +161,12 @@ void TargetBoostHack()
 	#endif
 	
 	pRamVariables->PGTBComp = PGTBComp;
-	pRamVariables->TargetBoost = TargetBoost * PGTBComp;
+	
+	if(pRamVariables->BoostHackEnabled == 0x01)
+		pRamVariables->TargetBoost = TargetBoost * PGTBComp;
+	else
+		pRamVariables->TargetBoost = Pull3DHooked((void*)OEMTargetBoostTable, *pReqTorque, *pEngineSpeed);	
+		
 	
 }
 #endif

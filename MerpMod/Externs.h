@@ -22,6 +22,10 @@
 void PortLogger() ROMCODE;
 #endif
 
+#if RAM_HOLE_SCANNER
+void RamHoleScanner() ROMCODE;
+#endif
+
 unsigned char TestBrakeSwitch()	ROMCODE;
 unsigned char TestClutchSwitch() ROMCODE;
 unsigned char TestCruiseResumeSwitch() ROMCODE;
@@ -44,6 +48,7 @@ void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char 
 void CelFlash()	ROMCODE;
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
+void InjectorHack() ROMCODE;
 void POLFHack()  ROMCODE;
 float TimingHack()  ROMCODE;
 float Pull2DRamHook(float* table, float xLookup) ROMCODE;
@@ -70,6 +75,8 @@ void SetClutch(int value) __attribute__ ((section ("Misc")));
 void SetBrake(int value) __attribute__ ((section ("Misc")));
 
 float Abs(float input) ROMCODE;
+float LowPass(float input, float limit) ROMCODE;
+float HighPass(float input, float limit) ROMCODE;
 
 void RevLimCode(void) ROMCODE;
 void RevLimReset(void) ROMCODE;
@@ -107,6 +114,7 @@ extern ThreeDTable TemperatureCompensationTable;
 extern ThreeDTable AtmosphericCompensationTable;
 extern ThreeDTable SDBlendingTable;
 
+extern TwoDTable InjectorScalingTable;
 
 extern unsigned char DefaultPolfHackEnabled;
 extern TableGroup FuelTableGroup;
@@ -121,6 +129,7 @@ extern unsigned char DefaultLCFuelMode;
 extern float DefaultLCFuelLock;
 extern float DefaultLCFuelEnrichMultiplier;
 
+extern unsigned char DefaultBoostHackEnabled;
 extern TableGroup PGWGTableGroup;
 extern ThreeDTable PGWGTable1i;
 extern ThreeDTable PGWGTable2i;
