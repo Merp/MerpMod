@@ -51,6 +51,10 @@
 #define SI_DRIVE
 #endif
 
+#ifdef dInjectorScaling
+#define InjectorScalingOem ((float*)dInjectorScaling)
+#endif
+
 #ifdef tPolf
 #define PrimaryOEMPolfTable tPolf
 #elif defined(tPolfKcaAlt) //TODO FIX THIS FOR NEWER CARS!!!!!
@@ -61,6 +65,18 @@
 #define PrimaryOEMTimingTable tBaseTiming
 #elif defined(tBaseTimingPNonCruise) //TODO FIX THIS FOR NEWER CARS!!!!!
 #define PrimaryOEMTimingTable tBaseTimingPNonCruise
+#endif
+
+#ifdef tTargetBoost
+#define OEMTargetBoostTable tTargetBoost
+#endif
+
+#ifdef tWgdcInitial
+#define OEMWGDCInitialTable tWgdcInitial
+#endif
+
+#ifdef tWgdcMax
+#define OEMWGDCMaxTable tWgdcMax
 #endif
 
 /* OLD STUFF
@@ -127,6 +143,5 @@
 #define pCelSignalOem				((char*)CEL_TRIGGER_BYTE)
 //#define pCruiseSignalOem			((char*)0x1234)//
 
-#define InjectorScalingOem ((float*)dInjectorScaling)
 #define pFlagsRevLimit				((char*)pFlagsRevLimit)
 */

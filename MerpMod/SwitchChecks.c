@@ -14,6 +14,7 @@
 
 #include "EcuHacks.h"
 
+#ifdef pBrakeFlags
 unsigned char TestBrakeSwitch()
 {
 	unsigned char result = *pBrakeFlags & BrakeBitMask;
@@ -22,6 +23,7 @@ unsigned char TestBrakeSwitch()
 	else
 		return 0x00;
 }
+#endif
 
 #ifdef pClutchFlags
 unsigned char TestClutchSwitch()
@@ -56,6 +58,7 @@ unsigned char TestCruiseCoastSwitch()
 }
 #endif
 
+#if defined(pCoastFlags) && defined(pResumeFlags)
 void TestCruiseControlToggles()
 {
 	unsigned char resume = TestCruiseResumeSwitch();
@@ -97,3 +100,5 @@ void TestCruiseControlToggles()
 	pRamVariables->CruiseCoastLast = coast;
 	pRamVariables->CruiseResumeLast = resume;
 }
+
+#endif

@@ -14,6 +14,20 @@
 
 #include "EcuHacks.h"
 
+#if SWITCH_HACKS && INJECTOR_HACKS
+
+void InjectorHack(){
+
+float OutputValue;
+
+OutputValue = Pull2DHooked(&InjectorScalingTable,pRamVariables->MapBlendRatio);
+
+pRamVariables->InjectorScaling = OutputValue;
+
+}
+
+#endif
+
 #if POLF_HOOK_DEFINED
 	void (*PolfHooked)() __attribute__ ((section ("RomHole_Functions"))) = (void(*)()) sPolf;
 
@@ -51,7 +65,7 @@ EcuHacksMain();
 	
 		pRamVariables->PolfTarget = OutputValue;
 	
-		if(pRamVariables->PolfHackEnabled == 0)
+		if(pRamVariables->PolfHackEnabled == 0x01)//TODO: ENUM
 			pRamVariables->PolfOutput = pRamVariables->PolfTarget;
 		else
 			pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
