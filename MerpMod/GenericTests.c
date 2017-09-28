@@ -29,10 +29,14 @@ void CallMemoryReset()
 }
 #endif
 
-
-
 void GenericTests() 
-{
+{	
+//	ComputeMassAirFlow((TwoDTable*)(0),1);
+#if CAN_HACKS
+	CustomCanService();
+	recieveCanMessage(1);	
+	CustomCanService();
+#endif
 	ResetRamVariables();
 	
 #if VIN_HACKS
@@ -73,7 +77,7 @@ void BrickBuster()
 
 #ifdef pRamHoleEnd
 unsigned int test = pRamHoleEnd;
-unsigned int end = &(pRamVariables->RamHoleEndMarker);
+unsigned int end = (unsigned int)&(pRamVariables->RamHoleEndMarker);
 if(test < end)
 Assert(0,"error in ram hole!");
 #endif

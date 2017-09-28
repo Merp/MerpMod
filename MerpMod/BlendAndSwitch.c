@@ -105,7 +105,8 @@ void InputUpdate()//TODO: put on SD branch
 		#ifdef pSiDrive
 		case MapSwitchingInputModeSiDrive:
 		{
-			switch(*pSiDrive)
+			switch(*(unsigned int*)pSiDrive)
+			{
 		
 			case SiDriveSS:
 			pRamVariables->MapSwitch = MapSwitch3;
@@ -124,6 +125,7 @@ void InputUpdate()//TODO: put on SD branch
 			break;
 			}
 		}
+	break;
 		#endif
 		
 		case MapSwitchingInputModeTGVLeft:

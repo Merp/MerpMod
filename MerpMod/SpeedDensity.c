@@ -18,6 +18,9 @@
 
 float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)
 {	
+#if CAN_HACKS
+	CustomCanService();
+#endif	
 	pRamVariables->MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);	
 
 #if VE_RAMTUNING

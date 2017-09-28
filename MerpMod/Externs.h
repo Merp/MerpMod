@@ -50,6 +50,20 @@ float CallSpeedDensityHook()  ROMCODE;
 void CelDoubleRepeat(unsigned char * CelFlashes1, unsigned char Speed1, unsigned char * CelFlashes2, unsigned char Speed2, unsigned char Delay1, unsigned char Delay2)  ROMCODE;
 void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char Delay, unsigned char Interrupt)  ROMCODE;
 void CelFlash()	ROMCODE;
+
+void CanSetup()	ROMCODE;
+void setupMailBox(unsigned char bus, unsigned char mailBox, unsigned short id, unsigned char mcs, unsigned char dlc) ROMCODE;
+void updateCanRaw(unsigned long addr, unsigned char type, unsigned char ccm, unsigned char bytePos) ROMCODE;
+void sendRamTuneMemoryReadRequest(unsigned char type, unsigned long addr) ROMCODE;
+void setupMailBoxStruct(CanMessageSetupStruct* cs) ROMCODE;
+void sendCanMessage(unsigned char ccm) ROMCODE;
+void recieveCanMessage(unsigned char ccm) ROMCODE;
+void updateCanDT(CanDataSendStuct* dt) ROMCODE;
+void CustomCanService() ROMCODE;
+unsigned short returnShifter(unsigned char c) ROMCODE;
+void sampleCallback(unsigned char* data) ROMCODE;
+void canCallbackRamTune(unsigned char* data) ROMCODE;
+
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
 void InjectorHack() ROMCODE;
@@ -273,6 +287,54 @@ extern float DefaultFlatFootShiftRpmThreshold;
 extern float LCAdjustStep;
 
 extern float ValetModeRevLim;
+
+#if CAN_HACKS
+extern CanMessageSetupStruct ccm00;
+extern CanMessageSetupStruct ccm01;
+extern CanMessageSetupStruct ccm02;
+extern CanMessageSetupStruct ccm03;
+extern CanMessageSetupStruct ccm04;
+extern CanMessageSetupStruct ccm05;
+extern CanMessageSetupStruct ccm06;
+extern CanMessageSetupStruct ccm07;
+//extern CanMessageSetupStruct *ccmGroup;
+
+
+extern CanDataSendStuct cmDT00;
+extern CanDataSendStuct cmDT01;
+extern CanDataSendStuct cmDT02;
+extern CanDataSendStuct cmDT03;
+extern CanDataSendStuct cmDT04;
+extern CanDataSendStuct cmDT05;
+extern CanDataSendStuct cmDT06;
+extern CanDataSendStuct cmDT07;
+extern CanDataSendStuct cmDT08;
+extern CanDataSendStuct cmDT09;
+extern CanDataSendStuct cmDT10;
+extern CanDataSendStuct cmDT11;
+extern CanDataSendStuct cmDT12;
+extern CanDataSendStuct cmDT13;
+extern CanDataSendStuct cmDT14;
+extern CanDataSendStuct cmDT15;
+extern CanDataSendStuct cmDT16;
+extern CanDataSendStuct cmDT17;
+extern CanDataSendStuct cmDT18;
+extern CanDataSendStuct cmDT19;
+extern CanDataSendStuct cmDT20;
+extern CanDataSendStuct cmDT21;
+extern CanDataSendStuct cmDT22;
+extern CanDataSendStuct cmDT23;
+extern CanDataSendStuct cmDT24;
+extern CanDataSendStuct cmDT25;
+extern CanDataSendStuct cmDT26;
+extern CanDataSendStuct cmDT27;
+extern CanDataSendStuct cmDT28;
+extern CanDataSendStuct cmDT29;
+extern CanDataSendStuct cmDT30;
+extern CanDataSendStuct cmDT31;
+extern CanDataSendStuct *cmDTGroup[];
+
+#endif
 
 #if VIN_HACKS
 extern const VinBlockStruct VinBlock;

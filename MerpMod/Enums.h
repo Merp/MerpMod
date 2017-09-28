@@ -168,3 +168,51 @@ typedef struct
 	long e1;
 	long e2;
 } VinBlockStruct;
+
+//////////////////////////////
+//Type Definitions for CAN_HACKS
+//////////////////////////////
+
+//MailboxModeConfiguration
+enum mcsModes
+{
+	mcsTrans = 0,
+	mcsRemoteFrameRx = 1,
+	mcsReceiveBase = 2,
+	mcsReceive = 3,
+	mcsTransRTR_RX = 4,
+	mcdTransRTR = 5,
+	mcsSettingProhibited = 6,
+	mcsInactive = 7,
+};
+
+typedef struct 
+{
+	unsigned long id;	//11 or 29 bit ID
+	unsigned long callback;//32Bit Callback Function
+	char ext;			//0 = standard, 1= ext
+	char dlc;			//0 to 8 bytes
+	char bus;			//0 = HCAN1, 1 = HCAN2
+	char mailBox;		//mb 0 to 31, 0 reserved for RX only, 
+	char mcs;			//mode Control
+	char nmc;			//nmc
+	unsigned short rate;	//Rate to send from 1 to 65535 mSec
+} CanMessageSetupStruct;
+
+
+enum canDTtypes
+{
+	dtUndefined = 0,
+	dtChar = 1,
+	dtShort = 2,
+	dtLong = 3,
+	dtFloat = 4,
+};
+
+typedef struct 
+{
+	unsigned long addr;	//U32 Address 0xFFFF0000 and greater is allowed
+	char type;	//enum canDTtypes, must be 1...4
+	char ccm;	//linked ccm Message, must be 0...7
+	char bytePos;	//data position, umust be 0..7, needs to be byte alligned if U16,U32, or float, 
+} CanDataSendStuct;
