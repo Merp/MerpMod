@@ -96,13 +96,13 @@ void updateCanRaw(unsigned long addr, unsigned char type, unsigned char ccm, uns
 {
 	unsigned long addrtemp;
 	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);
-	if(addr >= 0xFFFF0000)
+	if(addr >= 0xFFFF0000 || addr < 0x000FFFFF)
 	{		
 		addrtemp = 0xFFFFD100;
-		addrtemp += 0x800*(unsigned long)ccmGroup[ccm].bus;
-		addrtemp += 0x020*(unsigned long)ccmGroup[ccm].mailBox;
-		addrtemp += 0x08;
-		addrtemp += (unsigned long)bytePos&0x07;	
+		addrtemp += 0x800*(unsigned long)(ccmGroup[ccm].bus&0x01);
+		addrtemp += 0x020*(unsigned long)(ccmGroup[ccm].mailBox&0x1F);
+		addrtemp += 0x08; //Move to Data Field
+		addrtemp += (unsigned long)bytePos&0x07;	//Offset in Data Field
 		switch(type)
 		{
 		case 1: 
@@ -269,70 +269,127 @@ void sampleCallback(unsigned char* data)
 
 void canCallbackRamTune(unsigned char* data)
 {
-	if(data[2] == 0x55) // Write to RAM
+	unsigned char* ptrC;
+	unsigned short* ptrS;
+	unsigned long* ptrL;
+	unsigned long addr;
+	switch(data[0]&0xF0)
 	{
-		unsigned long addr = (unsigned long)(0xFFFF0000 + (unsigned long)data[0]*256 + (unsigned long)data[1]);
-		switch(data[3])
-		{
-			case 1:		// Write to 1 byte
-				if((addr%1)==0)
-				{
-					unsigned char* ptr = (unsigned char*)addr;
-					ptr[0] = data[4];			
-				}
+		case 0x50 :	//RAM Write	
+			addr = 0xFFFF0000;
+			addr += (unsigned long)data[1]*256;
+			addr += (unsigned long)data[2];			
+			switch(data[3])
+			{			
+				case 1:		// Write to 1 byte
+					if((addr%1)==0)
+					{
+						ptrC = (unsigned char*)addr;
+						ptrC[0] = data[4];	
+						unsigned long retWord = addr&0x00FFFFFF+0xD1000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);										
+						sendCanMessage(7);					
+					}
+					break;
+				case 2:		// Write to 2 byte
+					if((addr%2)==0)
+					{
+						ptrS = (unsigned short*)addr;
+						ptrS[0] = (unsigned short)(data[4]*256+data[5]);			
+						unsigned long retWord = addr&0x00FFFFFF+0xD2000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);										
+						sendCanMessage(7);					
+					}
+					break;
+				case 3:		// Write to 4 byte
+					if((addr%4)==0)
+					{
+						ptrL = (unsigned long*)addr;
+						ptrL[0] = (unsigned long)(data[4]*256*256*256+data[5]*256*256+data[6]*256+data[7]);			
+						unsigned long retWord = addr&0x00FFFFFF+0xD3000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);										
+						sendCanMessage(7);					
+					}
+					break;
+				default :
+					break;
+			}
+		break;
+		case 0x60 :		//RAM Read
+			addr = (unsigned long)(0xFFFF0000 + (unsigned long)data[1]*256 + (unsigned long)data[2]);
+			switch(data[3])
+			{
+				case 1:		// Write to 1 byte
+					if((addr%1)==0)
+					{	
+						unsigned long retWord = addr&0x00FFFFFF+0xE1000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);				
+						updateCanRaw(addr, 1, 7, 4);
+						sendCanMessage(7);													
+					}
+					break;
+				case 2:		// Write to 2 byte
+					if((addr%2)==0)
+					{
+						unsigned long retWord = addr&0x00FFFFFF+0xE1000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);				
+						updateCanRaw(addr, 2, 7, 4);
+						sendCanMessage(7);													
+					}
+					break;
+				case 3:		// Write to 4 byte
+					if((addr%4)==0)
+					{
+						unsigned long retWord = addr&0x00FFFFFF+0xE1000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);				
+						updateCanRaw(addr, 3, 7, 4);
+						sendCanMessage(7);													
+					}
 				break;
-			case 2:		// Write to 2 byte
-				if((addr%2)==0)
-				{
-					unsigned short* ptr = (unsigned short*)addr;
-					ptr[0] = (unsigned short)(data[4]*256+data[5]);			
-				}
+				default: break;
+			}
+		break;
+		case 0x70 :		//Flash Read
+			addr = (unsigned long)(0x00000000 + (unsigned long)(data[0]&0x0F)*256*256 + (unsigned long)data[1]*256 + (unsigned long)data[2]);
+			switch(data[3])
+			{
+				case 1:		// Write to 1 byte
+					if((addr%1)==0)
+					{			
+						unsigned long retWord = addr+0xF1000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);
+						updateCanRaw(addr, 1, 7, 4);
+						sendCanMessage(7);													
+					}
+					break;
+				case 2:		// Write to 2 byte
+					if((addr%2)==0)
+					{
+						unsigned long retWord = addr+0xF2000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);
+						updateCanRaw(addr, 2, 7, 4);
+						sendCanMessage(7);													
+					}
+					break;
+				case 3:		// Write to 4 byte
+					if((addr%4)==0)
+					{
+						unsigned long retWord = addr+0xF3000000;		
+						updateCanRaw((unsigned long)&retWord, 3, 7, 0);
+						updateCanRaw(addr, 3, 7, 4);
+						sendCanMessage(7);													
+					}
 				break;
-			case 3:		// Write to 4 byte
-				if((addr%4)==0)
-				{
-					unsigned long* ptr = (unsigned long*)addr;
-					ptr[0] = (unsigned long)(data[4]*256*256*256+data[5]*256*256+data[6]*256+data[7]);			
-				}
-				break;
-			default: break;
-		}
-	}
-	else if(data[2] == 0x66)
-	{
-		unsigned long addr = (unsigned long)(0xFFFF0000 + (unsigned long)data[0]*256 + (unsigned long)data[1]);
-		switch(data[3])
-		{
-			case 1:		// Write to 1 byte
-				if((addr%1)==0)
-				{					
-					updateCanRaw(addr, 1, 7, 4);
-					sendCanMessage(7);													
-				}
-				break;
-			case 2:		// Write to 2 byte
-				if((addr%2)==0)
-				{
-					updateCanRaw(addr, 2, 7, 4);
-					sendCanMessage(7);													
-				}
-				break;
-			case 3:		// Write to 4 byte
-				if((addr%4)==0)
-				{
-					updateCanRaw(addr, 3, 7, 4);
-					sendCanMessage(7);													
-				}
-			break;
-			default: break;
-		}
+				default: break;
+			}
+		default: break;
 	}
 }
   
 void CanSetup()
 {
 	unsigned char i = 0;
-	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);
+	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);	
 	while(i< 8)
 	{
 		if(ccmGroup[i].mcs < 7)
@@ -350,9 +407,10 @@ void CustomCanService()
 {
 	unsigned char i = 0;
 	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);
+	unsigned char* ptrMB = (unsigned char*)(0xFFFFD100 + 0x800*(ccmGroup[0].bus&0x01) + 0x20*(ccmGroup[0].mailBox&0x1f) + 0x04);		
 	
 	pRamVariables->randomTimer++;
-	if(pRamVariables->initFunctionRun != 1)
+	if((pRamVariables->initFunctionRun != 1) || (ccmGroup[0].mcs != (ptrMB[0]&0x07)))
 	{
 		CanSetup();
 	}
