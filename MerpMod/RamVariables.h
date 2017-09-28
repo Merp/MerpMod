@@ -35,12 +35,12 @@ typedef struct
 	float InjectorScaling;
 	float InjectorScalingMultiplier;
 #endif
-	
-#if CAN_HACKS
-	unsigned char initFunctionRun;
-	unsigned char randomTimer;
+
+#if CAN_HACKS	
 	unsigned short ccmSendTimers[8];
 	unsigned short sdTimer;
+	unsigned char initFunctionRun;
+	unsigned char randomTimer;
 #endif
 
 #if SPARK_CUT
@@ -64,6 +64,7 @@ typedef struct
 	float TGVRightVolts;
 	float TGVLeftScaled;
 	float TGVRightScaled;
+
 #endif
 
 #if SD_HACKS
