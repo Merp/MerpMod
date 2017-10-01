@@ -35,7 +35,7 @@ void Assert(int condition, unsigned char *message)
 void DemonstrateAssertionFailure() __attribute__ ((section ("Misc")));
 void DemonstrateAssertionFailure()
 {
-	Assert(0, "Just to prove that assertions can fail.");
+	//Assert(0, "Just to prove that assertions can fail.");
 }
 
 void ClearRam() __attribute__ ((section ("Misc")));

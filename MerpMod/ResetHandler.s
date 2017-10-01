@@ -43,6 +43,7 @@ _ResetHandler:
 				!!mov.l	DemonstrateAssertionFailure, r0
 				!!jsr		@r0
 				!!nop
+
 				
 				mov.l	GenericTests,r0			
 				jsr		@r0			
