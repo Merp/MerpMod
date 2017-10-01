@@ -22,19 +22,38 @@ void GenericTests() __attribute__ ((section ("Misc")));
 #ifdef sMemoryReset
 
 void CallMemoryReset()
-{
+{		
 	void (*func)() = (void(*)()) sMemoryReset;
 	(*func)();//(*pMafSensorVoltage);
 	//return *pMassAirFlow;
 }
 #endif
 
+#if RACEGRADE_KEYPAD_HACKS
+unsigned char dt1[8] ROMCODE = {0x06,0,0,0,0,0,0,0};
+unsigned char dt2[8] ROMCODE = {1,0,0,0,0,0,0,0};
+unsigned char dt3[8] ROMCODE = {0,0,0,0,0,0,0,0};
+#endif
 void GenericTests() 
 {	
 //	ComputeMassAirFlow((TwoDTable*)(0),1);
+
+	/**pEngineLoad = 2.23;	
+	float (*fCalcFuelAmmount)() = (void(*)()) (0x030Be0);
+		float r = (*fCalcFuelAmmount)();
+	*/	
 #if CAN_HACKS
+
+	#if RACEGRADE_KEYPAD_HACKS
+		raceGradeKeyPadCallback(&dt1[0]);
+		raceGradeKeyPadCallback(&dt2[0]);
+		raceGradeKeyPadCallback(&dt3[0]);
+		raceGradeKeyPadCallback(&dt3[0]);
+	#endif
+//	canCallbackRamTune((unsigned char*)&dt[0]);
+	pRamVariables->initFunctionRun = 0;
+	CanSetup();
 	CustomCanService();
-	recieveCanMessage(1);	
 	CustomCanService();
 #endif
 	ResetRamVariables();

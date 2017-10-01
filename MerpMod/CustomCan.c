@@ -260,11 +260,52 @@ void recieveCanMessage(unsigned char ccm)
 	}
 }
 
-void sampleCallback(unsigned char* data)
+unsigned long shC[24] CANDATA = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4192304,8388608};
+
+void raceGradeKeyPadCallback(unsigned char* data)
 {
-	data[0] += 1;	
-	data[1] += 2;
-	data[2] += 3;
+	unsigned char i = 0;
+	unsigned char statenew = 0;
+	while(i<8)
+	{
+		statenew = ((data[0]&shC[i]) == shC[i]) ? 1 : 0;
+		if(statenew>pRamVariables->buttons[i].state)
+		{
+			pRamVariables->buttons[i].edgeDetect = edgeRising;
+			pRamVariables->buttons[i].led = 1;
+		}
+		else if(statenew < pRamVariables->buttons[i].state)
+		{
+			pRamVariables->buttons[i].edgeDetect = edgeFailing;
+			pRamVariables->buttons[i].led = 4;
+		}
+		else
+		{
+			pRamVariables->buttons[i].edgeDetect = edgeNA;
+			if(statenew==1)
+				pRamVariables->buttons[i].led = 2;
+			else
+				pRamVariables->buttons[i].led = 0;
+				
+		}
+		pRamVariables->buttons[i].state = statenew;
+		i++;	
+	}
+	
+	unsigned long leds = 0;
+	unsigned long ledTemp = 0;
+	i=0;
+	while(i<8)
+	{
+		ledTemp = ((unsigned long)(pRamVariables->buttons[i].led&0x07)*shC[i*3]);
+		leds += ledTemp;
+		i++;	
+	}
+	
+	ledTemp = ((leds&0xFF)<<24) + ((leds>>8&0xFF)<<16) + ((leds>>16&0xFF)<<8);
+	updateCanRaw((unsigned long)&ledTemp,3,2,0);
+	sendCanMessage(2);
+	
 }
 
 void canCallbackRamTune(unsigned char* data)
@@ -399,6 +440,11 @@ void CanSetup()
 		i++;
 	}
 	pRamVariables->initFunctionRun = 1;
+	#if RACEGRADE_KEYPAD_HACKS
+		unsigned short setupCOP = 0x010A;
+		updateCanRaw((unsigned long)&setupCOP,2,3,0);
+		sendCanMessage(3);
+	#endif
 }
 
 

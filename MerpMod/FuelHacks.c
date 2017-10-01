@@ -67,6 +67,8 @@ EcuHacksMain();
 			pRamVariables->PolfOutput = OutputValue;
 		else
 			pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
+			
+		pRamVariables->PolfOutputFP = (unsigned char)((pRamVariables->PolfOutput-9)*44.7); //9=0x00, 14.7 = 0xFF
 #endif
 		
 	PolfHooked();

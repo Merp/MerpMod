@@ -34,6 +34,7 @@
 #define PGWG_HACKS 0		//
 #define INJECTOR_HACKS 0	//
 #define CAN_HACKS 1			//
+#define RACEGRADE_KEYPAD_HACKS 1			//
 							//
 //////////////////////////////
 							

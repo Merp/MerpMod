@@ -200,6 +200,11 @@ DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
 DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
 DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
 #endif
+
+
+#if CAN_HACKS
+//DEFNEW1D("Custom Can Messages",ccm00);
+#endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);
 
@@ -522,6 +527,7 @@ DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
 DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	
 DEFNEW1D("Default Launch Control Timing Retard Multiplier",DefaultLCTimingRetardMultiplier);
 DEFNEW3D("Launch Control Timing Retard Table",LCTimingRetardTable);
+DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);
 	
 #if SWITCH_HACKS
 DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);

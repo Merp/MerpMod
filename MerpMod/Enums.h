@@ -216,3 +216,19 @@ typedef struct
 	char ccm;	//linked ccm Message, must be 0...7
 	char bytePos;	//data position, umust be 0..7, needs to be byte alligned if U16,U32, or float, 
 } CanDataSendStuct;
+
+#if RACEGRADE_KEYPAD_HACKS
+enum buttonStateRG
+{
+	edgeNA = 0,
+	edgeRising = 1,
+	edgeFailing = 2,
+};
+
+typedef struct  
+{
+	unsigned char state;
+	unsigned char led;
+	unsigned char edgeDetect;	
+}buttonRGStruct;
+#endif

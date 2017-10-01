@@ -61,7 +61,7 @@ void recieveCanMessage(unsigned char ccm) ROMCODE;
 void updateCanDT(CanDataSendStuct* dt) ROMCODE;
 void CustomCanService() ROMCODE;
 unsigned short returnShifter(unsigned char c) ROMCODE;
-void sampleCallback(unsigned char* data) ROMCODE;
+void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
 void canCallbackRamTune(unsigned char* data) ROMCODE;
 
 void WGDCHack(void) ROMCODE;
