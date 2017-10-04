@@ -84,6 +84,7 @@ void RevLimUnitTest(unsigned char flag, int brake, int clutch, float throttle, f
 	*pThrottlePlate = throttle;
 	*pEngineSpeed = rpm;
 	*pVehicleSpeed = mph;
+	*pThrottlePlate = throttle;
 
 	//Clear flag
 	*pFlagsRevLim = flag;

@@ -58,11 +58,13 @@ void sendRamTuneMemoryReadRequest(unsigned char type, unsigned long addr) ROMCOD
 void setupMailBoxStruct(CanMessageSetupStruct* cs) ROMCODE;
 void sendCanMessage(unsigned char ccm) ROMCODE;
 void recieveCanMessage(unsigned char ccm) ROMCODE;
-void updateCanDT(CanDataSendStuct* dt) ROMCODE;
+void updateCanDT(unsigned char dt) ROMCODE;
 void CustomCanService() ROMCODE;
 unsigned short returnShifter(unsigned char c) ROMCODE;
 void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
 void canCallbackRamTune(unsigned char* data) ROMCODE;
+void canCallbackAEMwideband(unsigned char* data) ROMCODE;
+void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
 
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
@@ -77,9 +79,16 @@ float Pull2DRamHookStartupEnrich3(float* table, float xLookup) ROMCODE;
 float Pull3DRamHook(float* table, float xLookup, float yLookup) ROMCODE;
 void VinCheck() ROMCODE;
 
-void ProgModeListener()  ROMCODE;
 void ProgModeMain()  ROMCODE;
-void ProgModeCruiseToggled(unsigned char) ROMCODE;
+
+void ProgModeButtonToggled(unsigned char) ROMCODE;
+
+void ProgModeMapSwitch()  ROMCODE;
+void ProgModeBlendAdjust()  ROMCODE;
+void ProgModeLCAdjust()  ROMCODE;
+void ProgModeIAMAdjust() ROMCODE;
+void ProgModeValetMode() ROMCODE;
+void ProgModeRaceGradeBackLight() ROMCODE;
 
 void LCAdjustCruiseToggled(unsigned char) ROMCODE;
 
@@ -94,6 +103,9 @@ float HighPass(float input, float limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
 float Smooth(float smoothingFactor, float input, float previous) ROMCODE;
+unsigned char limit_u8(float input) ROMCODE;
+unsigned short limit_u16(float input) ROMCODE;
+unsigned long limit_u32(float input) ROMCODE;
 
 void RevLimCode() ROMCODE;
 void RevLimReset() ROMCODE;
@@ -289,6 +301,10 @@ extern float LCAdjustStep;
 extern float ValetModeRevLim;
 
 #if CAN_HACKS
+#define ccmCount 10
+#define RACEGRADE_LED_CCM 1
+#define RACEGRADE_CANOPEN_START 3
+#define RAMETUNE_RESPONSE 5
 extern CanMessageSetupStruct ccm00;
 extern CanMessageSetupStruct ccm01;
 extern CanMessageSetupStruct ccm02;
@@ -297,42 +313,17 @@ extern CanMessageSetupStruct ccm04;
 extern CanMessageSetupStruct ccm05;
 extern CanMessageSetupStruct ccm06;
 extern CanMessageSetupStruct ccm07;
-//extern CanMessageSetupStruct *ccmGroup;
+extern CanMessageSetupStruct ccm08;
+extern CanMessageSetupStruct ccm09;
 
-
-extern CanDataSendStuct cmDT00;
-extern CanDataSendStuct cmDT01;
-extern CanDataSendStuct cmDT02;
-extern CanDataSendStuct cmDT03;
-extern CanDataSendStuct cmDT04;
-extern CanDataSendStuct cmDT05;
-extern CanDataSendStuct cmDT06;
-extern CanDataSendStuct cmDT07;
-extern CanDataSendStuct cmDT08;
-extern CanDataSendStuct cmDT09;
-extern CanDataSendStuct cmDT10;
-extern CanDataSendStuct cmDT11;
-extern CanDataSendStuct cmDT12;
-extern CanDataSendStuct cmDT13;
-extern CanDataSendStuct cmDT14;
-extern CanDataSendStuct cmDT15;
-extern CanDataSendStuct cmDT16;
-extern CanDataSendStuct cmDT17;
-extern CanDataSendStuct cmDT18;
-extern CanDataSendStuct cmDT19;
-extern CanDataSendStuct cmDT20;
-extern CanDataSendStuct cmDT21;
-extern CanDataSendStuct cmDT22;
-extern CanDataSendStuct cmDT23;
-extern CanDataSendStuct cmDT24;
-extern CanDataSendStuct cmDT25;
-extern CanDataSendStuct cmDT26;
-extern CanDataSendStuct cmDT27;
-extern CanDataSendStuct cmDT28;
-extern CanDataSendStuct cmDT29;
-extern CanDataSendStuct cmDT30;
-extern CanDataSendStuct cmDT31;
-extern CanDataSendStuct *cmDTGroup[];
+#define cmDTCount 32
+extern unsigned long cmDTaddr[];
+extern unsigned char cmDTtypeIn[];
+extern unsigned char cmDTtypeOut[];
+extern unsigned char cmDTccm[];
+extern unsigned char cmDTpos[];
+extern float cmDTscale[];
+extern float cmDToffset[];
 
 #endif
 

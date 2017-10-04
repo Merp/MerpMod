@@ -204,6 +204,13 @@ DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
 
 #if CAN_HACKS
 //DEFNEW1D("Custom Can Messages",ccm00);
+DEFNEW1D("Custom Can Data Transfer Address", cmDTaddr);
+DEFNEW1D("Custom Can Data Transfer Type In", cmDTtypeIn);
+DEFNEW1D("Custom Can Data Transfer Type Out", cmDTtypeOut);
+DEFNEW1D("Custom Can Data Transfer Position", cmDTpos);
+DEFNEW1D("Custom Can Data Transfer Message", cmDTccm);
+DEFNEW1D("Custom Can Data Transfer Scale", cmDTscale);
+DEFNEW1D("Custom Can Data Transfer Offset", cmDToffset);
 #endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);

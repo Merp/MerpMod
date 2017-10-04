@@ -37,22 +37,27 @@ typedef struct
 #endif
 
 #if CAN_HACKS	
+	float ethanolContentCAN;
+	unsigned short ethanolContentShortCAN;
 	unsigned short ccmSendTimers[8];
 	unsigned short sdTimer;
-	unsigned char initFunctionRun;
+	
+	unsigned short initFunctionRun;
 	unsigned char randomTimer;
+	unsigned char rgBackLight;
 	
 	#if RACEGRADE_KEYPAD_HACKS
-		buttonRGStruct buttons[8];/* = {
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0},
-		{.state = 0, .led = 0, .edgeDetect=0}};*/
-
+		buttonRGStruct buttons[8];
+	#endif
+	
+	#if AEMXFINITY
+		float canE85;
+		float canFuelTemp;
+		float aemLambda;
+		float aemOxygen;
+		unsigned char aemDataValid;
+		unsigned char aemSensorFault;
+		
 	#endif
 #endif
 

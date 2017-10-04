@@ -24,8 +24,8 @@
 #define SWITCH_HACKS 1		//
 #define SD_HACKS	1		//
 #define REVLIM_HACKS 1		//
-#define	LC_ADJ_HACKS 0		//
-#define PROG_MODE 0			//
+#define	LC_ADJ_HACKS 1		//
+#define PROG_MODE 1			//
 #define SPARK_HACKS 0		//
 #define CEL_HACKS 1			//
 #define BOOST_HACKS 1		//
@@ -41,7 +41,7 @@
 //////////////////////////////
 							//
 #define RAM_PERSIST 1		//
-#define VE_RAMTUNING 0		//
+#define VE_RAMTUNING 1		//
 #define POLF_RAMTUNING 0	//
 #define TIMING_RAMTUNING 0	//
 #define PGWG_RAMTUNING 0	//

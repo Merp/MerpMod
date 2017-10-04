@@ -63,10 +63,6 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 		#endif
 #endif
 
-#if PROG_MODE
-	ProgModeListener();
-#endif
-
 #if CRUISE_CONTROL
 	TestCruiseControlToggles();
 #endif

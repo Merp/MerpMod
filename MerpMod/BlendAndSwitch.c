@@ -79,7 +79,10 @@ void InputUpdate()//TODO: put on SD branch
 	pRamVariables->TGVLeftScaled = Smooth(LeftTGVInputSmoothingFactor,Pull2DHooked(&TGVLeftScaling,pRamVariables->TGVLeftVolts), pRamVariables->TGVLeftScaled) * LeftTGVInputMultiplier + LeftTGVInputOffset;
 	pRamVariables->TGVRightScaled = Smooth(RightTGVInputSmoothingFactor,Pull2DHooked(&TGVRightScaling,pRamVariables->TGVRightVolts), pRamVariables->TGVRightScaled) * RightTGVInputMultiplier + LeftTGVInputOffset;
 	
-	switch(pRamVariables->MapBlendingInputMode)
+	pRamVariables->ethanolContentCAN = (float)pRamVariables->ethanolContentShortCAN/655.35f;
+
+	
+	switch(BlendRatioInput)
 	{
 		case MapBlendingInputModeUndefined:
 		break;
@@ -92,12 +95,16 @@ void InputUpdate()//TODO: put on SD branch
 			pRamVariables->MapBlendRatio = pRamVariables->TGVRightScaled;
 			break;
 		
+		case InputCanFlexFuelRatio:
+			pRamVariables->MapBlendRatio = pRamVariables->ethanolContentCAN;
+			break;
+		
 		default:
 			pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
 			break;
 	}
 	
-	switch(pRamVariables->MapSwitchingInputMode)
+	switch(MapSwitchInput)
 	{
 		case MapSwitchingInputModeUndefined:
 		break;

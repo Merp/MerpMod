@@ -100,10 +100,10 @@ void TestCruiseControlToggles()
 		if(resume != 0)
 		{
 			#if PROG_MODE
-			ProgModeCruiseToggled(ToggleResume);
+		//	ProgModeCruiseToggled(ToggleResume);
 			#endif
 			#if LC_ADJUST
-			LCAdjustCruiseToggled(ToggleResume);
+		//	LCAdjustCruiseToggled(ToggleResume);
 			#endif
 		}
 	}
@@ -112,10 +112,10 @@ void TestCruiseControlToggles()
 		if(coast != 0)
 		{
 			#if PROG_MODE
-			ProgModeCruiseToggled(ToggleCoast);
+		//	ProgModeCruiseToggled(ToggleCoast);
 			#endif
 			#if LC_ADJUST
-			LCAdjustCruiseToggled(ToggleCoast);
+			//LCAdjustCruiseToggled(ToggleCoast);
 			#endif
 		}
 	}
