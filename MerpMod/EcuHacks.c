@@ -52,6 +52,8 @@ Validating hacks prior to ROM patching:
 
 #include "EcuHacks.h"
 
+
+
 void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 {	
 	
@@ -63,6 +65,8 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 		#endif
 #endif
 
+	pRamVariables.ecuHacksMainCtr++;
+	
 #if CRUISE_CONTROL
 	TestCruiseControlToggles();
 #endif

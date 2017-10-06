@@ -151,6 +151,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "User" "C source file|Tests" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "User" "C source file|Data & Tables" 2 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "User" "C source file|Tests" 2 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "User" "C source file" 2 
@@ -170,6 +171,7 @@
 "C:\Dev\MerpMod\MerpMod\LinkerScript.txt" "User" "C header file" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "User" "C source file|Data & Tables" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "User" "C source file" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "User" "C source file" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "User" "C source file|Data & Tables" 2 
@@ -476,7 +478,8 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTables.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
-"C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1  
 "C:\Dev\MerpMod\MerpMod\Debug.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "0c9afd23307eec10" 2 
@@ -488,6 +491,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "0c9afd23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "0c9afd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "0c9afd23307eec10" 2 
@@ -554,6 +558,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "0e51bd23307eec10" 2 
@@ -565,6 +570,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "0e51bd23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "0e51bd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "0e51bd23307eec10" 2 
@@ -628,6 +634,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "04f89d23307eec10" 2 
@@ -639,6 +646,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "04f89d23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "04f89d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTests.c" "04f89d23307eec10" 2 
@@ -701,6 +709,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "08c9cd23307eec10" 2 
@@ -712,6 +721,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "08c9cd23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "08c9cd23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "08c9cd23307eec10" 2 
@@ -775,6 +785,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "06031e23307eec10" 2 
@@ -786,6 +797,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "06031e23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "06031e23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "06031e23307eec10" 2 
@@ -849,6 +861,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "06bf4d23307eec10" 2 
@@ -860,6 +873,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "06bf4d23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "06bf4d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "06bf4d23307eec10" 2 
@@ -923,6 +937,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "021a3ffed0733d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "021a3ffed0733d10" 1 
@@ -934,6 +949,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "021a3ffed0733d10" 1 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "021a3ffed0733d10" 1 
 "C:\Dev\MerpMod\MerpMod\ProgModeTests.c" "021a3ffed0733d10" 1 
@@ -990,6 +1006,7 @@
 "C:\Dev\MerpMod\MerpMod\CelFlashTests.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\CustomCan.c" "057b23e1fb633d10" 1 
 "C:\Dev\MerpMod\MerpMod\CustomCanTables.c" "042ab3330d633d10" 1 
+"C:\Dev\MerpMod\MerpMod\CustomCanTests.c" "03ba14c3b3c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\Debug.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Definition.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\EcuHacks.c" "00286d23307eec10" 2 
@@ -1001,6 +1018,7 @@
 "C:\Dev\MerpMod\MerpMod\Initializer.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\MapSwitchTables.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\Metadata.c" "00286d23307eec10" 2 
+"C:\Dev\MerpMod\MerpMod\ProgModeRaceGradePad.c" "095495b299c33d10" 1 
 "C:\Dev\MerpMod\MerpMod\PortLogger.c" "05766bd742b5fc10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgMode.c" "00286d23307eec10" 2 
 "C:\Dev\MerpMod\MerpMod\ProgModeTables.c" "00286d23307eec10" 2 

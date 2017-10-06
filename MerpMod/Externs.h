@@ -301,7 +301,7 @@ extern float LCAdjustStep;
 extern float ValetModeRevLim;
 
 #if CAN_HACKS
-#define ccmCount 10
+#define ccmCount 12
 #define RACEGRADE_LED_CCM 1
 #define RACEGRADE_CANOPEN_START 3
 #define RAMETUNE_RESPONSE 5
@@ -315,6 +315,10 @@ extern CanMessageSetupStruct ccm06;
 extern CanMessageSetupStruct ccm07;
 extern CanMessageSetupStruct ccm08;
 extern CanMessageSetupStruct ccm09;
+extern CanMessageSetupStruct ccm10;
+extern CanMessageSetupStruct ccm11;
+
+extern unsigned char dataLinkedInRam;
 
 #define cmDTCount 32
 extern unsigned long cmDTaddr[];

@@ -39,7 +39,7 @@ void GenericTests()
 #endif
 	
 #if VIN_HACKS
-	Assert(pRamVariables->VinAuth != 0x00,"Check VIN auth!");
+	Assert(pRamVariables.VinAuth != 0x00,"Check VIN auth!");
 #endif
 
 #if CEL_HACKS
@@ -76,7 +76,7 @@ void BrickBuster()
 
 #ifdef pRamHoleEnd
 unsigned int test = pRamHoleEnd;
-unsigned int end = (unsigned int)&(pRamVariables->RamHoleEndMarker);
+unsigned int end = (unsigned int)&(pRamVariables.RamHoleEndMarker);
 if(test < end)
 Assert(0,"error in ram hole!");
 #endif
@@ -140,7 +140,7 @@ void SetValues()
 	int j = 16;
 	for(i=0; i<16; i++)
 	{
-		pRamVariables->VehicleIdent[j] = VinBlock.Vin[i];
+		pRamVariables.VehicleIdent[j] = VinBlock.Vin[i];
 		*(pObdVinDirect + j) = VinBlock.Vin[i];
 		j -= 4;
 		if(j<0)

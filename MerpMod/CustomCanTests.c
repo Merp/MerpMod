@@ -85,21 +85,23 @@ void CustomCanUnitTests()
 	Assert(getMailBoxId(ccm07.mailBox, ccm07.bus) == ccm07.id, "CAN ID 7 is not set Correctly");
 	Assert(getMailBoxId(ccm08.mailBox, ccm08.bus) == ccm08.id, "CAN ID 8 is not set Correctly");
 	Assert(getMailBoxId(ccm09.mailBox, ccm09.bus) == ccm09.id, "CAN ID 9 is not set Correctly");
+	Assert(getMailBoxId(ccm10.mailBox, ccm10.bus) == ccm10.id, "CAN ID 10 is not set Correctly");
+	Assert(getMailBoxId(ccm11.mailBox, ccm11.bus) == ccm11.id, "CAN ID 11 is not set Correctly");
 	
 	
 //	dtAEM[8]  = {4,1,5,2,0,0,0,0};
 	canCallbackAEMwideband(&dtAEM[0]);
-	Assert(Abs(pRamVariables->aemLambda - 0.1026f) < 0.0001, "aem lambda Fault Failed");
-	Assert(Abs(pRamVariables->aemOxygen - 1.282f) < 0.0001, "aem oxygen Fault Failed");
+	Assert(Abs(pRamVariables.aemLambda - 0.1026f) < 0.0001, "aem lambda Fault Failed");
+	Assert(Abs(pRamVariables.aemOxygen - 1.282f) < 0.0001, "aem oxygen Fault Failed");
 	
 	dtAEM[6]  = 0x80;
 	canCallbackAEMwideband(&dtAEM[0]);
-	Assert(pRamVariables->aemDataValid == 1, "aem Data Valid Failed");
+	Assert(pRamVariables.aemDataValid == 1, "aem Data Valid Failed");
 	
 	
 	dtAEM[7]  = 0x40;
 	canCallbackAEMwideband(&dtAEM[0]);
-	Assert(pRamVariables->aemSensorFault == 1, "aem Sensor Fault Failed");	
+	Assert(pRamVariables.aemSensorFault == 1, "aem Sensor Fault Failed");	
 	
 	//Try all DT types, 1,2,3 U8,U16,U32
 	cmDTccm[0] = 0;	
@@ -268,14 +270,14 @@ void CustomCanUnitTests()
 	CustomCanService();
 	
 	#if RACEGRADE_KEYPAD_HACKS
-		raceGradeKeyPadCallback(&dt1[0]);
-		raceGradeKeyPadCallback(&dt2[0]);
-		raceGradeKeyPadCallback(&dt3[0]);
-		ProgModeMain();
-		raceGradeKeyPadCallback(&dt3[0]);
+		//raceGradeKeyPadCallback(&dt1[0]);
+		//raceGradeKeyPadCallback(&dt2[0]);
+		//raceGradeKeyPadCallback(&dt3[0]);
+		//ProgModeMain();
+		//raceGradeKeyPadCallback(&dt3[0]);
 	#endif
 
-	pRamVariables->initFunctionRun = 0;	
+	pRamVariables.initFunctionRun = 0;	
 	CustomCanService();
 
 
@@ -284,7 +286,7 @@ void CustomCanUnitTests()
 	
 	//Check it is still on
 //	TestCustomCan(20);
-//	Assert(pRamVariables->CelSignal == 1, "OEM cel popped, 20 cycles later, Cel Signal should stay on");
+//	Assert(pRamVariables.CelSignal == 1, "OEM cel popped, 20 cycles later, Cel Signal should stay on");
 
 }	
 	

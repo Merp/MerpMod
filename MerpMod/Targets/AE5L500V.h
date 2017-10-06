@@ -1,6 +1,6 @@
-#define MOD_IDENTIFIER STRI(AE5L500V.MeRpMoD.Switch.v17.9.30.963.366762013333)
+#define MOD_IDENTIFIER STRI(AE5L5JWV.MeRpMoD.Switch.v17.10.5.576.50155585)
 #define MOD_ECUID 8ECBBEEF33
-#define MOD_DATE 17.9.30.963.366762013333
+#define MOD_DATE 17.10.5.576.50155585
 #include "Switch.h"
 #define MOD_CONFIG Switch
 #define MOD_BUILD Release
@@ -15,7 +15,7 @@
 #define dEcuId (0x000DAD80)
 #define dRomHoleStart (0x000E1000)
 #define pRamHoleStart (0xFFFFB9A0)
-#define pRamHoleEnd (0xFFFFBF70)
+#define pRamHoleEnd (0xFFFFBE8F)
 #define sPull2DFloat (0x000BE7F4)
 #define sPull3DFloat (0x000BE8A8)
 

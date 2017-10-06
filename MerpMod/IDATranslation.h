@@ -12,7 +12,7 @@
     GNU General Public License for more details.
 */
 
-#define pRamVariables             ((RamVariables*)pRamHoleStart)
+//#define pRamVariables             ((RamVariables*)pRamHoleStart)
 #define SUB_KCA_HOOK_OLDVAL pKcaIam
 
 #if WGDC_HOOK_DEFINED

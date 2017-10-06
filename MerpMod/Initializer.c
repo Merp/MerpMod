@@ -30,11 +30,11 @@ void Initializer()
 	//If entering OEM test mode, disable programming mode to stop CEL flash
 	if(TestTestModeSwitch())
 	{
-		pRamVariables->ProgModeStatus = ProgModeDisabled;
+		pRamVariables.ProgModeStatus = ProgModeDisabled;
 	}
 	else
 	{
-		pRamVariables->ProgModeStatus = ProgModeEnabled;
+		pRamVariables.ProgModeStatus = ProgModeEnabled;
 	}
 #endif
 
@@ -42,13 +42,13 @@ void Initializer()
 
 void ResetRamVariables()
 {
-	ClearRamVariables((long*)pRamVariables,(long*)&pRamVariables->RamHoleEndMarker);
+	ClearRamVariables((long*)&pRamVariables,(long*)&pRamVariables.RamHoleEndMarker);
 	PopulateRamVariables();
 }
 
 void InitRamVariables()
 {
-	if(pRamVariables->ECUIdentifier != *(long*)dEcuId || pRamVariables->HardResetFlag == HardResetFlagEnabled)
+	if(pRamVariables.ECUIdentifier != *(long*)dEcuId || pRamVariables.HardResetFlag == HardResetFlagEnabled)
 	{
 		ResetRamVariables();
 	}
@@ -69,53 +69,62 @@ void PopulateRamVariables()
 {
 	
 #if CRUISE_CONTROL
-pRamVariables->CruiseResumeLast = TestCruiseResumeSwitch();
-pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
+pRamVariables.CruiseResumeLast = TestCruiseResumeSwitch();
+pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 #if INJECTOR_HACKS
 	//Injector Scalar init to default
-	pRamVariables->InjectorScaling = *dInjectorScaling;
+	pRamVariables.InjectorScaling = *dInjectorScaling;
 #endif
 
 #if SWITCH_HACKS
-	pRamVariables->MapSwitch = DefaultMapSwitch;
-	pRamVariables->MapBlendRatio = DefaultMapBlendRatio;
-	pRamVariables->MapSwitchingInputMode = DefaultMapSwitchingInputMode;
-	pRamVariables->MapBlendingInputMode = DefaultMapBlendingInputMode;
+
+	pRamVariables.MapSwitch = DefaultMapSwitch;
+	pRamVariables.MapBlendRatio = DefaultMapBlendRatio;
+	pRamVariables.MapSwitchingInputMode = DefaultMapSwitchingInputMode;
+	pRamVariables.MapBlendingInputMode = DefaultMapBlendingInputMode;
+
 #endif
 
 #if CAN_HACKS
-	pRamVariables->initFunctionRun = 0;
-	pRamVariables->sdTimer = 0;
+	pRamVariables.initFunctionRun = 0;
+	pRamVariables.sdTimer = 0;
 #endif 
 
 #if PROG_MODE
-	pRamVariables->ProgModeCurrentMode = 1;
-	pRamVariables->ProgModeValueFlashes = 0;
-	pRamVariables->ValetMode = ValetModeDisabled;
+	pRamVariables.ProgModeCurrentMode = 1;
+	pRamVariables.ProgModeValueFlashes = 0;
+	pRamVariables.ValetMode = ValetModeDisabled;
+	pRamVariables.ProgModeEnable = 0;
+	pRamVariables.ProgModeWait = 0;
+	pRamVariables.ProgModeEntry = 0;
+	pRamVariables.ProgModeEnable = 0;
+
 #endif
 
 #if REVLIM_HACKS
 	//Revlimit mode init
-	if (pRamVariables->RevLimMode == RevLimModeUndefined)
+	if (pRamVariables.RevLimMode == RevLimModeUndefined)
 	{
-		pRamVariables->RevLimMode = DefaultRevLimMode;
+		pRamVariables.RevLimMode = DefaultRevLimMode;
 	}
 	//Init revlimit cuts
-	pRamVariables->FlatFootShiftMode = DefaultFlatFootShiftMode;
-	pRamVariables->RedLineCut = DefaultRedLineCut;
-	pRamVariables->RedLineHyst = DefaultRedLineHyst;
-	pRamVariables->FlatFootShiftHyst = DefaultFlatFootShiftHyst;
-	pRamVariables->FlatFootShiftAutoDelta = DefaultFlatFootShiftAutoDelta;
-	pRamVariables->FlatFootShiftStaticDelta = DefaultFlatFootShiftStaticDelta;
-	pRamVariables->LaunchControlSpeedMax = DefaultLaunchControlSpeedMax;
-	pRamVariables->LaunchControlCut = DefaultLaunchControlCut;
-	pRamVariables->LaunchControlHyst = DefaultLaunchControlHyst;
-	pRamVariables->FlatFootShiftSpeedThreshold = DefaultFlatFootShiftSpeedThreshold;
-	pRamVariables->FlatFootShiftRpmThreshold = DefaultFlatFootShiftRpmThreshold;
-	pRamVariables->ClutchSwitchLast = *pClutchFlags & ClutchBitMask;
+
+	pRamVariables.FlatFootShiftMode = DefaultFlatFootShiftMode;
+	pRamVariables.RedLineCut = DefaultRedLineCut;
+	pRamVariables.RedLineHyst = DefaultRedLineHyst;
+	pRamVariables.FlatFootShiftHyst = DefaultFlatFootShiftHyst;
+	pRamVariables.FlatFootShiftAutoDelta = DefaultFlatFootShiftAutoDelta;
+	pRamVariables.FlatFootShiftStaticDelta = DefaultFlatFootShiftStaticDelta;
+	pRamVariables.LaunchControlSpeedMax = DefaultLaunchControlSpeedMax;
+	pRamVariables.LaunchControlCut = DefaultLaunchControlCut;
+	pRamVariables.LaunchControlHyst = DefaultLaunchControlHyst;
+	pRamVariables.FlatFootShiftSpeedThreshold = DefaultFlatFootShiftSpeedThreshold;
+	pRamVariables.FlatFootShiftRpmThreshold = DefaultFlatFootShiftRpmThreshold;
+	pRamVariables.ClutchSwitchLast = *pClutchFlags & ClutchBitMask;
 	RevLimReset();
+	
 #endif 
 
 #if VIN_HACKS
@@ -129,36 +138,36 @@ pRamVariables->CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 #if POLF_HACKS
-	pRamVariables->PolfHackEnabled = DefaultPolfHackEnabled;
-	if (pRamVariables->LCFuelMode == LCFuelModeUndefined)
+	pRamVariables.PolfHackEnabled = DefaultPolfHackEnabled;
+	if (pRamVariables.LCFuelMode == LCFuelModeUndefined)
 	{
-		pRamVariables->LCFuelMode = DefaultLCFuelMode;
+		pRamVariables.LCFuelMode = DefaultLCFuelMode;
 	}
-	pRamVariables->LCFuelLock = DefaultLCFuelLock;
-	pRamVariables->LCFuelEnrichMultiplier = DefaultLCFuelEnrichMultiplier;
+	pRamVariables.LCFuelLock = DefaultLCFuelLock;
+	pRamVariables.LCFuelEnrichMultiplier = DefaultLCFuelEnrichMultiplier;
 #endif
 
 #if TIMING_HACKS
-	pRamVariables->TimingHackEnabled = DefaultTimingHackEnabled;
+	pRamVariables.TimingHackEnabled = DefaultTimingHackEnabled;
 
-	if (pRamVariables->LCTimingMode == LCTimingModeUndefined)
+	if (pRamVariables.LCTimingMode == LCTimingModeUndefined)
 	{
-		pRamVariables->LCTimingMode = DefaultLCTimingMode;
+		pRamVariables.LCTimingMode = DefaultLCTimingMode;
 	}
-	pRamVariables->LCTimingLock = DefaultLCTimingLock;
-	pRamVariables->LCTimingRetardMultiplier = DefaultLCTimingRetardMultiplier;
+	pRamVariables.LCTimingLock = DefaultLCTimingLock;
+	pRamVariables.LCTimingRetardMultiplier = DefaultLCTimingRetardMultiplier;
 #endif
 
 #if BOOST_HACKS
-	pRamVariables->BoostHackEnabled = DefaultBoostHackEnabled;
+	pRamVariables.BoostHackEnabled = DefaultBoostHackEnabled;
 #endif
 
 #if SD_HACKS
-	pRamVariables->MafMode = DefaultMafMode;
+	pRamVariables.MafMode = DefaultMafMode;
 #endif
 
-pRamVariables->ECUIdentifier = *(long*)dEcuId;
-pRamVariables->HardResetFlag = HardResetFlagDisabled;
+pRamVariables.ECUIdentifier = *(long*)dEcuId;
+pRamVariables.HardResetFlag = HardResetFlagDisabled;
 
 }
 

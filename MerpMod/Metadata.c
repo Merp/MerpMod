@@ -249,7 +249,7 @@ modinfo	:	ModInfo OpDelim
 			op: OpReplace4Bytes,
 			address: hCelSignal,
 			oldval: (int)pCelSignalOem,
-			newval: (int)&(pRamVariables->CelSignal),
+			newval: (int)&(pRamVariables.CelSignal),
 			name: STR(CEL Signal Hook)
 		};
 #endif
@@ -297,7 +297,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitial,
 			oldval: tWgdcInitial,
-			newval: (int)&(pRamVariables->WGDCInitialOutput),
+			newval: (int)&(pRamVariables.WGDCInitialOutput),
 			name: STR(WGDC Initial Table Hook)
 		};
 	#endif
@@ -309,7 +309,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableWgdcInitialAlt,
 		oldval: tWgdcInitialAlt,
-		newval: (int)&(pRamVariables->WGDCInitial)
+		newval: (int)&(pRamVariables.WGDCInitial)
 	};*/
 	#endif
 	
@@ -319,7 +319,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaAlt,
 			oldval: tWgdcInitialKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Initial KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGInitialKcaBLo METADATA =
@@ -327,7 +327,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBLo,
 			oldval: tWgdcInitialKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Initial KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGInitialKcaBHi METADATA =
@@ -335,7 +335,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcInitialKcaBHi,
 			oldval: tWgdcInitialKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Initial KCA B High Table Hook)
 		};
 	#endif
@@ -348,7 +348,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMax,
 			oldval: tWgdcMax,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Max Table Hook)
 		};
 	#endif
@@ -360,7 +360,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableWgdcMaxAlt,
 		oldval: tWgdcMaxAlt,
-		newval: (int)&(pRamVariables->WGDCMaxOutput),
+		newval: (int)&(pRamVariables.WGDCMaxOutput),
 	};*/
 	#endif
 	
@@ -370,7 +370,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaAlt,
 			oldval: tWgdcMaxKcaAlt,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Max KCA Alt Table Hook)
 		};
 		const MetaReplace PGWGMaxKcaBLo METADATA =
@@ -378,7 +378,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBLo,
 			oldval: tWgdcMaxKcaBLo,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Max KCA B Low Table Hook)
 		};		
 		const MetaReplace PGWGMaxKcaBHi METADATA =
@@ -386,7 +386,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableWgdcMaxKcaBHi,
 			oldval: tWgdcMaxKcaBHi,
-			newval: (int)&(pRamVariables->WGDCMaxOutput),
+			newval: (int)&(pRamVariables.WGDCMaxOutput),
 			name: STR(WGDC Max KCA B High Table Hook)
 		};
 	#endif
@@ -407,7 +407,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableTargetBoost,
 		oldval: tTargetBoost,
-		newval: (int)&(pRamVariables->TargetBoostOutput),
+		newval: (int)&(pRamVariables.TargetBoostOutput),
 		name: STR(Target Boost Table Hook)
 	};
 	#endif
@@ -419,7 +419,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableTargetBoostAlt,
 		oldval: tTargetBoosAlt,
-		newval: (int)&(pRamVariables->TargetBoostOutput),
+		newval: (int)&(pRamVariables.TargetBoostOutput),
 	};*/
 	#endif
 		
@@ -429,7 +429,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaAlt,
 			oldval: tTargetBoostKcaAlt,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
+			newval: (int)&(pRamVariables.TargetBoostOutput),
 		name: STR(Target Boost KCA Alt Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBLoHookTable METADATA =
@@ -437,7 +437,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBLo,
 			oldval: tTargetBoostKcaBLo,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
+			newval: (int)&(pRamVariables.TargetBoostOutput),
 		name: STR(Target Boost KCA B Low Table Hook)
 		};
 		const MetaReplace TargetBoostKcaBHiHookTable METADATA =
@@ -445,7 +445,7 @@ const MetaReplace POLFHook METADATA =
 			op: OpReplace4Bytes,
 			address: hTableTargetBoostKcaBHi,
 			oldval: tTargetBoostKcaBHi,
-			newval: (int)&(pRamVariables->TargetBoostOutput),
+			newval: (int)&(pRamVariables.TargetBoostOutput),
 		name: STR(Target Boost KCA B High Table Hook)
 		};
 	#endif
@@ -463,7 +463,7 @@ const MetaReplace POLFHook METADATA =
 //		op: OpReplace4Bytes,
 //		address: hSubKca,
 //		oldval: pKcaIam,
-//		newval: (int)&(pRamVariables->SubtractiveKCA)
+//		newval: (int)&(pRamVariables.SubtractiveKCA)
 //		name: STR(Target Boost Table Hook)
 //	};
 #endif
@@ -488,7 +488,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTiming,
 		oldval: tBaseTiming,
-		newval: (int)&(pRamVariables->BaseTimingOutput),
+		newval: (int)&(pRamVariables.BaseTimingOutput),
 		name: STR(Timing Table Hook)
 	};
 #else
@@ -497,7 +497,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTimingPCruise,
 		oldval: tBaseTimingPCruise,
-		newval: (int)&(pRamVariables->BaseTimingOutput),
+		newval: (int)&(pRamVariables.BaseTimingOutput),
 		name: STR(Base Timing Primary Cruise Table Hook)
 	};
 	const MetaReplace BaseTimingPNonCruiseTablePatch METADATA =
@@ -505,7 +505,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTimingPNonCruise,
 		oldval: tBaseTimingPNonCruise,
-		newval: (int)&(pRamVariables->BaseTimingOutput),
+		newval: (int)&(pRamVariables.BaseTimingOutput),
 		name: STR(Base Timing Primary Non Cruise Table Hook)
 	};
 	const MetaReplace BaseTimingRCruiseAvcsTablePatch METADATA =
@@ -513,7 +513,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address:hTableBaseTimingRCruiseAvcs,
 		oldval: tBaseTimingRCruiseAvcs,
-		newval: (int)&(pRamVariables->BaseTimingOutput),
+		newval: (int)&(pRamVariables.BaseTimingOutput),
 		name: STR(Base Timing Reference Cruise AVCS Table Hook)
 	};
 	const MetaReplace BaseTimingRNonCruiseAvcsTablePatch METADATA =
@@ -521,7 +521,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address:hTableBaseTimingRNonCruiseAvcs,
 		oldval: tBaseTimingRNonCruiseAvcs,
-		newval: (int)&(pRamVariables->BaseTimingOutput),
+		newval: (int)&(pRamVariables.BaseTimingOutput),
 		name: STR(Base Timing Reference Non Cruise AVCS Table Hook)
 	};
 #endif
@@ -564,7 +564,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTablePolf,
 		oldval: tPolf,
-		newval: (int)&(pRamVariables->PolfOutput),
+		newval: (int)&(pRamVariables.PolfOutput),
 		name: STR(POLF Table Hook)
 	};
 #endif
@@ -574,7 +574,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTablePolfKcaAlt,
 		oldval: tPolfKcaAlt,
-		newval: (int)&(pRamVariables->PolfOutput),
+		newval: (int)&(pRamVariables.PolfOutput),
 		name: STR(POLF Table Hook)
 	};
 #endif
@@ -584,7 +584,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTablePolfKcaBLo,
 		oldval: tPolfKcaBLo,
-		newval: (int)&(pRamVariables->PolfOutput),
+		newval: (int)&(pRamVariables.PolfOutput),
 		name: STR(POLF Table Hook)
 	};
 #endif
@@ -594,7 +594,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTablePolfKcaBHi,
 		oldval: tPolfKcaBHi,
-		newval: (int)&(pRamVariables->PolfOutput),
+		newval: (int)&(pRamVariables.PolfOutput),
 		name: STR(POLF Table Hook)
 	};
 #endif
@@ -612,7 +612,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hInjectorScaling,
 		oldval: dInjectorScaling,
-		newval: (int)&(pRamVariables->InjectorScaling),
+		newval: (int)&(pRamVariables.InjectorScaling),
 		name: STR(Injector Scalar Hook)
 	};
 	const MetaReplace TipInEnrichHookPull METADATA = 

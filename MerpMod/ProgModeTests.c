@@ -46,12 +46,12 @@ void ProgModeUnitTests()
 	//verify progmode exit
 	SetClutch(1);
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEnable == 0,"Check progmode exit for clutch");
+	Assert(pRamVariables.ProgModeEnable == 0,"Check progmode exit for clutch");
 	
 	ProgModeEntryTest();
 	*pEngineSpeed = 1000.0f;
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEnable == 0,"Check progmode exit for RPM");
+	Assert(pRamVariables.ProgModeEnable == 0,"Check progmode exit for RPM");
 	
 }
 
@@ -62,41 +62,41 @@ void ProgModeEntryTest()
 	*pEngineSpeed = 0;
 	SetBrake(0);
 	SetClutch(0);
-	pRamVariables->ProgModeEntry=0;
-	pRamVariables->ProgModeTimer=0;
+	pRamVariables.ProgModeEntry=0;
+	pRamVariables.ProgModeTimer=0;
 	
-//	if(pRamVariables->ProgModeEnable != 0)
+//	if(pRamVariables.ProgModeEnable != 0)
 //		ExitProgMode();
 	
 /*	SetBrake(1);
 	TestProgModeListener(2);
-	Assert(pRamVariables->ProgModeEntry==1,"Programming mode entry listener step 1");
+	Assert(pRamVariables.ProgModeEntry==1,"Programming mode entry listener step 1");
 	SetBrake(0);
 	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==2,"Programming mode entry listener step 2");
+	Assert(pRamVariables.ProgModeEntry==2,"Programming mode entry listener step 2");
 	*pThrottlePlate = 90.0f;
 	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==3,"Programming mode entry listener step 3");
+	Assert(pRamVariables.ProgModeEntry==3,"Programming mode entry listener step 3");
 	*pThrottlePlate = 0.0f;
 	//ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==4,"Programming mode entry listener step 4");
+	Assert(pRamVariables.ProgModeEntry==4,"Programming mode entry listener step 4");
 	*pThrottlePlate = 90.0f;
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==5,"Programming mode entry listener step 5");
+	Assert(pRamVariables.ProgModeEntry==5,"Programming mode entry listener step 5");
 	*pThrottlePlate = 0.0f;
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==6,"Programming mode entry listener step 6");
+	Assert(pRamVariables.ProgModeEntry==6,"Programming mode entry listener step 6");
 	*pThrottlePlate = 90.0f;
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==7,"Programming mode entry listener step 7");
+	Assert(pRamVariables.ProgModeEntry==7,"Programming mode entry listener step 7");
 	*pThrottlePlate = 0.0f;
 //	ProgModeListener();
-	Assert(pRamVariables->ProgModeEntry==0,"Programming mode entry listener step 8");	
+	Assert(pRamVariables.ProgModeEntry==0,"Programming mode entry listener step 8");	
 	*/
 	//test progmode is now entered
-	Assert(pRamVariables->ProgModeEnable == 1, "rogramming mode entry check");
-	Assert(pRamVariables->ProgModeWait == 248, "rogramming mode entry check");
-	Assert(pRamVariables->ProgModeEntry == 0, "rogramming mode entry check");
+	Assert(pRamVariables.ProgModeEnable == 1, "rogramming mode entry check");
+	Assert(pRamVariables.ProgModeWait == 248, "rogramming mode entry check");
+	Assert(pRamVariables.ProgModeEntry == 0, "rogramming mode entry check");
 	
 }
 

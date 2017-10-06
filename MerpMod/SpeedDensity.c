@@ -21,21 +21,21 @@ float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)
 #if CAN_HACKS
 	CustomCanService();
 #endif	
-	pRamVariables->MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);	
+	pRamVariables.MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);	
 
 #if VE_RAMTUNING
-	if(pRamVariables->VERamFlag == 0x01)
+	if(pRamVariables.VERamFlag == 0x01)
 	{
-		pRamVariables->VolumetricEfficiency = Pull3DHooked(&VolumetricEfficiencyRamTable, *pManifoldAbsolutePressure, *pEngineSpeed);
+		pRamVariables.VolumetricEfficiency = Pull3DHooked(&VolumetricEfficiencyRamTable, *pManifoldAbsolutePressure, *pEngineSpeed);
 	}
 	else
 	{
 #endif
 
 #if SWITCH_HACKS
-	pRamVariables->VolumetricEfficiency = BlendAndSwitch(VETableGroup, *pManifoldAbsolutePressure, *pEngineSpeed);
+	pRamVariables.VolumetricEfficiency = BlendAndSwitch(VETableGroup, *pManifoldAbsolutePressure, *pEngineSpeed);
 #else
-	pRamVariables->VolumetricEfficiency = Pull3DHooked(&VolumetricEfficiencyTable1, *pManifoldAbsolutePressure, *pEngineSpeed);
+	pRamVariables.VolumetricEfficiency = Pull3DHooked(&VolumetricEfficiencyTable1, *pManifoldAbsolutePressure, *pEngineSpeed);
 #endif
 		
 #if VE_RAMTUNING
@@ -44,44 +44,44 @@ float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)
 	
 	float intakeAirTempInKelvin = (*pIntakeAirTemp) + CelsiusToKelvin;
 		
-	pRamVariables->AtmosphericCompensation = Pull3DHooked(&AtmosphericCompensationTable, *pManifoldAbsolutePressure, *pAtmoPress);
+	pRamVariables.AtmosphericCompensation = Pull3DHooked(&AtmosphericCompensationTable, *pManifoldAbsolutePressure, *pAtmoPress);
 #if SD_DMAP
-	pRamVariables->DeltaMapCompensation = Pull3DHooked(&SDDeltaMapTable, *pDeltaMap, *pEngineSpeed);
+	pRamVariables.DeltaMapCompensation = Pull3DHooked(&SDDeltaMapTable, *pDeltaMap, *pEngineSpeed);
 #endif
 
-	pRamVariables->MafFromSpeedDensity = 
+	pRamVariables.MafFromSpeedDensity = 
 		Displacement * 
 		(*pEngineSpeed) * 
 		(*pManifoldAbsolutePressure) * 
-		pRamVariables->VolumetricEfficiency * 
-		pRamVariables->AtmosphericCompensation *
+		pRamVariables.VolumetricEfficiency * 
+		pRamVariables.AtmosphericCompensation *
 #if SD_DMAP
-		pRamVariables->DeltaMapCompensation *
+		pRamVariables.DeltaMapCompensation *
 #endif
 		SpeedDensityConstant / intakeAirTempInKelvin;
 
 #if VE_RAMTUNING
-	if (pRamVariables->MafMode == MafModeSpeedDensity || pRamVariables->VERamFlag == 0x01)
+	if (pRamVariables.MafMode == MafModeSpeedDensity || pRamVariables.VERamFlag == 0x01)
 #else
-	if (pRamVariables->MafMode == MafModeSpeedDensity)
+	if (pRamVariables.MafMode == MafModeSpeedDensity)
 #endif
 	{
-		return pRamVariables->MafFromSpeedDensity;
+		return pRamVariables.MafFromSpeedDensity;
 	}
-	else if (pRamVariables->MafMode == MafModeBlending)
+	else if (pRamVariables.MafMode == MafModeBlending)
 	{
-		pRamVariables->SDMafBlendRatio = Pull3DHooked(&SDBlendingTable, *pManifoldAbsolutePressure, *pEngineSpeed);
+		pRamVariables.SDMafBlendRatio = Pull3DHooked(&SDBlendingTable, *pManifoldAbsolutePressure, *pEngineSpeed);
 		
-		pRamVariables->SDMafFromBlend = 
-		((pRamVariables->MafFromSpeedDensity * pRamVariables->SDMafBlendRatio) +
-		(pRamVariables->MafFromSensor * 
-		(1 - pRamVariables->SDMafBlendRatio)));
+		pRamVariables.SDMafFromBlend = 
+		((pRamVariables.MafFromSpeedDensity * pRamVariables.SDMafBlendRatio) +
+		(pRamVariables.MafFromSensor * 
+		(1 - pRamVariables.SDMafBlendRatio)));
 		
-		return pRamVariables->SDMafFromBlend;
+		return pRamVariables.SDMafFromBlend;
 	}
 	else
 	{
-		return pRamVariables->MafFromSensor;
+		return pRamVariables.MafFromSensor;
 	}
 }
 #endif

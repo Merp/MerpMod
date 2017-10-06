@@ -19,7 +19,7 @@
 void setupMailBoxStruct(CanMessageSetupStruct* cs)
 {
 	unsigned short* ptr;	
-	ptr = (unsigned short*)(0xFFFFD100+ 0x800*cs->bus + 0x20*(unsigned short)cs->mailBox);
+	ptr = (unsigned short*)(0xFFFFD100+ 0x800*(unsigned short)(cs->bus&0x01) + 0x20*(unsigned short)(cs->mailBox&0x1F));
 	if(cs->ext == 0) //11-bit, not extended
 		{
 		ptr[0] = ((unsigned short)cs->id<<4)&0x7FF0;
@@ -314,16 +314,20 @@ unsigned long shC[24] CANDATA = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,819
 
 void canCallbackAEMwideband(unsigned char* data)
 {
-	pRamVariables->aemLambda = (float)(data[0]*256 + data[1])*0.0001;
-	pRamVariables->aemOxygen = (float)(data[2]*256 + data[3])*0.001;
-	pRamVariables->aemDataValid = (unsigned char)(data[6]&0x80)>>7;
-	pRamVariables->aemSensorFault = (unsigned char)(data[7]&0x40)>>6;	
+	pRamVariables.aemLambda = (float)(data[0]*256 + data[1])*0.0001;
+	pRamVariables.aemOxygen = (float)(data[2]*256 + data[3])*0.001;
+	if(data[4]>=16)
+	{
+		pRamVariables.aemDataValid = (unsigned char)(data[6]&0x80);
+		pRamVariables.aemSensorFault = (unsigned char)(data[7]&0x40);	
+	}
+	dataLinkedInRam++;	
 }
 
 void canCallbackMK3e85Packet(unsigned char* data)
 {
-	pRamVariables->canE85 = (float)(data[0]*256 + data[1])/1024; 		//0 to 1024 for 0 to 100% 1/1024 LSB/%
-	pRamVariables->canFuelTemp = (float)(data[2])-40;	//0 to 165 for -40 to 125C
+	pRamVariables.canE85 = (float)(data[0]*256 + data[1])/1024; 		//0 to 1024 for 0 to 100% 1/1024 LSB/%
+	pRamVariables.canFuelTemp = (float)(data[2])-40;	//0 to 165 for -40 to 125C
 }
 
 void raceGradeKeyPadCallback(unsigned char* data)
@@ -333,19 +337,19 @@ void raceGradeKeyPadCallback(unsigned char* data)
 	while(i<8)
 	{
 		statenew = ((data[0]&shC[i]) == shC[i]) ? 1 : 0;
-		if(statenew>pRamVariables->buttons[i].state)
+		if(statenew>pRamVariables.buttons[i].state)
 		{
-			pRamVariables->buttons[i].edgeDetect = edgeRising;
+			pRamVariables.buttons[i].edgeDetect = edgeRising;
 		}
-		else if(statenew < pRamVariables->buttons[i].state)
+		else if(statenew < pRamVariables.buttons[i].state)
 		{
-			pRamVariables->buttons[i].edgeDetect = edgeFailing;
+			pRamVariables.buttons[i].edgeDetect = edgeFailing;
 		}
 		else
 		{
-			pRamVariables->buttons[i].edgeDetect = edgeNA;
+			pRamVariables.buttons[i].edgeDetect = edgeNA;
 		}
-		pRamVariables->buttons[i].state = statenew;
+		pRamVariables.buttons[i].state = statenew;
 		i++;	
 	}
 	
@@ -358,7 +362,7 @@ void raceGradeKeyPadCallback(unsigned char* data)
 	i=0;
 	while(i<8)
 	{
-		ledTemp = ((unsigned long)(pRamVariables->buttons[i].led&0x07)*shC[i*3]);
+		ledTemp = ((unsigned long)(pRamVariables.buttons[i].led&0x07)*shC[i*3]);
 		leds += ledTemp;
 		i++;	
 	}
@@ -498,7 +502,7 @@ void CanSetup()
 		}	
 		i++;
 	}
-	pRamVariables->initFunctionRun = 1;
+	pRamVariables.initFunctionRun = 1;
 	#if RACEGRADE_KEYPAD_HACKS
 		unsigned short setupCOP = 0x010A;
 		updateCanRaw((unsigned long)&setupCOP,dtShort,RACEGRADE_CANOPEN_START,0);
@@ -513,8 +517,8 @@ void CustomCanService()
 	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);
 	unsigned char* ptrMB = (unsigned char*)(0xFFFFD100 + 0x800*(ccmGroup[0].bus&0x01) + 0x20*(ccmGroup[0].mailBox&0x1f) + 0x04);		
 	
-	pRamVariables->randomTimer++;
-	if((pRamVariables->initFunctionRun != 1) || (ccmGroup[0].mcs != (ptrMB[0]&0x07)))
+	pRamVariables.randomTimer++;
+	if((pRamVariables.initFunctionRun != 1) || (ccmGroup[0].mcs != (ptrMB[0]&0x07)))
 	{
 		CanSetup();
 	}
@@ -535,10 +539,10 @@ void CustomCanService()
 	{
 		if((ccmGroup[i].mcs == mcsTrans) && (ccmGroup[i].rate>0)) //Send if MCS is set to 0, and has a periodic rate greater than 0
 		{
-			if(++pRamVariables->ccmSendTimers[i] >= ccmGroup[i].rate) //Send message once 1mSec timer has rolled up
+			if(++pRamVariables.ccmSendTimers[i] >= ccmGroup[i].rate) //Send message once 1mSec timer has rolled up
 			{
 				sendCanMessage(i);
-				pRamVariables->ccmSendTimers[i] = 0; //rest timer
+				pRamVariables.ccmSendTimers[i] = 0; //rest timer
 			}
 		}			
 		else if(ccmGroup[i].mcs == mcsReceive) //recieve

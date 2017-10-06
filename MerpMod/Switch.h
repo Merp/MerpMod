@@ -41,7 +41,7 @@
 //////////////////////////////
 							//
 #define RAM_PERSIST 1		//
-#define VE_RAMTUNING 1		//
+#define VE_RAMTUNING 0		//
 #define POLF_RAMTUNING 0	//
 #define TIMING_RAMTUNING 0	//
 #define PGWG_RAMTUNING 0	//

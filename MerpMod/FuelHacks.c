@@ -40,7 +40,7 @@ EcuHacksMain();
 	float OutputValue;
 
 	#if POLF_RAM_TUNING
-		if(pRamVariables->POLFRamFlag = 0x01)
+		if(pRamVariables.POLFRamFlag = 0x01)
 		{
 			OutputValue = Pull3DHooked(&FuelRamTable, *pEngineLoad, *pEngineSpeed);
 		}
@@ -53,22 +53,22 @@ EcuHacksMain();
 	#if POLF_RAM_TUNING
 		}
 	#endif
-		pRamVariables->LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables->LCFuelEnrichMultiplier;
-
-		if(pRamVariables->LCFuelMode == LCFuelModeCompensated)
+		pRamVariables.LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables.LCFuelEnrichMultiplier;
+	
+		if(pRamVariables.LCFuelMode == LCFuelModeCompensated)
 		{
-			OutputValue += pRamVariables->LCFuelEnrich;
+			OutputValue += pRamVariables.LCFuelEnrich;
 		}
 		//Now run existing code!
 	
-		pRamVariables->PolfTarget = OutputValue;
+		pRamVariables.PolfTarget = OutputValue;
 	
-		if(pRamVariables->PolfHackEnabled == HackEnabled)
-			pRamVariables->PolfOutput = OutputValue;
+		if(pRamVariables.PolfHackEnabled == HackEnabled)
+			pRamVariables.PolfOutput = OutputValue;
 		else
-			pRamVariables->PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
+			pRamVariables.PolfOutput = Pull3DHooked((void*)PrimaryOEMPolfTable, *pEngineLoad, *pEngineSpeed);	
 			
-		pRamVariables->PolfOutputFP = (unsigned char)((pRamVariables->PolfOutput-9)*44.7); //9=0x00, 14.7 = 0xFF
+		pRamVariables.PolfOutputFP = (unsigned char)((pRamVariables.PolfOutput-9)*44.7); //9=0x00, 14.7 = 0xFF
 #endif
 		
 	PolfHooked();

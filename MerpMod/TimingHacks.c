@@ -31,12 +31,12 @@ float TimingHack()
 
 	subIam = HighPass(1 - IAM, 0.0f);
 	
-	pRamVariables->MaxSubtractiveKCA = HighPass(BlendAndSwitch(KnockCorrectionRetardTableGroup, *pEngineLoad, *pEngineSpeed),0.0f);
+	pRamVariables.MaxSubtractiveKCA = HighPass(BlendAndSwitch(KnockCorrectionRetardTableGroup, *pEngineLoad, *pEngineSpeed),0.0f);
 	
-	pRamVariables->SubtractiveKCA = subIam *  pRamVariables->MaxSubtractiveKCA;
+	pRamVariables.SubtractiveKCA = subIam *  pRamVariables.MaxSubtractiveKCA;
 	
 #if TIMING_RAM_TUNING
-	if(pRamVariables->WGDCMaxRamFlag = 0x01)
+	if(pRamVariables.WGDCMaxRamFlag = 0x01)
 	{
 		OutputValue = Pull3DHooked(&TimingRamTable, *pEngineLoad, *pEngineSpeed);
 	}
@@ -50,27 +50,26 @@ float TimingHack()
 	}
 #endif
 
-	if(pRamVariables->LCTimingMode == LCTimingModeLocked && pRamVariables->LCEngaged == 1)
+	if(pRamVariables.LCTimingMode == LCTimingModeLocked && pRamVariables.LCEngaged == 1)
 	{
-		OutputValue = pRamVariables->LCTimingLock;
+		OutputValue = pRamVariables.LCTimingLock;
 	}
-	else if(pRamVariables->LCTimingMode == LCTimingModeCompensated)
+	else if(pRamVariables.LCTimingMode == LCTimingModeCompensated)
 	{
-		pRamVariables->LCTimingRetard = HighPass(Pull3DHooked(&LCTimingRetardTable, *pVehicleSpeed, *pEngineSpeed),0.0f);
+		pRamVariables.LCTimingRetard = HighPass(Pull3DHooked(&LCTimingRetardTable, *pVehicleSpeed, *pEngineSpeed),0.0f);
+
 	
-		pRamVariables->LCTimingRetard *= pRamVariables->LCTimingRetardMultiplier;
+		pRamVariables.LCTimingRetard *= pRamVariables.LCTimingRetardMultiplier;
 		
-		OutputValue -= HighPass(pRamVariables->LCTimingRetard,0.0f);
+		OutputValue -= HighPass(pRamVariables.LCTimingRetard,0.0f);
 	}
 
-	OutputValue -= Abs(pRamVariables->SubtractiveKCA);
+	pRamVariables.BaseTiming = OutputValue;
 	
-	pRamVariables->BaseTimingTarget = OutputValue;
-	
-	if(pRamVariables->TimingHackEnabled == HackEnabled)
-		pRamVariables->BaseTimingOutput = OutputValue;
+	if(pRamVariables.TimingHackEnabled == HackEnabled)
+		pRamVariables.BaseTimingOutput = pRamVariables.BaseTiming - Abs(pRamVariables.SubtractiveKCA);
 	else
-		pRamVariables->BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+		pRamVariables.BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
 		
 	//Call existing!
 	BaseTimingHooked();

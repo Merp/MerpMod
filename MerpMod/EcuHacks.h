@@ -228,6 +228,8 @@ SHORT TERM:
 #include "Externs.h"
 #include "RamVariables.h"
 
+extern RamVariables pRamVariables;
+
 #define CONCAT(x,y) CONCAT_DO(x,y)
 #define CONCAT_DO(x,y) x y
 #define CONCAT_THREE(x,y,z) CONCAT(CONCAT(x,y),z)

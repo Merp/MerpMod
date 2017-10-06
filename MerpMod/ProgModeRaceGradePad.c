@@ -77,18 +77,18 @@ void ProgModeButtonToggled(unsigned char toggle)
 {
 	if(toggle==1)
 	{
-		pRamVariables->ProgModeCurrentMode++;
-		if(pRamVariables->ProgModeCurrentMode > PROG_MODE_COUNT)
-			pRamVariables->ProgModeCurrentMode = 0;
+		pRamVariables.ProgModeCurrentMode++;
+		if(pRamVariables.ProgModeCurrentMode > PROG_MODE_COUNT)
+			pRamVariables.ProgModeCurrentMode = 0;
 	}
 
 }
 
 void ProgModeMain()
 {
-	pRamVariables->ProgModeEnable = 1;
-	ProgModeButtonToggled(pRamVariables->buttons[2].edgeDetect);
-	switch(pRamVariables->ProgModeCurrentMode)
+	pRamVariables.ProgModeEnable = 1;
+	ProgModeButtonToggled(pRamVariables.buttons[2].edgeDetect);
+	switch(pRamVariables.ProgModeCurrentMode)
 	{
 		case 0:
 			asm("nop");
@@ -118,148 +118,148 @@ void ProgModeMain()
 		break;
 		
 		default:
-			pRamVariables->ProgModeCurrentMode = 0;
+			pRamVariables.ProgModeCurrentMode = 0;
 		break;
 	}	
 	
-	pRamVariables->buttons[2].led = pRamVariables->ProgModeCurrentMode;
-	if(pRamVariables->ProgModeCurrentMode>0)
+	pRamVariables.buttons[2].led = pRamVariables.ProgModeCurrentMode;
+	if(pRamVariables.ProgModeCurrentMode>0)
 	{
-		pRamVariables->buttons[3].led = pRamVariables->ProgModeValueFlashes&0x07;
-		pRamVariables->buttons[7].led = pRamVariables->ProgModeValueFlashes/8;
+		pRamVariables.buttons[3].led = pRamVariables.ProgModeValueFlashes&0x07;
+		pRamVariables.buttons[7].led = pRamVariables.ProgModeValueFlashes/8;
 	}
 	else
 	{
-		pRamVariables->buttons[3].led = 0;
-		pRamVariables->buttons[7].led = 0;
+		pRamVariables.buttons[3].led = 0;
+		pRamVariables.buttons[7].led = 0;
 	}
-	//CelDoubleRepeat(&pRamVariables->ProgModeCurrentMode,MODE_FLASH_SPEED,&pRamVariables->ProgModeValueFlashes,VALUE_FLASH_SPEED,MODE_FLASH_DELAY,VALUE_FLASH_DELAY);//TODO abstract
+	//CelDoubleRepeat(&pRamVariables.ProgModeCurrentMode,MODE_FLASH_SPEED,&pRamVariables.ProgModeValueFlashes,VALUE_FLASH_SPEED,MODE_FLASH_DELAY,VALUE_FLASH_DELAY);//TODO abstract
 }
 
 void ProgModeMapSwitch()
 {
 	if(MapSwitchInput == InputModeUndefined)
 	{	
-		if(pRamVariables->buttons[3].edgeDetect == 1)
+		if(pRamVariables.buttons[3].edgeDetect == 1)
 		{	
-			if(pRamVariables->MapSwitch >= 3)
-				asm("nop");//pRamVariables->MapSwitch = 1;
+			if(pRamVariables.MapSwitch >= 3)
+				asm("nop");//pRamVariables.MapSwitch = 1;
 			else
-				pRamVariables->MapSwitch++;
+				pRamVariables.MapSwitch++;
 		}
-		else if(pRamVariables->buttons[7].edgeDetect == 1)
+		else if(pRamVariables.buttons[7].edgeDetect == 1)
 		{
-			if(pRamVariables->MapSwitch == 1 )
-				asm("nop");//pRamVariables->MapSwitch = 3;
+			if(pRamVariables.MapSwitch == 1 )
+				asm("nop");//pRamVariables.MapSwitch = 3;
 			else
-				pRamVariables->MapSwitch--;
+				pRamVariables.MapSwitch--;
 		}
 	}
-	pRamVariables->ProgModeValue = pRamVariables->MapSwitch;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->MapSwitch;
+	pRamVariables.ProgModeValue = pRamVariables.MapSwitch;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.MapSwitch;
 }
 
 void ProgModeBlendAdjust()
 {
 	if(BlendRatioInput == InputModeUndefined)
 	{
-		if(pRamVariables->buttons[3].edgeDetect == 1)
+		if(pRamVariables.buttons[3].edgeDetect == 1)
 		{	
-			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - 0.01f))
-				pRamVariables->MapBlendRatio = BLEND_MAX;
+			if(pRamVariables.MapBlendRatio > (BLEND_MAX - BLEND_STEP - 0.01f))
+				pRamVariables.MapBlendRatio = BLEND_MAX;
 			else
-				pRamVariables->MapBlendRatio+= BLEND_STEP;
+				pRamVariables.MapBlendRatio+= BLEND_STEP;
 		}
-		else if(pRamVariables->buttons[7].edgeDetect == 1)
+		else if(pRamVariables.buttons[7].edgeDetect == 1)
 		{
-			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + 0.01f))
-				pRamVariables->MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
+			if(pRamVariables.MapBlendRatio < (BLEND_MIN + BLEND_STEP + 0.01f))
+				pRamVariables.MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
 			else
-				pRamVariables->MapBlendRatio-= BLEND_STEP;
+				pRamVariables.MapBlendRatio-= BLEND_STEP;
 		}
 	}
-	pRamVariables->ProgModeValue = pRamVariables->MapBlendRatio + 1;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)(pRamVariables->MapBlendRatio*8);
+	pRamVariables.ProgModeValue = pRamVariables.MapBlendRatio + 1;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)(pRamVariables.MapBlendRatio*8);
 }
 
 void ProgModeLCAdjust()
 {
 	#if !AUTO_TRANS
-	if(pRamVariables->buttons[3].edgeDetect == 1)
+	if(pRamVariables.buttons[3].edgeDetect == 1)
 	{	
-		if(pRamVariables->LaunchControlCut < pRamVariables->RedLineCut)
-			pRamVariables->LaunchControlCut+= LC_STEP;
+		if(pRamVariables.LaunchControlCut < pRamVariables.RedLineCut)
+			pRamVariables.LaunchControlCut+= LC_STEP;
 	}
-	else if(pRamVariables->buttons[7].edgeDetect == 1)
+	else if(pRamVariables.buttons[7].edgeDetect == 1)
 	{
-		if(pRamVariables->LaunchControlCut > LC_MIN)
-			pRamVariables->LaunchControlCut-= LC_STEP;//Hard limit, does not cycle to top again.
+		if(pRamVariables.LaunchControlCut > LC_MIN)
+			pRamVariables.LaunchControlCut-= LC_STEP;//Hard limit, does not cycle to top again.
 		else
-			pRamVariables->LaunchControlCut = LC_MIN;
+			pRamVariables.LaunchControlCut = LC_MIN;
 	}
 	
-	pRamVariables->ProgModeValue = pRamVariables->LaunchControlCut;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)((pRamVariables->LaunchControlCut / LC_STEP) - (unsigned char)(LC_MIN / LC_STEP));
+	pRamVariables.ProgModeValue = pRamVariables.LaunchControlCut;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)((pRamVariables.LaunchControlCut / LC_STEP) - (unsigned char)(LC_MIN / LC_STEP));
 	#else
-	pRamVariables->ProgModeValue = 0.0f;
-	pRamVariables->ProgModeValueFlashes = 0;
+	pRamVariables.ProgModeValue = 0.0f;
+	pRamVariables.ProgModeValueFlashes = 0;
 	#endif
 }
 
 void ProgModeIAMAdjust()
 {
-	if(pRamVariables->buttons[3].edgeDetect == 1)
+	if(pRamVariables.buttons[3].edgeDetect == 1)
 	{	
 		if(*pIAM < IAM_MAX - IAM_STEP)
 			*pIAM += IAM_STEP;
 		else
 			*pIAM = IAM_MAX;
 	}
-	else if(pRamVariables->buttons[7].edgeDetect == 1)
+	else if(pRamVariables.buttons[7].edgeDetect == 1)
 	{
 		if(IAM > IAM_MIN + IAM_STEP)
 			*pIAM -= IAM_STEP;
 		else
 			*pIAM = IAM_MIN;
 	}
-	pRamVariables->ProgModeValue = *pIAM;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)*pIAM*16;
+	pRamVariables.ProgModeValue = *pIAM;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)*pIAM*16;
 }
 
 void ProgModeValetMode()
 {
-	if(pRamVariables->buttons[3].edgeDetect == 1)
+	if(pRamVariables.buttons[3].edgeDetect == 1)
 	{	
-		if(pRamVariables->ValetMode <=0)
-			pRamVariables->ValetMode = 1;
+		if(pRamVariables.ValetMode <=0)
+			pRamVariables.ValetMode = 1;
 	}
-	else if(pRamVariables->buttons[7].edgeDetect == 1)
+	else if(pRamVariables.buttons[7].edgeDetect == 1)
 	{
-		if(pRamVariables->ValetMode >= 1 )
-			pRamVariables->ValetMode = 0;
+		if(pRamVariables.ValetMode >= 1 )
+			pRamVariables.ValetMode = 0;
 	}
-	pRamVariables->ProgModeValue = pRamVariables->ValetMode;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->ValetMode;
+	pRamVariables.ProgModeValue = pRamVariables.ValetMode;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.ValetMode;
 }
 
 #define LED_STEP 24
 void ProgModeRaceGradeBackLight()
 {
-	if(pRamVariables->buttons[3].edgeDetect == 1)
+	if(pRamVariables.buttons[3].edgeDetect == 1)
 	{	
-		if(pRamVariables->rgBackLight < (255-LED_STEP))
-			pRamVariables->rgBackLight += LED_STEP;
+		if(pRamVariables.rgBackLight < (255-LED_STEP))
+			pRamVariables.rgBackLight += LED_STEP;
 		else
-			pRamVariables->rgBackLight = 255;
+			pRamVariables.rgBackLight = 255;
 	}
-	else if(pRamVariables->buttons[7].edgeDetect == 1)
+	else if(pRamVariables.buttons[7].edgeDetect == 1)
 	{
-		if(pRamVariables->rgBackLight > LED_STEP)
-			pRamVariables->rgBackLight-= LED_STEP;//Hard limit, does not cycle to top again.
+		if(pRamVariables.rgBackLight > LED_STEP)
+			pRamVariables.rgBackLight-= LED_STEP;//Hard limit, does not cycle to top again.
 		else
-			pRamVariables->rgBackLight = 0;
+			pRamVariables.rgBackLight = 0;
 	}
-	pRamVariables->ProgModeValue = pRamVariables->rgBackLight;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)(pRamVariables->rgBackLight/32);
+	pRamVariables.ProgModeValue = pRamVariables.rgBackLight;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)(pRamVariables.rgBackLight/32);
 }
 #endif

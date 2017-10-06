@@ -15,6 +15,10 @@
 //////////////////////////
 //RAM VARIABLES STRUCTURE
 //////////////////////////
+
+//#ifndef RAMVAR_H
+//#define RAMVAR_H
+
 typedef struct
 {
 	unsigned char RamVariableStart;
@@ -31,20 +35,25 @@ typedef struct
 	unsigned char VehicleIdent[20];
 #endif
 
+<<<<<<< HEAD
 #if INJECTOR_HACKS
 	float InjectorScaling;
 	float InjectorScalingMultiplier;
 #endif
 
+=======
+	float InjectorScaling;	
+>>>>>>> d92dc1c... Changed pRamVariable to Object in the environment, now it shows up in the MAP file and is easier to debug
 #if CAN_HACKS	
 	float ethanolContentCAN;
 	unsigned short ethanolContentShortCAN;
-	unsigned short ccmSendTimers[8];
+	unsigned short ccmSendTimers[ccmCount];
 	unsigned short sdTimer;
 	
 	unsigned short initFunctionRun;
 	unsigned char randomTimer;
 	unsigned char rgBackLight;
+	unsigned char ecuHacksMainCtr;
 	
 	#if RACEGRADE_KEYPAD_HACKS
 		buttonRGStruct buttons[8];
@@ -57,6 +66,8 @@ typedef struct
 		float aemOxygen;
 		unsigned char aemDataValid;
 		unsigned char aemSensorFault;
+		unsigned char aemn1;
+		unsigned char aemn2;
 		
 	#endif
 #endif
@@ -300,4 +311,7 @@ char	RamHoleEndMarker;
 	
 	//IF ADDING PARAMS, MUST UPDATE SPARK CUT ASM!!!!
 	
-} RamVariables;
+}RamVariables;
+
+
+//#endif
