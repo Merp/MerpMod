@@ -55,14 +55,14 @@
 	*/
 
 
-#define PROG_MODE_COUNT 6
+#define PROG_MODE_COUNT 7
 
 #define BLEND_MAX 1.0f
 #define BLEND_MIN 0.0f
-#define BLEND_STEP 0.125f
+#define BLEND_STEP 0.025f
 
 #define LC_MIN 2000.0f
-#define LC_STEP 500.0f
+#define LC_STEP 250.0f
 
 #define IAM_MIN 0
 #ifdef pIAM4
@@ -102,18 +102,22 @@ void ProgModeMain()
 		break;
 		
 		case 3:
-			ProgModeLCAdjust();
+			ProgModeBlendMode();
 		break;
 		
 		case 4:
+			ProgModeLCAdjust();
+		break;
+		
+		case 5:
 			ProgModeIAMAdjust();
 		break;
 		
-		case 5://Put this in ENUM if you want to reorder them easily
+		case 6://Put this in ENUM if you want to reorder them easily
 			ProgModeValetMode();
 		break;
 		
-		case 6:
+		case 7:
 			ProgModeRaceGradeBackLight();
 		break;
 		
@@ -138,7 +142,7 @@ void ProgModeMain()
 
 void ProgModeMapSwitch()
 {
-	if(MapSwitchInput == InputModeUndefined)
+	if(MapSwitchInput == InputModeRaceGradePad)
 	{	
 		if(pRamVariables.buttons[3].edgeDetect == 1)
 		{	
@@ -161,7 +165,7 @@ void ProgModeMapSwitch()
 
 void ProgModeBlendAdjust()
 {
-	if(BlendRatioInput == InputModeUndefined)
+	if(pRamVariables.BlendMode == 1)
 	{
 		if(pRamVariables.buttons[3].edgeDetect == 1)
 		{	
@@ -180,6 +184,22 @@ void ProgModeBlendAdjust()
 	}
 	pRamVariables.ProgModeValue = pRamVariables.MapBlendRatio + 1;
 	pRamVariables.ProgModeValueFlashes = (unsigned char)(pRamVariables.MapBlendRatio*8);
+}
+
+void ProgModeBlendMode()
+{
+	if(pRamVariables.buttons[3].edgeDetect == 1)
+	{	
+		if(pRamVariables.BlendMode <=0)
+			pRamVariables.BlendMode = 1;
+	}
+	else if(pRamVariables.buttons[7].edgeDetect == 1)
+	{
+		if(pRamVariables.BlendMode >= 1 )
+			pRamVariables.BlendMode = 0;
+	}
+	pRamVariables.ProgModeValue = pRamVariables.BlendMode;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.BlendMode;
 }
 
 void ProgModeLCAdjust()
@@ -223,7 +243,7 @@ void ProgModeIAMAdjust()
 			*pIAM = IAM_MIN;
 	}
 	pRamVariables.ProgModeValue = *pIAM;
-	pRamVariables.ProgModeValueFlashes = (unsigned char)*pIAM*16;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)(*pIAM*8);
 }
 
 void ProgModeValetMode()

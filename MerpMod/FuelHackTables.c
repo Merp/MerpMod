@@ -56,6 +56,10 @@ unsigned char DefaultPolfHackEnabled FUELDATA = HackDisabled;
 unsigned char DefaultLCFuelMode FUELDATA = LCFuelModeDisabled;
 float DefaultLCFuelLock FUELDATA = 0.35f;
 float DefaultLCFuelEnrichMultiplier FUELDATA = 1.0f;
+float BaseGasolineAFR FUELDATA = 14.70f;
+float BaseInjectorFlowPressureRelative FUELDATA = 43.5f;
+unsigned char DefaultkPFuelPressureEnabled FUELDATA = 0x00;
+unsigned char DefaultFlexFuelSensorEnabled FUELDATA = 0x00;
 
 #if SWITCH_HACKS
 TableGroup FuelTableGroup FUELDATA = {
@@ -76,6 +80,42 @@ TableGroup FuelTableGroup FUELDATA = {
 	&FuelTable2i}
 };
 #endif
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!! FlexFuelFlowTable Injector Flow
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//Ethanol Percentage
+float FlexFuelFlow_ROWS[11] FUELDATA =
+{0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1};
+
+//Target Air Fuel Ratio for stoichiometric 
+short FlexFuelStoich_DATA[11] FUELDATA =
+{14700,14128,13545,12973,12411,11843,11272,10709,10142,9575,9001};
+
+TwoDTable FlexFuelStoichTable  FUELDATA = {
+	.columnCount = 11,
+	.tableType = UInt16Table2D,
+	.columnHeaderArray = FlexFuelFlow_ROWS,
+	.tableCells = FlexFuelStoich_DATA,
+	.multiplier = 0.001,
+	.offset = 0.0 };
+	
+//Fuel Pressure Scaling
+float FuelPressure_ROWS[4] FUELDATA =
+{0,0.5,4.5,5};
+
+//Target Air Fuel Ratio for stoichiometric 
+float FuelPressure_DATA[4] FUELDATA =
+{0,0,150,150};
+
+TwoDTable FuelPressureTable  FUELDATA = {
+	.columnCount = 4,
+	.tableType = FloatTable2D,
+	.columnHeaderArray = FuelPressure_ROWS,
+	.tableCells = FuelPressure_DATA,
+	.multiplier = 1,
+	.offset = 0.0 };		
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!! Launch Control Fuel Retard Table

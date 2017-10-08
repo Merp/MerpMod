@@ -37,36 +37,37 @@ unsigned long cmDTaddr[cmDTCount] CANDATA = {
 	(unsigned long)&pRamVariables.PolfOutputFP,
 	(unsigned long)&pRamVariables.MafMode,
 	(unsigned long)&pRamVariables.MapBlendRatio,
-	(unsigned long)&pRamVariables.aemLambda,(unsigned long)&pRamVariables.aemOxygen,(unsigned long)&pRamVariables.aemDataValid,(unsigned long)&pRamVariables.aemSensorFault};
+	(unsigned long)&pRamVariables.aemLambda,(unsigned long)&pRamVariables.aemOxygen,(unsigned long)&pRamVariables.aemDataValid,(unsigned long)&pRamVariables.aemSensorFault,
+	(unsigned long)&pRamVariables.rEthanolCAN,(unsigned long)&pRamVariables.tFuelCAN};
 	
 unsigned char cmDTtypeIn[cmDTCount] CANDATA = {
 	dtChar,dtChar,
 	dtChar,dtChar,dtChar,dtChar,dtChar,dtChar,dtChar,dtFloat,
-	dtFloat,dtFloat,dtChar,dtChar};
+	dtFloat,dtFloat,dtChar,dtChar,dtFloat,dtFloat};
 
 unsigned char cmDTtypeOut[cmDTCount] CANDATA = {
 	dtChar,dtChar,
 	dtChar,dtChar,dtChar,dtChar,dtChar,dtChar,dtChar,dtChar,
-	dtChar,dtChar,dtChar,dtChar};
+	dtChar,dtChar,dtChar,dtChar,dtChar,dtChar};
 	
 unsigned char cmDTccm[cmDTCount] CANDATA = {
 	2,2,
 	8,8,8,8,8,8,8,8,
-	9,9,9,9};
+	9,9,9,9,9,9};
 	
 unsigned char cmDTpos[cmDTCount] CANDATA = {
 	0,2,
 	0,1,2,3,4,5,6,7,
-	0,1,2,3};
+	0,1,2,3,4,5};
 	
 float cmDTscale[cmDTCount] CANDATA = {
 	0,0,
 	0,0,0,0,0,0,0,255,
-	100,100,0,0};
+	100,100,0,0,0,0};
 	
 float cmDToffset[cmDTCount] CANDATA = {
 	0,0,
 	0,0,0,0,0,0,0,0,
-	0,0,0,0};
+	0,0,0,0,0,0};
 
 #endif

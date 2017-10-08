@@ -28,11 +28,11 @@ float RightTGVInputMultiplier SWITCHDATA = 1.0f;
 float LeftTGVInputOffset SWITCHDATA = 0.0f;
 float RightTGVInputOffset SWITCHDATA = 0.0f;
 
+unsigned char BlendRatioInput SWITCHDATA = MapBlendingInputModeUndefined;//TODO: This should be set to a default, not all builds will have CAN input.
+unsigned char MapSwitchInput  SWITCHDATA = MapSwitchingInputModeUndefined;//
+
 float MapSwitchThresholdLo SWITCHDATA = 1.5f;
 float MapSwitchThresholdHi SWITCHDATA = 3.5f;
-
-unsigned char DefaultMapBlendingInputMode SWITCHDATA = MapBlendingInputModeUndefined;
-unsigned char DefaultMapSwitchingInputMode  SWITCHDATA = MapSwitchingInputModeUndefined;
 
 //TODO TEST pull2d function here!
 

@@ -84,6 +84,7 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables.MapBlendRatio = DefaultMapBlendRatio;
 	pRamVariables.MapSwitchingInputMode = DefaultMapSwitchingInputMode;
 	pRamVariables.MapBlendingInputMode = DefaultMapBlendingInputMode;
+	PRamVariables.BlendMode = 0;
 
 #endif
 

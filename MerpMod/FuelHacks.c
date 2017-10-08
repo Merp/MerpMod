@@ -32,6 +32,25 @@ pRamVariables->InjectorScaling = pRamVariables->InjectorScalingMultiplier * *dIn
 void POLFHack()
 {		
 
+	//Calculate new Injector Flow based off Ethanol Content	
+
+	if(pRamVariables.fuelPressureFlowEnabled == 1)
+		{		
+		pRamVariables.kFuelPressure = sqrt(pRamVariables.pFuelCanRel/BaseInjectorFlowPressureRelative);
+		
+		}
+	else
+		pRamVariables.kFuelPressure = 1;
+		
+	if(pRamVariables.flexFuelSensorEnabaled == 1)	
+	{
+		pRamVariables.TargetedStoich = Pull2DHooked(&FlexFuelStoichTable, pRamVariables.MapBlendRatio);	 
+		pRamVariables.InjectorScaling =  pRamVariables.kFuelPressure *(pRamVariables.TargetedStoich / BaseGasolineAFR) *  (*dInjectorScaling);
+	}
+	else
+		pRamVariables.InjectorScaling = pRamVariables.kFuelPressure * (*dInjectorScaling);
+		
+	
 #if POLF_MAIN_HOOK
 EcuHacksMain();
 #endif

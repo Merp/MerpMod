@@ -67,23 +67,54 @@ float Smooth(float smoothingFactor, float input, float previous)
 	return output;
 }
 
+float sqrt(float input)
+{
+	float lo,mid,hi,ipsq;	
+	unsigned char i = 0;
+	
+	if(input <1)
+	{
+		lo = input;	
+		hi = 1;
+	}
+	else if(input <2)
+	{
+		lo = 1;	
+		hi = input;
+	}
+	
+  	while(i<32)
+	{
+    	mid = (lo+hi)/2;
+		ipsq = mid*mid;
+      	if(Abs(ipsq - input) < 0.001f) 
+			return mid;
+      	if(ipsq > input)		
+          	hi = mid;      	
+  		else		
+          	lo = mid;      	
+  		i++;
+  	}
+  	return mid;	
+}
+
 unsigned char limit_u8(float input)
 {
 	if(input <0) return 0;
-	else if(input > 255) return 255;
+	else if(input > 255) return 0xFF;
 	else return (unsigned char)input;	
 }
 
 unsigned short limit_u16(float input)
 {
 	if(input <0) return 0;
-	else if(input > 65535) return 65535;
+	else if(input > 65535) return 0xFFFF;
 	else return (unsigned short)input;	
 }
 
 unsigned long limit_u32(float input)
 {
 	if(input <0) return 0;
-	else if(input > 4294967295) return 4294967295;
+	else if(input > 4294967295) return 0xFFFFFFFF;
 	else return (unsigned long)input;	
 }

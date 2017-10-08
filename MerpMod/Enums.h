@@ -96,7 +96,8 @@ enum InputModeValues
 	InputModeTGVLeft = 1,
 	InputModeTGVRight = 2,
 	InputModeSiDrive = 3,
-	InputCanFlexFuelRatio = 4,
+	InputModeRaceGradePad = 4,
+	InputCanFlexFuelRatio = 5,
 };
 enum HardResetFlagValues
 {

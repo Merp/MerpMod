@@ -35,15 +35,17 @@ typedef struct
 	unsigned char VehicleIdent[20];
 #endif
 
-<<<<<<< HEAD
 #if INJECTOR_HACKS
 	float InjectorScaling;
 	float InjectorScalingMultiplier;
 #endif
 
-=======
-	float InjectorScaling;	
->>>>>>> d92dc1c... Changed pRamVariable to Object in the environment, now it shows up in the MAP file and is easier to debug
+	float TargetedStoich;
+	float kFuelPressure;	
+	
+	unsigned char fuelPressureFlowEnabled;
+	unsigned char flexFuelSensorEnabaled;//TODO put these in appropriate preprocessor conditional
+
 #if CAN_HACKS	
 	float ethanolContentCAN;
 	unsigned short ethanolContentShortCAN;
@@ -60,10 +62,13 @@ typedef struct
 	#endif
 	
 	#if AEMXFINITY
-		float canE85;
-		float canFuelTemp;
+		float rEthanolCAN;
+		float tFuelCAN;		
+		float pFuelCan;	
+		float pFuelCanRel;
 		float aemLambda;
 		float aemOxygen;
+		float vFuelPressureRel;
 		unsigned char aemDataValid;
 		unsigned char aemSensorFault;
 		unsigned char aemn1;
@@ -164,7 +169,7 @@ typedef struct
 	unsigned char ProgModeCurrentMode;
 	unsigned char ProgModeValueFlashes;
 	unsigned char ValetMode;
-	unsigned char asdf3;
+	unsigned char BlendMode;
 	float ProgModeValue;
 #endif			
 

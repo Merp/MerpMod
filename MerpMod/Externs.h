@@ -61,10 +61,7 @@ void recieveCanMessage(unsigned char ccm) ROMCODE;
 void updateCanDT(unsigned char dt) ROMCODE;
 void CustomCanService() ROMCODE;
 unsigned short returnShifter(unsigned char c) ROMCODE;
-void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
-void canCallbackRamTune(unsigned char* data) ROMCODE;
-void canCallbackAEMwideband(unsigned char* data) ROMCODE;
-void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
+
 
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
@@ -85,6 +82,7 @@ void ProgModeButtonToggled(unsigned char) ROMCODE;
 
 void ProgModeMapSwitch()  ROMCODE;
 void ProgModeBlendAdjust()  ROMCODE;
+void ProgModeBlendMode() ROMCODE;
 void ProgModeLCAdjust()  ROMCODE;
 void ProgModeIAMAdjust() ROMCODE;
 void ProgModeValetMode() ROMCODE;
@@ -97,6 +95,7 @@ void SetClutch(int value) __attribute__ ((section ("Misc")));
 #endif
 void SetBrake(int value) __attribute__ ((section ("Misc")));
 
+float sqrt(float input) ROMCODE;
 float Abs(float input) ROMCODE;
 float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
@@ -144,6 +143,13 @@ extern ThreeDTable AtmosphericCompensationTable;
 extern ThreeDTable SDBlendingTable;
 
 extern TwoDTable InjectorScalingMultiplierTable;
+
+
+extern float BaseGasolineAFR;
+extern float BaseInjectorFlowPressureRelative;
+extern TwoDTable FlexFuelStoichTable;
+extern unsigned char DefaultkPFuelPressureEnabled;
+extern unsigned char DefaultFlexFuelSensorEnabled;
 
 extern unsigned char DefaultPolfHackEnabled;
 extern TableGroup FuelTableGroup;
@@ -328,6 +334,13 @@ extern unsigned char cmDTccm[];
 extern unsigned char cmDTpos[];
 extern float cmDTscale[];
 extern float cmDToffset[];
+
+extern TwoDTable FuelPressureTable;
+void updateFuelPressure(unsigned short rawVoltage);
+void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
+void canCallbackRamTune(unsigned char* data) ROMCODE;
+void canCallbackAEMwideband(unsigned char* data) ROMCODE;
+void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
 
 #endif
 

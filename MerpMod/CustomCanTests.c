@@ -66,6 +66,7 @@ unsigned char dt1[8]  = {0,0,0,0,0,0,0,0};
 unsigned char dt2[8]  = {0,0,0,0,0,0,0,0};
 unsigned char dt3[8]  = {4,0,0,0,0,0,0,0};
 unsigned char dtAEM[8] ROMCODE = {4,2,5,2,0,0,0,0};
+unsigned char dte85[8] ROMCODE = {1,2,45,0,0x38,0x52,7,8};
 #endif
 
 void CustomCanUnitTests() __attribute__ ((section ("Misc")));
@@ -89,8 +90,20 @@ void CustomCanUnitTests()
 	Assert(getMailBoxId(ccm11.mailBox, ccm11.bus) == ccm11.id, "CAN ID 11 is not set Correctly");
 	
 	
-//	dtAEM[8]  = {4,1,5,2,0,0,0,0};
+	//dtAEM[8]  = {4,1,5,2,0,0,0,0};
+	dtAEM[4] = 0;
 	canCallbackAEMwideband(&dtAEM[0]);
+	dtAEM[4] = 1;
+	canCallbackAEMwideband(&dtAEM[0]);
+	dtAEM[4] = 2;
+	canCallbackAEMwideband(&dtAEM[0]);
+	dtAEM[4] = 3;
+	canCallbackAEMwideband(&dtAEM[0]);
+	dtAEM[4] = 4;
+	canCallbackAEMwideband(&dtAEM[0]);
+	dtAEM[4] = 5;
+	canCallbackAEMwideband(&dtAEM[0]);
+	
 	Assert(Abs(pRamVariables.aemLambda - 0.1026f) < 0.0001, "aem lambda Fault Failed");
 	Assert(Abs(pRamVariables.aemOxygen - 1.282f) < 0.0001, "aem oxygen Fault Failed");
 	
@@ -102,6 +115,16 @@ void CustomCanUnitTests()
 	dtAEM[7]  = 0x40;
 	canCallbackAEMwideband(&dtAEM[0]);
 	Assert(pRamVariables.aemSensorFault == 1, "aem Sensor Fault Failed");	
+	
+	
+	
+	////////CHECK e85 Packet
+	dte85[0] = 0x31;	dte85[1] = 0x4d; dte85[2] = 45;	dte85[4] = 0x38;	dte85[5] = 0x52;	*pManifoldAbsolutePressure = 10.2;	
+	canCallbackMK3e85Packet(&dte85[0]);	
+	Assert(Abs(pRamVariables.pFuelCan - 22.5) <0.001f, "mk3 pFuelTest failed");
+	Assert(Abs(pRamVariables.tFuelCAN - 5) <0.001f, "mk3 tFuelCAN failed");
+	Assert(Abs(pRamVariables.rEthanolCAN - 0.2465) <0.001f, "mk3 rEthanolCAN failed");
+	Assert(Abs(pRamVariables.pFuelCanRel - 12.3) <0.001f, "mk3 pFuelCanRel failed");
 	
 	//Try all DT types, 1,2,3 U8,U16,U32
 	cmDTccm[0] = 0;	
@@ -270,11 +293,18 @@ void CustomCanUnitTests()
 	CustomCanService();
 	
 	#if RACEGRADE_KEYPAD_HACKS
-		//raceGradeKeyPadCallback(&dt1[0]);
-		//raceGradeKeyPadCallback(&dt2[0]);
-		//raceGradeKeyPadCallback(&dt3[0]);
-		//ProgModeMain();
-		//raceGradeKeyPadCallback(&dt3[0]);
+		dt1[4] = 0;
+		raceGradeKeyPadCallback(&dt1[0]);
+		dt1[4] = 1;
+		raceGradeKeyPadCallback(&dt1[0]);
+		dt1[4] = 2;
+		raceGradeKeyPadCallback(&dt1[0]);
+		dt1[4] = 3;
+		raceGradeKeyPadCallback(&dt1[0]);
+		dt1[4] = 4;
+		raceGradeKeyPadCallback(&dt1[0]);
+		dt1[4] = 5;
+		raceGradeKeyPadCallback(&dt1[0]);
 	#endif
 
 	pRamVariables.initFunctionRun = 0;	

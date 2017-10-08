@@ -316,18 +316,22 @@ void canCallbackAEMwideband(unsigned char* data)
 {
 	pRamVariables.aemLambda = (float)(data[0]*256 + data[1])*0.0001;
 	pRamVariables.aemOxygen = (float)(data[2]*256 + data[3])*0.001;
-	if(data[4]>=16)
-	{
-		pRamVariables.aemDataValid = (unsigned char)(data[6]&0x80);
-		pRamVariables.aemSensorFault = (unsigned char)(data[7]&0x40);	
-	}
-	dataLinkedInRam++;	
+	pRamVariables.aemDataValid = (unsigned char)(data[6])>>7&0x01;
+	pRamVariables.aemSensorFault = (unsigned char)(data[7])>>6&0x01;	
 }
 
 void canCallbackMK3e85Packet(unsigned char* data)
 {
-	pRamVariables.canE85 = (float)(data[0]*256 + data[1])/1024; 		//0 to 1024 for 0 to 100% 1/1024 LSB/%
-	pRamVariables.canFuelTemp = (float)(data[2])-40;	//0 to 165 for -40 to 125C
+	pRamVariables.rEthanolCAN = (float)(data[0]*256 + data[1])/51200; 		//0 to 1024 for 0 to 100% 1/1024 LSB/%	
+	pRamVariables.tFuelCAN = (float)(data[2])-40;	//0 to 165 for -40 to 125C
+	updateFuelPressure((unsigned short)((unsigned short)data[4]*256 + (unsigned short)data[5]));
+	pRamVariables.pFuelCanRel = pRamVariables.pFuelCan - *pManifoldAbsolutePressure;
+}
+
+void updateFuelPressure(unsigned short rawVoltage)
+{
+	pRamVariables.vFuelPressureRel = ShortToFloatHooked(rawVoltage, (1/13107.2f),0);
+	pRamVariables.pFuelCan = Pull2DHooked(&FuelPressureTable, pRamVariables.vFuelPressureRel);	 
 }
 
 void raceGradeKeyPadCallback(unsigned char* data)
@@ -350,6 +354,7 @@ void raceGradeKeyPadCallback(unsigned char* data)
 			pRamVariables.buttons[i].edgeDetect = edgeNA;
 		}
 		pRamVariables.buttons[i].state = statenew;
+		pRamVariables.buttons[i].led = 0;
 		i++;	
 	}
 	
@@ -489,7 +494,10 @@ void canCallbackRamTune(unsigned char* data)
 		default: break;
 	}
 }
-  
+ 
+////////////////////
+// *** Setup Function to load Mailbox settings to CPU Can Mailboxes
+//////////////////// 
 void CanSetup()
 {
 	unsigned char i = 0;
@@ -504,20 +512,26 @@ void CanSetup()
 	}
 	pRamVariables.initFunctionRun = 1;
 	#if RACEGRADE_KEYPAD_HACKS
+		//SETUP the CANOPN Broadcast Packet to start the RaceGrade Module
 		unsigned short setupCOP = 0x010A;
 		updateCanRaw((unsigned long)&setupCOP,dtShort,RACEGRADE_CANOPEN_START,0);
 	#endif
 }
 
 
-
+////////////////////
+// *** needs to be called every 1mSec
+// Checks each Transmit slot to see if it needs to be sent
+// Check every Receive slow to see if there is new data
+// Calls the RX Callback in case it is configured to run
+////////////////////
 void CustomCanService()
 {
 	unsigned char i = 0;
 	CanMessageSetupStruct *ccmGroup = (CanMessageSetupStruct *)(&ccm00);
 	unsigned char* ptrMB = (unsigned char*)(0xFFFFD100 + 0x800*(ccmGroup[0].bus&0x01) + 0x20*(ccmGroup[0].mailBox&0x1f) + 0x04);		
 	
-	pRamVariables.randomTimer++;
+	//Run Can Setup in Case the Init has not run, in case the first mailbox is not setup
 	if((pRamVariables.initFunctionRun != 1) || (ccmGroup[0].mcs != (ptrMB[0]&0x07)))
 	{
 		CanSetup();
