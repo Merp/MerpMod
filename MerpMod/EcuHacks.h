@@ -46,6 +46,7 @@ SHORT TERM:
 //Select ECU Target!!
 #include "TargetHeader.h"
 #include "TargetConfig.h"
+#include "GitVersion.h"
 
 #if defined(pResumeFlags) && defined(pCoastFlags)
 #if LC_ADJUST || CEL_HACKS || PROG_MODE
