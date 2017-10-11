@@ -89,7 +89,7 @@ unsigned char pad2[8];
 //MODID
 long modidop;
 long modidoffset;
-unsigned char modid[60];
+unsigned char modid[100];
 unsigned char padmod[8];
 //ECUID
 long ecuidop;
