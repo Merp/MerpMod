@@ -100,7 +100,7 @@
 "GNU Linker" 
 [UTILITY_PHASE]
 [CUSTOM_PHASES]
-"Git Hash" "GITHASH.bat" "$(PROJDIR)" 0 0 0 
+"Git Hash" "GitVersionUpdate.bat" "$(PROJDIR)" 0 0 0 
 "Target Selection" "TargetSelection.bat" "$(PROJDIR)\TARGETS" 0 0 0 
 "Update Test Rom" "Update.bat" "$(PROJDIR)\TestRom" 0 0 0 
 [CUSTOM_PHASE_INPUT_GROUP]
