@@ -1,8 +1,8 @@
-#define MOD_DATE 13.6.27.2237
-
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_ECUID 65F5FAE706
+#define MOD_DATE 14.10.17.19.24
+#include "Flash.h"
+#define MOD_CONFIG Flash
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AE5F301C
 #define ECU_IDENTIFIER 5B42564107
@@ -46,7 +46,7 @@
 
 #define sCelTrigger (0x0007EDD0)
 #define hCelSignal (0x0007EE54)
-#define pCelSignalOem ((char*)0xFFFF9C5A)
+#define pCelSignalOem ((unsigned char*)0xFFFF9C5A)
 
 /////////////////////
 // Boost Hacks
@@ -88,22 +88,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF6317)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF6316)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF6318)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF6974)
-#define ClutchBitMask ((char)0x01)
+#define pResumeFlags ((unsigned char*)0xFFFF6317)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF6316)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF6318)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF6974)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6C23)
+#define pFbkc1 ((unsigned char*)0xFFFF6C23)
 #define pFbkc4 ((float*)0xFFFF7E04)
-#define pIam1 ((char*)0xFFFF6C25)
+#define pIam1 ((unsigned char*)0xFFFF6C25)
 #define pIam4 ((float*)0xFFFF2CBC)
 #define pEngineSpeed ((float*)0xFFFF69C8)
 #define pVehicleSpeed ((float*)0xFFFF69A4)
@@ -115,14 +115,14 @@
 #define pEngineLoad ((float*)0xFFFF67AC)
 #define pReqTorque ((float*)0xFFFF8228)
 #define pThrottlePlate ((float*)0xFFFF6694)
-#define pCurrentGear ((char*)0xFFFF6BB6)
+#define pCurrentGear ((unsigned char*)0xFFFF6BB6)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////
 // OBD Experimental stuff
 /////////////////////
 
-#define pObdVinDirect ((char*)0xFFFF2004)
+#define pObdVinDirect ((unsigned char*)0xFFFF2004)
 
 /////////////////////
 // New Definitions

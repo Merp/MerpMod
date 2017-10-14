@@ -1,8 +1,8 @@
-#define MOD_DATE 13.5.11.1322
-
+#define MOD_ECUID 98BCFA6A73
+#define MOD_DATE 14.10.17.18.52
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DK100P
 #define ECU_IDENTIFIER 4E42504007
@@ -19,13 +19,18 @@
 #define sPull3DFloat (0x00002160)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x000151E4)
 #define sRevLimStart (0x00034824)
 #define sRevLimEnd (0x0003485A)
-#define pFlagsRevLim ((char*)0xFFFF7374)
+#define pFlagsRevLim ((unsigned char*)0xFFFF7374)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -86,22 +91,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF6565)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF6566)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF6567)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF6AE1)
-#define ClutchBitMask ((char)0x80)
+#define pResumeFlags ((unsigned char*)0xFFFF6565)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF6566)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF6567)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF6AE1)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6C64)
+#define pFbkc1 ((unsigned char*)0xFFFF6C64)
 #define pFbkc4 ((float*)0xFFFF768C)
-#define pIam1 ((char*)0xFFFF6C69)
+#define pIam1 ((unsigned char*)0xFFFF6C69)
 #define pIam4 ((float*)0xFFFF2B0C)
 #define pEngineSpeed ((float*)0xFFFF6B10)
 #define pVehicleSpeed ((float*)0xFFFF6B00)
@@ -114,7 +119,7 @@
 #define pEngineLoad ((float*)0xFFFF6924)
 #define pReqTorque ((float*)0xFFFF7980)
 #define pThrottlePlate ((float*)0xFFFF6818)
-#define pCurrentGear ((char*)0xFFFF6C19)
+#define pCurrentGear ((unsigned char*)0xFFFF6C19)
 #define pAf1Res ((float*)0xFFFF5F10)
 
 /////////////////////

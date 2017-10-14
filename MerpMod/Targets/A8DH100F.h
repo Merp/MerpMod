@@ -1,8 +1,8 @@
-#define MOD_DATE 13.5.21.031
-
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_ECUID 9FE7AE7894
+#define MOD_DATE 14.10.17.18.50
+#include "Flash.h"
+#define MOD_CONFIG Flash
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DH100F
 #define ECU_IDENTIFIER 4242584106
@@ -19,13 +19,18 @@
 #define sPull3DFloat (0x00002150)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x00014C14)
 #define sRevLimStart (0x00033898)
 #define sRevLimEnd (0x000338CE)
-#define pFlagsRevLim ((char*)0xFFFF72A0)
+#define pFlagsRevLim ((unsigned char*)0xFFFF72A0)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -47,7 +52,7 @@
 
 #define sCelTrigger (0x0007CC4C)
 #define hCelSignal (0x0007CD64)
-#define pCelSignalOem ((char*)0xFFFF8D3E)
+#define pCelSignalOem ((unsigned char*)0xFFFF8D3E)
 
 /////////////////////
 // Boost Hacks
@@ -84,22 +89,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF6508)
-#define ResumeBitMask ((char)0x02)
-#define pCoastFlags ((char*)0xFFFF6508)
-#define CoastBitMask ((char)0x04)
-#define pBrakeFlags ((char*)0xFFFF6508)
-#define BrakeBitMask ((char)0x08)
-#define pClutchFlags ((char*)0xFFFF6A45)
-#define ClutchBitMask ((char)0x80)
+#define pResumeFlags ((unsigned char*)0xFFFF6508)
+#define ResumeBitMask ((unsigned char)0x02)
+#define pCoastFlags ((unsigned char*)0xFFFF6508)
+#define CoastBitMask ((unsigned char)0x04)
+#define pBrakeFlags ((unsigned char*)0xFFFF6508)
+#define BrakeBitMask ((unsigned char)0x08)
+#define pClutchFlags ((unsigned char*)0xFFFF6A45)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6BC8)
+#define pFbkc1 ((unsigned char*)0xFFFF6BC8)
 #define pFbkc4 ((float*)0xFFFF75A0)
-#define pIam1 ((char*)0xFFFF6BCD)
+#define pIam1 ((unsigned char*)0xFFFF6BCD)
 #define pIam4 ((float*)0xFFFF2914)
 #define pEngineSpeed ((float*)0xFFFF6A74)
 #define pVehicleSpeed ((float*)0xFFFF6A64)
@@ -112,7 +117,7 @@
 #define pEngineLoad ((float*)0xFFFF689C)
 #define pReqTorque ((float*)0xFFFF7894)
 #define pThrottlePlate ((float*)0xFFFF6798)
-#define pCurrentGear ((char*)0xFFFF6B7D)
+#define pCurrentGear ((unsigned char*)0xFFFF6B7D)
 #define pAf1Res ((float*)0xFFFF5F08)
 
 /////////////////////

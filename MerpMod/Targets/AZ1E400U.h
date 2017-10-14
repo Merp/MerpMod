@@ -1,8 +1,8 @@
-#define MOD_DATE 13.5.6.2113
-
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_ECUID CC7F30A737
+#define MOD_DATE 14.10.17.19.23
+#include "Flash.h"
+#define MOD_CONFIG Flash
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1E400U
 #define ECU_IDENTIFIER 5142584007
@@ -18,13 +18,24 @@
 #define sPull3DFloat (0x000BE818)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+#define tCrankingFuelA (0x00085284)
+#define tCrankingFuelB (0x00085298)
+#define tCrankingFuelC (0x000852AC)
+#define tCrankingFuelD (0x000852C0)
+#define tCrankingFuelE (0x000852D4)
+#define tCrankingFuelF (0x000852E8)
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x0004210C)
 #define sRevLimStart (0x00034E88)
 #define sRevLimEnd (0x00034EC8)
-#define pFlagsRevLim ((char*)0xFFFF7760)
+#define pFlagsRevLim ((unsigned char*)0xFFFF7760)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -46,12 +57,13 @@
 
 #define sCelTrigger (0x00079AF0)
 #define hCelSignal (0x00079BC8)
-#define pCelSignalOem ((char*)0xFFFF98EA)
+#define pCelSignalOem ((unsigned char*)0xFFFF98EA)
 
 /////////////////////
 // Boost Hacks
 /////////////////////
 
+#define tTargetBoost (0x00083C68)
 
 /////////////////////
 // WGDC Hacks
@@ -59,6 +71,8 @@
 
 #define hWgdc (0x00041C4C)
 #define sWgdc (0x00013F64)
+#define tWgdcInitial (0x00083C4C)
+#define tWgdcMax (0x00083C30)
 
 /////////////////////
 // Primary Open Loop Fueling Hacks
@@ -73,7 +87,7 @@
 /////////////////////
 
 #define pBaseTiming (0xFFFF7980)
-#define dBaseTimingPCruise (0x00086C74)
+#define tBaseTimingPCruise (0x00086C74)
 #define tBaseTimingPNonCruise (0x00086C90)
 #define tBaseTimingRCruiseAvcs (0x00086CAC)
 #define tBaseTimingRNonCruiseAvcs (0x00086CC8)
@@ -88,22 +102,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF61DB)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF61DA)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF61DC)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF67C3)
-#define ClutchBitMask ((char)0x01)
+#define pResumeFlags ((unsigned char*)0xFFFF61DB)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF61DA)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF61DC)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF67C3)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6A51)
+#define pFbkc1 ((unsigned char*)0xFFFF6A51)
 #define pFbkc4 ((float*)0xFFFF7C18)
-#define pIam1 ((char*)0xFFFF6A53)
+#define pIam1 ((unsigned char*)0xFFFF6A53)
 #define pIam4 ((float*)0xFFFF2D10)
 #define pEngineSpeed ((float*)0xFFFF6814)
 #define pVehicleSpeed ((float*)0xFFFF67F0)
@@ -116,14 +130,14 @@
 #define pEngineLoad ((float*)0xFFFF79E0)
 #define pReqTorque ((float*)0xFFFF7F58)
 #define pThrottlePlate ((float*)0xFFFF64E8)
-#define pCurrentGear ((char*)0xFFFF6A01)
+#define pCurrentGear ((unsigned char*)0xFFFF6A01)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////
 // OBD Experimental stuff
 /////////////////////
 
-#define pObdVinDirect ((char*)0xFFFF2004)
+#define pObdVinDirect ((unsigned char*)0xFFFF2004)
 
 /////////////////////
 // New Definitions
