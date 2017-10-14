@@ -1,8 +1,8 @@
-#define MOD_DATE 13.7.16.1227
-
+#define MOD_ECUID BB496CE2FD
+#define MOD_DATE 14.10.17.18.47
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1G500F
 #define ECU_IDENTIFIER 6904784007
@@ -23,6 +23,12 @@
 /////////////////////
 
 #define pSiDrive (0xFFFF6136)
+#define tCrankingFuelA (0x0008261C)
+#define tCrankingFuelB (0x00082630)
+#define tCrankingFuelC (0x00082644)
+#define tCrankingFuelD (0x00082658)
+#define tCrankingFuelE (0x0008266C)
+#define tCrankingFuelF (0x00082680)
 
 /////////////////////
 // Rev Limit Hack
@@ -31,7 +37,7 @@
 #define hRevLimDelete (0x0003CDE4)
 #define sRevLimStart (0x0002F340)
 #define sRevLimEnd (0x0002F380)
-#define pFlagsRevLim ((char*)0xFFFF74C4)
+#define pFlagsRevLim ((unsigned char*)0xFFFF74C4)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -95,16 +101,16 @@
 // Flags-Signals
 /////////////////////
 
-#define pClutchFlags ((char*)0xFFFF65B7)
-#define ClutchBitMask ((char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF65B7)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6845)
+#define pFbkc1 ((unsigned char*)0xFFFF6845)
 #define pFbkc4 ((float*)0xFFFF79A8)
-#define pIam1 ((char*)0xFFFF6847)
+#define pIam1 ((unsigned char*)0xFFFF6847)
 #define pIam4 ((float*)0xFFFF2D10)
 #define pEngineSpeed ((float*)0xFFFF6608)
 #define pVehicleSpeed ((float*)0xFFFF65E4)
@@ -117,14 +123,14 @@
 #define pEngineLoad ((float*)0xFFFF63CC)
 #define pReqTorque ((float*)0xFFFF7D18)
 #define pThrottlePlate ((float*)0xFFFF62BC)
-#define pCurrentGear ((char*)0xFFFF67F5)
+#define pCurrentGear ((unsigned char*)0xFFFF67F5)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////
 // OBD Experimental stuff
 /////////////////////
 
-#define pObdVinDirect ((char*)0xFFFF2004)
+#define pObdVinDirect ((unsigned char*)0xFFFF2004)
 
 /////////////////////
 // New Definitions

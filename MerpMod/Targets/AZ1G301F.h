@@ -1,8 +1,8 @@
-#define MOD_DATE 13.6.28.026
-
+#define MOD_ECUID 3843BC229F
+#define MOD_DATE 14.10.17.18.44
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1G301F
 #define ECU_IDENTIFIER 5A04784207
@@ -21,6 +21,12 @@
 // Switch Hacks
 /////////////////////
 
+#define tCrankingFuelA (0x000826B0)
+#define tCrankingFuelB (0x000826C4)
+#define tCrankingFuelC (0x000826D8)
+#define tCrankingFuelD (0x000826EC)
+#define tCrankingFuelE (0x00082700)
+#define tCrankingFuelF (0x00082714)
 
 /////////////////////
 // Rev Limit Hack
@@ -29,7 +35,7 @@
 #define hRevLimDelete (0x0003CFEC)
 #define sRevLimStart (0x0002F554)
 #define sRevLimEnd (0x0002F594)
-#define pFlagsRevLim ((char*)0xFFFF74AC)
+#define pFlagsRevLim ((unsigned char*)0xFFFF74AC)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -95,16 +101,16 @@
 // Flags-Signals
 /////////////////////
 
-#define pClutchFlags ((char*)0xFFFF659F)
-#define ClutchBitMask ((char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF659F)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF682D)
+#define pFbkc1 ((unsigned char*)0xFFFF682D)
 #define pFbkc4 ((float*)0xFFFF7990)
-#define pIam1 ((char*)0xFFFF682F)
+#define pIam1 ((unsigned char*)0xFFFF682F)
 #define pIam4 ((float*)0xFFFF2D10)
 #define pEngineSpeed ((float*)0xFFFF65F0)
 #define pVehicleSpeed ((float*)0xFFFF65CC)
@@ -116,7 +122,7 @@
 #define pEngineLoad ((float*)0xFFFF63B4)
 #define pReqTorque ((float*)0xFFFF7D00)
 #define pThrottlePlate ((float*)0xFFFF62A4)
-#define pCurrentGear ((char*)0xFFFF67DD)
+#define pCurrentGear ((unsigned char*)0xFFFF67DD)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////

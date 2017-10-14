@@ -1,8 +1,8 @@
-#define MOD_DATE 13.5.6.212
-
+#define MOD_ECUID 8FBBFF9B0D
+#define MOD_DATE 14.10.17.18.41
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A2WC012E
 #define ECU_IDENTIFIER 3B02594316
@@ -18,13 +18,20 @@
 #define sPull3DFloat (0x00002110)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+#define tTipInEnrich (0x00054910)
+#define tStartupEnrich2_2A (0x00054674)
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x00011310)
 #define sRevLimStart (0x00025758)
 #define sRevLimEnd (0x0002578E)
-#define pFlagsRevLim ((char*)0xFFFFB868)
+#define pFlagsRevLim ((unsigned char*)0xFFFFB868)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -46,7 +53,7 @@
 
 #define sCelTrigger (0x0004C4FC)
 #define hCelSignal (0x0004C614)
-#define pCelSignalOem ((char*)0xFFFFC692)
+#define pCelSignalOem ((unsigned char*)0xFFFFC692)
 
 /////////////////////
 // Boost Hacks
@@ -84,16 +91,16 @@
 // Flags-Signals
 /////////////////////
 
-#define pClutchFlags ((char*)0xFFFFB1E9)
-#define ClutchBitMask ((char)0x80)
+#define pClutchFlags ((unsigned char*)0xFFFFB1E9)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFFB364)
+#define pFbkc1 ((unsigned char*)0xFFFFB364)
 #define pFbkc4 ((float*)0xFFFFBB1C)
-#define pIam1 ((char*)0xFFFFB369)
+#define pIam1 ((unsigned char*)0xFFFFB369)
 #define pIam4 ((float*)0xFFFF822C)
 #define pEngineSpeed ((float*)0xFFFFB218)
 #define pVehicleSpeed ((float*)0xFFFFB208)
@@ -105,7 +112,7 @@
 #define pMafSensorVoltage ((short*)0xFFFF9022)
 #define pEngineLoad ((float*)0xFFFFB0E0)
 #define pThrottlePlate ((float*)0xFFFFB024)
-#define pCurrentGear ((char*)0xFFFFB319)
+#define pCurrentGear ((unsigned char*)0xFFFFB319)
 
 /////////////////////
 // OBD Experimental stuff
