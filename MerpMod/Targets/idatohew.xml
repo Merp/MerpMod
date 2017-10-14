@@ -456,6 +456,7 @@
         </define>
         <define name="pCoolantTemp" type="float*">
             <ida name="E_COOLANT_TEMP" />
+			<ida name="E_COOLANT_TEMP_DIRECT" priority="2" />
         </define>
         <define name="pAtmoPress" type="float*">
             <ida name="E_ATMOSPHERIC_PRESSURE" />
