@@ -1,8 +1,8 @@
-#define MOD_DATE 13.7.15.134
-
+#define MOD_ECUID F3E0129A96
+#define MOD_DATE 14.10.17.17.40
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1G900C
 #define ECU_IDENTIFIER 7452584007
@@ -31,7 +31,7 @@
 #define hRevLimDelete (0x00042B28)
 #define sRevLimStart (0x00034FCC)
 #define sRevLimEnd (0x0003500C)
-#define pFlagsRevLim ((char*)0xFFFF77A0)
+#define pFlagsRevLim ((unsigned char*)0xFFFF77A0)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -53,7 +53,7 @@
 
 #define sCelTrigger (0x0007AA04)
 #define hCelSignal (0x0007AADC)
-#define pCelSignalOem ((char*)0xFFFF9996)
+#define pCelSignalOem ((unsigned char*)0xFFFF9996)
 
 /////////////////////
 // Boost Hacks
@@ -86,14 +86,14 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF620B)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF620A)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF620C)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF67F3)
-#define ClutchBitMask ((char)0x01)
+#define pResumeFlags ((unsigned char*)0xFFFF620B)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF620A)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF620C)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF67F3)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
@@ -111,14 +111,14 @@
 #define pMafSensorVoltage ((short*)0xFFFF4042)
 #define pReqTorque ((float*)0xFFFF7FDC)
 #define pThrottlePlate ((float*)0xFFFF6518)
-#define pCurrentGear ((char*)0xFFFF6A31)
+#define pCurrentGear ((unsigned char*)0xFFFF6A31)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////
 // OBD Experimental stuff
 /////////////////////
 
-#define pObdVinDirect ((char*)0xFFFF2004)
+#define pObdVinDirect ((unsigned char*)0xFFFF2004)
 
 /////////////////////
 // New Definitions

@@ -1,8 +1,8 @@
-#define MOD_DATE 13.6.27.2244
-
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_ECUID 8647A48EE0
+#define MOD_DATE 14.10.17.17.37
+#include "Flash.h"
+#define MOD_CONFIG Flash
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A2ZJD02G
 #define ECU_IDENTIFIER 2F54505406
@@ -21,6 +21,19 @@
 // Switch Hacks
 /////////////////////
 
+#define tTipInEnrich (0x0005C360)
+#define tCrankingFuelA (0x0005C0A8)
+#define tCrankingFuelB (0x0005C0BC)
+#define tCrankingFuelC (0x0005C0D0)
+#define tCrankingFuelD (0x0005C0E4)
+#define tStartupEnrich2_1A (0x0005C148)
+#define tStartupEnrich2_1B (0x0005C170)
+#define tStartupEnrich2_2A (0x0005C15C)
+#define tStartupEnrich2_2B (0x0005C184)
+#define tStartupEnrich3_1A (0x0005C0F8)
+#define tStartupEnrich3_1B (0x0005C10C)
+#define tStartupEnrich3_2A (0x0005C120)
+#define tStartupEnrich3_2B (0x0005C134)
 
 /////////////////////
 // Rev Limit Hack
@@ -29,7 +42,7 @@
 #define hRevLimDelete (0x00011478)
 #define sRevLimStart (0x0002BF68)
 #define sRevLimEnd (0x0002BF9E)
-#define pFlagsRevLim ((char*)0xFFFFAFCC)
+#define pFlagsRevLim ((unsigned char*)0xFFFFAFCC)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -52,7 +65,7 @@
 #define sCelTrigger (0x00053E58)
 #define hCelSignal (0x00053F70)
 #define hCelTriggerShort (0x00053F64)
-#define pCelSignalOem ((char*)0xFFFFBF62)
+#define pCelSignalOem ((unsigned char*)0xFFFFBF62)
 
 /////////////////////
 // Boost Hacks
@@ -90,14 +103,14 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFFA460)
-#define ResumeBitMask ((char)0x04)
-#define pCoastFlags ((char*)0xFFFFA460)
-#define CoastBitMask ((char)0x02)
-#define pBrakeFlags ((char*)0xFFFFA460)
-#define BrakeBitMask ((char)0x08)
-#define pClutchFlags ((char*)0xFFFFA845)
-#define ClutchBitMask ((char)0x80)
+#define pResumeFlags ((unsigned char*)0xFFFFA460)
+#define ResumeBitMask ((unsigned char)0x04)
+#define pCoastFlags ((unsigned char*)0xFFFFA460)
+#define CoastBitMask ((unsigned char)0x02)
+#define pBrakeFlags ((unsigned char*)0xFFFFA460)
+#define BrakeBitMask ((unsigned char)0x08)
+#define pClutchFlags ((unsigned char*)0xFFFFA845)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
@@ -116,7 +129,7 @@
 #define pEngineLoad ((float*)0xFFFFA770)
 #define pReqTorque ((float*)0xFFFFB43C)
 #define pThrottlePlate ((float*)0xFFFFA6A8)
-#define pCurrentGear ((char*)0xFFFFA969)
+#define pCurrentGear ((unsigned char*)0xFFFFA969)
 #define pAf1Res ((float*)0xFFFFA120)
 
 /////////////////////
