@@ -28,7 +28,6 @@ MerpMod/.*
 ##########
 *.patch
 !Release/*/*.patch
-*.map
 *.bin
 *.gld
 *.glg
