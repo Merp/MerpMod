@@ -1,8 +1,8 @@
-#define MOD_DATE 13.5.22.2216
-
+#define MOD_ECUID 999F29DCE2
+#define MOD_DATE 14.10.17.16.11
 #include "Flash.h"
 #define MOD_CONFIG Flash
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A2ZJB11J
 #define ECU_IDENTIFIER 3D12594106
@@ -18,13 +18,18 @@
 #define sPull3DFloat (0x00002110)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x000121C8)
 #define sRevLimStart (0x0002BA40)
 #define sRevLimEnd (0x0002BA76)
-#define pFlagsRevLim ((char*)0xFFFF5650)
+#define pFlagsRevLim ((unsigned char*)0xFFFF5650)
 #define RevLimBitMask (0x80)
 
 /////////////////////
@@ -46,7 +51,7 @@
 
 #define sCelTrigger (0x00070B34)
 #define hCelSignal (0x00070C4C)
-#define pCelSignalOem ((char*)0xFFFF6BD2)
+#define pCelSignalOem ((unsigned char*)0xFFFF6BD2)
 
 /////////////////////
 // Boost Hacks
@@ -84,14 +89,14 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF4C0C)
-#define ResumeBitMask ((char)0x04)
-#define pCoastFlags ((char*)0xFFFF4C0C)
-#define CoastBitMask ((char)0x02)
-#define pBrakeFlags ((char*)0xFFFF4C0C)
-#define BrakeBitMask ((char)0x08)
-#define pClutchFlags ((char*)0xFFFF5039)
-#define ClutchBitMask ((char)0x80)
+#define pResumeFlags ((unsigned char*)0xFFFF4C0C)
+#define ResumeBitMask ((unsigned char)0x04)
+#define pCoastFlags ((unsigned char*)0xFFFF4C0C)
+#define CoastBitMask ((unsigned char)0x02)
+#define pBrakeFlags ((unsigned char*)0xFFFF4C0C)
+#define BrakeBitMask ((unsigned char)0x08)
+#define pClutchFlags ((unsigned char*)0xFFFF5039)
+#define ClutchBitMask ((unsigned char)0x80)
 
 /////////////////////
 // NonSpecific Engine params
@@ -110,14 +115,14 @@
 #define pEngineLoad ((float*)0xFFFF4F48)
 #define pReqTorque ((float*)0xFFFF5AB4)
 #define pThrottlePlate ((float*)0xFFFF4E50)
-#define pCurrentGear ((char*)0xFFFF515D)
+#define pCurrentGear ((unsigned char*)0xFFFF515D)
 #define pAf1Res ((float*)0xFFFF4A48)
 
 /////////////////////
 // OBD Experimental stuff
 /////////////////////
 
-#define pObdVinDirect ((char*)0xFFFF2004)
+#define pObdVinDirect ((unsigned char*)0xFFFF2004)
 
 /////////////////////
 // New Definitions

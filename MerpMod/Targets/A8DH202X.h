@@ -1,9 +1,8 @@
-#define MOD_IDENTIFIER STRI(A8DH202X.MeRpMoD.Switch.Testing.v00.60.d14.12.9.2112)
-#define MOD_ECUID 5AED006023
-#define MOD_DATE 14.12.9.2112
+#define MOD_ECUID A85B4007D2
+#define MOD_DATE 12.10.17.19.31
 #include "Switch.h"
 #define MOD_CONFIG Switch
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A8DH202X
 #define ECU_IDENTIFIER 4312584206

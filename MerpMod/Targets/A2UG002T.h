@@ -1,8 +1,8 @@
-#define MOD_DATE 13.6.27.236
-
+#define MOD_ECUID B6E4050B6F
+#define MOD_DATE 14.10.17.17.03
 #include "Gratis.h"
 #define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID A2UG002T
 #define ECU_IDENTIFIER 4B52584207
@@ -22,6 +22,21 @@
 // Switch Hacks
 /////////////////////
 
+#define tTipInEnrich (0x0008C978)
+#define tCrankingFuelA (0x0008C28C)
+#define tCrankingFuelB (0x0008C2A0)
+#define tCrankingFuelC (0x0008C2B4)
+#define tCrankingFuelD (0x0008C2C8)
+#define tCrankingFuelE (0x0008C2DC)
+#define tCrankingFuelF (0x0008C2F0)
+#define tStartupEnrich2_1A (0x0008C360)
+#define tStartupEnrich2_1B (0x0008C374)
+#define tStartupEnrich2_2A (0x0008C388)
+#define tStartupEnrich2_2B (0x0008C39C)
+#define tStartupEnrich3_1A (0x0008C310)
+#define tStartupEnrich3_1B (0x0008C324)
+#define tStartupEnrich3_2A (0x0008C338)
+#define tStartupEnrich3_2B (0x0008C34C)
 
 /////////////////////
 // Rev Limit Hack
@@ -30,7 +45,7 @@
 #define hRevLimDelete (0x00015398)
 #define sRevLimStart (0x00037174)
 #define sRevLimEnd (0x000371A4)
-#define pFlagsRevLim ((char*)0xFFFF7890)
+#define pFlagsRevLim ((unsigned char*)0xFFFF7890)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -96,22 +111,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF66F7)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF66F6)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF66F8)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF6CE5)
-#define ClutchBitMask ((char)0x01)
+#define pResumeFlags ((unsigned char*)0xFFFF66F7)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF66F6)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF66F8)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF6CE5)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6F56)
+#define pFbkc1 ((unsigned char*)0xFFFF6F56)
 #define pFbkc4 ((float*)0xFFFF7C40)
-#define pIam1 ((char*)0xFFFF6F5B)
+#define pIam1 ((unsigned char*)0xFFFF6F5B)
 #define pIam4 ((float*)0xFFFF2C30)
 #define pEngineSpeed ((float*)0xFFFF6D34)
 #define pVehicleSpeed ((float*)0xFFFF6D08)
@@ -124,7 +139,7 @@
 #define pEngineLoad ((float*)0xFFFF6B30)
 #define pReqTorque ((float*)0xFFFF7F4C)
 #define pThrottlePlate ((float*)0xFFFF6A10)
-#define pCurrentGear ((char*)0xFFFF6F09)
+#define pCurrentGear ((unsigned char*)0xFFFF6F09)
 #define pAf1Res ((float*)0xFFFF5F10)
 
 /////////////////////

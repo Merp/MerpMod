@@ -1,8 +1,8 @@
-#define MOD_DATE 13.4.29.1654
-
-#include "Gratis.h"
-#define MOD_CONFIG Gratis
-#define MOD_BUILD Testing
+#define MOD_ECUID 12134582E1
+#define MOD_DATE 14.10.17.16.46
+#include "Flash.h"
+#define MOD_CONFIG Flash
+#define MOD_BUILD Debug
 #define MOD_RELEASE 0
 #define ECU_CALIBRATION_ID AZ1G701I
 #define ECU_IDENTIFIER 7212786007
@@ -18,13 +18,18 @@
 #define sPull3DFloat (0x000BE8B8)
 
 /////////////////////
+// Switch Hacks
+/////////////////////
+
+
+/////////////////////
 // Rev Limit Hack
 /////////////////////
 
 #define hRevLimDelete (0x00046C34)
 #define sRevLimStart (0x00038CF8)
 #define sRevLimEnd (0x00038D38)
-#define pFlagsRevLim ((char*)0xFFFF7A58)
+#define pFlagsRevLim ((unsigned char*)0xFFFF7A58)
 #define RevLimBitMask (0x01)
 
 /////////////////////
@@ -46,12 +51,13 @@
 
 #define sCelTrigger (0x00090CA8)
 #define hCelSignal (0x00090D2C)
-#define pCelSignalOem ((char*)0xFFFFA412)
+#define pCelSignalOem ((unsigned char*)0xFFFFA412)
 
 /////////////////////
 // Boost Hacks
 /////////////////////
 
+#define tTargetBoost (0x0009BC14)
 
 /////////////////////
 // WGDC Hacks
@@ -59,6 +65,8 @@
 
 #define hWgdc (0x00046610)
 #define sWgdc (0x000132EC)
+#define tWgdcInitial (0x0009BBF8)
+#define tWgdcMax (0x0009BBDC)
 
 /////////////////////
 // Primary Open Loop Fueling Hacks
@@ -83,22 +91,22 @@
 // Flags-Signals
 /////////////////////
 
-#define pResumeFlags ((char*)0xFFFF6167)
-#define ResumeBitMask ((char)0x01)
-#define pCoastFlags ((char*)0xFFFF6166)
-#define CoastBitMask ((char)0x01)
-#define pBrakeFlags ((char*)0xFFFF6168)
-#define BrakeBitMask ((char)0x01)
-#define pClutchFlags ((char*)0xFFFF677F)
-#define ClutchBitMask ((char)0x01)
+#define pResumeFlags ((unsigned char*)0xFFFF6167)
+#define ResumeBitMask ((unsigned char)0x01)
+#define pCoastFlags ((unsigned char*)0xFFFF6166)
+#define CoastBitMask ((unsigned char)0x01)
+#define pBrakeFlags ((unsigned char*)0xFFFF6168)
+#define BrakeBitMask ((unsigned char)0x01)
+#define pClutchFlags ((unsigned char*)0xFFFF677F)
+#define ClutchBitMask ((unsigned char)0x01)
 
 /////////////////////
 // NonSpecific Engine params
 /////////////////////
 
-#define pFbkc1 ((char*)0xFFFF6A10)
+#define pFbkc1 ((unsigned char*)0xFFFF6A10)
 #define pFbkc4 ((float*)0xFFFF7F30)
-#define pIam1 ((char*)0xFFFF6A12)
+#define pIam1 ((unsigned char*)0xFFFF6A12)
 #define pIam4 ((float*)0xFFFF30B8)
 #define pEngineSpeed ((float*)0xFFFF67D0)
 #define pVehicleSpeed ((float*)0xFFFF67AC)
@@ -111,7 +119,7 @@
 #define pEngineLoad ((float*)0xFFFF6594)
 #define pReqTorque ((float*)0xFFFF8294)
 #define pThrottlePlate ((float*)0xFFFF647C)
-#define pCurrentGear ((char*)0xFFFF69BD)
+#define pCurrentGear ((unsigned char*)0xFFFF69BD)
 #define pAf1Res ((float*)0xFFFF40C8)
 
 /////////////////////

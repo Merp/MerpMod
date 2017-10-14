@@ -15,6 +15,8 @@ SECTIONS
 		*(RomHole_BoostHackTables)
 		*(RomHole_TimingHackTables)
 		*(RomHole_MapSwitchTables)
+		*(RomHole_ProgModeTables)
+		*(RomHole_PortLoggerTables)
 		*(RomHole_Vin)
 		*(RomHole_Code)
 		*(RomHole_Functions)
