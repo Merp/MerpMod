@@ -51,6 +51,7 @@ void CelDoubleRepeat(unsigned char * CelFlashes1, unsigned char Speed1, unsigned
 void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char Delay, unsigned char Interrupt)  ROMCODE;
 void CelFlash()	ROMCODE;
 
+#if CAN_HACKS
 void CanSetup()	ROMCODE;
 void setupMailBox(unsigned char bus, unsigned char mailBox, unsigned short id, unsigned char mcs, unsigned char dlc) ROMCODE;
 void updateCanRaw(unsigned long addr, unsigned char type, unsigned char ccm, unsigned char bytePos) ROMCODE;
@@ -61,7 +62,7 @@ void recieveCanMessage(unsigned char ccm) ROMCODE;
 void updateCanDT(unsigned char dt) ROMCODE;
 void CustomCanService() ROMCODE;
 unsigned short returnShifter(unsigned char c) ROMCODE;
-
+#endif
 
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
@@ -77,6 +78,8 @@ float Pull3DRamHook(float* table, float xLookup, float yLookup) ROMCODE;
 void VinCheck() ROMCODE;
 
 void ProgModeMain()  ROMCODE;
+void ProgModeListener() ROMCODE;
+void ProgModeCruiseToggled(unsigned char) ROMCODE;
 
 void ProgModeButtonToggled(unsigned char) ROMCODE;
 
