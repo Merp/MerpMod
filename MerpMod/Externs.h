@@ -368,8 +368,8 @@ extern TwoDTable TGVLeftScaling;
 extern TwoDTable TGVRightScaling;
 extern float MapSwitchThresholdLo;
 extern float MapSwitchThresholdHi;
-extern unsigned char DefaultMapBlendingInputMode;
-extern unsigned char DefaultMapSwitchingInputMode;
+extern unsigned char BlendRatioInput;
+extern unsigned char MapSwitchInput;
 
 extern TwoDTable TipInEnrichMultiplier;
 extern TwoDTable CrankingFuelMultiplier;
