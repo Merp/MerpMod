@@ -1,8 +1,6 @@
 
 #include "EcuHacks.h"
 
-
-RamVariables pRamVariables  __attribute__ ((section ("RamHole")));
 /////////////////
 //Constants
 /////////////////
