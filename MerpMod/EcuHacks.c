@@ -65,7 +65,9 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 		#endif
 #endif
 
+#if CAN_HACKS
 	pRamVariables.ecuHacksMainCtr++;
+#endif
 	
 #if CRUISE_CONTROL
 	TestCruiseControlToggles();

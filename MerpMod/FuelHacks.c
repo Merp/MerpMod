@@ -32,7 +32,8 @@ pRamVariables->InjectorScaling = pRamVariables->InjectorScalingMultiplier * *dIn
 void POLFHack()
 {		
 
-	//Calculate new Injector Flow based off Ethanol Content	
+#if CAN_HACKS	//Calculate new Injector Flow based off Ethanol Content	
+//TODO this code should have another preprocessor conditional, not all CAN builds will use this?
 
 	if(pRamVariables.fuelPressureFlowEnabled == 1)
 		{		
@@ -49,8 +50,8 @@ void POLFHack()
 	}
 	else
 		pRamVariables.InjectorScaling = pRamVariables.kFuelPressure * (*dInjectorScaling);
-		
-	
+#endif
+
 #if POLF_MAIN_HOOK
 EcuHacksMain();
 #endif

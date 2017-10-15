@@ -86,7 +86,10 @@ void ProgModeBlendMode() ROMCODE;
 void ProgModeLCAdjust()  ROMCODE;
 void ProgModeIAMAdjust() ROMCODE;
 void ProgModeValetMode() ROMCODE;
+
+#if RACEGRADE_KEYPAD_HACKS
 void ProgModeRaceGradeBackLight() ROMCODE;
+#endif
 
 void LCAdjustCruiseToggled(unsigned char) ROMCODE;
 

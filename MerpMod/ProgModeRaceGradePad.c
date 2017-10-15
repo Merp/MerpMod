@@ -14,7 +14,7 @@
 
 #include "EcuHacks.h"
 
-#if PROG_MODE
+#if RACEGRADE_KEYPAD_HACKS
 // Constants need to be declared as 'extern' with their values defined in the 
 // function body or in an external asm file.  This is a convoluted way to 
 // declare and define variables, but the standard approach causes the compiler
