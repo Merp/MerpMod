@@ -18,9 +18,9 @@
 
 void InjectorHack(){
 
-pRamVariables->InjectorScalingMultiplier = Pull2DHooked(&InjectorScalingMultiplierTable,pRamVariables->MapBlendRatio);
+pRamVariables.InjectorScalingMultiplier = Pull2DHooked(&InjectorScalingMultiplierTable,pRamVariables.MapBlendRatio);
 
-pRamVariables->InjectorScaling = pRamVariables->InjectorScalingMultiplier * *dInjectorScaling;
+pRamVariables.InjectorScaling = pRamVariables.InjectorScalingMultiplier * *dInjectorScaling;
 
 }
 

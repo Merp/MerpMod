@@ -55,7 +55,7 @@ float Pull2DRamHookTipIn(float* table, float xLookup)
 	if(table == tTipInEnrich)//This hook is used by other tables!!
 		return Pull2DHooked((TwoDTable*)table, xLookup) 
 		* Pull2DHooked((TwoDTable*)&TipInEnrichMultiplier, xLookup)
-		* pRamVariables->InjectorScalingMultiplier;		
+		* pRamVariables.InjectorScalingMultiplier;		
 	return Pull2DHooked((TwoDTable*)table, xLookup);
 }
 
@@ -69,7 +69,7 @@ float Pull2DRamHookCrankingFuel(float* table, float xLookup)
 	table == tCrankingFuelF)//This hook is used by other tables!!
 		return Pull2DHooked((TwoDTable*)table, xLookup) 
 		* Pull2DHooked((TwoDTable*)&CrankingFuelMultiplier, xLookup)
-		* pRamVariables->InjectorScalingMultiplier;
+		* pRamVariables.InjectorScalingMultiplier;
 	return Pull2DHooked((TwoDTable*)table, xLookup);
 }
 
