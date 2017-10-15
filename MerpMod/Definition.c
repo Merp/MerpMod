@@ -390,7 +390,6 @@ DEFNEW1D("Flex Fuel Sensor Compensation Enabled",DefaultFlexFuelSensorEnabled);
 #endif
 
 #if SWITCH_HACKS
-DEFNEW1D("Primary Open Loop Fuel Hack Enable",DefaultPolfHackEnabled);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Intelligent",FuelTable1i);
 DEFNEW3D("Primary Open Loop Fueling Table 2 Intelligent",FuelTable2i);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Sport",FuelTable1s);
@@ -546,7 +545,6 @@ DEFNEW3D("Launch Control Timing Retard Table",LCTimingRetardTable);
 DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);
 	
 #if SWITCH_HACKS
-DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);
 DEFNEW3D("Base Timing Table 1 Intelligent",TimingTable1i);
 DEFNEW3D("Base Timing Table 2 Intelligent",TimingTable2i);
 DEFNEW3D("Base Timing Table 1 Sport",TimingTable1s);
