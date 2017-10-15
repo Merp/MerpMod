@@ -83,12 +83,12 @@ void ProgModeCruiseToggled(unsigned char) ROMCODE;
 
 void ProgModeButtonToggled(unsigned char) ROMCODE;
 
-void ProgModeMapSwitch()  ROMCODE;
-void ProgModeBlendAdjust()  ROMCODE;
-void ProgModeBlendMode() ROMCODE;
-void ProgModeLCAdjust()  ROMCODE;
-void ProgModeIAMAdjust() ROMCODE;
-void ProgModeValetMode() ROMCODE;
+void ProgModeMapSwitch(unsigned char)  ROMCODE;
+void ProgModeBlendAdjust(unsigned char)  ROMCODE;
+void ProgModeBlendMode(unsigned char) ROMCODE;
+void ProgModeLCAdjust(unsigned char)  ROMCODE;
+void ProgModeIAMAdjust(unsigned char) ROMCODE;
+void ProgModeValetMode(unsigned char) ROMCODE;
 
 #if RACEGRADE_KEYPAD_HACKS
 void ProgModeRaceGradeBackLight() ROMCODE;

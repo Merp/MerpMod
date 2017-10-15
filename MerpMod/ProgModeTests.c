@@ -63,7 +63,7 @@ void ProgModeEntryTest()
 	SetBrake(0);
 	SetClutch(0);
 	pRamVariables.ProgModeEntry=0;
-	pRamVariables.ProgModeTimer=0;
+//	pRamVariables.ProgModeTimer=0;
 	
 //	if(pRamVariables.ProgModeEnable != 0)
 //		ExitProgMode();

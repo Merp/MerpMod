@@ -169,7 +169,12 @@ typedef struct
 	unsigned char ProgModeCurrentMode;
 	unsigned char ProgModeValueFlashes;
 	unsigned char ValetMode;
+	
 	unsigned char BlendMode;
+	unsigned char ProgModeEnable;
+	unsigned char ProgModeWait;
+	unsigned char ProgModeEntry; 
+	
 	float ProgModeValue;
 #endif			
 
