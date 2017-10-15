@@ -488,7 +488,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTiming,
 		oldval: tBaseTiming,
-		newval: (int)&(pRamVariables.BaseTimingOutput),
+		newval: (int)&(pRamVariables.TimingHackOutput),
 		name: STR(Timing Table Hook)
 	};
 #else

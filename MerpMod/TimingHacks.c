@@ -67,9 +67,9 @@ float TimingHack()
 	pRamVariables.BaseTiming = OutputValue;
 	
 	if(pRamVariables.TimingHackEnabled == HackEnabled)
-		pRamVariables.BaseTimingOutput = pRamVariables.BaseTiming - Abs(pRamVariables.SubtractiveKCA);
+		pRamVariables.TimingHackOutput = pRamVariables.BaseTiming - Abs(pRamVariables.SubtractiveKCA);
 	else
-		pRamVariables.BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+		pRamVariables.TimingHackOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
 		
 	//Call existing!
 	BaseTimingHooked();
