@@ -67,7 +67,7 @@ float Smooth(float smoothingFactor, float input, float previous)
 	return output;
 }
 
-float sqrt(float input)
+float SquareRoot(float input)
 {
 	float lo,mid,hi,ipsq;	
 	unsigned char i = 0;

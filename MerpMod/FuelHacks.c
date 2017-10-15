@@ -37,7 +37,7 @@ void POLFHack()
 
 	if(pRamVariables.fuelPressureFlowEnabled == 1)
 		{		
-		pRamVariables.kFuelPressure = sqrt(pRamVariables.pFuelCanRel/BaseInjectorFlowPressureRelative);
+		pRamVariables.kFuelPressure = SquareRoot(pRamVariables.pFuelCanRel/BaseInjectorFlowPressureRelative);
 		
 		}
 	else

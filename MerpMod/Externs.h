@@ -98,7 +98,7 @@ void SetClutch(int value) __attribute__ ((section ("Misc")));
 #endif
 void SetBrake(int value) __attribute__ ((section ("Misc")));
 
-float sqrt(float input) ROMCODE;
+float SquareRoot(float input) ROMCODE;
 float Abs(float input) ROMCODE;
 float LowPass(float input, float limit) ROMCODE;
 float HighPass(float input, float limit) ROMCODE;
