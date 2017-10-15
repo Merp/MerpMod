@@ -79,7 +79,9 @@ void InputUpdate()//TODO: put on SD branch
 	pRamVariables.TGVLeftScaled = Pull2DHooked(&TGVLeftScaling,pRamVariables.TGVLeftVolts);
 	pRamVariables.TGVRightScaled = Pull2DHooked(&TGVRightScaling,pRamVariables.TGVRightVolts);
 	
+#if CAN_HACKS
 	pRamVariables.ethanolContentCAN = (float)pRamVariables.ethanolContentShortCAN/100;
+#endif
 
 	if(pRamVariables.BlendMode == 0) //Auto Mode
 	{
@@ -92,11 +94,11 @@ void InputUpdate()//TODO: put on SD branch
 			case InputModeTGVRight:
 				pRamVariables.MapBlendRatio = pRamVariables.TGVRightScaled;
 				break;
-		
+		#if CAN_HACKS
 			case InputCanFlexFuelRatio:
 				pRamVariables.MapBlendRatio = pRamVariables.ethanolContentCAN;
 				break;
-		
+		#endif
 			default:
 				pRamVariables.MapBlendRatio = DefaultMapBlendRatio;
 				break;

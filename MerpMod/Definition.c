@@ -379,14 +379,15 @@ DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E");	
 DEFINERAMVAR("MerpMod Primary Open Loop Fueling Target",PolfTarget,"float","E");
 DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E");	
-	
+
+#if CAN_HACKS
 DEFNEW2D("Flex Fuel Stoich Blending",FlexFuelStoichTable);
 DEFNEW2D("Fuel Pressure Scaling",FuelPressureTable);
 DEFNEW1D("Flex Base Gasoline AFR",BaseGasolineAFR);
 DEFNEW1D("Base Injector Fuel Flow Pressure",BaseInjectorFlowPressureRelative);
 DEFNEW1D("Fuel Pressure Compensation Enabled",DefaultkPFuelPressureEnabled);
 DEFNEW1D("Flex Fuel Sensor Compensation Enabled",DefaultFlexFuelSensorEnabled);
-
+#endif
 
 #if SWITCH_HACKS
 DEFNEW1D("Primary Open Loop Fuel Hack Enable",DefaultPolfHackEnabled);
