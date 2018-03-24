@@ -122,13 +122,13 @@ void PortLogger(){
 
 	int i;
 	int count = (sizeof(PortAddresses)/sizeof(PortAddresses[0]));
-	pRamVariables->testchar1 = 0x01;
-	pRamVariables->testchar2 = 0x02;
-	pRamVariables->testchar3 = 0x04;
-	pRamVariables->testchar4 = 0x08;
+	pRamVariables.testchar1 = 0x01;
+	pRamVariables.testchar2 = 0x02;
+	pRamVariables.testchar3 = 0x04;
+	pRamVariables.testchar4 = 0x08;
 	for(i = 0;i<count;i++)
 	{
-		pRamVariables->PortParameters[i] = *(PortAddresses[i]);
+		pRamVariables.PortParameters[i] = *(PortAddresses[i]);
 	}
 }
 
@@ -172,7 +172,7 @@ void ADCLogger(){
 	int count = (sizeof(ADCAddresses)/sizeof(ADCAddresses[0]));
 	for(i=0;i<count;i++)
 	{
-		pRamVariables->ADCParameters[i] = *ADCAddresses[i];
+		pRamVariables.ADCParameters[i] = *ADCAddresses[i];
 	}
 }
 

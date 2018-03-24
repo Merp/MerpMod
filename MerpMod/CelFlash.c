@@ -21,31 +21,31 @@ float (*CelTrigger)() __attribute__ ((section ("RomHole_Functions"))) = (float(*
 
 void CelDoubleRepeat(unsigned char * CelFlashes1, unsigned char Speed1, unsigned char * CelFlashes2, unsigned char Speed2, unsigned char Delay1, unsigned char Delay2)
 {
-	if(pRamVariables->CelFlashStatus == 0)
+	if(pRamVariables.CelFlashStatus == 0)
 	{
-		if(pRamVariables->CelRepeatSwitch != 0)
+		if(pRamVariables.CelRepeatSwitch != 0)
 			CelFlashStart(*CelFlashes1,Speed1,Delay1,0);
 		else
 			CelFlashStart(*CelFlashes2,Speed2,Delay2,0);
-		pRamVariables->CelRepeatSwitch ^= 1;
+		pRamVariables.CelRepeatSwitch ^= 1;
 	}
 }
 
 void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char Delay, unsigned char Interrupt)
 {	
 	// If no flashes exist OR interrupt is sent
-	if(pRamVariables->CelFlashStatus == 0 || Interrupt == 1)
+	if(pRamVariables.CelFlashStatus == 0 || Interrupt == 1)
 	{
 		// No current flashes or interrupt is running, go ahead and set parameters
-		pRamVariables->CelFlashDelay = Delay;
-		pRamVariables->CelFlashSpeed = Speed;
-		pRamVariables->CelFlashSpeedCounter = Speed;
+		pRamVariables.CelFlashDelay = Delay;
+		pRamVariables.CelFlashSpeed = Speed;
+		pRamVariables.CelFlashSpeedCounter = Speed;
 		if(CelFlashes != 0)
 		{
-			pRamVariables->CelFlashCount = ((CelFlashes * 2)-1);
-			pRamVariables->CelFlashCounter = ((CelFlashes * 2)-1);
-			pRamVariables->CelSignal = *pCelSignalOem ^ 1;
-			pRamVariables->CelFlashStatus = 1;
+			pRamVariables.CelFlashCount = ((CelFlashes * 2)-1);
+			pRamVariables.CelFlashCounter = ((CelFlashes * 2)-1);
+			pRamVariables.CelSignal = *pCelSignalOem ^ 1;
+			pRamVariables.CelFlashStatus = 1;
 		}
 	}
 }
@@ -53,31 +53,31 @@ void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char 
 void CelFlash()
 {	
 	// Check for existing flash call
-	if(pRamVariables->CelFlashCounter > 0)
+	if(pRamVariables.CelFlashCounter > 0)
 	{
-		if(pRamVariables->CelFlashSpeedCounter == 0)
+		if(pRamVariables.CelFlashSpeedCounter == 0)
 		{			
 			// If cel flashes remain and speed counter hits zero
 			// Reset speed counter, decrement flash counter, Invert Signal
-			pRamVariables->CelFlashSpeedCounter = pRamVariables->CelFlashSpeed;						
-			pRamVariables->CelSignal ^= 1;
-			(pRamVariables->CelFlashCounter)--;
+			pRamVariables.CelFlashSpeedCounter = pRamVariables.CelFlashSpeed;						
+			pRamVariables.CelSignal ^= 1;
+			(pRamVariables.CelFlashCounter)--;
 		}
 		else
 		{
-			(pRamVariables->CelFlashSpeedCounter)--;
+			(pRamVariables.CelFlashSpeedCounter)--;
 		}
 	}
-	else if(pRamVariables->CelFlashDelay > 0)
+	else if(pRamVariables.CelFlashDelay > 0)
 	{
-		(pRamVariables->CelFlashDelay)--;
+		(pRamVariables.CelFlashDelay)--;
 		//TODO UPDATE UNIT TEST THIS SHIT!!
 	}
 	else
 	{
 		//Copy existing signal if not flashing!
-		pRamVariables->CelSignal = *pCelSignalOem;
-		pRamVariables->CelFlashStatus = 0;
+		pRamVariables.CelSignal = *pCelSignalOem;
+		pRamVariables.CelFlashStatus = 0;
 	}
 	
 	//TODO HACK CRUISE LIGHT!!!!!
@@ -88,9 +88,9 @@ void CelFlash()
 	//	{			
 	//		// If ccruise flashes remain and speed counter hits zero
 	//		// Reset speed counter, decrement flash counter, Invert Signal and call Trigger
-	//		pRamVariables->CelSpeedCounter == pRamVariables->FlashSpeed;						
-	//		pRamVariables->CelSignal = pRamVariables->CelSignal ^ 1;
-	//		(pRamVariables->CelFlashCounter)--;
+	//		pRamVariables.CelSpeedCounter == pRamVariables.FlashSpeed;						
+	//		pRamVariables.CelSignal = pRamVariables.CelSignal ^ 1;
+	//		(pRamVariables.CelFlashCounter)--;
 	//	}
 	//	else
 	//	{
@@ -104,7 +104,7 @@ void CelFlash()
 ////////////////////////////////
 #if PROG_MODE
 //Disable flashes during programming mode
-if(pRamVariables->ProgModeStatus == ProgModeEnabled)
+if(pRamVariables.ProgModeStatus == ProgModeEnabled)
 {
 #endif
 	if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold)
@@ -134,7 +134,7 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 #endif
 	
 	// Call triggers if signal changes!
-	if(pRamVariables->CelSignal != pRamVariables->CelSignalLast)
+	if(pRamVariables.CelSignal != pRamVariables.CelSignalLast)
 	{
 		CelTrigger();
 	}
@@ -146,7 +146,7 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 	//}
 	
 	// Copy OEM cel trigger & cruise trigger
-	pRamVariables->CelSignalLast = pRamVariables->CelSignal;
+	pRamVariables.CelSignalLast = pRamVariables.CelSignal;
 	//*pCruiseSignalLast = *pCruiseSignal;
 
 }
@@ -156,19 +156,19 @@ if(pRamVariables->ProgModeStatus == ProgModeEnabled)
 void WideBandLambdaInput(float * Input)
 {
 	//scale
-	pRamVariables->WideBandLambda = Pull2DFloat(&WideBandScaling//createthis,Input);
+	pRamVariables.WideBandLambda = Pull2DFloat(&WideBandScaling//createthis,Input);
 	
-	if(pRamVariables->WideBandLambda < pRamVariables->LeanBoostThreshold)
+	if(pRamVariables.WideBandLambda < pRamVariables.LeanBoostThreshold)
 	{
-		if(pRamVariables->LeanBoostDelay == 0)
-			pRamVariables->LeanBoostSwitch = 1;
+		if(pRamVariables.LeanBoostDelay == 0)
+			pRamVariables.LeanBoostSwitch = 1;
 		else
-			pRamVariables->LeanBoostDelay--;
+			pRamVariables.LeanBoostDelay--;
 	}
 	else
 	{
-		pRamVariables->LeanBoostSwitch = 0;
-		pRamVariables->LeanBoostDelay = LeanBoostFlashDelay;
+		pRamVariables.LeanBoostSwitch = 0;
+		pRamVariables.LeanBoostDelay = LeanBoostFlashDelay;
 	}
 }
 */

@@ -34,7 +34,7 @@ void CelFlashUnitTests()
 	PopulateRamVariables();
 
 	*pCelSignalOem = 1;
-	pRamVariables->CelSignal = 0;
+	pRamVariables.CelSignal = 0;
 	*pFBKC = 0;
 	*pClutchFlags = 0;
 	*pAf1Res = EGTResistanceThreshold + 5;
@@ -49,38 +49,38 @@ void CelFlashUnitTests()
 *pIam1 = 16;
 #endif
 
-	pRamVariables->CelSignalLast = 0;
-	pRamVariables->CelFlashCounter = 0;
-	pRamVariables->CelFlashSpeedCounter = 0;
+	pRamVariables.CelSignalLast = 0;
+	pRamVariables.CelFlashCounter = 0;
+	pRamVariables.CelFlashSpeedCounter = 0;
 	CelFlash();
-	Assert(pRamVariables->CelSignal == 1, "OEM cel popped, Cel Signal should have popped too");
+	Assert(pRamVariables.CelSignal == 1, "OEM cel popped, Cel Signal should have popped too");
 	
 	//Check it is still on
 	TestCelFlash(20);
-	Assert(pRamVariables->CelSignal == 1, "OEM cel popped, 20 cycles later, Cel Signal should stay on");
+	Assert(pRamVariables.CelSignal == 1, "OEM cel popped, 20 cycles later, Cel Signal should stay on");
 	//Check 1 more cycle
 	CelFlash();
-	Assert(pRamVariables->CelSignal == 1, "OEM cel popped, 21 cycles later, Cel Signal should stay on");
+	Assert(pRamVariables.CelSignal == 1, "OEM cel popped, 21 cycles later, Cel Signal should stay on");
 	
 	//Turn OEM Cel off, check for response
 	
 	*pCelSignalOem = 0;
 	CelFlash();
-	Assert(pRamVariables->CelSignal == 0, "OEM cel is now gone, Cel signal should have dropped");
+	Assert(pRamVariables.CelSignal == 0, "OEM cel is now gone, Cel signal should have dropped");
 	
 	//Trigger knock below load threshold
 	*pEngineLoad = 1.0f;
 	*pFBKC = -1.0f;
 	CelFlash();
-	Assert(pRamVariables->CelSignal == 0, "below fbkc load threshold for cel, no light!");
+	Assert(pRamVariables.CelSignal == 0, "below fbkc load threshold for cel, no light!");
 	
 	//Trigger knock above load threshold
 	*pEngineLoad = 3.0f;
 	CelFlash();
-	Assert(pRamVariables->CelFlashCounter > 0, "knocking! Flash counter should init");
-	Assert(pRamVariables->CelFlashSpeedCounter > 0, "knocking! Flash speed counter should init");
-	Assert(pRamVariables->CelFlashSpeed > 0, "knocking! Flash speed counter should init");
-	Assert(pRamVariables->CelSignal == 1, "knocking! Flash should start");
+	Assert(pRamVariables.CelFlashCounter > 0, "knocking! Flash counter should init");
+	Assert(pRamVariables.CelFlashSpeedCounter > 0, "knocking! Flash speed counter should init");
+	Assert(pRamVariables.CelFlashSpeed > 0, "knocking! Flash speed counter should init");
+	Assert(pRamVariables.CelSignal == 1, "knocking! Flash should start");
 	
 	//remove knock conditions
 	*pEngineLoad = 1.0f;
@@ -89,8 +89,8 @@ void CelFlashUnitTests()
 	//run cel flash a few times to clear everything out
 	TestCelFlash(200);
 	
-	Assert(pRamVariables->CelSignal == 0, "knocking gone! Flash should zero");
-	Assert(pRamVariables->CelFlashCounter == 0, "knocking gone! Flash counter should zero");
+	Assert(pRamVariables.CelSignal == 0, "knocking gone! Flash should zero");
+	Assert(pRamVariables.CelFlashCounter == 0, "knocking gone! Flash counter should zero");
 
 //TODO: Test IAM CEL WARNING
 
@@ -98,8 +98,8 @@ void CelFlashUnitTests()
 	*pClutchFlags &= ~ClutchBitMask;
 	*pResumeFlags &= ~ResumeBitMask;
 	TestCelFlash(400);
-	Assert(pRamVariables->CelSignal == 0, "knocking gone! Flash should zero");
-	Assert(pRamVariables->CelFlashCounter == 0, "knocking gone! Flash counter should zero");
+	Assert(pRamVariables.CelSignal == 0, "knocking gone! Flash should zero");
+	Assert(pRamVariables.CelFlashCounter == 0, "knocking gone! Flash counter should zero");
 */
 }	
 	

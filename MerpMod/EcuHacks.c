@@ -52,6 +52,8 @@ Validating hacks prior to ROM patching:
 
 #include "EcuHacks.h"
 
+RamVariables pRamVariables __attribute__ ((section ("RamHole")));
+
 void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 {	
 	

@@ -93,14 +93,14 @@ void ProgModeAdjust(unsigned char toggleType) ROMCODE;
 void ProgModeListener()
 {
 	//Check for prog mode disable (entered OEM test mode)
-	if(pRamVariables->ProgModeStatus != ProgModeDisabled)
+	if(pRamVariables.ProgModeStatus != ProgModeDisabled)
 	{
-		if(pRamVariables->ProgModeStatus == ProgModeEnabled)
+		if(pRamVariables.ProgModeStatus == ProgModeEnabled)
 		{
 			//Check for entry conditions, enter mode selection if met
 			if(TestTestModeSwitch())
 			{	
-				pRamVariables->ProgModeStatus = ProgModeSelectMode;
+				pRamVariables.ProgModeStatus = ProgModeSelectMode;
 			}
 		}
 		else
@@ -108,7 +108,7 @@ void ProgModeListener()
 			//Check for exit conditions, run main if met.
 			if(!TestTestModeSwitch())
 			{
-				pRamVariables->ProgModeStatus = ProgModeEnabled;
+				pRamVariables.ProgModeStatus = ProgModeEnabled;
 			}
 			else
 			{
@@ -123,28 +123,28 @@ void ProgModeCruiseToggled(unsigned char toggleType)
 	switch(toggleType)
 	{
 		case(ToggleResume):
-			if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
+			if(pRamVariables.ProgModeStatus == ProgModeSelectMode)
 			{
-				if(pRamVariables->ProgModeCurrentMode >= PROG_MODE_COUNT)
-					pRamVariables->ProgModeCurrentMode = 1;
+				if(pRamVariables.ProgModeCurrentMode >= PROG_MODE_COUNT)
+					pRamVariables.ProgModeCurrentMode = 1;
 				else
-					pRamVariables->ProgModeCurrentMode++;
+					pRamVariables.ProgModeCurrentMode++;
 			}
-			else if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
+			else if(pRamVariables.ProgModeStatus == ProgModeAdjustValue)
 			{
 				ProgModeAdjust(toggleType);
 			}
 			break;
 		
 		case(ToggleCoast):		
-			if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
+			if(pRamVariables.ProgModeStatus == ProgModeSelectMode)
 			{
-				if(pRamVariables->ProgModeCurrentMode <= 1)
-					pRamVariables->ProgModeCurrentMode = PROG_MODE_COUNT;
+				if(pRamVariables.ProgModeCurrentMode <= 1)
+					pRamVariables.ProgModeCurrentMode = PROG_MODE_COUNT;
 				else
-					pRamVariables->ProgModeCurrentMode--;
+					pRamVariables.ProgModeCurrentMode--;
 			}
-			else if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
+			else if(pRamVariables.ProgModeStatus == ProgModeAdjustValue)
 			{
 				ProgModeAdjust(toggleType);
 			}
@@ -160,26 +160,26 @@ void ProgModeMain()
 	ProgModeAdjust(ToggleInit);
 	if(TestDefogSwitch())
 	{
-		pRamVariables->ProgModeStatus = ProgModeAdjustValue;
+		pRamVariables.ProgModeStatus = ProgModeAdjustValue;
 	}
 	else
 	{
-		pRamVariables->ProgModeStatus = ProgModeSelectMode;
+		pRamVariables.ProgModeStatus = ProgModeSelectMode;
 	}
 	
-	if(pRamVariables->ProgModeStatus == ProgModeSelectMode)
+	if(pRamVariables.ProgModeStatus == ProgModeSelectMode)
 	{
-		CelFlashStart(pRamVariables->ProgModeCurrentMode, MODE_FLASH_SPEED, MODE_FLASH_DELAY,0);
+		CelFlashStart(pRamVariables.ProgModeCurrentMode, MODE_FLASH_SPEED, MODE_FLASH_DELAY,0);
 	}
-	if(pRamVariables->ProgModeStatus == ProgModeAdjustValue)
+	if(pRamVariables.ProgModeStatus == ProgModeAdjustValue)
 	{
-		CelFlashStart(pRamVariables->ProgModeValueFlashes, VALUE_FLASH_SPEED, VALUE_FLASH_DELAY,0);
+		CelFlashStart(pRamVariables.ProgModeValueFlashes, VALUE_FLASH_SPEED, VALUE_FLASH_DELAY,0);
 	}
 }
 		
 void ProgModeAdjust(unsigned char toggleType)
 {
-	switch(pRamVariables->ProgModeCurrentMode)
+	switch(pRamVariables.ProgModeCurrentMode)
 	{
 		case 1:
 		ProgModeMapSwitch(toggleType);
@@ -210,72 +210,72 @@ void ProgModeAdjust(unsigned char toggleType)
 		break;
 		
 		default:
-		pRamVariables->ProgModeCurrentMode = 1;
+		pRamVariables.ProgModeCurrentMode = 1;
 		break;
 	}	
 }
 
 void ProgModeMapSwitch(unsigned char toggleType)
 {
-	if(pRamVariables->MapSwitchingInputMode == MapSwitchingInputModeUndefined)
+	if(pRamVariables.MapSwitchingInputMode == MapSwitchingInputModeUndefined)
 	{	
 		if(toggleType == ToggleResume)
 		{	
-			if(pRamVariables->MapSwitch >= 3)
-				asm("nop");//pRamVariables->MapSwitch = 1;
+			if(pRamVariables.MapSwitch >= 3)
+				asm("nop");//pRamVariables.MapSwitch = 1;
 			else
-				pRamVariables->MapSwitch++;
+				pRamVariables.MapSwitch++;
 		}
 		else if(toggleType == ToggleCoast)
 		{
-			if(pRamVariables->MapSwitch == 1 )
-				asm("nop");//pRamVariables->MapSwitch = 3;
+			if(pRamVariables.MapSwitch == 1 )
+				asm("nop");//pRamVariables.MapSwitch = 3;
 			else
-				pRamVariables->MapSwitch--;
+				pRamVariables.MapSwitch--;
 		}
 	}
-	pRamVariables->ProgModeValue = pRamVariables->MapSwitch;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->MapSwitch;
+	pRamVariables.ProgModeValue = pRamVariables.MapSwitch;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.MapSwitch;
 }
 
 void ProgModeBlendModeAdjust(unsigned char toggleType)
 {
 	if(toggleType == ToggleResume)
 	{
-		if(pRamVariables->MapBlendingInputMode < 2)
-			pRamVariables->MapBlendingInputMode++;
+		if(pRamVariables.MapBlendingInputMode < 2)
+			pRamVariables.MapBlendingInputMode++;
 	}
 	else if(toggleType == ToggleCoast)
 	{
-		if(pRamVariables->MapBlendingInputMode > 0)
-			pRamVariables->MapBlendingInputMode--;
+		if(pRamVariables.MapBlendingInputMode > 0)
+			pRamVariables.MapBlendingInputMode--;
 	}
 	
-	pRamVariables->ProgModeValue = pRamVariables->MapBlendingInputMode;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->MapBlendingInputMode;
+	pRamVariables.ProgModeValue = pRamVariables.MapBlendingInputMode;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.MapBlendingInputMode;
 }
 
 void ProgModeBlendAdjust(unsigned char toggleType)
 {
-	if(pRamVariables->MapBlendingInputMode == MapBlendingInputModeUndefined)
+	if(pRamVariables.MapBlendingInputMode == MapBlendingInputModeUndefined)
 	{
 		if(toggleType == ToggleResume)
 		{	
-			if(pRamVariables->MapBlendRatio > (BLEND_MAX - BLEND_STEP - BLEND_STEP))
-				pRamVariables->MapBlendRatio = BLEND_MAX;
+			if(pRamVariables.MapBlendRatio > (BLEND_MAX - BLEND_STEP - BLEND_STEP))
+				pRamVariables.MapBlendRatio = BLEND_MAX;
 			else
-				pRamVariables->MapBlendRatio += BLEND_STEP;
+				pRamVariables.MapBlendRatio += BLEND_STEP;
 		}
 		else if(toggleType == ToggleCoast)
 		{
-			if(pRamVariables->MapBlendRatio < (BLEND_MIN + BLEND_STEP + BLEND_STEP))
-				pRamVariables->MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
+			if(pRamVariables.MapBlendRatio < (BLEND_MIN + BLEND_STEP + BLEND_STEP))
+				pRamVariables.MapBlendRatio = BLEND_MIN;//Hard limit, does not cycle to top again.
 			else
-				pRamVariables->MapBlendRatio -= BLEND_STEP;
+				pRamVariables.MapBlendRatio -= BLEND_STEP;
 		}
 	}
-	pRamVariables->ProgModeValue = pRamVariables->MapBlendRatio + 1;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)(pRamVariables->MapBlendRatio*10);
+	pRamVariables.ProgModeValue = pRamVariables.MapBlendRatio + 1;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)(pRamVariables.MapBlendRatio*10);
 }
 
 void ProgModeLCAdjust(unsigned char toggleType)
@@ -283,23 +283,23 @@ void ProgModeLCAdjust(unsigned char toggleType)
 	#if !AUTO_TRANS
 	if(toggleType == ToggleResume)
 	{	
-		pRamVariables->LaunchControlCut++;
-		if(pRamVariables->LaunchControlCut < pRamVariables->RedLineCut)
-			pRamVariables->LaunchControlCut+= LC_STEP;
+		pRamVariables.LaunchControlCut++;
+		if(pRamVariables.LaunchControlCut < pRamVariables.RedLineCut)
+			pRamVariables.LaunchControlCut+= LC_STEP;
 	}
 	else if(toggleType == ToggleCoast)
 	{
-		if(pRamVariables->LaunchControlCut > LC_MIN)
-			pRamVariables->LaunchControlCut-= LC_STEP;//Hard limit, does not cycle to top again.
+		if(pRamVariables.LaunchControlCut > LC_MIN)
+			pRamVariables.LaunchControlCut-= LC_STEP;//Hard limit, does not cycle to top again.
 		else
-			pRamVariables->LaunchControlCut = LC_MIN;
+			pRamVariables.LaunchControlCut = LC_MIN;
 	}
 	
-	pRamVariables->ProgModeValue = pRamVariables->LaunchControlCut;
-	pRamVariables->ProgModeValueFlashes = (unsigned char)(pRamVariables->LaunchControlCut / 1000);
+	pRamVariables.ProgModeValue = pRamVariables.LaunchControlCut;
+	pRamVariables.ProgModeValueFlashes = (unsigned char)(pRamVariables.LaunchControlCut / 1000);
 	#else
-	pRamVariables->ProgModeValue = 0.0f;
-	pRamVariables->ProgModeValueFlashes = 0;
+	pRamVariables.ProgModeValue = 0.0f;
+	pRamVariables.ProgModeValueFlashes = 0;
 	#endif
 }
 
@@ -319,24 +319,24 @@ void ProgModeIAMAdjust(unsigned char toggleType)
 		else
 			*pIAM = IAM_MIN;
 	}
-	pRamVariables->ProgModeValue = *pIAM;
-	pRamVariables->ProgModeValueFlashes = (10*(IAM))+1;
+	pRamVariables.ProgModeValue = *pIAM;
+	pRamVariables.ProgModeValueFlashes = (10*(IAM))+1;
 }
 
 void ProgModeValetMode(unsigned char toggleType)
 {
 	if(toggleType == ToggleResume)
 	{	
-		if(pRamVariables->ValetMode <=0)
-			pRamVariables->ValetMode = ValetModeEnabled;
+		if(pRamVariables.ValetMode <=0)
+			pRamVariables.ValetMode = ValetModeEnabled;
 	}
 	else if(toggleType == ToggleCoast)
 	{
-		if(pRamVariables->ValetMode >= 1 )
-			pRamVariables->ValetMode = ValetModeDisabled;
+		if(pRamVariables.ValetMode >= 1 )
+			pRamVariables.ValetMode = ValetModeDisabled;
 	}
-	pRamVariables->ProgModeValue = pRamVariables->ValetMode;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->ValetMode;
+	pRamVariables.ProgModeValue = pRamVariables.ValetMode;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.ValetMode;
 	
 }
 
@@ -344,23 +344,23 @@ void ProgModeHardReset(unsigned char toggleType)
 {
 	if(toggleType == ToggleResume)
 	{	
-		if(pRamVariables->HardResetFlag <=0)
+		if(pRamVariables.HardResetFlag <=0)
 		{
-			pRamVariables->HardResetFlag = HardResetFlagEnabled;
+			pRamVariables.HardResetFlag = HardResetFlagEnabled;
 			*pSSMResetByte = 0x40;
 		}
 		
 	}
 	else if(toggleType == ToggleCoast)
 	{
-		if(pRamVariables->HardResetFlag >= 1 )
+		if(pRamVariables.HardResetFlag >= 1 )
 		{
-			pRamVariables->HardResetFlag = HardResetFlagDisabled;
+			pRamVariables.HardResetFlag = HardResetFlagDisabled;
 			*pSSMResetByte = 0x40;
 		}
 	}
-	pRamVariables->ProgModeValue = pRamVariables->HardResetFlag;
-	pRamVariables->ProgModeValueFlashes = pRamVariables->HardResetFlag;
+	pRamVariables.ProgModeValue = pRamVariables.HardResetFlag;
+	pRamVariables.ProgModeValueFlashes = pRamVariables.HardResetFlag;
 }
 
 #endif

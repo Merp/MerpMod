@@ -22,14 +22,14 @@ asm(".long 0xFFFFFFFF");
 asm("nop");
 asm("nop");
 asm("nop");
-//long LCSECF  __attribute__ ((section ("SparkHacksData"),aligned(4))) = &(pRamVariables->SparkEventsX);
+//long LCSECF  __attribute__ ((section ("SparkHacksData"),aligned(4))) = &(pRamVariables.SparkEventsX);
  
   
 //void main () __attribute__ ((section ("SparkHacks"),aligned(4)));
 
  //void main()
 //{ 
-//long LCSECF = &(pRamVariables->SparkEventsX);
+//long LCSECF = &(pRamVariables.SparkEventsX);
  //asm(".long 0xFFFFFFFF");
 //asm("nop");
 //asm("mov.l @(LCSECF), r0");

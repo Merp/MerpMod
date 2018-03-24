@@ -15,7 +15,7 @@
 #include "EcuHacks.h"
 
 #if CEL_HACKS
-	char* CelSignalMod __attribute__ ((section ("Test_Section"),aligned(4))) = &(pRamVariables->CelSignal);
+	char* CelSignalMod __attribute__ ((section ("Test_Section"),aligned(4))) = &(pRamVariables.CelSignal);
 #endif
 
 #define DATE_AS_INT (((COMPILE_YEAR - 2000) * 12 + COMPILE_MONTH) * 31 + COMPILE_DAY)

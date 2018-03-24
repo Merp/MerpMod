@@ -26,7 +26,7 @@ float Pull3DRamHook(float* table, float xLookup, float yLookup)
 	//Check if r4 is ram or not??
 	//WARNING: cannot use LOOKUP TABLES in this region (pRamVariables)!!!
 	//Lookup tables must be static or this needs to change.
-	if(((void*)table > (void*)&(pRamVariables->RamVariableStart)) && ((void*)table < (void*)&(pRamVariables->RamHoleEndMarker)))
+	if(((void*)table > (void*)&(pRamVariables.RamVariableStart)) && ((void*)table < (void*)&(pRamVariables.RamHoleEndMarker)))
 	{
 		return *table;
 	}
@@ -39,7 +39,7 @@ float Pull3DRamHook(float* table, float xLookup, float yLookup)
 float Pull2DRamHook(float* table, float xLookup)
 {
 	//Check if r4 is ram or not??
-	if(table > (float*)&(pRamVariables->RamVariableStart))
+	if(table > (float*)&(pRamVariables.RamVariableStart))
 	{
 		return *table;
 	}
@@ -55,7 +55,7 @@ float Pull2DRamHookTipIn(float* table, float xLookup)
 	if(table == tTipInEnrich)//This hook is used by other tables!!
 		return Pull2DHooked((TwoDTable*)table, xLookup) 
 		* Pull2DHooked((TwoDTable*)&TipInEnrichMultiplier, xLookup)
-		* pRamVariables->InjectorScalingMultiplier;		
+		* pRamVariables.InjectorScalingMultiplier;		
 	return Pull2DHooked((TwoDTable*)table, xLookup);
 }
 
@@ -69,7 +69,7 @@ float Pull2DRamHookCrankingFuel(float* table, float xLookup)
 	table == tCrankingFuelF)//This hook is used by other tables!!
 		return Pull2DHooked((TwoDTable*)table, xLookup) 
 		* Pull2DHooked((TwoDTable*)&CrankingFuelMultiplier, xLookup)
-		* pRamVariables->InjectorScalingMultiplier;
+		* pRamVariables.InjectorScalingMultiplier;
 	return Pull2DHooked((TwoDTable*)table, xLookup);
 }
 

@@ -216,8 +216,8 @@ SHORT TERM:
 #define ModLabel CONCAT_THREE(STRI(VinLabel),STRI(SdLabel),CONCAT_THREE(STRI(BlendLabel),STRI(RevLimLabel),CONCAT_THREE(STRI(LcAdjLabel),STRI(CelLabel),CONCAT(STRI(PolfLabel),STRI(BoostLabel))))) //ProgLabel SparkCutLabel  BoostLabel Timingfo SubKcaLabel PgwgLabel InjectorLabel MemoryLabel VeRamTuningLabel PolfRamTuningLabel TimingRamTuningLabel PgwgRamTuningLabel WgdcRamTuningLabel
 
 #include "IDATranslation.h"
-#include "Externs.h"
 #include "RamVariables.h"
+#include "Externs.h"
 
 #define CONCAT(x,y) CONCAT_DO(x,y)
 #define CONCAT_DO(x,y) x y

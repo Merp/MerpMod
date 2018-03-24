@@ -378,9 +378,9 @@ ThreeDTable FuelTable2ss FUELDATA = {
 ThreeDTable FuelRamTable FUELDATA = {
 	.columnCount = 20,
 	.rowCount = 20,
-	.columnHeaderArray = &(pRamVariables->POLFRamCols),
-	.rowHeaderArray = &(pRamVariables->POLFRamRows),
-	.tableCells = &(pRamVariables->POLFRamData),
+	.columnHeaderArray = &(pRamVariables.POLFRamCols),
+	.rowHeaderArray = &(pRamVariables.POLFRamRows),
+	.tableCells = &(pRamVariables.POLFRamData),
 	.tableType = UInt8Table3D,
 	.multiplier = 0.0078125,// 0x3C000000, // 0.78125 = 2/255 (0-2 range, 8bit precision)
 	.offset = 0.0f };

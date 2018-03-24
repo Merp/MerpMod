@@ -25,12 +25,12 @@ void TestLCExit() ROMCODE;
 
 void LCAdjustCruiseToggled(unsigned char state)
 {
-	if(pRamVariables->LCEngaged == 1)
+	if(pRamVariables.LCEngaged == 1)
 	{
-		if(state == ToggleResume && (pRamVariables->LaunchControlCut < pRamVariables->RedLineCut))
-			pRamVariables->LaunchControlCut += LCAdjustStep;
-		else if (state == ToggleCoast && (pRamVariables->LaunchControlCut > 2000))
-			pRamVariables->LaunchControlCut -= LCAdjustStep;
+		if(state == ToggleResume && (pRamVariables.LaunchControlCut < pRamVariables.RedLineCut))
+			pRamVariables.LaunchControlCut += LCAdjustStep;
+		else if (state == ToggleCoast && (pRamVariables.LaunchControlCut > 2000))
+			pRamVariables.LaunchControlCut -= LCAdjustStep;
 	}
 }
 #endif
@@ -39,10 +39,10 @@ void LCAdjustCruiseToggled(unsigned char state)
 
 void RevLimCode()
 {
-		if (TestBrakeSwitch() && *pVehicleSpeed < pRamVariables->LaunchControlSpeedMax && *pThrottlePlate > LCMinimumThrottle )
-			pRamVariables->LCEngaged = 1;
+		if (TestBrakeSwitch() && *pVehicleSpeed < pRamVariables.LaunchControlSpeedMax && *pThrottlePlate > LCMinimumThrottle )
+			pRamVariables.LCEngaged = 1;
 		else
-			pRamVariables->LCEngaged = 0;
+			pRamVariables.LCEngaged = 0;
 }
 
 #else
@@ -50,27 +50,27 @@ void RevLimCode()
 void RevLimReset()
 {
 	#if PROG_MODE
-		if (pRamVariables->ValetMode != ValetModeDisabled)
+		if (pRamVariables.ValetMode != ValetModeDisabled)
 		{
-			pRamVariables->RevLimCut = ValetModeRevLim;
-			pRamVariables->RevLimResume = pRamVariables->RedLineCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+			pRamVariables.RevLimCut = ValetModeRevLim;
+			pRamVariables.RevLimResume = pRamVariables.RedLineCut - HighPass(pRamVariables.RedLineHyst,0.0f);
 		}
 		else
 		{
 	#endif
-	pRamVariables->RevLimCut = pRamVariables->RedLineCut;
-	pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+	pRamVariables.RevLimCut = pRamVariables.RedLineCut;
+	pRamVariables.RevLimResume = pRamVariables.RevLimCut - HighPass(pRamVariables.RedLineHyst,0.0f);
 	#if PROG_MODE
 	}
 	#endif
 	
 	//Disable FFS if clutch is out or brake is pressed
-	pRamVariables->FFSEngaged = 0;
-	pRamVariables->LCEngaged = 0;
+	pRamVariables.FFSEngaged = 0;
+	pRamVariables.LCEngaged = 0;
 	#ifdef pCurrentGear
 	if(*pCurrentGear > 0)
 	{
-		pRamVariables->FFSGear = *pCurrentGear;
+		pRamVariables.FFSGear = *pCurrentGear;
 	}
 	#endif
 }
@@ -78,38 +78,38 @@ void RevLimReset()
 void TestFFSEntry()
 {
 	//check for FFS speed threshold
-	if (*pVehicleSpeed >= pRamVariables->FlatFootShiftSpeedThreshold
-	&& pRamVariables->FlatFootShiftMode != FlatFootShiftModeDisabled 
+	if (*pVehicleSpeed >= pRamVariables.FlatFootShiftSpeedThreshold
+	&& pRamVariables.FlatFootShiftMode != FlatFootShiftModeDisabled 
 	&& *pThrottlePlate >= FFSMinimumThrottle)
 	{
 		
-		pRamVariables->LCEngaged = 0;
+		pRamVariables.LCEngaged = 0;
 		
 		//calculate target rpm
-		if(pRamVariables->FFSEngaged == 0 && *pEngineSpeed > pRamVariables->FlatFootShiftRpmThreshold)
+		if(pRamVariables.FFSEngaged == 0 && *pEngineSpeed > pRamVariables.FlatFootShiftRpmThreshold)
 		{
-			pRamVariables->FFSEngaged = 1;
-			pRamVariables->FFSRPM = *pEngineSpeed;
+			pRamVariables.FFSEngaged = 1;
+			pRamVariables.FFSRPM = *pEngineSpeed;
 		}
 	}
 	else
 	{
-		pRamVariables->FFSEngaged = 0;
+		pRamVariables.FFSEngaged = 0;
 	}
 }
 
 void TestLCEntry()
 {
-	if (pRamVariables->FFSEngaged == 0 && *pVehicleSpeed <= pRamVariables->LaunchControlSpeedMax && *pThrottlePlate >= LCMinimumThrottle 
+	if (pRamVariables.FFSEngaged == 0 && *pVehicleSpeed <= pRamVariables.LaunchControlSpeedMax && *pThrottlePlate >= LCMinimumThrottle 
 	#if PROG_MODE
-	&& pRamVariables->ValetMode == ValetModeDisabled
+	&& pRamVariables.ValetMode == ValetModeDisabled
 	#endif
 	)
 	{
 		// Launch control rev limiter thresholds.
-		pRamVariables->LCEngaged = 1;
-		pRamVariables->RevLimCut = pRamVariables->LaunchControlCut;
-		pRamVariables->RevLimResume = pRamVariables->LaunchControlCut - HighPass(pRamVariables->LaunchControlHyst,0.0f);
+		pRamVariables.LCEngaged = 1;
+		pRamVariables.RevLimCut = pRamVariables.LaunchControlCut;
+		pRamVariables.RevLimResume = pRamVariables.LaunchControlCut - HighPass(pRamVariables.LaunchControlHyst,0.0f);
 	}
 }
 
@@ -117,17 +117,17 @@ unsigned char TestClutchSwitchDepressedEvent()
 {
 	unsigned char ret = 0x00;
 	unsigned char result = *pClutchFlags & ClutchBitMask;
-	if(result != pRamVariables->ClutchSwitchLast && TestClutchSwitch())
+	if(result != pRamVariables.ClutchSwitchLast && TestClutchSwitch())
 	{
 		ret = 0x01;
 	}
-	pRamVariables->ClutchSwitchLast = result;
+	pRamVariables.ClutchSwitchLast = result;
 	return ret;
 }
 
 void TestLCExit()
 {
-	if(*pVehicleSpeed > pRamVariables->LaunchControlSpeedMax || *pThrottlePlate < LCMinimumThrottle)
+	if(*pVehicleSpeed > pRamVariables.LaunchControlSpeedMax || *pThrottlePlate < LCMinimumThrottle)
 	{
 		RevLimReset();
 	}
@@ -135,7 +135,7 @@ void TestLCExit()
 
 void TestFFSExit()
 {
-	if(*pVehicleSpeed < pRamVariables->FlatFootShiftSpeedThreshold || *pThrottlePlate < FFSMinimumThrottle)
+	if(*pVehicleSpeed < pRamVariables.FlatFootShiftSpeedThreshold || *pThrottlePlate < FFSMinimumThrottle)
 	{
 		RevLimReset();
 	}
@@ -145,7 +145,7 @@ void RevLimCode()
 {	
 
 #if VIN_HACKS
-	if (pRamVariables->VinAuth != 0x01)
+	if (pRamVariables.VinAuth != 0x01)
 	{
 		// Set the rev-limit fuel cut flag.
 		*pFlagsRevLim |= RevLimBitMask;
@@ -163,11 +163,11 @@ void RevLimCode()
 		{
 			RevLimReset();
 		}
-		else if(pRamVariables->LCEngaged == 1)
+		else if(pRamVariables.LCEngaged == 1)
 		{
 			TestLCExit();
 		}
-		else if(pRamVariables->FFSEngaged == 2)
+		else if(pRamVariables.FFSEngaged == 2)
 		{
 			TestFFSExit();
 		}
@@ -176,38 +176,38 @@ void RevLimCode()
 		{
 			TestFFSEntry();
 		}
-		else if (pRamVariables->FFSEngaged == 1)
+		else if (pRamVariables.FFSEngaged == 1)
 		{
 			#ifdef pCurrentGear
-			if (pRamVariables->FlatFootShiftMode == FlatFootShiftModeAuto)
+			if (pRamVariables.FlatFootShiftMode == FlatFootShiftModeAuto)
 			{
-				float cut =  pRamVariables->FFSRPM;
-				//int gear1 = (int)pRamVariables->FFSGear-1;
-				int gear1 = BandPassInt((int)pRamVariables->FFSGear-1, 0, 5);//(sizeof(GearRatios)/sizeof(GearRatios[0]))-1);
-				//int gear2 = (int)pRamVariables->FFSGear;
-				int gear2 = BandPassInt((int)pRamVariables->FFSGear, 0, 5);// (sizeof(GearRatios)/sizeof(GearRatios[0]))-1);//TODO: SANITIZE THE LOOKUP!!! 
+				float cut =  pRamVariables.FFSRPM;
+				//int gear1 = (int)pRamVariables.FFSGear-1;
+				int gear1 = BandPassInt((int)pRamVariables.FFSGear-1, 0, 5);//(sizeof(GearRatios)/sizeof(GearRatios[0]))-1);
+				//int gear2 = (int)pRamVariables.FFSGear;
+				int gear2 = BandPassInt((int)pRamVariables.FFSGear, 0, 5);// (sizeof(GearRatios)/sizeof(GearRatios[0]))-1);//TODO: SANITIZE THE LOOKUP!!! 
 				float ratio1 = GearRatios[gear1];
 				float ratio2 = GearRatios[gear2];
 				cut *= ratio2;
 				cut *= 1/ratio1;
-				//cut *=  GearRatios[(int)pRamVariables->FFSGear + 1]; 
-				//cut *= 1 / GearRatios[(int)pRamVariables->FFSGear];
-				cut += pRamVariables->FlatFootShiftAutoDelta;
-				pRamVariables->RevLimCut = LowPass(cut, pRamVariables->RedLineCut);
-				pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->FlatFootShiftHyst,0.0f);
+				//cut *=  GearRatios[(int)pRamVariables.FFSGear + 1]; 
+				//cut *= 1 / GearRatios[(int)pRamVariables.FFSGear];
+				cut += pRamVariables.FlatFootShiftAutoDelta;
+				pRamVariables.RevLimCut = LowPass(cut, pRamVariables.RedLineCut);
+				pRamVariables.RevLimResume = pRamVariables.RevLimCut - HighPass(pRamVariables.FlatFootShiftHyst,0.0f);
 			}
 			else
 			{
 			#endif
 			
-				float cut = pRamVariables->RedLineCut - HighPass(pRamVariables->FlatFootShiftStaticDelta,0.0f);
-				pRamVariables->RevLimCut = LowPass(cut, pRamVariables->RedLineCut);
-				pRamVariables->RevLimResume = cut - HighPass(pRamVariables->FlatFootShiftHyst,0.0f);
+				float cut = pRamVariables.RedLineCut - HighPass(pRamVariables.FlatFootShiftStaticDelta,0.0f);
+				pRamVariables.RevLimCut = LowPass(cut, pRamVariables.RedLineCut);
+				pRamVariables.RevLimResume = cut - HighPass(pRamVariables.FlatFootShiftHyst,0.0f);
 			
 			#ifdef pCurrentGear
 			}
 			#endif
-			pRamVariables->FFSEngaged = 2;
+			pRamVariables.FFSEngaged = 2;
 		}
 		else
 		{
@@ -215,46 +215,46 @@ void RevLimCode()
 		}
 		
 	#if PROG_MODE
-		if (pRamVariables->ValetMode != ValetModeDisabled)
+		if (pRamVariables.ValetMode != ValetModeDisabled)
 		{
-			pRamVariables->RevLimCut = ValetModeRevLim;
-			pRamVariables->RevLimResume = pRamVariables->RevLimCut - HighPass(pRamVariables->RedLineHyst,0.0f);
+			pRamVariables.RevLimCut = ValetModeRevLim;
+			pRamVariables.RevLimResume = pRamVariables.RevLimCut - HighPass(pRamVariables.RedLineHyst,0.0f);
 		}
 	#endif
 
 	#if SPARK_HACKS
-		if (pRamVariables->RevLimMode == RevLimModeSparkCut)
+		if (pRamVariables.RevLimMode == RevLimModeSparkCut)
 		{
-			if (*pEngineSpeed > pRamVariables->RevLimCut)
+			if (*pEngineSpeed > pRamVariables.RevLimCut)
 			{
 				// Set the rev-limit fuel cut flag.
 				*LCSparkCutFlag |= 0x01;
 			} 
-			else if (*pEngineSpeed < pRamVariables->RevLimResume)
+			else if (*pEngineSpeed < pRamVariables.RevLimResume)
 			{
 				// Clear the rev-limit fuel cut flag.
 				*LCSparkCutFlag &= 0xFE;
 			}
 		}
-		else if (pRamVariables->RevLimMode == RevLimModeComboCut)
+		else if (pRamVariables.RevLimMode == RevLimModeComboCut)
 		{
-			if (*pEngineSpeed > pRamVariables->RevLimResume)
+			if (*pEngineSpeed > pRamVariables.RevLimResume)
 			{
 				// Set the rev-limit fuel cut flag.
 				*LCSparkCutFlag |= 0x01;
 			} 
-			else if (*pEngineSpeed < (pRamVariables->RevLimResume - 50))	///TODO: Add this as an adjustable value??
+			else if (*pEngineSpeed < (pRamVariables.RevLimResume - 50))	///TODO: Add this as an adjustable value??
 			{
 				// Clear the rev-limit fuel cut flag.
 				*LCSparkCutFlag &= 0xFE;
 			}
-			if (*pEngineSpeed > pRamVariables->RevLimCut)
+			if (*pEngineSpeed > pRamVariables.RevLimCut)
 			{
 				// Set the rev-limit fuel cut flag.
 				//*((char*)pFlagsRevLim) |= RevLimBitMask; 
 				*pFlagsRevLim |= RevLimBitMask;
 			} 
-			else if (*pEngineSpeed < pRamVariables->RevLimResume)
+			else if (*pEngineSpeed < pRamVariables.RevLimResume)
 			{
 				// Clear the rev-limit fuel cut flag.
 				//*((char*)pFlagsRevLim) &= !RevLimBitMask;
@@ -264,11 +264,11 @@ void RevLimCode()
 		else
 		{
 	#endif
-		if (*pEngineSpeed > pRamVariables->RevLimCut || *pEngineSpeed > pRamVariables->RedLineCut)
+		if (*pEngineSpeed > pRamVariables.RevLimCut || *pEngineSpeed > pRamVariables.RedLineCut)
 		{
 			*pFlagsRevLim |= RevLimBitMask;
 		} 
-		else if (*pEngineSpeed < pRamVariables->RevLimResume)
+		else if (*pEngineSpeed < pRamVariables.RevLimResume)
 		{
 			*pFlagsRevLim &= ~RevLimBitMask;
 		}	

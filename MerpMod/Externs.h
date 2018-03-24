@@ -14,6 +14,8 @@
 
 #include "enums.h"
 
+extern RamVariables pRamVariables;
+
 //////////////////////////
 //Function Prototypes
 //////////////////////////

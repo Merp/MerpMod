@@ -27,7 +27,7 @@ void Assert(int condition, unsigned char *message)
 	if (condition == 0)
 	{
 		long shit = 0;
-		pRamVariables->RamHoleSpace = shit;
+		pRamVariables.RamHoleSpace = shit;
 		TestFailed(message);
 	}
 }
