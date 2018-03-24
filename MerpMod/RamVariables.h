@@ -137,8 +137,9 @@ typedef struct
 	unsigned char 	LCTimingMode;
 	unsigned char	TimingHackEnabled;
 	unsigned char	Tempty1;	
-	float	BaseTimingTarget;
-	float 	BaseTimingOutput;	//97
+	float	BaseTiming;
+	float 	FinalTiming;	//97
+	float	TimingOutput;
 	float 	LCTimingRetard;		//97
 	float 	LCTimingLock;		//97
 	float	LCTimingLockRPM;

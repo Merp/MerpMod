@@ -45,6 +45,7 @@ float TimingHack()
 #endif
 
 	OutputValue = BlendAndSwitch(TimingTableGroup, *pEngineLoad, *pEngineSpeed);
+	pRamVariables.BaseTiming = OutputValue;
 		
 #if TIMING_RAM_TUNING
 	}
@@ -65,12 +66,12 @@ float TimingHack()
 
 	OutputValue -= Abs(pRamVariables.SubtractiveKCA);
 	
-	pRamVariables.BaseTimingTarget = OutputValue;
+	pRamVariables.FinalTiming = OutputValue;
 	
 	if(pRamVariables.TimingHackEnabled == HackEnabled)
-		pRamVariables.BaseTimingOutput = OutputValue;
+		pRamVariables.TimingOutput = OutputValue;
 	else
-		pRamVariables.BaseTimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
+		pRamVariables.TimingOutput = Pull3DHooked((void*)PrimaryOEMTimingTable, *pEngineLoad, *pEngineSpeed);	
 		
 	//Call existing!
 	BaseTimingHooked();

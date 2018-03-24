@@ -488,7 +488,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTiming,
 		oldval: tBaseTiming,
-		newval: (int)&(pRamVariables.BaseTimingOutput),
+		newval: (int)&(pRamVariables.TimingOutput),
 		name: STR(Timing Table Hook)
 	};
 #else
@@ -497,7 +497,7 @@ const MetaReplace POLFHook METADATA =
 		op: OpReplace4Bytes,
 		address: hTableBaseTimingPCruise,
 		oldval: tBaseTimingPCruise,
-		newval: (int)&(pRamVariables.BaseTimingOutput),
+		newval: (int)&(pRamVariables.TimingOutput),
 		name: STR(Base Timing Primary Cruise Table Hook)
 	};
 	const MetaReplace BaseTimingPNonCruiseTablePatch METADATA =

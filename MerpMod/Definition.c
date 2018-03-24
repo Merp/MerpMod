@@ -515,8 +515,9 @@ DEFINERAMVAR("MerpMod LC Timing Mode",LCTimingMode,"uint8","E");
 DEFINERAMVAR("MerpMod LC Timing Lock Value",LCTimingLock,"float","E");
 DEFINERAMVAR("MerpMod LC Timing Retard",LCTimingRetard,"float","E");
 DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,"float","E");
-DEFINERAMVAR("MerpMod Base Timing Final Target",BaseTimingTarget,"float","E");
-DEFINERAMVAR("MerpMod Base Timing Final Output",BaseTimingOutput,"float","E");
+DEFINERAMVAR("MerpMod Base Timing",BaseTiming,"float","E");
+DEFINERAMVAR("MerpMod Final Timing",FinalTiming,"float","E");
+DEFINERAMVAR("MerpMod Timing Output",TimingOutput,"float","E");
 	
 DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
 DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	
