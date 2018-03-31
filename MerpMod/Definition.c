@@ -193,12 +193,12 @@ DEFINERAMVAR("MerpMod Ram Hole Scanner Stack Pointer",ScannedStackPointer,"uint3
 #endif
 
 #if PROG_MODE
-DEFINERAMVAR("MerpMod Prog Mode Status",ProgModeStatus,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
-DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
-DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
+DEFINERAMVAR("MerpMod Prog Mode Status",ProgModeStatus,"uint8","E1518");
+DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E1519");
+DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E1520");
+DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E1521");
+DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E1522");
+DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E1601");
 #endif
 	
 DEFIDA1D("ECU Identifier",dEcuId);
@@ -246,13 +246,13 @@ DEFINERAMVAR("LC Spark Events Cut From",SparkEventsX,"uint8","E");
 #endif
 
 #if SD_HACKS
-DEFINERAMVAR("MerpMod SD Mode Switch",MafMode,"uint8","E");
-DEFINERAMVAR("MerpMod SD Volumetric Efficiency",VolumetricEfficiency,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Final Output",MafFromSpeedDensity,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Maf Sensor",MafFromSensor,"float","E");
-DEFINERAMVAR("MerpMod SD Atmospheric Compensation",AtmosphericCompensation,"float","E");
-DEFINERAMVAR("MerpMod SD Blending Ratio",SDMafBlendRatio,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Blending",SDMafFromBlend,"float","E");
+DEFINERAMVAR("MerpMod SD Mode Switch",MafMode,"uint8","E1100");
+DEFINERAMVAR("MerpMod SD Volumetric Efficiency",VolumetricEfficiency,"float","E1101");
+DEFINERAMVAR("MerpMod SD Airflow Final Output",MafFromSpeedDensity,"float","E1102");
+DEFINERAMVAR("MerpMod SD Airflow Maf Sensor",MafFromSensor,"float","E1106");
+DEFINERAMVAR("MerpMod SD Atmospheric Compensation",AtmosphericCompensation,"float","E1103");
+DEFINERAMVAR("MerpMod SD Blending Ratio",SDMafBlendRatio,"float","E1104");
+DEFINERAMVAR("MerpMod SD Airflow Blending",SDMafFromBlend,"float","E1105");
 DEFNEW3D("Volumetric Efficiency Table 1",VolumetricEfficiencyTable1);
 
 #if SWITCH_HACKS
@@ -296,21 +296,21 @@ DEFNEW1D("FFS Gear Ratios",GearRatios);
 DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);	
 	
 	//PARAMS
-DEFINERAMVAR("MerpMod FFS Mode",FlatFootShiftMode,"uint8","E");//TODO add to def base
-DEFINERAMVAR("MerpMod LC Engaged Signal",LCEngaged,"uint8","E");
-DEFINERAMVAR("MerpMod FFS Engaged Signal",FFSEngaged,"uint8","E");
-DEFINERAMVAR("MerpMod FFS Gear Monitor 1-Byte",FFSGear,"uint8","E");
-DEFINERAMVAR("MerpMod RevLimit Active Cut RPM",RevLimCut,"float","E");
-DEFINERAMVAR("MerpMod RevLimit Active Resume RPM",RevLimResume,"float","E");
-DEFINERAMVAR("MerpMod RedLine Cut RPM",RedLineCut,"float","E");
-DEFINERAMVAR("MerpMod RedLine Hysteresis",RedLineHyst,"float","E");
-DEFINERAMVAR("MerpMod Launch Control RPM",LaunchControlCut,"float","E");
-DEFINERAMVAR("MerpMod Launch Control Hysteresis",LaunchControlHyst,"float","E");
-DEFINERAMVAR("MerpMod FFS Delta (Auto)",FlatFootShiftAutoDelta,"float","E");
-DEFINERAMVAR("MerpMod FFS Delta (Static)",FlatFootShiftStaticDelta,"float","E");
-DEFINERAMVAR("MerpMod FFS Engagement RPM",FFSRPM,"float","E");
-DEFINERAMVAR("MerpMod FFS Speed Threshold",FlatFootShiftSpeedThreshold,"float","E");
-DEFINERAMVAR("MerpMod LC Speed Threshold",LaunchControlSpeedMax,"float","E");
+DEFINERAMVAR("MerpMod FFS Mode",FlatFootShiftMode,"uint8","E1316");
+DEFINERAMVAR("MerpMod LC Engaged Signal",LCEngaged,"uint8","E1302");
+DEFINERAMVAR("MerpMod FFS Engaged Signal",FFSEngaged,"uint8","E1303");
+DEFINERAMVAR("MerpMod FFS Gear Monitor 1-Byte",FFSGear,"uint8","E1317");
+DEFINERAMVAR("MerpMod RevLimit Active Cut RPM",RevLimCut,"float","E1305");
+DEFINERAMVAR("MerpMod RevLimit Active Resume RPM",RevLimResume,"float","E1306");
+DEFINERAMVAR("MerpMod RedLine Cut RPM",RedLineCut,"float","E1307");
+DEFINERAMVAR("MerpMod RedLine Hysteresis",RedLineHyst,"float","E1308");
+DEFINERAMVAR("MerpMod Launch Control RPM",LaunchControlCut,"float","E1309");
+DEFINERAMVAR("MerpMod Launch Control Hysteresis",LaunchControlHyst,"float","E1310");
+DEFINERAMVAR("MerpMod FFS Delta (Auto)",FlatFootShiftAutoDelta,"float","E1314");
+DEFINERAMVAR("MerpMod FFS Delta (Static)",FlatFootShiftStaticDelta,"float","E1315");
+DEFINERAMVAR("MerpMod FFS Engagement RPM",FFSRPM,"float","E1312");
+DEFINERAMVAR("MerpMod FFS Speed Threshold",FlatFootShiftSpeedThreshold,"float","E1313");
+DEFINERAMVAR("MerpMod LC Speed Threshold",LaunchControlSpeedMax,"float","E1301");
 #endif
 
 #if LC_ADJUST
@@ -318,10 +318,10 @@ DEFNEW1D("Launch Control Adjustment Step",LCAdjustStep);
 #endif
 
 #if SWITCH_HACKS
-DEFINERAMVAR("MerpMod ECU Identifier",ECUIdentifier,"uint32","E");
+DEFINERAMVAR("MerpMod ECU Identifier",ECUIdentifier,"uint32","E1602");
 	
-DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E");
-DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E");
+DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E1511");
+DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E1512");
 
 DEFNEW2D("TGV Left Input Scaling",TGVLeftScaling);
 DEFNEW2D("TGV Right Input Scaling",TGVRightScaling);
@@ -339,19 +339,19 @@ DEFNEW1D("Map Switch Input Threshold Low",MapSwitchThresholdLo);
 DEFNEW1D("Map Switch Input Threshold High",MapSwitchThresholdHi);
 DEFNEW1D("Map Switch Input Mode",DefaultMapSwitchingInputMode);
 DEFNEW1D("Map Blending Input Mode",DefaultMapBlendingInputMode);
-DEFINERAMVAR("MerpMod Map Switching Input Mode",MapSwitchingInputMode,"uint8","E");
-DEFINERAMVAR("MerpMod Map Blending Input Mode",MapBlendingInputMode,"uint8","E");
-DEFINERAMVAR("MerpMod Map Switch",MapSwitch,"uint8","E");
-DEFINERAMVAR("MerpMod Map Blending Ratio",MapBlendRatio,"float","E");
-DEFINERAMVAR("MerpMod TGV Left Scaled",TGVLeftScaled,"float","E");	
-DEFINERAMVAR("MerpMod TGV Right Scaled",TGVRightScaled,"float","E");
+DEFINERAMVAR("MerpMod Map Switching Input Mode",MapSwitchingInputMode,"uint8","E1523");
+DEFINERAMVAR("MerpMod Map Blending Input Mode",MapBlendingInputMode,"uint8","E1524");
+DEFINERAMVAR("MerpMod Map Switch",MapSwitch,"uint8","E1525");
+DEFINERAMVAR("MerpMod Map Blending Ratio",MapBlendRatio,"float","E1526");
+DEFINERAMVAR("MerpMod TGV Left Scaled",TGVLeftScaled,"float","E1506");	
+DEFINERAMVAR("MerpMod TGV Right Scaled",TGVRightScaled,"float","E1507");
 
 DEFNEW1D("Default Map Blending Ratio",DefaultMapBlendRatio);
 DEFNEW1D("Default Map Switch",DefaultMapSwitch);
 
 #if INJECTOR_HACKS
 DEFNEW2D("Map Blending Injector Scaling Multiplier",InjectorScalingMultiplierTable);
-DEFINERAMVAR("MerpMod Injector Scaling",InjectorScaling,"float","E");
+DEFINERAMVAR("MerpMod Injector Scaling",InjectorScaling,"float","E1527");
 #endif
 
 DEFNEW2D("Map Blending Throttle Tip-In Enrichment Multiplier",TipInEnrichMultiplier);
@@ -361,12 +361,12 @@ DEFNEW2D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 #endif
 
 #if POLF_HACKS
-DEFINERAMVAR("MerpMod LC Fueling Lock Enrichment",LCFuelLock,"float","E");
-DEFINERAMVAR("MerpMod LC Fueling Mode",LCFuelMode,"float","E");
-DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,"float","E");
-DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E");	
-DEFINERAMVAR("MerpMod Primary Open Loop Fueling Target",PolfTarget,"float","E");
-DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E");	
+DEFINERAMVAR("MerpMod LC Fueling Lock Enrichment",LCFuelLock,"float","E1502");
+DEFINERAMVAR("MerpMod LC Fueling Mode",LCFuelMode,"float","E1513");
+DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,"float","E1501");
+DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E1504");	
+DEFINERAMVAR("MerpMod Primary Open Loop Fueling Target",PolfTarget,"float","E1528");
+DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E1529");	
 	
 #if SWITCH_HACKS
 DEFNEW1D("Primary Open Loop Fuel Hack Enable",DefaultPolfHackEnabled);
@@ -422,18 +422,18 @@ DEFNEW1D("ECT Flash Temperature Threshold",ECTFlashThreshold);
 DEFNEW1D("IAM Recall Flash Speed",IAMFlashSpeed);
 #endif
 
-DEFINERAMVAR("MerpMod CEL Signal",CelSignal,"uint8","E");
-DEFINERAM("MerpMod CEL Signal OEM",pCelSignalOem,"uint8","E");
-DEFINERAMVAR("MerpMod CEL Flash Counter",CelFlashCounter,"uint8","E");
-DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,"uint8","E");
+DEFINERAMVAR("MerpMod CEL Signal",CelSignal,"uint8","E803");
+DEFINERAM("MerpMod CEL Signal OEM",pCelSignalOem,"uint8","E1800");
+DEFINERAMVAR("MerpMod CEL Flash Counter",CelFlashCounter,"uint8","E1802");
+DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,"uint8","E1801");
 	
 #endif
 
 
 #if BOOST_HACKS
 DEFNEW1D("Boost Hack Enable",DefaultBoostHackEnabled);
-DEFINERAMVAR("MerpMod PGWG Initial Compensation",PGWGInitialComp,"float","E");
-DEFINERAMVAR("MerpMod PGWG Max Compensation",PGWGMaxComp,"float","E");
+DEFINERAMVAR("MerpMod PGWG Initial Compensation",PGWGInitialComp,"float","E1530");
+DEFINERAMVAR("MerpMod PGWG Max Compensation",PGWGMaxComp,"float","E1531");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Wastegate Table 1 Intelligent",PGWGTable1i);
 DEFNEW3D("Per Gear Wastegate Table 2 Intelligent",PGWGTable2i);
@@ -445,7 +445,7 @@ DEFNEW3D("Per Gear Wastegate Table 2 Sport Sharp",PGWGTable2ss);
 DEFNEW3D("Per Gear Wastegate Table 1",PGWGTable1i);
 DEFNEW3D("Per Gear Wastegate Table 2",PGWGTable2i);
 #endif
-DEFINERAMVAR("MerpMod PGTB Compensation",PGTBComp,"float","E");
+DEFINERAMVAR("MerpMod PGTB Compensation",PGTBComp,"float","E1532");
 #if SWITCH_HACKS
 DEFNEW3D("Per Gear Target Boost Table 1 Intelligent",PGTBTable1i);
 DEFNEW3D("Per Gear Target Boost Table 2 Intelligent",PGTBTable2i);
@@ -462,8 +462,8 @@ DEFNEW3D("Per Gear Target Boost Table Valet Mode",PGTBTableValetMode);
 DEFNEW3D("Per Gear Wastegate Table Valet Mode",PGWGTableValetMode);
 #endif
 
-DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,"float","E");
-DEFINERAMVAR("MerpMod Max WGDC Per Gear Output",WGDCMaxOutput,"float","E");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Target",WGDCMaxTarget,"float","E1533");
+DEFINERAMVAR("MerpMod Max WGDC Per Gear Output",WGDCMaxOutput,"float","E1534");
 #if SWITCH_HACKS
 DEFNEW3D("Max Wastegate Duty Compensation Table 1 Intelligent",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Compensation Table 2 Intelligent",WGDCMaxTable2i);
@@ -476,8 +476,8 @@ DEFNEW3D("Max Wastegate Duty Compensation Table 1",WGDCMaxTable1i);
 DEFNEW3D("Max Wastegate Duty Compensation Table 2",WGDCMaxTable2i);
 #endif
 
-DEFINERAMVAR("MerpMod Initial WGDC Per Gear Target",WGDCInitialTarget,"float","E");
-DEFINERAMVAR("MerpMod Initial WGDC Per Gear Output",WGDCInitialOutput,"float","E");
+DEFINERAMVAR("MerpMod Initial WGDC Per Gear Target",WGDCInitialTarget,"float","E1535");
+DEFINERAMVAR("MerpMod Initial WGDC Per Gear Output",WGDCInitialOutput,"float","E1536");
 #if SWITCH_HACKS
 DEFNEW3D("Initial Wastegate Duty Compensation Table 1 Intelligent",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Compensation Table 2 Intelligent",WGDCInitialTable2i);
@@ -490,8 +490,8 @@ DEFNEW3D("Initial Wastegate Duty Compensation Table 1",WGDCInitialTable1i);
 DEFNEW3D("Initial Wastegate Duty Compensation Table 2",WGDCInitialTable2i);
 #endif
 
-DEFINERAMVAR("MerpMod Target Boost Target",TargetBoostTarget,"float","E");
-DEFINERAMVAR("MerpMod Target Boost Output",TargetBoostOutput,"float","E");
+DEFINERAMVAR("MerpMod Target Boost Target",TargetBoostTarget,"float","E1537");
+DEFINERAMVAR("MerpMod Target Boost Output",TargetBoostOutput,"float","E1538");
 #if SWITCH_HACKS
 DEFNEW3D("Target Boost Compensation Table 1 Intelligent",TargetBoostTable1i);
 DEFNEW3D("Target Boost Compensation Table 2 Intelligent",TargetBoostTable2i);
@@ -511,13 +511,13 @@ DEFNEW1D("WGDC Lock Minimum Throttle",ThrottleLockWGDC);
 #endif
 
 #if TIMING_HACKS
-DEFINERAMVAR("MerpMod LC Timing Mode",LCTimingMode,"uint8","E");
-DEFINERAMVAR("MerpMod LC Timing Lock Value",LCTimingLock,"float","E");
-DEFINERAMVAR("MerpMod LC Timing Retard",LCTimingRetard,"float","E");
-DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,"float","E");
-DEFINERAMVAR("MerpMod Base Timing",BaseTiming,"float","E");
-DEFINERAMVAR("MerpMod Final Timing",FinalTiming,"float","E");
-DEFINERAMVAR("MerpMod Timing Output",TimingOutput,"float","E");
+DEFINERAMVAR("MerpMod LC Timing Mode",LCTimingMode,"uint8","E508");
+DEFINERAMVAR("MerpMod LC Timing Lock Value",LCTimingLock,"float","E1514");
+DEFINERAMVAR("MerpMod LC Timing Retard",LCTimingRetard,"float","E1509");
+DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,"float","E1510");
+DEFINERAMVAR("MerpMod Base Timing",BaseTiming,"float","E1515");
+DEFINERAMVAR("MerpMod Final Timing",FinalTiming,"float","E1516");
+DEFINERAMVAR("MerpMod Timing Output",TimingOutput,"float","E1517");
 	
 DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
 DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	
