@@ -145,7 +145,7 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 #if BOOST_HACKS
-	pRamVariables.BoostHackEnabled = DefaultBoostHackEnabled;
+	pRamVariables.BoostHackEnable = DefaultBoostHackEnable;
 #endif
 
 #if SD_HACKS

@@ -280,6 +280,9 @@ DEFINERAMVAR("VERamFlag",VERamFlag,"uint8","E");
 
 #if REVLIM_HACKS
 DEFNEW1D("Rev Limit (Redline)",DefaultRedLineCut);
+#if PROG_MODE
+DEFNEW1D("Rev Limit (Valet Mode)",ValetModeRevLim);
+#endif
 #ifdef pCurrentGear
 DEFNEW1D("Flat Foot Shift Mode",DefaultFlatFootShiftMode);
 DEFNEW1D("Flat Foot Shift Delta (Automatic Limit)",DefaultFlatFootShiftAutoDelta);
@@ -431,7 +434,8 @@ DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,"uint8","E1801");
 
 
 #if BOOST_HACKS
-DEFNEW1D("Boost Hack Enable",DefaultBoostHackEnabled);
+DEFNEW1D("Boost Hack Enable",DefaultBoostHackEnable);
+DEFINERAMVAR("MerpMod Boost Hack Enable Switch",BoostHackEnable,"uint8","E1540");
 DEFINERAMVAR("MerpMod PGWG Initial Compensation",PGWGInitialComp,"float","E1530");
 DEFINERAMVAR("MerpMod PGWG Max Compensation",PGWGMaxComp,"float","E1531");
 #if SWITCH_HACKS

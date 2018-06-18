@@ -87,7 +87,7 @@ EcuHacksMain();
 	pRamVariables.WGDCInitialTarget = PGWGInitial;
 	pRamVariables.WGDCMaxTarget = PGWGMax;
 	
-	if(pRamVariables.BoostHackEnabled == HackEnabled)
+	if(pRamVariables.BoostHackEnable == HackEnabled)
 	{
 		#if PROG_MODE
 		if(pRamVariables.ValetMode == ValetModeEnabled)
@@ -187,7 +187,7 @@ void TargetBoostHack()
 	
 	pRamVariables.TargetBoostTarget = PGTB;
 	
-	if(pRamVariables.BoostHackEnabled == HackEnabled)
+	if(pRamVariables.BoostHackEnable == HackEnabled)
 	{
 		if(pRamVariables.ValetMode == ValetModeEnabled)
 		{

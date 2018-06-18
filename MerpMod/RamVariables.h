@@ -162,7 +162,7 @@ typedef struct
 #endif
 
 #if BOOST_HACKS	
-	unsigned char BoostHackEnabled;
+	unsigned char BoostHackEnable;
 	unsigned char bhempty;
 	unsigned char bhempty1;
 	unsigned char bhempty2;
