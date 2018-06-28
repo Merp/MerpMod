@@ -63,6 +63,7 @@ float Pull2DRamHookCrankingFuel(float* table, float xLookup) ROMCODE;
 float Pull2DRamHookStartupEnrich2(float* table, float xLookup) ROMCODE;
 float Pull2DRamHookStartupEnrich3(float* table, float xLookup) ROMCODE;
 float Pull3DRamHook(float* table, float xLookup, float yLookup) ROMCODE;
+float Pull3DHookReqTorque(ThreeDTable* table, float xLookup, float yLookup) ROMCODE;
 void VinCheck() ROMCODE;
 
 void ProgModeListener()  ROMCODE;
@@ -274,7 +275,10 @@ extern float DefaultFlatFootShiftSpeedThreshold;
 extern float DefaultFlatFootShiftRpmThreshold;
 extern float LCAdjustStep;
 
+#if PROG_MODE
 extern float ValetModeRevLim;
+extern float ValetModeReqTorqueLimit;
+#endif
 
 #if VIN_HACKS
 extern const VinBlockStruct VinBlock;

@@ -33,6 +33,7 @@
 #define POLF_HACKS 1		//	
 #define PGWG_HACKS 1		//
 #define INJECTOR_HACKS 1	//
+#define REQTORQUE_HACKS 1	//
 							//
 //////////////////////////////
 							

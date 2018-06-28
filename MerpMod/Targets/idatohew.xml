@@ -371,6 +371,12 @@
         </define>
     </category>
 
+	<category name="Requested Torque Hacks">
+		<define name="hPull3DReqTorque">
+			<ida name="HOOKPULL_REQ_TORQUE" />
+		</define>
+	</category>
+	
     <category name="Spark Cut">
         <define name="sSparkCutOcrStart">
             <ida name="SPARK_CUT_OCR_START" />

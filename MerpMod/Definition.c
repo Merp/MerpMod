@@ -390,7 +390,8 @@ DEFNEW1D("Default Launch Control Fueling Compensation Multiplier",DefaultLCFuelE
 
 #endif
 
-#if PROG_MODE
+#if REQTORQUE_HACKS && PROG_MODE
+DEFNEW1D("Requested Torque Limit (Valet Mode)",ValetModeReqTorqueLimit);
 #endif
 
 #if SPARK_HACKS

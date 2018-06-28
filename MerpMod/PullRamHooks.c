@@ -36,6 +36,20 @@ float Pull3DRamHook(float* table, float xLookup, float yLookup)
 	}
 }
 
+#if REQTORQUE_HACKS && PROG_MODE
+float Pull3DHookReqTorque(ThreeDTable* table, float xLookup, float yLookup)
+{
+	float oemValue = Pull3DHooked(table, xLookup, yLookup);
+	
+	#if PROG_MODE
+	if(pRamVariables.ValetMode == 1 && oemValue > ValetModeReqTorqueLimit)
+		return ValetModeReqTorqueLimit;
+	else
+	#endif
+		return oemValue;
+}
+#endif
+
 float Pull2DRamHook(float* table, float xLookup)
 {
 	//Check if r4 is ram or not??

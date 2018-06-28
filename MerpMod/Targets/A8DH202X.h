@@ -1,5 +1,5 @@
-#define MOD_ECUID A85B4007D2
-#define MOD_DATE 12.10.17.19.31
+#define MOD_ECUID 05A90A8956
+#define MOD_DATE 27.06.18.20.39
 #include "Switch.h"
 #define MOD_CONFIG Switch
 #define MOD_BUILD Debug
@@ -123,6 +123,12 @@
 #define hPull3DTiming (0x00037DDC)
 #define hSubKca (0x00037654)
 #define pKcaIam (0xFFFF7840)
+
+/////////////////////
+// Requested Torque Hacks
+/////////////////////
+
+#define hPull3DReqTorque (0x000BEA7C)
 
 /////////////////////
 // Spark Cut

@@ -601,6 +601,22 @@ const MetaReplace POLFHook METADATA =
 
 #endif
 
+#if REQTORQUE_HACKS && PROG_MODE
+//////////////////////////////////
+//				             	//
+//     REQUESTED TORQUE HACKS	//
+//				            	//
+//////////////////////////////////
+	const MetaReplace ReqTorqueHookPull METADATA =
+	{
+		op: OpReplace4Bytes,
+		address: hPull3DReqTorque,
+		oldval: sPull3DFloat,
+		newval: (int)Pull3DHookReqTorque,
+		name: STR(Requested Torque Pull3D Hook)
+	};
+#endif
+
 #if E85_HACKS
 //////////////////////
 //					//

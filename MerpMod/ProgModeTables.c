@@ -31,4 +31,8 @@ float LCIncrement PROGMODEDATA =100.0f;
 float LCMax PROGMODEDATA = 8000.0f;
 float LCMin PROGMODEDATA = 2000.0f;
 
+#if REQTORQUE_HACKS
+float ValetModeReqTorqueLimit PROGMODEDATA = 250.0f;
+#endif
+
 #endif

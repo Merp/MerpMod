@@ -863,6 +863,7 @@
  0000:00096B4C       Intake_Temp_Sensor_Scaling_Y_Axis
  0000:00096BC4       Intake_Temp_Sensor_Scaling
  0000:000BE918       SBR_Req_Torque_Pull
+ 0000:000BEA7C       HOOKPULL_REQ_TORQUE
  0000:000C0250       Atmospheric_Pressure_Sensor_Scaling
  0000:000C028C       Manifold_Pressure_Sensor_Scaling
  0000:000C05C1       Boost_Control_Disable_Delay_Fine_Correction
